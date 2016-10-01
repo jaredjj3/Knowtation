@@ -66,4 +66,4 @@
 | "/login" | "AuthFormContainer"|
 | "/user/:userId" | "UserContainer" |
 | "/knowtation/:knowtationId" | "KnowtationContainer" |
-| "/upload"| "NewKnowtationContainer" |
+| "/knowtation/new"| "NewKnowtationContainer" |
