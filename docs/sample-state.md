@@ -1,5 +1,6 @@
 ## Sample State
 
+```js
 {
   currentUser: {
     id: 1,
@@ -24,6 +25,7 @@
         { position: 400, timeSlice: 219281 },
         { position: 0, timeSlice: 220392 }
       ],
+      timeStart: 2132134990
       artistId: 1,
       tags: [
         { id: 1, name: "Beginner" },
@@ -32,3 +34,4 @@
     }
   }
 }
+```
