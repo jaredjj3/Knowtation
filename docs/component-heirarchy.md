@@ -60,10 +60,10 @@
 
 ## Routes
 | **Path** | **Component** |
-| - | - |
+| ------ | ------ |
 | "/" | "HomeContainer" |
-| "/signup"       | "AuthFormContainer"       |
-| "/login"        | "AuthFormContainer"       |
-| "/user/:userId" | "UserContainer"           |
-| "/knowtation/:knowtationId" | "KnowtationContainer"     |
-| "/upload"       | "NewKnowtationContainer"  |
+| "/signup"| "AuthFormContainer"|
+| "/login" | "AuthFormContainer"|
+| "/user/:userId" | "UserContainer" |
+| "/knowtation/:knowtationId" | "KnowtationContainer" |
+| "/upload"| "NewKnowtationContainer" |
