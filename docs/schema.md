@@ -6,6 +6,8 @@
 | id | integer | not null, primary key |
 | username | string | not null, indexed, unique |
 | userType | string | not null |
+| country | string | not null |
+| bio | string | not null |
 | password_digest | string | not null |
 | session_token | string | not null, indexed, unique |
 
