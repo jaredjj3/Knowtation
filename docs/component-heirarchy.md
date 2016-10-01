@@ -67,3 +67,4 @@
 | "/user/:userId" | "UserContainer" |
 | "/knowtation/:knowtationId" | "KnowtationContainer" |
 | "/knowtation/new"| "NewKnowtationContainer" |
+| "/knowtation/edit"| "NewKnowtationContainer" |
