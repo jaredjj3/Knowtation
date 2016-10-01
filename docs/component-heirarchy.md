@@ -2,67 +2,68 @@
 
 ### HomeContainer
   * Navbar
-    * sessionToken
-    * username
-    * userId
-    * userType
+    * `sessionToken`
+    * `username`
+    * `userId`
+    * `userType`
 
   * KnowtationIndex
-    * title
-    * knowtationId
-    * artist
-    * thumbnail
-    * rating
-    * tags
-    * RECEIVE_KNOWTATIONS
+    * `title`
+    * `knowtationId`
+    * `artist`
+    * `thumbnail`
+    * `rating`
+    * `tags`
+    * `RECEIVE_KNOWTATIONS`
 
 ### AuthFormContainer
   * AuthForm
-    * username
-    * password
-    * sessionToken
-    * errors
-    * RECEIVE_CURRENT_USER
-    * RECEIVE_ERRORS
-    * LOGIN
-    * SIGNUP
+    * `username`
+    * `password`
+    * `sessionToken`
+    * `errors`
+    * `RECEIVE_CURRENT_USER`
+    * `RECEIVE_ERRORS`
+    * `LOGIN`
+    * `SIGNUP`
 
 ### UserContainer
   * Navbar
-    * sessionToken
-    * username
-    * userType
+    * `sessionToken`
+    * `username`
+    * `userType`
 
   * UserProfile
-    * username
-    * userId
-    * country
-    * sessionToken
-    * bio
-    * profilePicture
-    * EDIT_PROFILE
+    * `username`
+    * `userId`
+    * `country`
+    * `sessionToken`
+    * `bio`
+    * `profilePicture`
+    * `EDIT_PROFILE`
 
   * Activity
-    * loops
+    * `loops`
 
   * SavedKnowtation
-    * title
-    * artist
-    * thumbnail
-    * rating
-    * tags
-    * RECEIVE_KNOWTATION
+    * `title`
+    * `artist`
+    * `thumbnail`
+    * `rating`
+    * `tags`
+    * `RECEIVE_KNOWTATION`
 
 ### KnowtationContainer
-  * Video
-  * Notation
+  * Knowtation
+    * `video`
+    * `notation`
 
 ## Routes
-| **Path**                    | **Component**             |
-| --------------------------- | ------------------------- |
-| "/"                         | "HomeContainer"           |
-| "/signup"                   | "AuthFormContainer"       |
-| "/login"                    | "AuthFormContainer"       |
-| "/user/:userId"             | "UserContainer"           |
+| **Path** | **Component** |
+| - | - |
+| "/" | "HomeContainer" |
+| "/signup"       | "AuthFormContainer"       |
+| "/login"        | "AuthFormContainer"       |
+| "/user/:userId" | "UserContainer"           |
 | "/knowtation/:knowtationId" | "KnowtationContainer"     |
-| "/upload"                   | "NewKnowtationContainer"  |
+| "/upload"       | "NewKnowtationContainer"  |

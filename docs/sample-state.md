@@ -2,9 +2,13 @@
 
 ```js
 {
+  user: {
+    username: "test_username",
+    password: "starwars123"
+  },
   currentUser: {
     id: 1,
-    username: "test_username"
+    username: "null"
   },
   session: {
     sessionToken: "adfknnJAs23jiasd"
