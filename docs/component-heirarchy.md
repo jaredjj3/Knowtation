@@ -55,6 +55,7 @@
 
 ## Routes
 | **Path**                    | **Component**             |
+| ----------------------------| :------------------------:|
 | "/"                         | "HomeContainer"           |
 | "/signup"                   | "AuthFormContainer"       |
 | "/login"                    | "AuthFormContainer"       |
