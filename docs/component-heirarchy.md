@@ -4,15 +4,17 @@
   * Navbar
     * sessionToken
     * username
+    * userId
     * userType
 
   * KnowtationIndex
     * title
+    * knowtationId
     * artist
     * thumbnail
     * rating
     * tags
-    * RECEIVE_KNOWTATION
+    * RECEIVE_KNOWTATIONS
 
 ### AuthFormContainer
   * AuthForm
@@ -25,7 +27,7 @@
     * LOGIN
     * SIGNUP
 
-### UserProfileContainer
+### UserContainer
   * Navbar
     * sessionToken
     * username
@@ -33,10 +35,12 @@
 
   * UserProfile
     * username
+    * userId
     * country
     * sessionToken
     * bio
     * profilePicture
+    * EDIT_PROFILE
 
   * Activity
     * loops
@@ -55,9 +59,10 @@
 
 ## Routes
 | **Path**                    | **Component**             |
-| ----------------------------| ------------------------- |
+| --------------------------- | ------------------------- |
 | "/"                         | "HomeContainer"           |
 | "/signup"                   | "AuthFormContainer"       |
 | "/login"                    | "AuthFormContainer"       |
+| "/user/:userId"             | "UserContainer"           |
 | "/knowtation/:knowtationId" | "KnowtationContainer"     |
 | "/upload"                   | "NewKnowtationContainer"  |
