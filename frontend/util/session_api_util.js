@@ -1,5 +1,8 @@
 import { receiveCurrentUser, receiveErrors } from '../actions/session_actions';
 
+success = response => console.log(response);
+error = response => console.log(response);
+
 export const login = (user, success, error) => {
   $.ajax({
     method: 'POST',
