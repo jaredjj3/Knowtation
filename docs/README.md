@@ -27,9 +27,9 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
 
 ###Phase 1: Backend setup and Front End user Authentication (2 days)
 **Objective**: Functioning rails project with front-end Authentication
-  - [ ] New Rails project
-  - [ ] CSS Reset
-  - [ ] `User` model
+  - [x] New Rails project
+  - [x] CSS Reset
+  - [x] `User` model
   - [ ] Back end authentication (session/password)
   - [ ] `StaticPages` controller and root view
   - [ ] Webpack & react/redux modules
