@@ -10,10 +10,16 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
   * Sufficient CSS styling
   * Hosting on Heroku
   * Account creation, login, and guest login
+
+
   * `Knowtation` creation
   * A custom `Knowtation` player that optimizes the learning experience
   * Tags
-  * Infinite Scroll
+  * Profile
+
+
+  * Bonus: Infinite Scroll
+  * Bonus: Search/filter feature
 
 ##Design Documents
   * [View Wireframes](./wireframes/)
@@ -27,11 +33,11 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
 
 ###Phase 1: Backend setup and Front End user Authentication (2 days)
 **Objective**: Functioning rails project with front-end Authentication
-  - [ ] New Rails project
-  - [ ] CSS Reset
-  - [ ] `User` model
-  - [ ] Back end authentication (session/password)
-  - [ ] `StaticPages` controller and root view
+  - [x] New Rails project
+  - [x] CSS Reset
+  - [x] `User` model
+  - [x] Back end authentication (session/password)
+  - [x] `StaticPages` controller and root view
   - [ ] Webpack & react/redux modules
   - [ ] `APIUtil` to interact with the API
   - [ ] Redux cycle for frontend Authentication
@@ -56,36 +62,48 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
   - [ ] Style the show page
   - [ ] Review phase 3
 
-###Phase 4: `Knowtation` (4.5 days)
+###Phase 4: `Knowtation CRUD` (2.5 days)
 **Objective**: `Knowtation` can be created, read, edited, and destroyed through the API
   - [ ] `Knowtation` model
   - [ ] Seed database with test data
   - [ ] CRUD API for `Knowtation` `KnowtationController`
-  - [ ] JBuilder views for knowtation
+  - [ ] JBuilder views for `Knowtation`
   - [ ] Style `Knowtation` components
   - [ ] Saving `Knowtation`
   - [ ] Review phase 4
 
-###Phase 5: Tags (1 day)
+###Phase 5: `Knowtation Player` (2 days)
+**Objective**: `Knowtation` can be viewed through a custom `Knowtation` player
+  - [ ] `Knowtation` show page
+  - [ ] Style `Knowtation` show page
+  - [ ] Ensure that at least one working `Knowtation` is seeded in db
+  - [ ] Appropriate routes from index page
+  - [ ] Custom video player using DOMElements and Event listeners
+
+###Phase 6: Tags (1 day)
 **Objective:** `Knowtation` can be tagged with multiple tags and tags are searchable.
   - [ ] `Tag` model and `Taggings` join table
   - [ ] Fetching tags for `Knowtation`
   - [ ] Adding tags for `Knowtation`
   - [ ] Seed tags
   - [ ] Style tags
-  - [ ] Review phase 5
-
-###Phase 6: Search/filter (1 day)
-  - [ ] Search and filter using tag names, artist names, and `Knowtation` titles
-  - [ ] Fetching `Knowtation` from search
   - [ ] Review phase 6
 
-###Phase 7: Pagination / infinite scroll for Knowtation Index (2 days)
-**Objective:** Add inifite scroll to Knowtation Index
-  - [ ] Paginate Knowtation Index to send 9 results at a time
-  - [ ] Append next set of results when user scrolls near bottom
-  - [ ] Style scroll components and transitions
-  - [ ] Review phase 7
 
 ### Bonus
+  * Seeds
+    * transpose the videos/notation from [InstantNotation](http://instantnotation.com).
+
+
+  * Search/filter
+    * Search and filter using tag names, artist names, and `Knowtation` titles
+    * Fetching `Knowtation` from search
+
+
+  * Pagination / infinite scroll for Knowtation Index
+    * Paginate Knowtation Index to send 9 results at a time
+    * Append next set of results when user scrolls near bottom
+    * Style scroll components and transitions
+
+
   * Teachers have the option to upload MusicXML and generate notation using VexFlow or any other similar HTML music notation Library.
