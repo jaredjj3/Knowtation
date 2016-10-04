@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import SessionErrorItem from './session_error_item';
+import PasswordErrorItem from './password_error_item';
+import UserErrorItem from './session_error_item';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -38,6 +40,14 @@ class SessionForm extends React.Component {
   render() {
     const { sessionErrors, usernameErrors, passwordErrors } = this.props;
 
+    const usernameErrorsItems = usernameErrors.map((usernameError, idx) => (
+      <UserErrorItem key={ idx } usernameError={ usernameError }/>
+    ));
+
+    const passwordErrorItems = passwordErrors.map((passwordError, idx) => (
+      <PasswordErrorItem key={ idx } passwordError={ passwordError }/>
+    ));
+
     const sessionErrorsItems = sessionErrors.map((sessionError, idx) => (
       <SessionErrorItem key={ idx } sessionError={ sessionError }/>
     ));
@@ -46,6 +56,7 @@ class SessionForm extends React.Component {
       <div>
         <ul>
           { sessionErrorsItems }
+
         </ul>
         <form onSubmit={ this.handleSubmit }>
           <input onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />

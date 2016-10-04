@@ -13,7 +13,7 @@ const SessionMiddleware = ({ getState, dispatch }) => next => action => {
     dispatch(receiveCurrentUser(user));
   };
   const onError = messages => {
-    debugger
+    console.log(messages);
     const errorMessages = messages.responseJSON
     dispatch(receiveErrors(errorMessages));
   };
