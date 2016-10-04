@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
-import SessionErrorItem from './session_error_item';
-import PasswordErrorItem from './password_error_item';
-import UserErrorItem from './session_error_item';
+import SessionErrorItem from '../error/session_error_item';
+import PasswordErrorItem from '../error/password_error_item';
+import UsernameErrorItem from '../error/username_error_item';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -41,10 +41,10 @@ class SessionForm extends React.Component {
     const { sessionErrors, usernameErrors, passwordErrors } = this.props;
 
     const usernameErrorsItems = usernameErrors.map((usernameError, idx) => (
-      <UserErrorItem key={ idx } usernameError={ usernameError }/>
+      <UsernameErrorItem key={ idx } usernameError={ usernameError }/>
     ));
 
-    const passwordErrorItems = passwordErrors.map((passwordError, idx) => (
+    const passwordErrorsItems = passwordErrors.map((passwordError, idx) => (
       <PasswordErrorItem key={ idx } passwordError={ passwordError }/>
     ));
 
@@ -56,10 +56,16 @@ class SessionForm extends React.Component {
       <div>
         <ul>
           { sessionErrorsItems }
-
         </ul>
         <form onSubmit={ this.handleSubmit }>
+          <ul>
+            { usernameErrorsItems }
+          </ul>
           <input onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />
+
+            <ul>
+              { passwordErrorsItems }
+            </ul>
           <input onChange={ this.handleOnChange("password") } type="password" value={ this.state.password } />
           <input type="submit" value="Submit" />
         </form>

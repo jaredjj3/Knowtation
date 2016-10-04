@@ -13,6 +13,8 @@ const ErrorsReducer = (state = _nullErrors, action) => {
   switch(action.type) {
     case RECEIVE_ERRORS:
       newState.sessionErrors = action.errors.sessionErrors;
+      newState.usernameErrors = action.errors.usernameErrors;
+      newState.passwordErrors = action.errors.passwordErrors;
       return newState;
     case CLEAR_ERRORS:
       return _nullErrors;
