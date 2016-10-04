@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
       login(@user)
       render :show
     else
+      
       render :errors, status: 404
     end
   end
