@@ -6,8 +6,7 @@ class Api::UsersController < ApplicationController
       login(@user)
       render :show
     else
-      debugger
-      render :errors, status: 422 # Unprocessable entity
+      render :errors, status: 404
     end
   end
 
@@ -18,6 +17,7 @@ class Api::UsersController < ApplicationController
     if @user
       render :show
     else
+      # TODO
       render json: ["Login required"]
     end
 

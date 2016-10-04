@@ -1,1 +1,4 @@
-json.sessionErrors ['Invalid username/password combination', 'will this also render?']
+json.partial! "api/shared/errors",
+  sessionErrors: ['Invalid username and/or password', 'will this also render?'],
+  usernameErrors: [],
+  passwordErrors: []
