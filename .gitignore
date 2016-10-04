@@ -6,6 +6,7 @@
 ### Custom ###
 *.db
 *.sqlite
+sandbox.html
 
 
 ### OSX ###
