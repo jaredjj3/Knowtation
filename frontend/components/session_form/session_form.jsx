@@ -11,8 +11,10 @@ class SessionForm extends React.Component {
     this.handleOnChange = this.handleOnChange.bind(this);
   }
 
-  handleOnChange(e) {
-    
+  handleOnChange(property) {
+    return e => this.setState({
+      [property]: e.currentTaget.value
+    });
   }
 
   handleSubmit(e) {
@@ -25,8 +27,8 @@ class SessionForm extends React.Component {
   render() {
     return (
       <form>
-        <label>Username <input type="text"></label>
-        <label>Password <input type="password"></label>
+        <label>Username <input onChange={ this.handleOnChange("username") } type="text" value={ this.state.username }></label>
+        <label>Password <input onChange={ this.handleOnChange("password") } type="password" value={ this.state.password }></label>
         <input type="button" value="Submit">
       </form>
     );

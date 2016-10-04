@@ -11,10 +11,12 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
   * Hosting on Heroku
   * Account creation, login, and guest login
 
+
   * `Knowtation` creation
   * A custom `Knowtation` player that optimizes the learning experience
   * Tags
   * Profile
+
 
   * Bonus: Infinite Scroll
   * Bonus: Search/filter feature
