@@ -1,1 +1,1 @@
-json.sessionErrors ['Invalid username/password combination']
+json.sessionErrors ['Invalid username/password combination', 'will this also render?']
