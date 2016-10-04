@@ -20,6 +20,7 @@ const greeting = (currentUser, logout) => (
 );
 
 const Greeting = ({ currentUser, logout }) => {
+  debugger
   if (currentUser) {
     return greeting(currentUser, logout);
   } else {

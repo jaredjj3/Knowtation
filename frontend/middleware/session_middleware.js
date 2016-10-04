@@ -8,7 +8,7 @@ import {
 import { login, signup, logout } from '../util/session_api_util';
 
 const SessionMiddleware = ({ getState, dispatch }) => next => action => {
-  const onSuccess = user => disatch(receiveCurrentUser(user));
+  const onSuccess = user => dispatch(receiveCurrentUser(user));
   const onError = messages => {
     const errorMessages = messages.responseJSON
     dispatch(receiveErrors(errors));
