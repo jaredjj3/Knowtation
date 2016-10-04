@@ -54,3 +54,7 @@ input[type="submit"] {
   display: block;
   clear: both;
 }
+
+body {
+  font-family: sans-serif;
+}
