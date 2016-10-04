@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, hashHistory } from 'react-router';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -9,6 +10,16 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
+  }
+
+  redirectIfLoggedIn() {
+    if (this.props.currentUser) {
+      hashHistory.push("/");
+    }
+  }
+
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
   }
 
   handleOnChange(property) {
@@ -23,8 +34,9 @@ class SessionForm extends React.Component {
     this.props.processForm({ user });
   }
 
-
   render() {
+    const { sessionErrors, usernameErrors, passwordErrors } = this.props;
+
     return (
       <form onSubmit={ this.handleSubmit }>
         <input onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />

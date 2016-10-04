@@ -1,17 +1,20 @@
 import {
   receiveCurrentUser,
-  receiveErrors,
   LOGIN,
   LOGOUT,
   SIGNUP
 } from '../actions/session_actions';
+import { receiveErrors, clearErrors } from '../actions/errors_actions';
 import { login, signup, logout } from '../util/session_api_util';
 
 const SessionMiddleware = ({ getState, dispatch }) => next => action => {
-  const onSuccess = user => dispatch(receiveCurrentUser(user));
+  const onSuccess = user => {
+    dispatch(clearErrors());
+    dispatch(receiveCurrentUser(user));
+  };
   const onError = messages => {
     const errorMessages = messages.responseJSON
-    dispatch(receiveErrors(errors));
+    dispatch(receiveErrors(errorMessages));
   };
 
   switch(action.type) {

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   validates :username, :session_token, presence: true
+  validates :username, uniqueness: { case_sensitive: false }
   validates :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
@@ -46,7 +47,6 @@ class User < ActiveRecord::Base
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
-
 
   private
 

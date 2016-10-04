@@ -6,13 +6,14 @@ class Api::UsersController < ApplicationController
       login(@user)
       render :show
     else
-      render json: @user.errors.full_messages, status: 422 # Unprocessable entity
+      debugger
+      render :errors, status: 422 # Unprocessable entity
     end
   end
 
   def show
     session_token = session[:session_token]
-    @user = User.find_by(session_token: session_token), status: 403 # forbidden
+    @user = User.find_by(session_token: session_token) # forbidden
 
     if @user
       render :show
