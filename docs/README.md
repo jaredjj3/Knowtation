@@ -30,8 +30,8 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
   - [x] New Rails project
   - [x] CSS Reset
   - [x] `User` model
-  - [ ] Back end authentication (session/password)
-  - [ ] `StaticPages` controller and root view
+  - [x] Back end authentication (session/password)
+  - [x] `StaticPages` controller and root view
   - [ ] Webpack & react/redux modules
   - [ ] `APIUtil` to interact with the API
   - [ ] Redux cycle for frontend Authentication
