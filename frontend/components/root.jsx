@@ -6,6 +6,7 @@ import Privacy from './footer/privacy';
 import App from './app';
 import SessionFormContainer from './session_form/session_form_container';
 import Footer from './footer/footer';
+import TeachFormContainer from './teach_form/teach_form_container';
 
 const Root = ({ store }) => {
 
@@ -33,9 +34,20 @@ const Root = ({ store }) => {
             onEnter={ _redirectIfLoggedIn }
           />
 
-          <Route path="/faq" component={ Faq }/>
+          <Route
+            path="/faq"
+            component={ Faq }
+          />
 
-          <Route path="/privacy" component={ Privacy }/>
+          <Route
+            path="/privacy"
+            component={ Privacy }
+          />
+
+          <Route
+            path="/teach"
+            component={ TeachFormContainer }
+          />
 
         </Route>
       </Router>

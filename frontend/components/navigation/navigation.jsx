@@ -4,14 +4,15 @@ import { Link } from 'react-router';
 const sessionLinks = clearErrorsAndToggleModal => (
   <ul className="navigation-links">
     <li><Link to="/signup" onClick={ clearErrorsAndToggleModal }>Sign up</Link></li>
-    <li><Link to="/login" onClick={ clearErrorsAndToggleModal }>Log In</Link></li>
+    <li className="nth-nav-link"><Link to="/login" onClick={ clearErrorsAndToggleModal }>Log In</Link></li>
   </ul>
 );
 
-const navigation = (currentUser, logout) => (
+const navigation = (currentUser, logout, ) => (
   <ul className="navigation-links">
+    <li className="teach-button"><Link to="/teach">Teach</Link></li>
     <li>{ currentUser.username }</li>
-    <li><button onClick={ logout }>Log Out</button></li>
+    <li className="nth-nav-link"><button onClick={ logout }>Log Out</button></li>
   </ul>
 );
 

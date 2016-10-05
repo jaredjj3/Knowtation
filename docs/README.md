@@ -12,13 +12,13 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
   * Tags
   * Profile
 
-  ###General Features
+###General Features
   * Bug free navigation
   * Adequate seed data
   * Sufficient CSS styling
   * Hosting on Heroku
 
-  ###Bonus Features
+###Bonus Features
   * Infinite Scroll
   * Search/filter feature
 
