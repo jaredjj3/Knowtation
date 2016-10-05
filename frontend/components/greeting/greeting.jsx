@@ -10,6 +10,11 @@ const sessionLinks = clearErrors => (
   </nav>
 );
 
+const clearErrorsAndToggleModal = (clearErrors, toggleModal) => {
+  clearErrors;
+
+};
+
 const greeting = (currentUser, logout) => (
   <nav>
     <ul>
