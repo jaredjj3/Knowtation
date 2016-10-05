@@ -16,6 +16,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
+    this.loginAsGuest = this.loginAsGuest.bind(this);
   }
 
   handleClickOut() {
@@ -23,6 +24,18 @@ class SessionForm extends React.Component {
       this.props.toggleModal();
     }
     hashHistory.push("/");
+  }
+
+  loginAsGuest(guestType) {
+    const self = this;
+
+    return ( e => {
+      self.props.processForm({ user: {
+        username: `guest_${guestType}`,
+        password: 'password'
+      }});
+      self.redirectIfLoggedIn();
+    });
   }
 
   redirectIfLoggedIn() {
@@ -53,7 +66,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const { formType, sessionErrors, usernameErrors, passwordErrors, modalOn } = this.props;
+    const { clearErrors, formType, sessionErrors, usernameErrors, passwordErrors, modalOn } = this.props;
 
     const usernameErrorsItems = usernameErrors.map((usernameError, idx) => (
       <UsernameErrorItem key={ idx } usernameError={ usernameError }/>
@@ -67,31 +80,41 @@ class SessionForm extends React.Component {
       <SessionErrorItem key={ idx } sessionError={ sessionError }/>
     ));
 
-    let redirectMessage, submitText, guestLogin;
+    let redirectMessage, submitText, guestStudentLogin, guestTeacherLogin;
     if (formType === 'login') {
       redirectMessage = (
         <div className="redirect-container">
           <p>Don't have an account?</p>
-          <Link to="/signup">Signup</Link>
+          <Link onClick={ clearErrors } to="/signup">Signup</Link>
         </div>
       );
       submitText = 'Login';
-      guestLogin = (
+      guestStudentLogin = (
         <input
           className="session-submit"
+          onClick={ this.loginAsGuest('student') }
           type="button"
-          value="Guest Login"
+          value="Guest Student Login"
+        />
+      );
+      guestTeacherLogin = (
+        <input
+          className="session-submit"
+          onClick={ this.loginAsGuest('teacher') }
+          type="button"
+          value="Guest Teacher Login"
         />
       );
     } else if (formType === 'signup') {
       redirectMessage = (
         <div className="redirect-container">
           <p>Already have an account?</p>
-          <Link to="/login">Login</Link>
+          <Link onClick={ clearErrors } to="/login">Login</Link>
         </div>
       );
       submitText = 'Signup';
-      guestLogin = "";
+      guestStudentLogin = "";
+      guestTeacherLogin = "";
     }
 
     const style = {
@@ -102,11 +125,6 @@ class SessionForm extends React.Component {
         right             : 0,
         bottom            : 0,
         backgroundColor   : 'rgba(150, 150, 150, 0.80)'
-      },
-      content : {
-        borderRadius               : '4px',
-        outline                    : 'none',
-        padding                    : '20px'
       }
     };
 
@@ -117,13 +135,13 @@ class SessionForm extends React.Component {
         onRequestClose={ this.handleClickOut }
         style={ style }
       >
-        <h1 className="logo">Knowtation</h1>
         <img
           className="logo-image"
           src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png"
         />
+      <h1 className="logo">Knowtation</h1>
         <form onSubmit={ this.handleSubmit } className="session-form">
-          <ul className="username-errors">
+          <ul className="errors">
             { sessionErrorsItems }
             { usernameErrorsItems }
           </ul>
@@ -134,7 +152,7 @@ class SessionForm extends React.Component {
             value={ this.state.username }
             placeholder="username"
           />
-          <ul className="password-errors">
+        <ul className="errors">
             { passwordErrorsItems }
           </ul>
           <input
@@ -146,7 +164,8 @@ class SessionForm extends React.Component {
           />
         <input className="session-submit" type="submit" value={ submitText } />
         </form>
-        { guestLogin }
+        { guestStudentLogin }
+        { guestTeacherLogin }
         { redirectMessage }
 
       </Modal>

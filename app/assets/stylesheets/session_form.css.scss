@@ -8,6 +8,9 @@
   top: 50px;
   right: 0;
   margin: auto;
+  border-radius: 5px;
+  outline: none;
+  padding: 20px;
 }
 
 .session-form-container .logo {
@@ -19,7 +22,7 @@
 
 .session-form-container img {
   margin: 0 auto;
-  width: 150px;
+  width: 75px;
   height: auto;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -32,29 +35,25 @@
   margin: 0 40px;
 }
 
+.session-field:focus {
+  box-shadow: 0 0 15px #5ec6ff;
+}
+
 .username {
   margin-top: 5px;
 }
-
 
 .password {
   margin-top: 5px;
 }
 
-.username-errors {
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 15px
+.errors {
+  margin: 15px 40px 5px 40px;
+  font-size: 14px;
 }
 
 .username-errors > li {
-  padding: 2px;
-}
-
-.password-errors {
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 15px;
+  padding: 5px;
 }
 
 .session-submit {
