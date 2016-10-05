@@ -33,20 +33,11 @@ const Root = ({ store }) => {
             onEnter={ _redirectIfLoggedIn }
           />
 
-          <Route
-            path="/faq"
-            component={ Faq }
-          />
+          <Route path="/faq" component={ Faq }/>
 
-          <Route
-            path="/privacy"
-            component={ Privacy }
-          />
+          <Route path="/privacy" component={ Privacy }/>
 
-          <Route
-            path="/terms"
-            component={ Terms }
-          />
+          <Route path="/terms" component={ Terms }/>
 
         </Route>
       </Router>
