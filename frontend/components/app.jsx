@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
-import GreetingContainer from './greeting/greeting_container';
+import NavigationContainer from './navigation/navigation_container';
 
 
 const App = ({ children }) => (
   <div>
     <header>
       <Link to="/"><h1>Knowtation</h1></Link>
-      <GreetingContainer className="greeting-container" />
+      <NavigationContainer className="navigation-container" />
     </header>
     { children }
   </div>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Greeting from './greeting';
+import Navigation from './navigation';
 import { logout, toggleModal } from '../../actions/session_actions';
 import { clearErrors } from '../../actions/errors_actions';
 
@@ -17,4 +17,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Greeting);
+)(Navigation);

@@ -10,7 +10,7 @@ const sessionLinks = clearErrorsAndToggleModal => (
   </nav>
 );
 
-const greeting = (currentUser, logout) => (
+const navigation = (currentUser, logout) => (
   <nav>
     <ul>
       <li>{ currentUser.username }</li>
@@ -19,7 +19,7 @@ const greeting = (currentUser, logout) => (
   </nav>
 );
 
-const Greeting = ({ currentUser, logout, clearErrors, toggleModal, modalOn }) => {
+const Navigation = ({ currentUser, logout, clearErrors, toggleModal, modalOn }) => {
   const clearErrorsAndToggleModal = () => {
     clearErrors();
     if (!modalOn) {
@@ -28,10 +28,10 @@ const Greeting = ({ currentUser, logout, clearErrors, toggleModal, modalOn }) =>
   };
 
   if (currentUser) {
-    return greeting(currentUser, logout);
+    return navigation(currentUser, logout);
   } else {
     return sessionLinks(clearErrorsAndToggleModal)
   }
 }
 
-export default Greeting;
+export default Navigation;
