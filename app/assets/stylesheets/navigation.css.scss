@@ -1,0 +1,40 @@
+$nav-background: #B9E2F0;
+
+.navigation-bar {
+  background: $nav-background;
+  opacity: 0.8;
+}
+
+.navigation-items {
+  width: 900px;
+  margin: 0 auto;
+}
+
+header .logo {
+  float: left;
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+header img {
+  float: left;
+  width: 30px;
+  height: auto;
+  margin: 17px 0 0 20px;
+}
+
+.navigation-links {
+  float: right;
+  margin: 19px 0;
+}
+
+.navigation-links > li {
+  float: left;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.navigation-links > li:first-child {
+  border-right: 1px solid black;
+}

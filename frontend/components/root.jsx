@@ -1,6 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import Faq from './footer/faq';
+import Privacy from './footer/privacy';
+import Terms from './footer/terms';
 import App from './app';
 import SessionFormContainer from './session_form/session_form_container';
 
@@ -17,8 +20,34 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App }>
-          <Route path="/login" component={ SessionFormContainer } onEnter={ _redirectIfLoggedIn }></Route>
-          <Route path="/signup" component={ SessionFormContainer } onEnter={ _redirectIfLoggedIn }></Route>
+
+          <Route
+            path="/login"
+            component={ SessionFormContainer }
+            onEnter={ _redirectIfLoggedIn }
+          />
+
+          <Route
+            path="/signup"
+            component={ SessionFormContainer }
+            onEnter={ _redirectIfLoggedIn }
+          />
+
+          <Route
+            path="/faq"
+            component={ Faq }
+          />
+
+          <Route
+            path="/privacy"
+            component={ Privacy }
+          />
+
+          <Route
+            path="/terms"
+            component={ Terms }
+          />
+
         </Route>
       </Router>
     </Provider>

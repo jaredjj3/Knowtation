@@ -2,21 +2,17 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const sessionLinks = clearErrorsAndToggleModal => (
-  <nav>
-    <ul>
-      <li><Link to="/login" onClick={ clearErrorsAndToggleModal }>Login</Link></li>
-      <li><Link to="/signup" onClick={ clearErrorsAndToggleModal }>Sign up</Link></li>
-    </ul>
-  </nav>
+  <ul className="navigation-links">
+    <li><Link to="/signup" onClick={ clearErrorsAndToggleModal }>Sign up</Link></li>
+    <li><Link to="/login" onClick={ clearErrorsAndToggleModal }>Log In</Link></li>
+  </ul>
 );
 
 const navigation = (currentUser, logout) => (
-  <nav>
-    <ul>
-      <li>{ currentUser.username }</li>
-      <li><button onClick={ logout }>Log Out</button></li>
-    </ul>
-  </nav>
+  <ul className="navigation-links">
+    <li>{ currentUser.username }</li>
+    <li><button onClick={ logout }>Log Out</button></li>
+  </ul>
 );
 
 const Navigation = ({ currentUser, logout, clearErrors, toggleModal, modalOn }) => {
