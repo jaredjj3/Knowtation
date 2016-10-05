@@ -22,6 +22,7 @@ class SessionForm extends React.Component {
     if (this.props.modalOn) {
       this.props.toggleModal();
     }
+    hashHistory.push("/");
   }
 
   redirectIfLoggedIn() {
@@ -52,7 +53,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const { sessionErrors, usernameErrors, passwordErrors, modalOn } = this.props;
+    const { formType, sessionErrors, usernameErrors, passwordErrors, modalOn } = this.props;
 
     const usernameErrorsItems = usernameErrors.map((usernameError, idx) => (
       <UsernameErrorItem key={ idx } usernameError={ usernameError }/>
@@ -66,6 +67,33 @@ class SessionForm extends React.Component {
       <SessionErrorItem key={ idx } sessionError={ sessionError }/>
     ));
 
+    let redirectMessage, submitText, guestLogin;
+    if (formType === 'login') {
+      redirectMessage = (
+        <div className="redirect-container">
+          <p>Don't have an account?</p>
+          <Link to="/signup">Signup</Link>
+        </div>
+      );
+      submitText = 'Login';
+      guestLogin = (
+        <input
+          className="session-submit"
+          type="button"
+          value="Guest Login"
+        />
+      );
+    } else if (formType === 'signup') {
+      redirectMessage = (
+        <div className="redirect-container">
+          <p>Already have an account?</p>
+          <Link to="/login">Login</Link>
+        </div>
+      );
+      submitText = 'Signup';
+      guestLogin = "";
+    }
+
     const style = {
       overlay : {
         position          : 'fixed',
@@ -73,18 +101,9 @@ class SessionForm extends React.Component {
         left              : 0,
         right             : 0,
         bottom            : 0,
-        backgroundColor   : 'rgba(200, 200, 200, 0.80)'
+        backgroundColor   : 'rgba(150, 150, 150, 0.80)'
       },
       content : {
-        position                   : 'absolute',
-        top                        : '40px',
-        left                       : '40px',
-        right                      : '40px',
-        bottom                     : '40px',
-        border                     : '1px solid #ccc',
-        background                 : '#fff',
-        overflow                   : 'auto',
-        WebkitOverflowScrolling    : 'touch',
         borderRadius               : '4px',
         outline                    : 'none',
         padding                    : '20px'
@@ -98,21 +117,38 @@ class SessionForm extends React.Component {
         onRequestClose={ this.handleClickOut }
         style={ style }
       >
-        <ul className="session-errors">
-          { sessionErrorsItems }
-        </ul>
+        <h1 className="logo">Knowtation</h1>
+        <img
+          className="logo-image"
+          src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png"
+        />
         <form onSubmit={ this.handleSubmit } className="session-form">
           <ul className="username-errors">
+            { sessionErrorsItems }
             { usernameErrorsItems }
           </ul>
-          <input className="username session-field" onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />
-
-            <ul className="password-errors">
-              { passwordErrorsItems }
-            </ul>
-          <input className="password session-field" onChange={ this.handleOnChange("password") } type="password" value={ this.state.password } />
-          <input className="session-submit" type="submit" value="Submit" />
+          <input
+            className="username session-field"
+            onChange={ this.handleOnChange("username") }
+            type="text"
+            value={ this.state.username }
+            placeholder="username"
+          />
+          <ul className="password-errors">
+            { passwordErrorsItems }
+          </ul>
+          <input
+            className="password session-field"
+            onChange={ this.handleOnChange("password") }
+            type="password"
+            value={ this.state.password }
+            placeholder="password"
+          />
+        <input className="session-submit" type="submit" value={ submitText } />
         </form>
+        { guestLogin }
+        { redirectMessage }
+
       </Modal>
     );
   }

@@ -1,49 +1,98 @@
 .session-form-container {
-  border: 1px solid #f00;
-  width: 500px;
-  margin: 0 auto;
+  border: 1px solid #ccc;
+  background: #fff;
+  width: 350px;
+  overflow: auto;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  right: 0;
+  margin: auto;
 }
 
-.session-errors {
-  color: red
+.session-form-container .logo {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 36px;
+}
+
+.session-form-container img {
+  margin: 0 auto;
+  width: 150px;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .session-field {
   border: 1px solid #000;
-  padding: 10px 10px;
+  padding: 12px 10px;
   width: 250px;
-  margin: 0 115px;
+  margin: 0 40px;
 }
 
 .username {
-
+  margin-top: 5px;
 }
+
 
 .password {
-
-}
-
-.session-errors {
-  color: #f00;
+  margin-top: 5px;
 }
 
 .username-errors {
-  margin-top: 50px;
-  color: #f00;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 15px
+}
+
+.username-errors > li {
+  padding: 2px;
 }
 
 .password-errors {
-  margin-top: 30px;
-  color: #f00;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 15px;
 }
 
 .session-submit {
   padding: 10px 10px;
   width: 250px;
-  font-weight: bold;
   background: #5ec6ff;
   text-align: center;
   color: #fff;
   border-radius: 5px;
-  margin: 20px 115px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 15px;
+  position: relative;
+  box-shadow: 0 3px 0 0 #00649C;
+}
+
+.session-submit:hover {
+  background: #8FD7FF;
+}
+
+.session-submit:active {
+  top: 3px;
+  background: #00649C;
+  box-shadow: none;
+}
+
+.redirect-container {
+  margin-top: 25px;
+  text-align: center;
+}
+
+
+.redirect-container > p {
+
+}
+
+.redirect-container > a {
+  font-weight: bold;
+  line-height: 2;
+  font-size: 16px;
 }
