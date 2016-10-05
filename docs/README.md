@@ -1,6 +1,6 @@
 #Knowtation
 
-[Heroku Link](http://heroku.com)
+[Heroku Link](http://knowtation.herokuapp.com/)
 
 ##Minimum Viable Product
 Knowtation is a modern web application inspired by [InstantNotation](http://instantnotation.com). Guitar teachers are able to effectively communicate lessons to students through synchronized video and music notation. By the end of Week 9, `Knowtation` will satisfy the following criteria:

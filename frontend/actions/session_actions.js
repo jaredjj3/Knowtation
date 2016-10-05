@@ -24,6 +24,5 @@ export const receiveCurrentUser = currentUser => ({
 });
 
 export const toggleModal = () => ({
-  type: TOGGLE_MODAL,
-  modalElement
+  type: TOGGLE_MODAL
 });

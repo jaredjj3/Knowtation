@@ -1,1 +1,2 @@
 - Make merge work without importing all of lodash
+- Make login modal fadein

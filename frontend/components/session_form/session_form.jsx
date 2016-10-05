@@ -15,6 +15,13 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleClickOut = this.handleClickOut.bind(this);
+  }
+
+  handleClickOut() {
+    if (this.props.modalOn) {
+      this.props.toggleModal();
+    }
   }
 
   redirectIfLoggedIn() {
@@ -45,7 +52,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const { sessionErrors, usernameErrors, passwordErrors } = this.props;
+    const { sessionErrors, usernameErrors, passwordErrors, modalOn } = this.props;
 
     const usernameErrorsItems = usernameErrors.map((usernameError, idx) => (
       <UsernameErrorItem key={ idx } usernameError={ usernameError }/>
@@ -66,7 +73,7 @@ class SessionForm extends React.Component {
         left              : 0,
         right             : 0,
         bottom            : 0,
-        backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+        backgroundColor   : 'rgba(200, 200, 200, 0.80)'
       },
       content : {
         position                   : 'absolute',
@@ -81,35 +88,32 @@ class SessionForm extends React.Component {
         borderRadius               : '4px',
         outline                    : 'none',
         padding                    : '20px'
-
       }
     };
 
     return (
-      <div className="modal-click-out">
-        <Modal
-          className="session-form-container group"
-          isOpen={ true }
-          closeTimeoutMS={ 1000 }
-          style={ style }
-        >
-          <ul className="session-errors">
-            { sessionErrorsItems }
+      <Modal
+        className="session-form-container group"
+        isOpen={ modalOn }
+        onRequestClose={ this.handleClickOut }
+        style={ style }
+      >
+        <ul className="session-errors">
+          { sessionErrorsItems }
+        </ul>
+        <form onSubmit={ this.handleSubmit } className="session-form">
+          <ul className="username-errors">
+            { usernameErrorsItems }
           </ul>
-          <form onSubmit={ this.handleSubmit } className="session-form">
-            <ul className="username-errors">
-              { usernameErrorsItems }
-            </ul>
-            <input className="username session-field" onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />
+          <input className="username session-field" onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />
 
-              <ul className="password-errors">
-                { passwordErrorsItems }
-              </ul>
-            <input className="password session-field" onChange={ this.handleOnChange("password") } type="password" value={ this.state.password } />
-            <input className="session-submit" type="submit" value="Submit" />
-          </form>
-        </Modal>
-      </div>
+            <ul className="password-errors">
+              { passwordErrorsItems }
+            </ul>
+          <input className="password session-field" onChange={ this.handleOnChange("password") } type="password" value={ this.state.password } />
+          <input className="session-submit" type="submit" value="Submit" />
+        </form>
+      </Modal>
     );
   }
 

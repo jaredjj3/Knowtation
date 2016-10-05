@@ -1,19 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const sessionLinks = clearErrors => (
+const sessionLinks = clearErrorsAndToggleModal => (
   <nav>
     <ul>
-      <li><Link to="/login" onClick={ clearErrors }>Login</Link></li>
-      <li><Link to="/signup" onClick={ clearErrors }>Sign up</Link></li>
+      <li><Link to="/login" onClick={ clearErrorsAndToggleModal }>Login</Link></li>
+      <li><Link to="/signup" onClick={ clearErrorsAndToggleModal }>Sign up</Link></li>
     </ul>
   </nav>
 );
-
-const clearErrorsAndToggleModal = (clearErrors, toggleModal) => {
-  clearErrors;
-
-};
 
 const greeting = (currentUser, logout) => (
   <nav>
@@ -24,11 +19,18 @@ const greeting = (currentUser, logout) => (
   </nav>
 );
 
-const Greeting = ({ currentUser, logout, clearErrors }) => {
+const Greeting = ({ currentUser, logout, clearErrors, toggleModal, modalOn }) => {
+  const clearErrorsAndToggleModal = () => {
+    clearErrors();
+    if (!modalOn) {
+      toggleModal();
+    }
+  };
+
   if (currentUser) {
     return greeting(currentUser, logout);
   } else {
-    return sessionLinks(clearErrors)
+    return sessionLinks(clearErrorsAndToggleModal)
   }
 }
 

@@ -17,7 +17,8 @@ const SessionReducer = (state = _nullSession, action) => {
       return _.merge({}, _nullSession);
 
     case TOGGLE_MODAL:
-      return _.merge({}, state, { modalOn: true });
+      const currentModalState = state.modalOn;
+      return _.merge({}, state, { modalOn: !currentModalState });
 
     default:
       return state;
