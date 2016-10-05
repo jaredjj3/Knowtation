@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UsernameErrorItem = ({ usernameError }) => (
-  <li>{ usernameError }</li>
+  <li>username { usernameError }</li>
 );
 
 export default UsernameErrorItem;

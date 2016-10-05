@@ -16,10 +16,11 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :username, :session_token, presence: true
   validates :username, uniqueness: { case_sensitive: false }
-  validates :session_token, uniqueness: true
-  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :username, format: { with: /\A[a-zA-Z\d\_]+\z/, message: "can only have letters, numbers, and underscores" }
+  validates :password, length: { in: 6..20, allow_nil: true }
+  validates :session_token, presence: true, uniqueness: true
+  validates :username, length: { in: 3..20 }
 
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness

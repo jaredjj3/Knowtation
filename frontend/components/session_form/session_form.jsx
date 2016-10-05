@@ -25,6 +25,11 @@ class SessionForm extends React.Component {
     this.redirectIfLoggedIn();
   }
 
+  // clear errors if leaving the login screen
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleOnChange(property) {
     return e => this.setState({
       [property]: e.currentTarget.value
@@ -39,6 +44,7 @@ class SessionForm extends React.Component {
 
   render() {
     const { sessionErrors, usernameErrors, passwordErrors } = this.props;
+
 
     const usernameErrorsItems = usernameErrors.map((usernameError, idx) => (
       <UsernameErrorItem key={ idx } usernameError={ usernameError }/>

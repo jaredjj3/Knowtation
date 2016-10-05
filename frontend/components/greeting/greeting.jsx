@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const sessionLinks = () => (
+const sessionLinks = clearErrors => (
   <nav>
     <ul>
-      <li><Link to="/login">Login</Link></li>
-      <li><Link to="/signup">Sign up</Link></li>
+      <li><Link to="/login" onClick={ clearErrors }>Login</Link></li>
+      <li><Link to="/signup" onClick={ clearErrors }>Sign up</Link></li>
     </ul>
   </nav>
 );
@@ -19,11 +19,11 @@ const greeting = (currentUser, logout) => (
   </nav>
 );
 
-const Greeting = ({ currentUser, logout }) => {
+const Greeting = ({ currentUser, logout, clearErrors }) => {
   if (currentUser) {
     return greeting(currentUser, logout);
   } else {
-    return sessionLinks()
+    return sessionLinks(clearErrors)
   }
 }
 

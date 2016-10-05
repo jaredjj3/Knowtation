@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PasswordErrorItem = ({ passwordError }) => (
-  <li>{ passwordError }</li>
+  <li>password { passwordError }</li>
 );
 
 export default PasswordErrorItem;
