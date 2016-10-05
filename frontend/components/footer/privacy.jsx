@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 const Privacy = () => (
   <div className="footer-content">
+    <br/>
     <Link to="/">Back to home</Link>
     <h1>Privacy Policy</h1>
     <p>

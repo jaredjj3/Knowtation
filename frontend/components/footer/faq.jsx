@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 const Faq = () => (
   <div className="footer-content">
+    <br/>
     <Link to="/">Back to home</Link>
     <h1>FAQs</h1>
     <article>
