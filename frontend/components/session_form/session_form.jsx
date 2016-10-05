@@ -59,21 +59,21 @@ class SessionForm extends React.Component {
     ));
 
     return (
-      <div>
-        <ul>
+      <div className="session-form-container group">
+        <ul className="session-errors">
           { sessionErrorsItems }
         </ul>
-        <form onSubmit={ this.handleSubmit }>
-          <ul>
+        <form onSubmit={ this.handleSubmit } className="session-form">
+          <ul className="username-errors">
             { usernameErrorsItems }
           </ul>
-          <input onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />
+          <input className="username session-field" onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />
 
-            <ul>
+            <ul className="password-errors">
               { passwordErrorsItems }
             </ul>
-          <input onChange={ this.handleOnChange("password") } type="password" value={ this.state.password } />
-          <input type="submit" value="Submit" />
+          <input className="password session-field" onChange={ this.handleOnChange("password") } type="password" value={ this.state.password } />
+          <input className="session-submit" type="submit" value="Submit" />
         </form>
       </div>
     );
