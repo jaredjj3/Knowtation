@@ -41,15 +41,15 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
   - [x] Webpack & react/redux modules
   - [x] `APIUtil` to interact with the API
   - [x] Redux cycle for frontend Authentication
-  - [ ] User signup/login components
-  - [ ] Style signup/login components
+  - [x] User signup/login components
+  - [x] Style signup/login components
   - [ ] Seed users
-  - [ ] Application for teacher account
   - [ ] Review phase 1
 
 ###Phase 2: Navigation and Static Footer Pages (0.5 days)
 **Objective**: Setup the navigation and static footer pages
   - [ ] Navigation bar
+  - [ ] Application for teacher account
   - [ ] Footer FAQ, Privacy Policy, Terms of Use views
   - [ ] Routing to root, Sign up, login, FAQ, Privacy Policy, Terms of Use, Instagram, and Youtube views
   - [ ] Style navigation and footer bars
