@@ -3,6 +3,8 @@ import { Link, hashHistory } from 'react-router';
 import SessionErrorItem from '../error/session_error_item';
 import PasswordErrorItem from '../error/password_error_item';
 import UsernameErrorItem from '../error/username_error_item';
+import Modal from 'react-modal';
+
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -45,7 +47,6 @@ class SessionForm extends React.Component {
   render() {
     const { sessionErrors, usernameErrors, passwordErrors } = this.props;
 
-
     const usernameErrorsItems = usernameErrors.map((usernameError, idx) => (
       <UsernameErrorItem key={ idx } usernameError={ usernameError }/>
     ));
@@ -58,23 +59,56 @@ class SessionForm extends React.Component {
       <SessionErrorItem key={ idx } sessionError={ sessionError }/>
     ));
 
-    return (
-      <div className="session-form-container group">
-        <ul className="session-errors">
-          { sessionErrorsItems }
-        </ul>
-        <form onSubmit={ this.handleSubmit } className="session-form">
-          <ul className="username-errors">
-            { usernameErrorsItems }
-          </ul>
-          <input className="username session-field" onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />
+    const style = {
+      overlay : {
+        position          : 'fixed',
+        top               : 0,
+        left              : 0,
+        right             : 0,
+        bottom            : 0,
+        backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+      },
+      content : {
+        position                   : 'absolute',
+        top                        : '40px',
+        left                       : '40px',
+        right                      : '40px',
+        bottom                     : '40px',
+        border                     : '1px solid #ccc',
+        background                 : '#fff',
+        overflow                   : 'auto',
+        WebkitOverflowScrolling    : 'touch',
+        borderRadius               : '4px',
+        outline                    : 'none',
+        padding                    : '20px'
 
-            <ul className="password-errors">
-              { passwordErrorsItems }
+      }
+    };
+
+    return (
+      <div className="modal-click-out">
+        <Modal
+          className="session-form-container group"
+          isOpen={ true }
+          closeTimeoutMS={ 1000 }
+          style={ style }
+        >
+          <ul className="session-errors">
+            { sessionErrorsItems }
+          </ul>
+          <form onSubmit={ this.handleSubmit } className="session-form">
+            <ul className="username-errors">
+              { usernameErrorsItems }
             </ul>
-          <input className="password session-field" onChange={ this.handleOnChange("password") } type="password" value={ this.state.password } />
-          <input className="session-submit" type="submit" value="Submit" />
-        </form>
+            <input className="username session-field" onChange={ this.handleOnChange("username") } type="text" value={ this.state.username } />
+
+              <ul className="password-errors">
+                { passwordErrorsItems }
+              </ul>
+            <input className="password session-field" onChange={ this.handleOnChange("password") } type="password" value={ this.state.password } />
+            <input className="session-submit" type="submit" value="Submit" />
+          </form>
+        </Modal>
       </div>
     );
   }
