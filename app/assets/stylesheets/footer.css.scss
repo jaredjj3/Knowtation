@@ -1,7 +1,35 @@
 .footer-bar {
-  background: red;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.footer-bar > * {
-  background: orange;
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.footer-links > li {
+  padding: 20px 20px;
+
+}
+
+.footer-content {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.footer-content a {
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+.footer-content h1 {
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+.footer-content h2 {
+  font-size: 24px;
+  margin: 15px 0;
 }

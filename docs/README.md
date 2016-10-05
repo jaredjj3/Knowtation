@@ -43,16 +43,16 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
   - [x] Redux cycle for frontend Authentication
   - [x] User signup/login components
   - [x] Style signup/login components
-  - [ ] Seed users
-  - [ ] Review phase 1
+  - [x] Seed users
+  - [x] Review phase 1
 
 ###Phase 2: Navigation and Static Footer Pages (0.5 days)
 **Objective**: Setup the navigation and static footer pages
-  - [ ] Navigation bar
+  - [x] Navigation bar
   - [ ] Application for teacher account
-  - [ ] Footer FAQ, Privacy Policy, Terms of Use views
-  - [ ] Routing to root, Sign up, login, FAQ, Privacy Policy, Terms of Use, Instagram, and Youtube views
-  - [ ] Style navigation and footer bars
+  - [x] Footer FAQ, Privacy Policy, ~~Terms of Use~~ views
+  - [x] Routing to root, Sign up, login, FAQ, Privacy Policy, Terms of Use, Instagram, and Youtube views
+  - [x] Style navigation and footer bars
   - [ ] Review of phase 2
 
 ###Phase 3: User profile setup (1 day)

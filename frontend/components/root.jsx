@@ -3,9 +3,9 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import Faq from './footer/faq';
 import Privacy from './footer/privacy';
-import Terms from './footer/terms';
 import App from './app';
 import SessionFormContainer from './session_form/session_form_container';
+import Footer from './footer/footer';
 
 const Root = ({ store }) => {
 
@@ -36,8 +36,6 @@ const Root = ({ store }) => {
           <Route path="/faq" component={ Faq }/>
 
           <Route path="/privacy" component={ Privacy }/>
-
-          <Route path="/terms" component={ Terms }/>
 
         </Route>
       </Router>
