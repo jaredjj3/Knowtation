@@ -73,6 +73,7 @@
 
  body {
   font-family: 'Open Sans', sans-serif;
+  line-height: 1.4;
  }
 
 .logo {
@@ -83,3 +84,9 @@
    font-weight: bold;
    cursor: default;
  }
+
+// For mobile 
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}

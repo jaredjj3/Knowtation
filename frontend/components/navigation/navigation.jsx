@@ -48,9 +48,17 @@ class Navigation extends React.Component {
               { buttonText }
             </Link>
           </li>
-          <li>{ currentUser.username }</li>
+          <li>
+            <Link
+              to={ "/profile/" + currentUser.id }
+            >
+              { currentUser.username }
+            </Link>
+          </li>
           <li className="nth-nav-link">
+          <Link to="/">
             <button onClick={ logout }>Log Out</button>
+          </Link>
           </li>
         </ul>
       );
