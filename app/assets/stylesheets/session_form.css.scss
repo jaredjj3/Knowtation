@@ -30,13 +30,6 @@
   margin-bottom: 10px;
 }
 
-.session-field {
-  border: 1px solid #000;
-  padding: 12px 10px;
-  width: 250px;
-  margin: 0 40px;
-}
-
 .session-field:focus {
   box-shadow: 0 0 15px #5ec6ff;
 }
@@ -85,11 +78,6 @@
 .redirect-container {
   margin-top: 25px;
   text-align: center;
-}
-
-
-.redirect-container > p {
-
 }
 
 .redirect-container > a {

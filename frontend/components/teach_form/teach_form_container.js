@@ -6,12 +6,13 @@ import { sendApplication } from '../../actions/student_actions';
 
 const mapStateToProps = state => ({
   modalOn: state.modal.teachModalOn,
+  teacherErrors: state.errors.teacherErrors
 });
 
 const mapDispatchToProps = dispatch => ({
   toggleModal: modal => dispatch(toggleModal(modal)),
-  sendApplication: (user, application) => (
-    dispatch(sendApplication(user, application))
+  sendApplication: (application) => (
+    dispatch(sendApplication(application))
   )
 });
 

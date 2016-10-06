@@ -10,7 +10,6 @@ const ModalReducer = (state = _nullModals, action) => {
   Object.freeze(state);
   let newState = _.merge({}, state);
 
-
   switch(action.type) {
     case TOGGLE_MODAL:
       newState[`${action.modal}ModalOn`] = !newState[`${action.modal}ModalOn`];

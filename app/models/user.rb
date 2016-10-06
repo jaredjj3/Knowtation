@@ -23,7 +23,6 @@ class User < ActiveRecord::Base
   validates :username, length: { in: 3..20 }
 
   after_initialize :ensure_session_token
-  before_validation :ensure_session_token_uniqueness
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
@@ -50,7 +49,7 @@ class User < ActiveRecord::Base
   end
 
   def completed_application?(application)
-    application[:bio] && application[:link]
+    !application[:bio].empty? && !application[:link].empty?
   end
 
   private
@@ -58,12 +57,5 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= User.generate_session_token
   end
-
-  def ensure_session_token_uniqueness
-    while User.find_by(session_token: self.session_token)
-      self.session_token = User.generate_session_token
-    end
-  end
-
 
 end

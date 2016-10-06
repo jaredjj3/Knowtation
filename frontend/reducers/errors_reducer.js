@@ -4,7 +4,8 @@ import * as _ from 'lodash';
 const _nullErrors = Object.freeze({
   sessionErrors: [],
   usernameErrors: [],
-  passwordErrors: []
+  passwordErrors: [],
+  teacherErrors: []
 });
 
 const ErrorsReducer = (state = _nullErrors, action) => {
@@ -13,9 +14,7 @@ const ErrorsReducer = (state = _nullErrors, action) => {
 
   switch(action.type) {
     case RECEIVE_ERRORS:
-      newState.sessionErrors = action.errors.sessionErrors;
-      newState.usernameErrors = action.errors.usernameErrors;
-      newState.passwordErrors = action.errors.passwordErrors;
+      _.merge(newState, action.errors);
       return newState;
 
     case CLEAR_ERRORS:

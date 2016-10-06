@@ -7,7 +7,7 @@
 *.db
 *.sqlite
 sandbox.html
-
+.byebug_history
 
 ### OSX ###
 

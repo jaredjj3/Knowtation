@@ -149,7 +149,7 @@ class SessionForm extends React.Component {
             { usernameErrorsItems }
           </ul>
           <input
-            className="username session-field"
+            className="username form-input-field"
             onChange={ this.handleOnChange("username") }
             type="text"
             value={ this.state.username }
@@ -159,7 +159,7 @@ class SessionForm extends React.Component {
             { passwordErrorsItems }
           </ul>
           <input
-            className="password session-field"
+            className="password form-input-field"
             onChange={ this.handleOnChange("password") }
             type="password"
             value={ this.state.password }

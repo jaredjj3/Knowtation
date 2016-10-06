@@ -1,9 +1,13 @@
 import { SEND_APPLICATION } from '../actions/student_actions';
 import { receiveErrors, clearErrors } from '../actions/errors_actions';
+import { sendApplication } from '../util/student_api_util';
+import { toggleModal } from '../actions/modal_actions';
 
 const StudentMiddleware = ({ getState, dispatch }) => next => action => {
-  const onSuccess = response => {
-    console.log(response);
+  const onSuccess = () => {
+    dispatch(clearErrors());
+    debugger
+    dispatch(toggleModal('teach'));
   };
 
   const onError = messages => {
@@ -11,9 +15,13 @@ const StudentMiddleware = ({ getState, dispatch }) => next => action => {
     dispatch(receiveErrors(errorMessages));
   };
 
+  const user = getState().session.currentUser;
+
   switch(action.type) {
     case SEND_APPLICATION:
-      console.log('application sent!');
+      if (user) {
+        sendApplication(user, action.application, onSuccess, onError);
+      }
       return next(action);
 
     default:
@@ -21,3 +29,5 @@ const StudentMiddleware = ({ getState, dispatch }) => next => action => {
 
   }
 };
+
+ export default StudentMiddleware;
