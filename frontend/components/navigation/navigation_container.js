@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Navigation from './navigation';
-import { logout } from '../../actions/session_actions';
+import { logout, receiveUser } from '../../actions/session_actions';
 import { clearErrors } from '../../actions/errors_actions';
 import { toggleModal } from '../../actions/modal_actions';
 
