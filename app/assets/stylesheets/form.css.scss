@@ -1,6 +1,9 @@
+$nav-background: #fff;
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
 
-
-.session-form-container {
+.form-container {
   border: 1px solid #ccc;
   background: #fff;
   width: 350px;
@@ -13,24 +16,21 @@
   border-radius: 5px;
   outline: none;
   padding: 20px;
+  box-shadow: 0 0 15px #666;
 }
 
-.session-form-container .logo {
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  text-align: center;
+.form-container .logo {
   font-size: 36px;
+  cursor: default;
 }
 
-.session-form-container img {
-  margin: 0 auto;
-  width: 75px;
-  height: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
+.form-container .logo-icon {
+  font-size: 72px;
+  margin-left: 134px;
+  cursor: default;
 }
 
-.session-field:focus {
+.form-input-field:focus {
   box-shadow: 0 0 15px #5ec6ff;
 }
 
@@ -51,10 +51,10 @@
   padding: 5px;
 }
 
-.session-submit {
-  padding: 10px 10px;
+.form-submit {
+  padding: 13px 10px;
   width: 250px;
-  background: #5ec6ff;
+  background: $main-blue;
   text-align: center;
   color: #fff;
   border-radius: 5px;
@@ -62,26 +62,33 @@
   margin-right: 40px;
   margin-top: 15px;
   position: relative;
-  box-shadow: 0 3px 0 0 #00649C;
 }
 
-.session-submit:hover {
-  background: #8FD7FF;
+.form-submit:hover {
+  background: $main-blue-hover;
 }
 
-.session-submit:active {
-  top: 3px;
-  background: #00649C;
+.form-submit:active {
+  top: 2px;
+  background: $main-blue-press;
   box-shadow: none;
 }
 
-.redirect-container {
+.form-redirect-container {
   margin-top: 25px;
   text-align: center;
 }
 
-.redirect-container > a {
+.form-redirect-container p:hover {
+  cursor: default;
+}
+
+.form-redirect-container > a {
   font-weight: bold;
   line-height: 2;
-  font-size: 16px;
+  font-size: 20px;
+}
+
+.form-redirect-container:hover a {
+  color: $main-blue-hover;
 }

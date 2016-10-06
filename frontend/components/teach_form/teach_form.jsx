@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import { Link, hashHistory } from 'react-router';
 import TeacherErrorItem from '../error/teacher_error_item';
+import Icon from '../icon';
 
 class TeachForm extends React.Component {
   constructor(props) {
@@ -53,11 +54,12 @@ class TeachForm extends React.Component {
 
     return(
       <Modal
-        className="teach-form-container"
+        className="form-container"
         isOpen={ modalOn }
         onRequestClose={ this.handleClickOut }
         style={ style }
       >
+        <Icon />
         <h1 className="logo">Knowtation</h1>
           <form onSubmit={ this.handleSubmit }>
             <ul className="errors">
@@ -79,7 +81,7 @@ class TeachForm extends React.Component {
           >
           </input>
           <input
-            className="session-submit"
+            className="form-submit"
             type="submit"
             value="Submit"
           />

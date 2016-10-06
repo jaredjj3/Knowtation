@@ -1,18 +1,48 @@
-$nav-background: #B9E2F0;
+$nav-background: #fff;
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
 
 .navigation-bar {
   background: $nav-background;
-  opacity: 0.8;
+  box-shadow: 0 2px 4px #aaa;
 }
 
 .navigation-items {
   margin: 0 auto;
 }
 
+header .main-button {
+  border: 2px solid $main-blue;
+  color: $main-blue;
+  border-radius: 5px;
+  padding: 2px 5px;
+  width: 70px;
+}
+
+header .main-button:hover {
+  border: 2px solid $main-blue-hover;
+  color: $main-blue-hover;
+}
+
 header .logo {
   float: left;
   font-size: 18px;
-  margin: 15px 0 0 15px;
+  margin: 20px 0 0 15px;
+}
+
+header .logo-icon {
+  color: $main-blue;
+  float: left;
+  font-size: 22px;
+  margin: 21px 0 0 5px;
+}
+
+header .logo-container:hover {
+  cursor: pointer;
+}
+
+header .logo-container:hover .logo-icon {
+  color: $main-blue-hover;
 }
 
 header img {
@@ -30,10 +60,15 @@ header img {
 .navigation-links > li {
   float: left;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 3px 10px;
+  margin-right: 10px;
+}
+
+.navigation-links > li:hover {
+  color: $main-blue-hover;
 }
 
 .nth-nav-link {
   border-left: 1px solid black;
+  margin-left: 10px;
 }

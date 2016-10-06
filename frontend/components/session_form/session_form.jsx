@@ -4,6 +4,7 @@ import SessionErrorItem from '../error/session_error_item';
 import PasswordErrorItem from '../error/password_error_item';
 import UsernameErrorItem from '../error/username_error_item';
 import Modal from 'react-modal';
+import Icon from '../icon';
 
 
 class SessionForm extends React.Component {
@@ -90,15 +91,15 @@ class SessionForm extends React.Component {
     let redirectMessage, submitText, guestStudentLogin, guestTeacherLogin;
     if (formType === 'login') {
       redirectMessage = (
-        <div className="redirect-container">
+        <div className="form-redirect-container">
           <p>Don't have an account?</p>
-          <Link onClick={ clearErrors } to="/signup">Signup</Link>
+          <Link onClick={ clearErrors } to="/signup">Sign up</Link>
         </div>
       );
       submitText = 'Login';
       guestStudentLogin = (
         <input
-          className="session-submit"
+          className="form-submit"
           onClick={ this.loginAsGuest('student') }
           type="button"
           value="Guest Student Login"
@@ -106,7 +107,7 @@ class SessionForm extends React.Component {
       );
       guestTeacherLogin = (
         <input
-          className="session-submit"
+          className="form-submit"
           onClick={ this.loginAsGuest('teacher') }
           type="button"
           value="Guest Teacher Login"
@@ -114,7 +115,7 @@ class SessionForm extends React.Component {
       );
     } else if (formType === 'signup') {
       redirectMessage = (
-        <div className="redirect-container">
+        <div className="form-redirect-container">
           <p>Already have an account?</p>
           <Link onClick={ clearErrors } to="/login">Login</Link>
         </div>
@@ -137,12 +138,13 @@ class SessionForm extends React.Component {
 
     return (
       <Modal
-        className="session-form-container group"
+        className="form-container group"
         isOpen={ modalOn }
         onRequestClose={ this.handleClickOut }
         style={ style }
       >
-      <h1 className="logo">Knowtation</h1>
+        <Icon />
+        <h1 className="logo">Knowtation</h1>
         <form onSubmit={ this.handleSubmit } className="session-form">
           <ul className="errors">
             { sessionErrorsItems }
@@ -165,12 +167,11 @@ class SessionForm extends React.Component {
             value={ this.state.password }
             placeholder="password"
           />
-        <input className="session-submit" type="submit" value={ submitText } />
-        </form>
+        <input className="form-submit" type="submit" value={ submitText } />
         { guestStudentLogin }
         { guestTeacherLogin }
+        </form>
         { redirectMessage }
-
       </Modal>
     );
   }

@@ -1,14 +1,7 @@
-.teach-form-container {
-  border: 1px solid #ccc;
-  background: #fff;
-  width: 350px;
+.bio {
+  width: 250px;
+  min-height: 150px;
+  resize: vertical;
   overflow: auto;
-  position: absolute;
-  left: 0;
-  top: 50px;
-  right: 0;
-  margin: auto;
-  border-radius: 5px;
-  outline: none;
-  padding: 20px;
+  margin-bottom: 15px;
 }

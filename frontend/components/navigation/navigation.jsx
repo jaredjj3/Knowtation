@@ -39,8 +39,9 @@ class Navigation extends React.Component {
 
       return (
         <ul className="navigation-links">
-          <li className="main-button">
+          <li>
             <Link
+              className="main-button"
               to={ linkPath }
               onClick={ this.handleOnClick(teachModalOn, 'teach') }
               >
@@ -60,10 +61,11 @@ class Navigation extends React.Component {
         <ul className="navigation-links">
           <li>
             <Link
+              className="main-button"
               to="/signup"
               onClick={ this.handleOnClick(sessionModalOn, 'session') }
             >
-              Sign up
+            Sign up
             </Link>
           </li>
           <li className="nth-nav-link">
