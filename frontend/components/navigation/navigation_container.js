@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import Navigation from './navigation';
-import { logout, toggleModal } from '../../actions/session_actions';
+import { logout } from '../../actions/session_actions';
 import { clearErrors } from '../../actions/errors_actions';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  modalOn: state.session.modalOn
+  modalOn: state.modal.sessionModalOn
 });
 
 const mapDispatchToProps = (dispatch) => ({
     logout: () => dispatch(logout()),
     clearErrors: () => dispatch(clearErrors()),
-    toggleModal: () => dispatch(toggleModal())
+    toggleModal: modal => dispatch(toggleModal(modal))
 });
 
 export default connect(

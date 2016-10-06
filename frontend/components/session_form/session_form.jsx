@@ -21,7 +21,7 @@ class SessionForm extends React.Component {
 
   handleClickOut() {
     if (this.props.modalOn) {
-      this.props.toggleModal();
+      this.props.toggleModal('session');
     }
     hashHistory.push("/");
   }
@@ -66,7 +66,14 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const { clearErrors, formType, sessionErrors, usernameErrors, passwordErrors, modalOn } = this.props;
+    const {
+      clearErrors,
+      formType,
+      sessionErrors,
+      usernameErrors,
+      passwordErrors,
+      modalOn
+    } = this.props;
 
     const usernameErrorsItems = usernameErrors.map((usernameError, idx) => (
       <UsernameErrorItem key={ idx } usernameError={ usernameError }/>
@@ -135,10 +142,6 @@ class SessionForm extends React.Component {
         onRequestClose={ this.handleClickOut }
         style={ style }
       >
-        <img
-          className="logo-image"
-          src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png"
-        />
       <h1 className="logo">Knowtation</h1>
         <form onSubmit={ this.handleSubmit } className="session-form">
           <ul className="errors">

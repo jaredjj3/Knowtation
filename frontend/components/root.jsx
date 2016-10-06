@@ -13,9 +13,19 @@ const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (currentUser) {
-      replace('/')
+      replace('/');
     }
-  }
+  };
+
+  const _redirectIfLoggedOut = (nextState, replace) => {
+    const currentUser = store.getState().session.currentUser;
+
+    if (!currentUser) {
+      replace('/');
+    } else if (currentUser.userType === 'teacher') {
+      replace('/');
+    }
+  };
 
   return(
     <Provider store={ store }>
@@ -47,12 +57,13 @@ const Root = ({ store }) => {
           <Route
             path="/teach"
             component={ TeachFormContainer }
+            onEnter={ _redirectIfLoggedOut }
           />
 
         </Route>
       </Router>
     </Provider>
   );
-}
+};
 
 export default Root;

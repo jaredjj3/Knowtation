@@ -10,14 +10,17 @@ const _nullErrors = Object.freeze({
 const ErrorsReducer = (state = _nullErrors, action) => {
   Object.freeze(state);
   let newState = _.merge({}, state);
+
   switch(action.type) {
     case RECEIVE_ERRORS:
       newState.sessionErrors = action.errors.sessionErrors;
       newState.usernameErrors = action.errors.usernameErrors;
       newState.passwordErrors = action.errors.passwordErrors;
       return newState;
+
     case CLEAR_ERRORS:
       return _nullErrors;
+
     default:
       return state;
   }

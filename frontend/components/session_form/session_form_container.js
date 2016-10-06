@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import SessionForm  from './session_form';
-import { login, signup, toggleModal } from '../../actions/session_actions';
+import { login, signup } from '../../actions/session_actions';
 import { clearErrors } from '../../actions/errors_actions';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
   sessionErrors: state.errors.sessionErrors,
   usernameErrors: state.errors.usernameErrors,
   passwordErrors: state.errors.passwordErrors,
-  modalOn: state.session.modalOn
+  modalOn: state.modal.sessionModalOn
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -18,7 +19,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     processForm: user => dispatch(processForm(user)),
     formType,
     clearErrors: () => dispatch(clearErrors()),
-    toggleModal: () => dispatch(toggleModal())
+    toggleModal: modal => dispatch(toggleModal(modal))
   };
 };
 
