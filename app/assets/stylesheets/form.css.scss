@@ -1,10 +1,11 @@
-$nav-background: #fff;
 $main-blue: #0061ff;
 $main-blue-hover: #3d87ff;
 $main-blue-press: #0058e8;
+$border-gray: #e7ebf3;
+
 
 .form-container {
-  border: 1px solid #ccc;
+  border: 1px solid $border-gray;
   background: #fff;
   width: 350px;
   overflow: auto;
