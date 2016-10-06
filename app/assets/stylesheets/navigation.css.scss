@@ -30,6 +30,10 @@ header .logo {
   margin: 20px 0 0 15px;
 }
 
+header .logo:hover {
+  cursor: pointer;
+}
+
 header .logo-icon {
   color: $main-blue;
   float: left;

@@ -57,6 +57,12 @@ const Root = ({ store }) => {
             onEnter={ _redirectIfLoggedOut }
           />
 
+          <Route
+            path="/profile/"
+            component={ TeachFormContainer }
+            onEnter={ _redirectIfLoggedOut }
+          />
+
         </Route>
       </Router>
     </Provider>
