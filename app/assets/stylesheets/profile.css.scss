@@ -1,0 +1,41 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
+.profile-container {
+  padding-top: 100px;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.profile-container > div {
+  padding: 40px 0;
+}
+
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  background-image: url("http://s3-us-west-2.amazonaws.com/aa-progress-tracker/students/avatars/000/001/426/medium/Jared_Johnson.JPG?1472069624");
+  background-size: 200px;
+  border: 1px solid $border-gray;
+  float: left;
+}
+
+.biography-text {
+  float: right;
+}
+
+.progress-container {
+  border-top: 1px solid $border-gray;
+  border-bottom: 1px solid $border-gray;
+}
+
+.profile-username {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.profile-country {
+  font-size: 24px;
+}

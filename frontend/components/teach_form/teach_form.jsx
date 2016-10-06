@@ -19,7 +19,7 @@ class TeachForm extends React.Component {
     if (this.props.modalOn) {
       this.props.toggleModal('session');
     }
-    hashHistory.push("/");
+    hashHistory.goBack();
   }
 
   handleOnChange(property) {

@@ -1,7 +1,12 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
 .footer-bar {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 100px;
+  padding-top: 20px;
 }
 
 .footer-links {
@@ -12,11 +17,14 @@
 
 .footer-links > li {
   padding: 20px 20px;
+}
 
+.footer-links > li:hover {
+  color: $main-blue-hover;
 }
 
 .footer-content {
-  width: 50%;
+  width: 75%;
   margin: 0 auto;
   padding-top: 100px;
 }
@@ -33,4 +41,8 @@
 .footer-content h2 {
   font-size: 24px;
   margin: 15px 0;
+}
+
+.footer-content a:hover {
+  color: $main-blue-hover;
 }

@@ -14,7 +14,6 @@ const StudentMiddleware = ({ getState, dispatch }) => next => action => {
         dispatch(toggleModal('teach'));
         dispatch(receiveCurrentUser(updatedUser));
       };
-
       const onError = messages => {
         const errorMessages = messages.responseJSON;
         dispatch(receiveErrors(errorMessages));
