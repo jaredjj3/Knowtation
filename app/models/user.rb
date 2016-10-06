@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
+  def completed_application?(application)
+    application[:bio] && application[:link]
+  end
+
   private
 
   def ensure_session_token

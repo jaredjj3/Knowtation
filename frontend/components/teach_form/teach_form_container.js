@@ -6,7 +6,6 @@ import { sendApplication } from '../../actions/student_actions';
 
 const mapStateToProps = state => ({
   modalOn: state.modal.teachModalOn,
-  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -7,9 +7,7 @@ class TeachForm extends React.Component {
     super(props);
     this.state = {
       bio: "",
-      link1: "",
-      link2: "",
-      link3: ""
+      link: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
@@ -25,11 +23,7 @@ class TeachForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const application = this.state;
-    const user = this.props.currentUser;
-    this.props.sendApplication(
-      { user },
-      { application  }
-    );
+    this.props.sendApplication({ application });
   }
 
   render() {

@@ -6,4 +6,5 @@ password_errors = password_errors.nil? ? [] : password_errors
 json.partial! "api/shared/errors",
   sessionErrors: [],
   usernameErrors: username_errors,
-  passwordErrors: password_errors
+  passwordErrors: password_errors,
+  teacherErrors: []
