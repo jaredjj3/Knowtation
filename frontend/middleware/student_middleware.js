@@ -6,7 +6,6 @@ import { toggleModal } from '../actions/modal_actions';
 const StudentMiddleware = ({ getState, dispatch }) => next => action => {
   const onSuccess = () => {
     dispatch(clearErrors());
-    debugger
     dispatch(toggleModal('teach'));
   };
 

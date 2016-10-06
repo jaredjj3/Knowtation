@@ -1,42 +1,62 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const sessionLinks = clearErrorsAndToggleModal => (
-  <ul className="navigation-links">
-    <li>
-      <Link
-        to="/signup"
-        onClick={ clearErrorsAndToggleModal('session') }
-      >
-        Sign up
-      </Link>
-    </li>
-    <li className="nth-nav-link">
-      <Link
-        to="/login"
-        onClick={ clearErrorsAndToggleModal('session') }
-      >
-        Log In
-      </Link>
-    </li>
-  </ul>
-);
+// Links the users see when they are not logged in
+const sessionLinks = props => {
+  const { clearErrors, toggleModal, sessionModalOn } = props;
+  const handleOnClick = () => {
+    clearErrors();
+    if (!sessionModalOn) {
+      toggleModal('session');
+    }
+  };
 
-const navigation = (
-  currentUser,
-  logout,
-  clearErrors,
-  clearErrorsAndToggleModal
-) => {
-  let linkPath, handleOnClick, buttonText;
+  return (
+    <ul className="navigation-links">
+      <li>
+        <Link
+          to="/signup"
+          onClick={ handleOnClick }
+        >
+          Sign up
+        </Link>
+      </li>
+      <li className="nth-nav-link">
+        <Link
+          to="/login"
+          onClick={ handleOnClick}
+        >
+          Log In
+        </Link>
+      </li>
+    </ul>
+  );
+};
+
+// Links the users see when they are logged in
+const navigationLinks = props => {
+  const {
+    currentUser,
+    clearErrors,
+    teachModalOn,
+    toggleModal,
+    logout
+    } = props;
+
+  const handleOnClick = () => {
+    clearErrors();
+    if (!teachModalOn) {
+      toggleModal('teach');
+    }
+  };
+
+  let linkPath, buttonText;
   if (currentUser.userType === 'student') {
     linkPath = '/teach';
-    handleOnClick = clearErrorsAndToggleModal('teach');
     buttonText = 'Teach';
   } else if (currentUser.userType === 'teacher') {
     linkPath = 'knowtation/upload';
-    handleOnClick = clearErrors;
-    buttonText = 'Upload'
+    buttonText = 'Upload';
   }
 
   return (
@@ -58,16 +78,10 @@ const navigation = (
 };
 
 const Navigation = props => {
-
-  if (currentUser) {
-    return navigation(
-      currentUser,
-      logout,
-      clearErrors,
-      toggleModal
-    );
+  if (props.currentUser) {
+    return navigationLinks(props);
   } else {
-    return sessionLinks(clearErrors, toggleModal);
+    return sessionLinks(props);
   }
 };
 
