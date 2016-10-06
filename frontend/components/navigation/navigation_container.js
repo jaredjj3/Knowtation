@@ -6,7 +6,8 @@ import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  modalOn: state.modal.sessionModalOn
+  sessionModalOn: state.modal.sessionModalOn,
+  teachModalOn: state.modal.teachModalOn
 });
 
 const mapDispatchToProps = (dispatch) => ({

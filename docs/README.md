@@ -50,11 +50,12 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
 ###Phase 2: Navigation and Static Footer Pages (0.5 days)
 **Objective**: Setup the navigation and static footer pages
   - [x] Navigation bar
-  - [ ] Application for teacher account
+  - [x] Application for teacher account
   - [x] Footer FAQ, Privacy Policy, ~~Terms of Use~~ views
   - [x] Routing to root, Sign up, login, FAQ, Privacy Policy, Terms of Use, Instagram, and Youtube views
   - [x] Style navigation and footer bars
-  - [ ] Review of phase 2
+  - [ ] Style teacher application
+  - [x] Review of phase 2
 
 ###Phase 3: User profile setup (1 day)
 **Objective**: Upon successful login or setup, the user should be redirected to their own profile, which will show them their bio, progress, and saved videos.

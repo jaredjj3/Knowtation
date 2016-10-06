@@ -19,10 +19,7 @@ const Root = ({ store }) => {
 
   const _redirectIfLoggedOut = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
-
-    if (!currentUser) {
-      replace('/');
-    } else if (currentUser.userType === 'teacher') {
+    if (!currentUser || currentUser.userType === 'teacher') {
       replace('/');
     }
   };

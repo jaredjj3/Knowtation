@@ -22,46 +22,53 @@ const sessionLinks = clearErrorsAndToggleModal => (
   </ul>
 );
 
-const navigation = (currentUser, logout, clearErrorsAndToggleModal) => (
-  <ul className="navigation-links">
-    <li className="teach-button">
-      <Link
-        to="/teach"
-        onClick={ clearErrorsAndToggleModal('teach') }
-      >
-        Teach
-      </Link>
-    </li>
-    <li>{ currentUser.username }</li>
-    <li className="nth-nav-link">
-      <button onClick={ logout }>Log Out</button>
-    </li>
-  </ul>
-);
+const navigation = (
+  currentUser,
+  logout,
+  clearErrors,
+  clearErrorsAndToggleModal
+) => {
+  let linkPath, handleOnClick, buttonText;
+  if (currentUser.userType === 'student') {
+    linkPath = '/teach';
+    handleOnClick = clearErrorsAndToggleModal('teach');
+    buttonText = 'Teach';
+  } else if (currentUser.userType === 'teacher') {
+    linkPath = 'knowtation/upload';
+    handleOnClick = clearErrors;
+    buttonText = 'Upload'
+  }
 
-const Navigation = ({
-    currentUser,
-    logout,
-    clearErrors,
-    toggleModal,
-    modalOn
-  }) => {
+  return (
+    <ul className="navigation-links">
+      <li className="main-button">
+        <Link
+          to={ linkPath }
+          onClick={ handleOnClick }
+          >
+          { buttonText }
+        </Link>
+      </li>
+      <li>{ currentUser.username }</li>
+      <li className="nth-nav-link">
+        <button onClick={ logout }>Log Out</button>
+      </li>
+    </ul>
+  );
+};
 
-  const clearErrorsAndToggleModal = modal => {
-
-    return () => {
-      clearErrors();
-      if (!modalOn) {
-        toggleModal(modal);
-      }
-    };
-  };
+const Navigation = props => {
 
   if (currentUser) {
-    return navigation(currentUser, logout, clearErrorsAndToggleModal);
+    return navigation(
+      currentUser,
+      logout,
+      clearErrors,
+      toggleModal
+    );
   } else {
-    return sessionLinks(clearErrorsAndToggleModal)
+    return sessionLinks(clearErrors, toggleModal);
   }
-}
+};
 
 export default Navigation;
