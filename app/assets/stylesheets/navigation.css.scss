@@ -6,14 +6,13 @@ $nav-background: #B9E2F0;
 }
 
 .navigation-items {
-  width: 900px;
   margin: 0 auto;
 }
 
 header .logo {
   float: left;
   font-size: 18px;
-  margin: 15px 0;
+  margin: 15px 0 0 15px;
 }
 
 header img {
@@ -25,7 +24,7 @@ header img {
 
 .navigation-links {
   float: right;
-  margin: 19px 0;
+  margin: 19px 15px 19px 0;
 }
 
 .navigation-links > li {
