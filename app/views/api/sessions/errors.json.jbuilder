@@ -2,4 +2,5 @@ json.partial! "api/shared/errors",
   sessionErrors: ['Invalid username and/or password'],
   usernameErrors: [],
   passwordErrors: [],
-  teacherErrors: []
+  teacherErrors: ['Please fill all fields'],
+  studentErrors: []

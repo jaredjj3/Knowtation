@@ -30,35 +30,35 @@ const Root = ({ store }) => {
         <Route path="/" component={ App }>
 
           <Route
-            path="/login"
+            path="login"
             component={ SessionFormContainer }
             onEnter={ _redirectIfLoggedIn }
           />
 
           <Route
-            path="/signup"
+            path="signup"
             component={ SessionFormContainer }
             onEnter={ _redirectIfLoggedIn }
           />
 
           <Route
-            path="/faq"
+            path="faq"
             component={ Faq }
           />
 
           <Route
-            path="/privacy"
+            path="privacy"
             component={ Privacy }
           />
 
           <Route
-            path="/teach"
+            path="teach"
             component={ TeachFormContainer }
             onEnter={ _redirectIfLoggedOut }
           />
 
           <Route
-            path="/profile/"
+            path="profile/:id"
             component={ TeachFormContainer }
             onEnter={ _redirectIfLoggedOut }
           />
