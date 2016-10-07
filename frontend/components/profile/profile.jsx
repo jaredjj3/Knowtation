@@ -10,11 +10,16 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { username, country, bio } = this.props;
+    const { username, country, bio, userType } = this.props;
 
     return (
       <div className="profile-container">
-        <Biography username={ username } country={ country } bio={ bio }/>
+        <Biography
+          username={ username }
+          country={ country }
+          bio={ bio }
+          userType={ userType }
+        />
         <Progress />
         <Saved />
       </div>

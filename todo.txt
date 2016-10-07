@@ -2,3 +2,4 @@
 - Make login modal fadein
 - review footer contents
 - fix routes so they don't blank out the content behind
+- CLEAR USER AND REQUEST USER TO DO ROUTER

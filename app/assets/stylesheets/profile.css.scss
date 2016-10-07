@@ -5,8 +5,11 @@ $border-gray: #aaa;
 
 .profile-container {
   padding-top: 100px;
-  width: 75%;
+  width: 900px;
   margin: 0 auto;
+}
+
+.biography-container {
 }
 
 .profile-container > div {
@@ -23,7 +26,16 @@ $border-gray: #aaa;
 }
 
 .biography-text {
-  float: right;
+  float: left;
+  width: 620px;
+  height: 200px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.profile-bio {
+  height: 85px;
+  overflow: auto;
 }
 
 .progress-container {
@@ -38,4 +50,10 @@ $border-gray: #aaa;
 
 .profile-country {
   font-size: 24px;
+
+}
+
+.profile-student-type {
+  font-size: 18px;
+
 }
