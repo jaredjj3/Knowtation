@@ -11,6 +11,7 @@ class BiographyText extends React.Component {
       country,
       bio
     };
+
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleSaveClick = this.handleSaveClick.bind(this);
     this.handleDiscardClick = this.handleDiscardClick.bind(this);
@@ -25,14 +26,18 @@ class BiographyText extends React.Component {
   }
 
   handleSaveClick(e) {
+    
     this.setState({
       editing: false
     });
   }
 
   handleDiscardClick(e) {
+    const { currentUser } = this.props;
     this.setState({
-      editing: false
+      editing: false,
+      country: currentUser.country,
+      bio: currentUser.bio
     });
   }
 
@@ -120,14 +125,20 @@ class BiographyText extends React.Component {
           type='text'
           className='profile-country editing-profile-country'
           onChange={ this.countryChangeHandler }
-          value={ this.state.country }
           placeholder='country'
         />
       );
     } else {
       // If not editing
       if (country === null && this._pageIsCurrentUser()) {
-        return <h2 className="profile-country null-profile-country">country</h2>;
+        return (
+          <h2
+            className="profile-country null-profile-country"
+            onClick={ this.handleEditClick }
+          >
+            country
+          </h2>
+        );
       } else {
         return <h2 className="profile-country">{ country }</h2>;
       }
@@ -142,11 +153,23 @@ class BiographyText extends React.Component {
     if (this.state.editing) {
       // If editing
       const placeholder = "tell us about yourself";
-      return <textarea className="editing-profile-bio profile-bio" placeholder={ placeholder }></textarea>;
+      return (
+        <textarea
+          className="editing-profile-bio profile-bio"
+          placeholder={ placeholder }
+        />
+      );
     } else {
       // If not editing
       if (bio === null && this._pageIsCurrentUser()) {
-        return <p className="null-profile-bio profile-bio">tell us about yourself</p>;
+        return(
+          <p
+            className="null-profile-bio profile-bio"
+            onClick={ this.handleEditClick }
+          >
+            tell us about yourself
+          </p>
+        );
       } else {
         return <p className="profile-bio">{ bio }</p>;
       }

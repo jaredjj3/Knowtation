@@ -83,10 +83,15 @@ $border-gray: #aaa;
 
 .profile-user-type {
   font-size: 16px;
+  font-style: italic;
 }
 
 .null-profile-country {
   color: $border-gray;
+}
+
+.null-profile-country:hover {
+  color: $main-blue-hover;
 }
 
 .profile-edit-buttons-container {

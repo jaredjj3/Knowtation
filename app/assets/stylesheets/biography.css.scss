@@ -25,9 +25,14 @@ $border-gray: #aaa;
   color: $border-gray;
 }
 
+.null-profile-bio:hover {
+  color: $main-blue-hover;
+}
+
 .profile-bio {
   height: 85px;
   display: block;
+  width: 600px;
   margin-top: 10px;
 }
 
