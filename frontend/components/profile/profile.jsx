@@ -9,8 +9,12 @@ class Profile extends React.Component {
     this.props.requestUser(this.props.params.id);
   }
 
+  componentWillReceiveProps(newProps) {
+    this.props.requestUser(newProps.params.id);
+  }
+
   render() {
-    const { username, country, bio, userType } = this.props;
+    const { username, country, bio, userType, currentUser, userId } = this.props;
 
     return (
       <div className="profile-container">
@@ -19,6 +23,8 @@ class Profile extends React.Component {
           country={ country }
           bio={ bio }
           userType={ userType }
+          currentUser={ currentUser }
+          userId={ userId }
         />
         <Progress />
         <Saved />
