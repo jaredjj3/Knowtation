@@ -1,6 +1,7 @@
 export const RECEIVE_USER = "RECEIVE_USER";
 export const CLEAR_USER = "CLEAR_USER";
 export const REQUEST_USER = "REQUEST_USER";
+export const UPDATE_USER = "UPDATE_USER";
 
 export const receiveUser = user => ({
   type: RECEIVE_USER,
@@ -14,4 +15,9 @@ export const clearUser = () => ({
 export const requestUser = id => ({
   type: REQUEST_USER,
   id
+});
+
+export const updateUser = user => ({
+  type: UPDATE_USER,
+  user
 });

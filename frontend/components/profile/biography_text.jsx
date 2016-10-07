@@ -5,7 +5,6 @@ class BiographyText extends React.Component {
     super(props);
     const { currentUser, pageUser } = this.props;
     const { country, bio } = pageUser;
-
     this.state = {
       editing: false,
       country,
@@ -16,19 +15,41 @@ class BiographyText extends React.Component {
     this.handleSaveClick = this.handleSaveClick.bind(this);
     this.handleDiscardClick = this.handleDiscardClick.bind(this);
     this._pageIsCurrentUser = this._pageIsCurrentUser.bind(this);
-    this.countryChangeHandler = this.countryChangeHandler.bind(this);
+    this.inputChangeHandler = this.inputChangeHandler.bind(this);
   }
 
   handleEditClick(e) {
+    let { country, bio } = this.state;
+
+    if (country === null) {
+      country = "";
+    }
+
+    if (bio === null) {
+      bio = "";
+    }
+
     this.setState({
-      editing: true
+      editing: true,
+      country,
+      bio
     });
   }
 
   handleSaveClick(e) {
-    
+    const { bio, country } = this.state;
+    const id = this.props.pageUser.id;
+
+    const user = {
+      bio,
+      country,
+      id
+    };
+    this.props.updateUser(user);
     this.setState({
-      editing: false
+      editing: false,
+      bio,
+      country
     });
   }
 
@@ -41,10 +62,13 @@ class BiographyText extends React.Component {
     });
   }
 
-  countryChangeHandler(e) {
-    this.setState({
-      country: e.currentTarget.value
-    });
+  inputChangeHandler(property) {
+
+    return e => {
+      this.setState({
+        [property]: e.currentTarget.value
+      });
+    };
   }
 
   render() {
@@ -123,8 +147,9 @@ class BiographyText extends React.Component {
       return (
         <input
           type='text'
+          value={ this.state.country }
           className='profile-country editing-profile-country'
-          onChange={ this.countryChangeHandler }
+          onChange={ this.inputChangeHandler('country') }
           placeholder='country'
         />
       );
@@ -155,8 +180,10 @@ class BiographyText extends React.Component {
       const placeholder = "tell us about yourself";
       return (
         <textarea
+          value={ this.state.bio }
           className="editing-profile-bio profile-bio"
           placeholder={ placeholder }
+          onChange={ this.inputChangeHandler('bio') }
         />
       );
     } else {

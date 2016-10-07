@@ -5,16 +5,22 @@ import BiographyText from './biography_text';
 class Biography extends React.Component {
 
   render() {
-    const { currentUser, pageUser } = this.props;
+    const { currentUser, pageUser, updateUser } = this.props;
 
     return(
       <div className="biography-container group">
         <div className="biography">
           <div className="profile-picture-container">
             <img className="profile-picture"/>
-            <UpdatePicture currentUser={ currentUser } pageUser={ pageUser }/>
+            <UpdatePicture
+              currentUser={ currentUser }
+              pageUser={ pageUser }/>
           </div>
-          <BiographyText currentUser={ currentUser } pageUser={ pageUser }/>
+          <BiographyText
+            currentUser={ currentUser }
+            pageUser={ pageUser }
+            updateUser={ updateUser }
+          />
         </div>
       </div>
     );

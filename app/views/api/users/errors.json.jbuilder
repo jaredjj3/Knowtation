@@ -8,4 +8,5 @@ json.partial! "api/shared/errors",
   usernameErrors: username_errors,
   passwordErrors: password_errors,
   teacherErrors: [],
-  studentErrors: []
+  studentErrors: [],
+  userErrors: []

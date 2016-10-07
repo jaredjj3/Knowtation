@@ -94,6 +94,10 @@ $border-gray: #aaa;
   color: $main-blue-hover;
 }
 
+.editing-profile-country:focus {
+  color: $main-blue;
+}
+
 .profile-edit-buttons-container {
   display: flex;
   flex-direction: row;

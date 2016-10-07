@@ -6,3 +6,13 @@ export const requestUser = (id, success, error) => {
     error
   });
 };
+
+export const updateUser = (user, success, error) => {
+  $.ajax({
+    method: 'PATCH',
+    url: `api/users/${user.id}`,
+    data: { user },
+    success,
+    error
+  });
+};

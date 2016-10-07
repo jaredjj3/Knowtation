@@ -16,11 +16,14 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { currentUser, pageUser } = this.props;
+    const { currentUser, pageUser, updateUser } = this.props;
 
     return (
       <div className="profile-container">
-        <Biography currentUser={ currentUser } pageUser={ pageUser } />
+        <Biography
+          currentUser={ currentUser }
+          pageUser={ pageUser }
+          updateUser={ updateUser }/>
         <Progress />
         <Saved />
       </div>

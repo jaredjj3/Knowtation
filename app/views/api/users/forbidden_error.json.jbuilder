@@ -2,6 +2,6 @@ json.partial! "api/shared/errors",
   sessionErrors: [],
   usernameErrors: [],
   passwordErrors: [],
-  teacherErrors: ['Please fill all fields'],
+  teacherErrors: [],
   studentErrors: [],
-  userErrors: []
+  userErrors: ["Invalid credentials, please login as #{@user.username}."]

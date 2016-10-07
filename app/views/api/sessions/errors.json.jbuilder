@@ -3,4 +3,5 @@ json.partial! "api/shared/errors",
   usernameErrors: [],
   passwordErrors: [],
   teacherErrors: ['Please fill all fields'],
-  studentErrors: []
+  studentErrors: [],
+  userErrors: []

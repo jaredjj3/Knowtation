@@ -18,11 +18,23 @@ class Api::UsersController < ApplicationController
     else
       render :errors
     end
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user == current_user
+      if @user.update(user_params)
+        render :show
+      end
+    else
+      render :forbbiden_error, status: 403
+    end
 
   end
 
   private
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :country, :bio)
   end
 end
