@@ -5,10 +5,21 @@ import Saved from './saved';
 
 class Profile extends React.Component {
 
+  componentDidMount() {
+    this.props.requestUser(this.props.params.id);
+  }
+
   render() {
+    const { username, country, bio, userType } = this.props;
+
     return (
       <div className="profile-container">
-        <Biography />
+        <Biography
+          username={ username }
+          country={ country }
+          bio={ bio }
+          userType={ userType }
+        />
         <Progress />
         <Saved />
       </div>

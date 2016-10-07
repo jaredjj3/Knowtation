@@ -14,7 +14,6 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user
-      
       render :show
     else
       render :errors

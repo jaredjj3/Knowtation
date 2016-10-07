@@ -1,11 +1,15 @@
 $main-blue: #0061ff;
 $main-blue-hover: #3d87ff;
 $main-blue-press: #0058e8;
+<<<<<<< HEAD
 $border-gray: #e7ebf3;
+=======
+$border-gray: #aaa;
+>>>>>>> profile
 
 .navigation-bar {
   background: #fff;
-  box-shadow: 0 2px 4px #aaa;
+  box-shadow: 0 2px 3px #aaa;
   position: fixed;
   width: 100%;
 }
@@ -24,6 +28,10 @@ header .main-button {
 header .main-button:hover {
   border: 2px solid $main-blue-hover;
   color: $main-blue-hover;
+}
+
+header .logo-container {
+  margin-left: 20px;
 }
 
 header .logo {

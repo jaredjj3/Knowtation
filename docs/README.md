@@ -54,7 +54,7 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
   - [x] Footer FAQ, Privacy Policy, ~~Terms of Use~~ views
   - [x] Routing to root, Sign up, login, FAQ, Privacy Policy, Terms of Use, Instagram, and Youtube views
   - [x] Style navigation and footer bars
-  - [ ] Style teacher application
+  - [x] Style teacher application
   - [x] Review of phase 2
 
 ###Phase 3: User profile setup (1 day)
