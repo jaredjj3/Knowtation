@@ -16,18 +16,6 @@ $border-gray: #aaa;
   margin: 0 auto;
 }
 
-header .main-button {
-  border: 2px solid $main-blue;
-  color: $main-blue;
-  border-radius: 5px;
-  padding: 2px 20px;
-}
-
-header .main-button:hover {
-  border: 2px solid $main-blue-hover;
-  color: $main-blue-hover;
-}
-
 header .logo-container {
   margin-left: 20px;
 }

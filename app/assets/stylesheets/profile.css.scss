@@ -95,7 +95,26 @@ $border-gray: #aaa;
 }
 
 .profile-user-type {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+.null-profile-bio {
+  font-size: 16px;
   font-style: italic;
   color: $border-gray;
+}
+
+.null-profile-country {
+  font-size: 16px;
+  font-style: italic;
+  color: $border-gray;
+}
+
+.profile-edit-buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-edit-buttons-container > li {
+  margin-right: 15px;
 }

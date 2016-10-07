@@ -14,11 +14,16 @@
  *= require_self
  */
 
+ $main-blue: #0061ff;
+ $main-blue-hover: #3d87ff;
+ $main-blue-press: #0058e8;
+ $border-gray: #aaa;
+
  /* PHASE 0: Reset */
 
  html, body, header, nav, h1, a,
  ul, li, strong, main, button, i,
- section, img, div, h2, p, form,
+ section, img, div, h2, h3, p, form,
  fieldset, label, input, textarea,
  span, article, footer, time, small {
    margin: 0;
@@ -83,6 +88,21 @@
    font-size: 36px;
    font-weight: bold;
    cursor: default;
+ }
+
+ .main-button {
+   border: 2px solid $main-blue;
+   color: $main-blue;
+   border-radius: 5px;
+   padding: 2px 15px;
+   width: 60px;
+   text-align: center;
+ }
+
+ .main-button:hover {
+   border: 2px solid $main-blue-hover;
+   background: $main-blue-hover;
+   color: #fff;
  }
 
 // For mobile
