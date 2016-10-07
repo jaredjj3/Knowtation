@@ -4,15 +4,18 @@ class BiographyText extends React.Component {
   constructor(props) {
     super(props);
     const { currentUser, pageUser } = this.props;
+    const { country, bio } = pageUser;
+
     this.state = {
       editing: false,
-      country: pageUser.country,
-      bio: pageUser.bio
+      country,
+      bio
     };
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleSaveClick = this.handleSaveClick.bind(this);
     this.handleDiscardClick = this.handleDiscardClick.bind(this);
     this._pageIsCurrentUser = this._pageIsCurrentUser.bind(this);
+    this.countryChangeHandler = this.countryChangeHandler.bind(this);
   }
 
   handleEditClick(e) {
@@ -33,15 +36,23 @@ class BiographyText extends React.Component {
     });
   }
 
+  countryChangeHandler(e) {
+    this.setState({
+      country: e.currentTarget.value
+    });
+  }
+
   render() {
     const { currentUser, pageUser } = this.props;
     const { username, country, userType, bio } = pageUser;
     const { pageIsCurrentUser } = this.state;
 
     return(
-      <div className="biography-text">
-        { this._iconDisplay() }
-        { this._usernameDisplay(username) }
+      <div className="biography-text group">
+        <div className="username-container">
+          { this._usernameDisplay(username) }
+          { this._iconDisplay() }
+        </div>
         { this._userTypeDisplay(userType) }
         { this._countryDisplay(country) }
         { this._bioDisplay(bio) }
@@ -102,10 +113,24 @@ class BiographyText extends React.Component {
   }
 
   _countryDisplay(country) {
-    if (country === null && this._pageIsCurrentUser()) {
-      return <h2 className="null-profile-country">country</h2>;
+    if (this.state.editing) {
+      // If editing
+      return (
+        <input
+          type='text'
+          className='profile-country editing-profile-country'
+          onChange={ this.countryChangeHandler }
+          value={ this.state.country }
+          placeholder='country'
+        />
+      );
     } else {
-      return <h2 className="profile-country">{ country }</h2>;
+      // If not editing
+      if (country === null && this._pageIsCurrentUser()) {
+        return <h2 className="profile-country null-profile-country">country</h2>;
+      } else {
+        return <h2 className="profile-country">{ country }</h2>;
+      }
     }
   }
 
@@ -114,10 +139,17 @@ class BiographyText extends React.Component {
   }
 
   _bioDisplay(bio) {
-    if (bio === null && this._pageIsCurrentUser()) {
-      return <p className="null-profile-bio">tell us about yourself</p>;
+    if (this.state.editing) {
+      // If editing
+      const placeholder = "tell us about yourself";
+      return <textarea className="editing-profile-bio profile-bio" placeholder={ placeholder }></textarea>;
     } else {
-      return <p className="profile-bio">{ bio }</p>;
+      // If not editing
+      if (bio === null && this._pageIsCurrentUser()) {
+        return <p className="null-profile-bio profile-bio">tell us about yourself</p>;
+      } else {
+        return <p className="profile-bio">{ bio }</p>;
+      }
     }
   }
 }

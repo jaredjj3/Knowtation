@@ -9,11 +9,14 @@ $border-gray: #aaa;
   margin: 0 auto;
 }
 
-.biography-container {
+.progress-container {
+  margin: 40px 10px;
+  border-top: 1px solid $border-gray;
+  border-bottom: 1px solid $border-gray;
 }
 
-.profile-container > div {
-  padding: 40px 10px;
+.saved-container {
+  margin: 40px 10px;
 }
 
 .profile-picture-container {
@@ -66,47 +69,23 @@ $border-gray: #aaa;
   border: 1px solid $border-gray;
 }
 
-.biography-text {
-  float: left;
-  width: 600px;
-  height: 200px;
-  margin-left: 30px;
-  margin-right: 30px;
-}
-
-.profile-bio {
-  height: 85px;
-  overflow: auto;
-}
-
-.progress-container {
-  border-top: 1px solid $border-gray;
-  border-bottom: 1px solid $border-gray;
-}
-
 .profile-username {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: bold;
 }
 
 .profile-country {
-  font-size: 24px;
-
+  margin: 10px 0;
+  width: 600px;
+  display: block;
+  float: left;
 }
 
 .profile-user-type {
   font-size: 16px;
 }
 
-.null-profile-bio {
-  font-size: 16px;
-  font-style: italic;
-  color: $border-gray;
-}
-
 .null-profile-country {
-  font-size: 16px;
-  font-style: italic;
   color: $border-gray;
 }
 
@@ -117,4 +96,24 @@ $border-gray: #aaa;
 
 .profile-edit-buttons-container > li {
   margin-right: 15px;
+}
+
+.chart-container {
+  margin: 40px 0;
+}
+
+.username-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-edit-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+
+.profile-edit-buttons-container > button {
+  align-content: center;
 }
