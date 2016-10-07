@@ -10,12 +10,26 @@ class BiographyText extends React.Component {
       bio: pageUser.bio
     };
     this.handleEditClick = this.handleEditClick.bind(this);
+    this.handleSaveClick = this.handleSaveClick.bind(this);
+    this.handleDiscardClick = this.handleDiscardClick.bind(this);
     this._pageIsCurrentUser = this._pageIsCurrentUser.bind(this);
   }
 
   handleEditClick(e) {
     this.setState({
       editing: true
+    });
+  }
+
+  handleSaveClick(e) {
+    this.setState({
+      editing: false
+    });
+  }
+
+  handleDiscardClick(e) {
+    this.setState({
+      editing: false
     });
   }
 
@@ -52,7 +66,7 @@ class BiographyText extends React.Component {
           <ul className='profile-edit-buttons-container'>
             <li>
               <button
-                onClick={ this.handleEditClick }
+                onClick={ this.handleSaveClick }
                 className='main-button'
               >
                   Save
@@ -60,7 +74,7 @@ class BiographyText extends React.Component {
             </li>
             <li>
               <button
-                onClick={ this.handleEditClick }
+                onClick={ this.handleDiscardClick }
                 className='main-button'
               >
                   Discard
