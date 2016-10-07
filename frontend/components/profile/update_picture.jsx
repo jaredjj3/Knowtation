@@ -1,8 +1,8 @@
 import React from 'react';
 
-const UpdatePicture = ({ currentUser, userId }) => {
+const UpdatePicture = ({ currentUser, pageUser }) => {
 
-  if ( currentUser.id === userId ) {
+  if ( currentUser.id === pageUser.id ) {
     return (
       <div className="profile-icon-container">
         <i className="material-icons">photo_camera</i>

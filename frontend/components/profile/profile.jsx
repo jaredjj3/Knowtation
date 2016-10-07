@@ -10,22 +10,17 @@ class Profile extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.props.requestUser(newProps.params.id);
+    if (this.props.params.id !== newProps.params.id) {
+      this.props.requestUser(newProps.params.id);
+    }
   }
 
   render() {
-    const { username, country, bio, userType, currentUser, userId } = this.props;
+    const { currentUser, pageUser } = this.props;
 
     return (
       <div className="profile-container">
-        <Biography
-          username={ username }
-          country={ country }
-          bio={ bio }
-          userType={ userType }
-          currentUser={ currentUser }
-          userId={ userId }
-        />
+        <Biography currentUser={ currentUser } pageUser={ pageUser } />
         <Progress />
         <Saved />
       </div>
