@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :user_type, default: 'student', null: false
       t.string :password_digest, null: false
       t.string :session_token, null: false
-      t.integer :loops
+      t.string :country
       t.text :bio
 
       t.timestamps null: false
