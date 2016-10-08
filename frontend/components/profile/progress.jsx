@@ -28,14 +28,11 @@ class Progress extends React.Component {
 
   _drawChart() {
     const google = window.google;
+    const { pageUser } = this.props;
+    const { mappedLoops } = pageUser.givenLoops;
 
-    const data = google.visualization.arrayToDataTable([
-        ['Date', 'Loops', 'Expenses'],
-        ['2004',  1000,      400],
-        ['2005',  1170,      460],
-        ['2006',  660,       1120],
-        ['2007',  1030,      540]
-      ]);
+    const arrayData = [['days ago', 'loops']].concat(mappedLoops);
+    const data = google.visualization.arrayToDataTable(arrayData);
 
     const options = {
       curveType: 'function',

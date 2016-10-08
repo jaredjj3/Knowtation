@@ -51,7 +51,8 @@ class User < ActiveRecord::Base
       date_loop_hash[days_ago] += 1
     end
 
-    date_loop_hash.to_a
+    # pair[0] is the days_ago value
+    date_loop_hash.to_a.sort_by { |pair| pair[0] }
   end
 
   def reset_session_token!
