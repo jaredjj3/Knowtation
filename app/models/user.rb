@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
     end
 
     # pair[0] is the days_ago value
+    return [[0, 0]] if date_loop_hash.empty?
     date_loop_hash.to_a.sort_by { |pair| pair[0] }
   end
 

@@ -23,6 +23,7 @@ class Progress extends React.Component {
   render() {
     return(
       <div className="progress-container">
+        <h1 className="progress-title">Progress</h1>
         <div id="chart-container" />
       </div>
     );
@@ -54,7 +55,7 @@ class Progress extends React.Component {
     const options = {
       curveType: 'function',
       fontName: 'Open Sans',
-      fontSize: 20,
+      fontSize: 16,
       width: 900,
       height: 400,
       vAxis: {

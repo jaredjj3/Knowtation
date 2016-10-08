@@ -59,10 +59,10 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
 
 ###Phase 3: User profile setup (1 day)
 **Objective**: Upon successful login or setup, the user should be redirected to their own profile, which will show them their bio, progress, and saved videos.
-  - [ ] `User` JBuilder show view for teachers and students
-  - [ ] Google Charts integration
-  - [ ] Style the show page
-  - [ ] Review phase 3
+  - [x] `User` JBuilder show view for teachers and students
+  - [x] Google Charts integration
+  - [x] Style the show page
+  - [x] Review phase 3
 
 ###Phase 4: `Knowtation CRUD` (2.5 days)
 **Objective**: `Knowtation` can be created, read, edited, and destroyed through the API

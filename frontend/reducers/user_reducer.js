@@ -5,7 +5,9 @@ const _nullUser = Object.freeze({
   username: null,
   userType: null,
   country: null,
-  bio: null
+  bio: null,
+  id: null,
+  givenLoops: null
 });
 
 const UserReducer = (state = _nullUser, action) => {

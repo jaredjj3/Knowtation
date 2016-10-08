@@ -39,8 +39,9 @@ $border-gray: #aaa;
 .editing-profile-bio {
   height: 85px;
   display: block;
-  width: 400px;
+  width: 580px;
   margin-top: 10px;
+  resize: none;
 }
 
 .editing-profile-bio:focus {

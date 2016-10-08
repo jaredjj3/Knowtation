@@ -83,7 +83,6 @@ class BiographyText extends React.Component {
           { this._iconDisplay() }
         </div>
         { this._userTypeDisplay(userType) }
-        { this._countryDisplay(country) }
         { this._bioDisplay(bio) }
       </div>
     );
@@ -141,35 +140,6 @@ class BiographyText extends React.Component {
     }
   }
 
-  _countryDisplay(country) {
-    if (this.state.editing) {
-      // If editing
-      return (
-        <input
-          type='text'
-          value={ this.state.country }
-          className='profile-country editing-profile-country'
-          onChange={ this.inputChangeHandler('country') }
-          placeholder='country'
-        />
-      );
-    } else {
-      // If not editing
-      if (country === null && this._pageIsCurrentUser()) {
-        return (
-          <h2
-            className="profile-country null-profile-country"
-            onClick={ this.handleEditClick }
-          >
-            country
-          </h2>
-        );
-      } else {
-        return <h2 className="profile-country">{ country }</h2>;
-      }
-    }
-  }
-
   _userTypeDisplay(userType) {
     return <h3 className="profile-user-type">{ userType }</h3>;
   }
@@ -179,12 +149,14 @@ class BiographyText extends React.Component {
       // If editing
       const placeholder = "tell us about yourself";
       return (
-        <textarea
-          value={ this.state.bio }
-          className="editing-profile-bio profile-bio"
-          placeholder={ placeholder }
-          onChange={ this.inputChangeHandler('bio') }
-        />
+        <form>
+          <textarea
+            value={ this.state.bio }
+            className="editing-profile-bio profile-bio"
+            placeholder={ placeholder }
+            onChange={ this.inputChangeHandler('bio') }
+            />
+        </form>
       );
     } else {
       // If not editing
