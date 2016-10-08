@@ -7,7 +7,6 @@
 #  user_type       :string           default("student"), not null
 #  password_digest :string           not null
 #  session_token   :string           not null
-#  country         :string
 #  bio             :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -20,9 +19,11 @@ class User < ActiveRecord::Base
   validates :username, format: { with: /\A[\.a-zA-Z\d\_]+\z/, message: "can only have letters, numbers, periods, and underscores" }
   validates :password, length: { in: 6..20, allow_nil: true }
   validates :session_token, presence: true, uniqueness: true
-  validates :username, length: { in: 3..20 }
+  validates :username, length: { in: 3..26 }
 
   after_initialize :ensure_session_token
+
+  has_many :user_loops
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
@@ -31,6 +32,10 @@ class User < ActiveRecord::Base
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64
+  end
+
+  def given_loops
+    user_loops.length
   end
 
   def reset_session_token!

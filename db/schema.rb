@@ -11,17 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004141736) do
+ActiveRecord::Schema.define(version: 20161008152744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "loops", force: :cascade do |t|
+    t.integer  "loop_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "loops", ["loop_id"], name: "index_loops_on_loop_id", using: :btree
+  add_index "loops", ["user_id"], name: "index_loops_on_user_id", using: :btree
+
+  create_table "user_loops", force: :cascade do |t|
+    t.integer  "knowtation_id", null: false
+    t.integer  "user_id",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "user_loops", ["knowtation_id"], name: "index_user_loops_on_knowtation_id", using: :btree
+  add_index "user_loops", ["user_id"], name: "index_user_loops_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                            null: false
     t.string   "user_type",       default: "student", null: false
     t.string   "password_digest",                     null: false
     t.string   "session_token",                       null: false
-    t.string   "country"
     t.text     "bio"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

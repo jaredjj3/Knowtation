@@ -5,13 +5,31 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+NUM_USERS = 100;
+
 User.destroy_all
 User.create!(username: 'jaredjj3', password: 'password')
 User.create!(username: 'guest_student', password: 'password')
 User.create!(username: 'guest_teacher', password: 'password')
 
-50.times do
+
+UserLoop.destroy_all
+rng = Random.new
+NUM_USERS.times do
   username = Faker::Internet.user_name
   password = Faker::Internet.password
-  User.create!(username: username, password: password)
+  user_type = rng.rand(99) < 9 ?  'teacher' : 'student'
+  bio = rng.rand(99) < 75 ? Faker::Hacker.say_something_smart : ""
+  
+  user = User.create!(
+    username: username,
+    password: password,
+    user_type: user_type,
+    bio: bio)
+
+  num_loops = rng.rand(10)
+  num_loops.times do
+    UserLoop.create!(knowtation_id: rng.rand(10), user_id: user.id)
+  end
 end
