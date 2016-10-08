@@ -23,8 +23,9 @@ class Profile extends React.Component {
         <Biography
           currentUser={ currentUser }
           pageUser={ pageUser }
-          updateUser={ updateUser }/>
-        <Progress />
+          updateUser={ updateUser }
+        />
+        <Progress pageuser={ pageUser } />
         <Saved />
       </div>
     );

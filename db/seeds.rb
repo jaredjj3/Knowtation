@@ -17,19 +17,19 @@ User.create!(username: 'guest_teacher', password: 'password')
 UserLoop.destroy_all
 rng = Random.new
 NUM_USERS.times do
-  username = Faker::Internet.user_name
+  username = Faker::Internet.user_name + "_test"
   password = Faker::Internet.password
   user_type = rng.rand(99) < 9 ?  'teacher' : 'student'
   bio = rng.rand(99) < 75 ? Faker::Hacker.say_something_smart : ""
-  
+
   user = User.create!(
     username: username,
     password: password,
     user_type: user_type,
     bio: bio)
 
-  num_loops = rng.rand(10)
+  num_loops = rng.rand(100)
   num_loops.times do
-    UserLoop.create!(knowtation_id: rng.rand(10), user_id: user.id)
+    UserLoop.create!(knowtation_id: (rng.rand(10) + 1), user_id: user.id)
   end
 end
