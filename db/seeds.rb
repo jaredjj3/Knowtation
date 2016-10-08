@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 NUM_USERS = 20;
+NUM_KNOWTATIONS = 5;
 
 User.destroy_all
 User.create!(username: 'jaredjj3', password: 'password')

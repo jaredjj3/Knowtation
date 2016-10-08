@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008152744) do
+ActiveRecord::Schema.define(version: 20161008215743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "knowtations", force: :cascade do |t|
+    t.string   "title",               null: false
+    t.integer  "user_id",             null: false
+    t.text     "scroll_instructions"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.text     "video_url"
+  end
+
+  add_index "knowtations", ["scroll_instructions"], name: "index_knowtations_on_scroll_instructions", unique: true, using: :btree
+  add_index "knowtations", ["user_id"], name: "index_knowtations_on_user_id", using: :btree
+  add_index "knowtations", ["video_url"], name: "index_knowtations_on_video_url", unique: true, using: :btree
 
   create_table "loops", force: :cascade do |t|
     t.integer  "loop_id"
