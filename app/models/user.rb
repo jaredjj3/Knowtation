@@ -34,8 +34,12 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64
   end
 
-  def given_loops
+  def total_given_loops
     user_loops.length
+  end
+
+  def method_name
+    
   end
 
   def reset_session_token!
@@ -61,6 +65,18 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token ||= User.generate_session_token
+  end
+
+  def num_loops_on_date(date)
+    # date is a date object
+    # date's ===(other_date) method checks for equality
+    # on a same 'day' basis
+    count = 0
+    user_loops.each do |user_loop|
+      user_loop_date = Time.at(user_loop.created_at).to_date
+      count += 1 if user_loop_date === date
+    end
+    count
   end
 
 end

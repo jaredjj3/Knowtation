@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-NUM_USERS = 100;
+NUM_USERS = 20;
 
 User.destroy_all
 User.create!(username: 'jaredjj3', password: 'password')
@@ -28,8 +28,14 @@ NUM_USERS.times do
     user_type: user_type,
     bio: bio)
 
+  time_ago = rng.rand(604_800) # number of seconds in a week
+  user.created_at -= time_ago
+  user.save!
+
   num_loops = rng.rand(100)
   num_loops.times do
-    UserLoop.create!(knowtation_id: (rng.rand(10) + 1), user_id: user.id)
+    user_loop = UserLoop.create!(knowtation_id: (rng.rand(10) + 1), user_id: user.id)
+    user_loop.created_at -= rng.rand(time_ago)
+    user_loop.save!
   end
 end
