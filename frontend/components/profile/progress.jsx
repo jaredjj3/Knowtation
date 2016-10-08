@@ -5,15 +5,19 @@ class Progress extends React.Component {
     super(props);
 
     this._drawChart = this._drawChart.bind(this);
-    this._refreshChart = this._refreshChart.bind(this);
   }
 
   componentDidMount() {
     this._loadChart();
   }
 
-  componentWillReceiveProps() {
-    this._refreshChart();
+  componentDidUpdate(prevProps) {
+    const prevPageUserId = prevProps.pageUser.id;
+    const currPageUserId = this.props.pageUser.id;
+
+    if (prevPageUserId !== currPageUserId) {
+      this._drawChart();
+    }
   }
 
   render() {
@@ -33,26 +37,31 @@ class Progress extends React.Component {
     google.charts.setOnLoadCallback(this._drawChart);
   }
 
-  _refreshChart() {
-    this._drawChart();
-  }
-
   _drawChart() {
     const google = window.google;
     const { pageUser } = this.props;
     const { mappedLoops } = pageUser.givenLoops;
 
+    // if not fully loaded
+    if (typeof google.visualization.arrayToDataTable === 'undefined') {
+      return;
+    }
+
     const arrayData = [['days ago', 'loops']].concat(mappedLoops);
     const data = google.visualization.arrayToDataTable(arrayData);
-
 
     // $main-blue: #0061ff;
     const options = {
       curveType: 'function',
-      legend: { position: 'left' },
+      fontName: 'Open Sans',
+      fontSize: 20,
       width: 900,
       height: 400,
-      vAxis: { baselineColor: 'black' },
+      vAxis: {
+        baselineColor: 'black',
+        format: '#',
+        minValue: 0,
+      },
       hAxis: {
         title: 'days ago',
         direction: -1, // reverse axis
