@@ -38,8 +38,20 @@ class User < ActiveRecord::Base
     user_loops.length
   end
 
-  def method_name
-    
+  # return format is [[days_ago, number_of_loops_that_given_day], []...]
+  def mapped_given_loops
+    date_loop_hash = {}
+    todays_date = Time.now.to_date
+
+    user_loops.each do |user_loop|
+      created_at = user_loop.created_at
+      date_created = Time.at(created_at).to_date
+      days_ago = (todays_date - date_created).to_i
+      date_loop_hash[days_ago] ||= 0
+      date_loop_hash[days_ago] += 1
+    end
+
+    date_loop_hash.to_a
   end
 
   def reset_session_token!
@@ -66,17 +78,4 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= User.generate_session_token
   end
-
-  def num_loops_on_date(date)
-    # date is a date object
-    # date's ===(other_date) method checks for equality
-    # on a same 'day' basis
-    count = 0
-    user_loops.each do |user_loop|
-      user_loop_date = Time.at(user_loop.created_at).to_date
-      count += 1 if user_loop_date === date
-    end
-    count
-  end
-
 end
