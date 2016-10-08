@@ -5,10 +5,15 @@ class Progress extends React.Component {
     super(props);
 
     this._drawChart = this._drawChart.bind(this);
+    this._refreshChart = this._refreshChart.bind(this);
   }
 
   componentDidMount() {
     this._loadChart();
+  }
+
+  componentWillReceiveProps() {
+    this._refreshChart();
   }
 
   render() {
@@ -19,11 +24,17 @@ class Progress extends React.Component {
     );
   }
 
+  // private
+
   _loadChart() {
     const google = window.google;
 
     google.charts.load('current', { packages:['corechart']});
     google.charts.setOnLoadCallback(this._drawChart);
+  }
+
+  _refreshChart() {
+    this._drawChart();
   }
 
   _drawChart() {
@@ -34,18 +45,31 @@ class Progress extends React.Component {
     const arrayData = [['days ago', 'loops']].concat(mappedLoops);
     const data = google.visualization.arrayToDataTable(arrayData);
 
+
+    // $main-blue: #0061ff;
     const options = {
       curveType: 'function',
-      width: 600,
+      legend: { position: 'left' },
+      width: 900,
       height: 400,
-      legend: { position: 'in' }
+      vAxis: { baselineColor: 'black' },
+      hAxis: {
+        title: 'days ago',
+        direction: -1, // reverse axis
+        format: '#',
+        baselineColor: 'transparent',
+        gridlines: { color: 'transparent' },
+        minValue: 0,
+        maxValue: 7
+      },
+      colors: ['#0061ff']
     };
 
-    const chart = new google.visualization.LineChart(
+    this.chart = this.chart || new google.visualization.LineChart(
       document.getElementById('chart-container')
     );
 
-    chart.draw(data, options);
+    this.chart.draw(data, options);
   }
 }
 
