@@ -1,0 +1,26 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
+.knowtation-container {
+  padding-top: 100px;
+  margin: 0 auto;
+  width: 900px;
+}
+
+.knowtation-video {
+  width: 900px;
+  height: 400px;
+
+}
+
+.knowtation-canvas {
+  width: 898px;
+  height: 238px;
+  border: 1px solid $main-blue;
+}
+
+.knowtation-settings {
+  border: 1px solid $main-blue;
+}

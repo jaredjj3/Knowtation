@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-NUM_USERS = 20;
+NUM_USERS = 10;
 NUM_KNOWTATIONS = 5;
 
 User.destroy_all

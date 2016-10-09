@@ -10,7 +10,7 @@ $border-gray: #aaa;
 }
 
 .library-list > li {
-
+  border: 1px solid $main-blue;
 }
 
 .library-list > li:hover {
@@ -30,10 +30,9 @@ $border-gray: #aaa;
   }
 
   .library-list > li {
-    border: 1px solid $main-blue;
     width: 256px;
-    height: 137px;
-    margin: 20px 20px;
+    height: 256px;
+    margin: 40px 20px;
   }
 }
 
@@ -49,9 +48,8 @@ $border-gray: #aaa;
   }
 
   .library-list > li {
-    border: 1px solid $main-blue;
     width: 375px;
-    height: 207px;
+    height: 375px;
     margin: 20px 20px;
   }
 }

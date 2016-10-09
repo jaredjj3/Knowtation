@@ -10,6 +10,7 @@ import TeachFormContainer from './teach_form/teach_form_container';
 import ProfileContainer from './profile/profile_container';
 import NewKnowtationContainer from './knowtation/new_knowtation_container';
 import LibraryContainer from './knowtation/library_container';
+import KnowtationContainer from './knowtation/knowtation_container';
 
 const Root = ({ store }) => {
 
@@ -80,6 +81,11 @@ const Root = ({ store }) => {
           <Route
             path="knowtation/new"
             component={ NewKnowtationContainer }
+          />
+
+          <Route
+            path="knowtation/:id"
+            component={ KnowtationContainer }
           />
 
         </Route>
