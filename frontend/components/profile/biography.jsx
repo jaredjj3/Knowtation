@@ -50,6 +50,7 @@ class Biography extends React.Component {
       this.setState({
         profilePictureBorders: 'gray-borders'
       });
+      this.toggleForm(e);
     };
     updateUserProfilePicture(
       formData,
@@ -82,6 +83,13 @@ class Biography extends React.Component {
   render() {
     const { currentUser, pageUser, updateUser } = this.props;
 
+    let toggleFormCallback;
+    if (currentUser.id === pageUser.id ) {
+      toggleFormCallback = this.toggleForm;
+    } else {
+      toggleFormCallback = () => {};
+    }
+
     return(
       <div className="biography-container group">
         <div className="biography">
@@ -92,7 +100,7 @@ class Biography extends React.Component {
                 this.state.profilePictureBorders + " profile-picture"
               }
               src={ this.state.profilePictureUrl }
-              onClick={ this.toggleForm }
+              onClick={ toggleFormCallback }
             />
             <UpdatePicture
               currentUser={ currentUser }
@@ -131,7 +139,7 @@ class Biography extends React.Component {
           <div className='profile-picture-cancel-container'>
             <button
               className='profile-picture-cancel main-button'
-              onClick={ this.toggleForm }
+              onClick={ toggleFormCallback }
             >
               Cancel
             </button>

@@ -24,8 +24,8 @@ $border-gray: #aaa;
 
 .new-knowtation-form-container input {
   text-align: left;
-  width: 410px;
-  padding: 10px 5px;
+  width: 406px;
+  padding: 10px 0 10px 15px;
   margin: 2px 0 10px 0;
   border: 1px solid $border-gray;
 }
@@ -43,5 +43,17 @@ $border-gray: #aaa;
 .new-knotation-thumbnail {
   float: right;
   width: 422px;
-  height: 236px;
+  height: 178px;
+}
+
+.new-knotation-form-title {
+  font-size: 24px;
+  display: block;
+  padding-bottom: 20px;
+}
+
+.upload-thumbnail-button {
+  float: right;
+  width: 418px !important;
+  margin-top: 20px;
 }

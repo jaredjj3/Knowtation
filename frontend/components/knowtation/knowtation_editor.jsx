@@ -1,6 +1,12 @@
 import React from 'react';
 
 class KnowtationEditor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+    };
+  }
 
   render() {
 

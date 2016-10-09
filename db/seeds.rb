@@ -53,7 +53,7 @@ NUM_KNOWTATIONS.times do
   Knowtation.create!(
     user_id: (rng.rand(User.first.id..User.last.id)),
     title: Faker::Book.title,
-    video_url: "https://youtu.be/#{SecureRandom.urlsafe_base64(12)}",
+    video_url: "https://youtu.be/#{SecureRandom.urlsafe_base64(11)}",
     thumbnail: File.open(IMAGES.sample)
   )
 end
