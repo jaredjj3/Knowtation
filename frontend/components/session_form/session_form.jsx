@@ -40,8 +40,10 @@ class SessionForm extends React.Component {
   }
 
   redirectIfLoggedIn() {
-    if (this.props.currentUser) {
-      hashHistory.push("/library");
+    const { currentUser } = this.props;
+
+    if (currentUser) {
+      hashHistory.push(`/profile/${currentUser.id}`);
     }
   }
 
