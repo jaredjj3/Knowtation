@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   validates :session_token, presence: true, uniqueness: true
   validates :username, length: { in: 3..26 }
 
-  has_attached_file :profile_picture, default_url: "cat.jpg"
+  has_attached_file :profile_picture, default_url: "default.jpg"
   validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\z/
 
   after_initialize :ensure_session_token

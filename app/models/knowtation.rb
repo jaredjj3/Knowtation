@@ -25,7 +25,13 @@ class Knowtation < ActiveRecord::Base
   belongs_to :user
   has_many :user_loops
 
-  has_attached_file :notation_image, default_url: "cat.jpg"
+  has_attached_file :notation_image, default_url: "default.jpg"
   validates_attachment_content_type :notation_image, content_type: /\Aimage\/.*\z/
 
+  has_attached_file :thumbnail, default_url: "default.jpg"
+  validates_attachment_content_type :thumbnail, content_type: /\Aimage\/.*\z/
+
+  def received_loops
+    self.user_loops.length
+  end
 end
