@@ -4,18 +4,23 @@ $main-blue-press: #0058e8;
 $border-gray: #aaa;
 
 .footer-bar {
-  padding-top: 20px;
+  padding-top: 10px;
   text-align: center;
 }
 
 .footer-bar .logo-icon{
-  margin: 50px;
+  margin: 30px;
   color: #eee;
   font-size: 128px;
 }
 
 .footer-bar .logo-icon:hover {
   cursor: default;
+}
+
+.footer-bar ul {
+  width: 450px;
+  margin: 0 auto;
 }
 
 .footer-links {
@@ -25,10 +30,6 @@ $border-gray: #aaa;
 .footer-links > li {
   padding: 20px 20px;
   float: left;
-}
-
-.footer-links > li:first-child {
-  margin-left: 300px;
 }
 
 .footer-links > li:hover {

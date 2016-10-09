@@ -9,27 +9,35 @@ import Footer from './footer/footer';
 import TeachFormContainer from './teach_form/teach_form_container';
 import ProfileContainer from './profile/profile_container';
 import NewKnowtationContainer from './knowtation/new_knowtation_container';
+import LibraryContainer from './knowtation/library_container';
 
 const Root = ({ store }) => {
 
   const _redirectIfLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (currentUser) {
-      replace('/');
+      replace('/library');
     }
   };
 
   const _redirectIfLoggedOut = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (!currentUser || currentUser.userType === 'teacher') {
-      replace('/');
+      replace('/library');
+    }
+  };
+
+  const _redirectToLibrary = (nextState, replace) => {
+    if (nextState.location.pathname === "/") {
+      replace('/library');
     }
   };
 
   return(
     <Provider store={ store }>
       <Router history={ hashHistory }>
-        <Route path="/" component={ App }>
+
+        <Route path="/" component={ App } onEnter={ _redirectToLibrary }>
 
           <Route
             path="login"
@@ -41,6 +49,11 @@ const Root = ({ store }) => {
             path="signup"
             component={ SessionFormContainer }
             onEnter={ _redirectIfLoggedIn }
+          />
+
+          <Route
+            path="library"
+            component={ LibraryContainer }
           />
 
           <Route

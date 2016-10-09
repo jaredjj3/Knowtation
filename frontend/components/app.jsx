@@ -9,8 +9,8 @@ const App = ({ children }) => (
     <header className='navigation-bar group'>
       <nav className='navigation-items group'>
         <div className='logo-container'>
-          <Link to="/"><h1 className='logo'>Knowtation</h1></Link>
-          <Link to="/"><Icon /></Link>
+          <Link to="/library"><h1 className='logo'>Knowtation</h1></Link>
+          <Link to="/library"><Icon /></Link>
         </div>
         <NavigationContainer className="navigation-container" />
       </nav>
@@ -20,7 +20,6 @@ const App = ({ children }) => (
 
     <Footer />
   </div>
-
-)
+);
 
 export default App;

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const Privacy = () => (
   <div className="footer-content">
     <br/>
-    <Link to="/">Back to home</Link>
+    <Link to="/library">Back to home</Link>
     <h1>Privacy Policy</h1>
     <p>
       This Privacy Policy governs the manner in which the website collects, uses, maintains and discloses information collected from users (each, a ‘User’) of the website (‘Site’). This privacy policy applies to the Site and all products and services offered by company.

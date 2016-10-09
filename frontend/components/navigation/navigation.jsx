@@ -56,7 +56,7 @@ class Navigation extends React.Component {
             </Link>
           </li>
           <li className="nth-nav-link">
-          <Link to="/">
+          <Link to="/library">
             <button onClick={ logout }>Log Out</button>
           </Link>
           </li>
