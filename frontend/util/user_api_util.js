@@ -16,3 +16,14 @@ export const updateUser = (user, success, error) => {
     error
   });
 };
+
+export const updateUserProfilePicture = (formData, id, callback) => {
+  $.ajax({
+    method: 'PATCH',
+    url: `api/users/${id}`,
+    contentType: false,
+    processData: false,
+    data: formData,
+    success: ( response => callback(response))
+  });
+};

@@ -4,10 +4,9 @@ class BiographyText extends React.Component {
   constructor(props) {
     super(props);
     const { currentUser, pageUser } = this.props;
-    const { country, bio } = pageUser;
+    const { bio } = pageUser;
     this.state = {
       editing: false,
-      country,
       bio
     };
 
@@ -19,11 +18,7 @@ class BiographyText extends React.Component {
   }
 
   handleEditClick(e) {
-    let { country, bio } = this.state;
-
-    if (country === null) {
-      country = "";
-    }
+    let { bio } = this.state;
 
     if (bio === null) {
       bio = "";
@@ -31,25 +26,23 @@ class BiographyText extends React.Component {
 
     this.setState({
       editing: true,
-      country,
       bio
     });
   }
 
   handleSaveClick(e) {
-    const { bio, country } = this.state;
+    const { bio } = this.state;
     const id = this.props.pageUser.id;
 
     const user = {
       bio,
-      country,
       id
     };
+
     this.props.updateUser(user);
     this.setState({
       editing: false,
-      bio,
-      country
+      bio
     });
   }
 
@@ -57,7 +50,6 @@ class BiographyText extends React.Component {
     const { currentUser } = this.props;
     this.setState({
       editing: false,
-      country: currentUser.country,
       bio: currentUser.bio
     });
   }
@@ -73,7 +65,7 @@ class BiographyText extends React.Component {
 
   render() {
     const { currentUser, pageUser } = this.props;
-    const { username, country, userType, bio } = pageUser;
+    const { username, userType, bio } = pageUser;
     const { pageIsCurrentUser } = this.state;
 
     return(
