@@ -11,12 +11,14 @@ NUM_KNOWTATIONS = 25;
 IMAGES = Dir['/Users/Jared/Desktop/Knowtation/app/assets/images/thumbnails/*'];
 
 User.destroy_all
+UserLoop.destroy_all
+Knowtation.destroy_all
+
 User.create!(username: 'jaredjj3', password: 'password')
 User.create!(username: 'guest_student', password: 'password')
 User.create!(username: 'guest_teacher', password: 'password', user_type: 'teacher')
 
 
-UserLoop.destroy_all
 rng = Random.new
 NUM_USERS.times do
   username = Faker::Internet.user_name + rng.rand(20).to_s
@@ -47,7 +49,6 @@ NUM_USERS.times do
   end
 end
 
-Knowtation.destroy_all
 NUM_KNOWTATIONS.times do
   Knowtation.create!(
     user_id: (rng.rand(User.first.id..User.last.id)),
