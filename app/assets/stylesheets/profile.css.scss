@@ -125,3 +125,49 @@ $border-gray: #aaa;
 .profile-edit-buttons-container > button {
   align-content: center;
 }
+
+.disabled-picture-form {
+  display: none;
+}
+
+.enabled-picture-form {
+  display: block;
+  width: 900px;
+  float: left;
+}
+
+.profile-picture-browse {
+  width: 198px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-top: 10px !important;
+}
+
+.profile-picture-cancel {
+  width: 198px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 10px 0;
+}
+
+.profile-picture-submit {
+  width: 198px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.profile-picture-cancel-container {
+  width: 900px
+}
+
+.profile-picture-submit-container {
+  width: 900px;
+}
+
+.profile-picture-browse-container {
+  width: 900px;
+}
+
+.profile-picture-selected-file {
+  margin-left: 35px;
+}

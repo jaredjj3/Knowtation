@@ -9,10 +9,20 @@ class Biography extends React.Component {
     super(props);
     this.state = {
       profilePictureFile: null,
-      profilePictureUrl: null
+      profilePictureUrl: null,
+      profilePictureBorders: 'gray-borders',
+      pictureFormClass: 'disabled-picture-form'
     };
     this.updateFile = this.updateFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
+    this.statePictureFileName = this.statePictureFileName.bind(this);
+    this.handleBrowseClick = this.handleBrowseClick.bind(this);
+  }
+
+  statePictureFileName() {
+    const { profilePictureFile } = this.state;
+    return profilePictureFile === null ? 'none' : profilePictureFile.name;
   }
 
   updateFile(e) {
@@ -21,7 +31,8 @@ class Biography extends React.Component {
     fileReader.onloadend = () => {
       this.setState({
         profilePictureFile: file,
-        profilePictureUrl: fileReader.result
+        profilePictureUrl: fileReader.result,
+        profilePictureBorders: 'yellow-borders'
       });
     };
 
@@ -32,12 +43,35 @@ class Biography extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('user[profile_picture]', this.state.profilePictureFile);
-    const logResponse = response => console.log(response);
     const id = this.props.pageUser.id;
-    updateUserProfilePicture(formData, id, logResponse);
+    const callback = () => {
+      this.setState({
+        profilePictureBorders: 'gray-borders'
+      });
+    };
+    updateUserProfilePicture(
+      formData,
+      id,
+      callback
+    );
   }
+
+  handleBrowseClick(e) {
+    document.getElementById('file-browse-input').click();
+  }
+
+  toggleForm(e) {
+    const { pictureFormClass } = this.state;
+    const klass = pictureFormClass === 'disabled-picture-form' ?
+      'enabled-picture-form' : 'disabled-picture-form';
+
+    this.setState({
+      pictureFormClass: klass
+    });
+  }
+
 
   componentWillReceiveProps(newProps) {
     this.setState({
@@ -53,24 +87,65 @@ class Biography extends React.Component {
         <div className="biography">
           <div className="profile-picture-container">
             <img
-              className="profile-picture"
+              id="profile-picture"
+              className={
+                this.state.profilePictureBorders + " profile-picture"
+              }
               src={ this.state.profilePictureUrl }
+              onClick={ this.toggleForm }
             />
             <UpdatePicture
               currentUser={ currentUser }
               pageUser={ pageUser }
             />
           </div>
-          <form onSubmit={ this.handleSubmit }>
-            <input type="file" onChange={ this.updateFile }/>
-            <input type="submit" />
-          </form>
           <BiographyText
             currentUser={ currentUser }
             pageUser={ pageUser }
             updateUser={ updateUser }
           />
         </div>
+        <form
+          id='profile-picture-form'
+          className={ this.state.pictureFormClass }
+        >
+          <input
+            id='file-browse-input'
+            className='hide-button'
+            type="file"
+            onChange={ this.updateFile }
+          />
+
+          <div className='profile-picture-browse-container'>
+            <button
+              className='profile-picture-browse main-button'
+              onClick={ this.handleBrowseClick }
+              >
+              Browse
+            </button>
+            <span className='profile-picture-selected-file'>
+              Selected file: { this.statePictureFileName() }
+            </span>
+          </div>
+
+          <div className='profile-picture-cancel-container'>
+            <button
+              className='profile-picture-cancel main-button'
+              onClick={ this.toggleForm }
+            >
+              Cancel
+            </button>
+          </div>
+
+          <div className='profile-picture-submit-container'>
+            <button
+              className='profile-picture-submit main-button'
+              onClick={ this.handleSubmit }
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     );
   }

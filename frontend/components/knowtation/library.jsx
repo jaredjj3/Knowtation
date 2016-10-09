@@ -7,15 +7,7 @@ class Library extends React.Component {
     return(
       <div className='library-container group'>
         <ul className='library-list'>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
+          <KnowtationIndex />
         </ul>
       </div>
     );

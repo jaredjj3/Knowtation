@@ -7,18 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 NUM_USERS = 10;
-NUM_KNOWTATIONS = 5;
+NUM_KNOWTATIONS = 27;
 
 User.destroy_all
 User.create!(username: 'jaredjj3', password: 'password')
 User.create!(username: 'guest_student', password: 'password')
-User.create!(username: 'guest_teacher', password: 'password')
+User.create!(username: 'guest_teacher', password: 'password', user_type: 'teacher')
 
 
 UserLoop.destroy_all
 rng = Random.new
 NUM_USERS.times do
-  username = Faker::Internet.user_name + "_test"
+  username = Faker::Internet.user_name + rng.rand(20).to_s
   password = Faker::Internet.password
   user_type = rng.rand(99) < 9 ?  'teacher' : 'student'
   bio = rng.rand(99) < 75 ? Faker::Hacker.say_something_smart : ""
@@ -39,4 +39,13 @@ NUM_USERS.times do
     user_loop.created_at -= rng.rand(time_ago)
     user_loop.save!
   end
+end
+
+Knowtation.destroy_all
+NUM_KNOWTATIONS.times do
+  Knowtation.create!(
+    user_id: (rng.rand(NUM_USERS + 3) + 1),
+    title: Faker::Book.title,
+    video_url: "https://youtu.be/#{SecureRandom.urlsafe_base64(12)}"
+  )
 end

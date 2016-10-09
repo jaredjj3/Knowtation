@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009121943) do
+ActiveRecord::Schema.define(version: 20161009181552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20161009121943) do
     t.string   "notation_image_content_type"
     t.integer  "notation_image_file_size"
     t.datetime "notation_image_updated_at"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
   end
 
   add_index "knowtations", ["scroll_instructions"], name: "index_knowtations_on_scroll_instructions", unique: true, using: :btree

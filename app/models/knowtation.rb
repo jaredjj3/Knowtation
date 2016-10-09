@@ -13,6 +13,10 @@
 #  notation_image_content_type :string
 #  notation_image_file_size    :integer
 #  notation_image_updated_at   :datetime
+#  thumbnail_file_name         :string
+#  thumbnail_content_type      :string
+#  thumbnail_file_size         :integer
+#  thumbnail_updated_at        :datetime
 #
 
 class Knowtation < ActiveRecord::Base
