@@ -1,0 +1,33 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
+.knowtation-editor-container {
+  padding-top: 40px;
+  width: 900px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.editor-video-container {
+  float: left;
+  width: 420px;
+  height: 236px;
+  border: 1px solid $border-gray;
+}
+
+.knowtation-editor-tools {
+  float: right;
+  width: 420px;
+  height: 236px;
+  border: 1px solid red;
+}
+
+.knowtation-editor-canvas {
+  margin-top: 45px;
+  width: 898px;
+  height: 238px;
+  border: 1px solid red;
+}

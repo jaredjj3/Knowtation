@@ -1,0 +1,47 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
+.new-knowtation-container {
+  padding-top: 100px;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.new-knowtation-form-container {
+  width: 900px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  border-bottom: 1px solid $border-gray
+}
+
+.new-knowtation-form-image {
+  float: left;
+  text-align: center;
+  width: 420px;
+}
+
+.new-knowtation-form-container input {
+  text-align: left;
+  width: 410px;
+  padding: 10px 5px;
+  margin: 2px 0 10px 0;
+  border: 1px solid $border-gray;
+}
+
+.new-knowtation-form-container .main-button {
+  width: inherit;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.new-knowtation-form-container .main-button:last-child {
+  margin-bottom: 0;
+}
+
+.new-knotation-thumbnail {
+  float: right;
+  width: 422px;
+  height: 236px;
+}

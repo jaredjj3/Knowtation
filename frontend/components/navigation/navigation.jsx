@@ -33,7 +33,7 @@ class Navigation extends React.Component {
         linkPath = '/teach';
         buttonText = 'Teach';
       } else if (currentUser.userType === 'teacher') {
-        linkPath = 'knowtation/upload';
+        linkPath = 'knowtation/new';
         buttonText = 'Upload';
       }
 

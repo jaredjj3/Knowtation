@@ -8,6 +8,7 @@ import SessionFormContainer from './session_form/session_form_container';
 import Footer from './footer/footer';
 import TeachFormContainer from './teach_form/teach_form_container';
 import ProfileContainer from './profile/profile_container';
+import NewKnowtationContainer from './knowtation/new_knowtation_container';
 
 const Root = ({ store }) => {
 
@@ -61,6 +62,11 @@ const Root = ({ store }) => {
           <Route
             path="profile/:id"
             component={ ProfileContainer }
+          />
+
+          <Route
+            path="knowtation/new"
+            component={ NewKnowtationContainer }
           />
 
         </Route>
