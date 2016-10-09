@@ -5,7 +5,6 @@ class Library extends React.Component {
 
   componentDidMount() {
     if (this.props.knowtations.length < 24) {
-      console.log('ouch!');
       this.props.requestAllKnowtations();
     }
   }

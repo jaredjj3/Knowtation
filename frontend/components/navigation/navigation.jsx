@@ -1,91 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
+import NotLoggedInButtons from './not_logged_in_buttons';
+import LoggedInButtons from './logged_in_buttons';
 
 class Navigation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleOnClick = this.handleOnClick.bind(this);
-  }
-
-  handleOnClick(modalOn, modalName) {
-    const clearErrors = () => this.props.clearErrors;
-    const toggleModal = () => this.props.toggleModal(modalName);
-    return () => {
-      clearErrors();
-      if (!modalOn) {
-        toggleModal();
-      }
-    };
-  }
 
   render() {
-    const {
-      currentUser,
-      logout,
-      sessionModalOn,
-      teachModalOn
-     } = this.props;
+    const { currentUser } = this.props;
 
     if (currentUser) {
-      // Links the users see when they are logged in
-      let linkPath, buttonText;
-      if (currentUser.userType === 'student') {
-        buttonText = 'Teach';
-        linkPath = '/teach'
-      } else if (currentUser.userType === 'teacher') {
-        linkPath = 'knowtation/new';
-        buttonText = 'Upload';
-      }
-
-      return (
-        <ul className="navigation-links">
-          <li>
-            <Link
-              className="main-button"
-              to={ linkPath }
-              onClick={ this.handleOnClick(teachModalOn, 'teach') }
-              >
-              { buttonText }
-            </Link>
-          </li>
-          <li>
-            <Link
-              to={ "/profile/" + currentUser.id }
-            >
-              { currentUser.username }
-            </Link>
-          </li>
-          <li className="nth-nav-link">
-          <Link to="/library">
-            <button onClick={ logout }>Log Out</button>
-          </Link>
-          </li>
-        </ul>
-      );
+      return <LoggedInButtons props={ this.props }/>;
     } else {
-
-      // Links the users see when they are not logged in
-      return (
-        <ul className="navigation-links">
-          <li>
-            <Link
-              className="main-button"
-              to="/signup"
-              onClick={ this.handleOnClick(sessionModalOn, 'session') }
-            >
-            Sign up
-            </Link>
-          </li>
-          <li className="nth-nav-link">
-            <Link
-              to="/login"
-              onClick={ this.handleOnClick(sessionModalOn, 'session') }
-            >
-              Log In
-            </Link>
-          </li>
-        </ul>
-      );
+      return <NotLoggedInButtons props={ this.props }/>;
     }
   }
 }

@@ -3,7 +3,6 @@ import NewKnowtationForm from './new_knowtation_form';
 
 class Knowtation extends React.Component {
 
-
   render() {
 
     return(

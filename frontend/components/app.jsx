@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import NavigationContainer from './navigation/navigation_container';
 import Footer from './footer/footer';
 import Icon from './icon';
+import SessionFormContainer from './session_form/session_form_container';
 
 const App = ({ children }) => (
   <div className='application-container'>
@@ -15,6 +16,9 @@ const App = ({ children }) => (
         <NavigationContainer className="navigation-container" />
       </nav>
     </header>
+
+    <SessionFormContainer />
+
 
     { children }
 

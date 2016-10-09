@@ -41,15 +41,8 @@ const Root = ({ store }) => {
         <Route path="/" component={ App } onEnter={ _redirectToLibrary }>
 
           <Route
-            path="login"
-            component={ SessionFormContainer }
-            onEnter={ _redirectIfLoggedIn }
-          />
-
-          <Route
-            path="signup"
-            component={ SessionFormContainer }
-            onEnter={ _redirectIfLoggedIn }
+            path="faq"
+            component={ Faq }
           />
 
           <Route
@@ -58,29 +51,13 @@ const Root = ({ store }) => {
           />
 
           <Route
-            path="faq"
-            component={ Faq }
-          />
-
-          <Route
             path="privacy"
             component={ Privacy }
           />
 
           <Route
-            path="teach"
-            component={ TeachFormContainer }
-            onEnter={ _redirectIfLoggedOut }
-          />
-
-          <Route
             path="profile/:id"
             component={ ProfileContainer }
-          />
-
-          <Route
-            path="knowtation/new"
-            component={ NewKnowtationContainer }
           />
 
           <Route

@@ -1,0 +1,26 @@
+<Route
+  path="login"
+  component={ SessionFormContainer }
+  onEnter={ _redirectIfLoggedIn }
+/>
+
+<Route
+  path="signup"
+  component={ SessionFormContainer }
+  onEnter={ _redirectIfLoggedIn }
+/>
+
+
+
+
+<Route
+  path="teach"
+  component={ TeachFormContainer }
+  onEnter={ _redirectIfLoggedOut }
+/>
+
+
+<Route
+  path="knowtation/new"
+  component={ NewKnowtationContainer }
+/>

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
-import SessionErrorItem from '../error/session_error_item';
-import PasswordErrorItem from '../error/password_error_item';
-import UsernameErrorItem from '../error/username_error_item';
 import Modal from 'react-modal';
 import Icon from '../icon';
+import style from '../../util/modal_style';
+import ErrorItems from './error_items';
 
 
 class SessionForm extends React.Component {
@@ -14,24 +13,95 @@ class SessionForm extends React.Component {
       username: "",
       password: ""
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
+    this.handleLinkClick = this.handleLinkClick.bind(this);
+
+    this._submitText = this._submitText.bind(this);
+    this._guestStudentLogin = this._guestStudentLogin.bind(this);
+    this._guestTeacherLogin = this._guestTeacherLogin.bind(this);
+    this._redirectMessage = this._redirectMessage.bind(this);
   }
 
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
+  }
+
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
+  render() {
+    const {
+      sessionErrors,
+      usernameErrors,
+      passwordErrors,
+      loginModalOn,
+      signupModalOn
+    } = this.props;
+
+    return (
+      <Modal
+        className="form-container group"
+        isOpen={ loginModalOn || signupModalOn }
+        onRequestClose={ this.handleClickOut }
+        style={ style }
+      >
+        <Icon />
+        <h1 className="logo">Knowtation</h1>
+        <form onSubmit={ this.handleSubmit } className="session-form">
+          <ErrorItems errors={ sessionErrors }/>
+          <ErrorItems errors={ usernameErrors }/>
+          <input
+            className="username form-input-field"
+            onChange={ this.handleOnChange("username") }
+            type="text"
+            value={ this.state.username }
+            placeholder="username"
+          />
+          <ErrorItems errors={ passwordErrors }/>
+          <input
+            className="password form-input-field"
+            onChange={ this.handleOnChange("password") }
+            type="password"
+            value={ this.state.password }
+            placeholder="password"
+          />
+        <input
+          className="form-submit"
+          type="submit"
+          value={ this._submitText() }
+        />
+        </form>
+        { this._guestStudentLogin() }
+        { this._guestTeacherLogin() }
+        { this._redirectMessage() }
+      </Modal>
+    );
+  }
+
+  // event handlers
+
   handleClickOut() {
-    if (this.props.modalOn) {
-      this.props.toggleModal('session');
+    const { loginModalOn, signupModalOn } = this.props;
+
+    if (loginModalOn) {
+      this.props.toggleModal('login');
     }
-    hashHistory.goBack();
+
+    if (signupModalOn) {
+      this.props.toggleModal('signup');
+    }
   }
 
   loginAsGuest(guestType) {
     const self = this;
 
     return ( e => {
-      self.props.processForm({ user: {
+      self.props.login({ user: {
         username: `guest_${guestType}`,
         password: 'password'
       }});
@@ -40,20 +110,20 @@ class SessionForm extends React.Component {
   }
 
   redirectIfLoggedIn() {
-    const { currentUser } = this.props;
+    const { currentUser, loginModalOn, signupModalOn } = this.props;
 
     if (currentUser) {
+
+      if (loginModalOn) {
+        this.props.toggleModal('login');
+      }
+
+      if (signupModalOn) {
+        this.props.toggleModal('signup');
+      }
+
       hashHistory.push(`/profile/${currentUser.id}`);
     }
-  }
-
-  componentDidUpdate() {
-    this.redirectIfLoggedIn();
-  }
-
-  // clear errors if leaving the login screen
-  componentWillUnmount() {
-    this.props.clearErrors();
   }
 
   handleOnChange(property) {
@@ -63,43 +133,59 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
+    const { clearErrors, login, signup, formType } = this.props;
+    const callback = formType === 'login' ? login : signup;
+    const user = { user: this.state };
     e.preventDefault();
-    const user = this.state;
-    this.props.processForm({ user });
+    clearErrors();
+    callback(user);
+    this.redirectIfLoggedIn();
   }
 
-  render() {
-    const {
-      clearErrors,
-      formType,
-      sessionErrors,
-      usernameErrors,
-      passwordErrors,
-      modalOn
-    } = this.props;
+  handleLinkClick() {
+    const { toggleModal, clearErrors } = this.props;
+    clearErrors();
+    toggleModal('login');
+    toggleModal('signup');
+  }
 
-    const usernameErrorsItems = usernameErrors.map((usernameError, idx) => (
-      <UsernameErrorItem key={ idx } usernameError={ usernameError }/>
-    ));
+  // private
 
-    const passwordErrorsItems = passwordErrors.map((passwordError, idx) => (
-      <PasswordErrorItem key={ idx } passwordError={ passwordError }/>
-    ));
+  _redirectMessage() {
+    const { formType, clearErrors } = this.props;
 
-    const sessionErrorsItems = sessionErrors.map((sessionError, idx) => (
-      <SessionErrorItem key={ idx } sessionError={ sessionError }/>
-    ));
-
-    let redirectMessage, submitText, guestStudentLogin, guestTeacherLogin;
     if (formType === 'login') {
-      redirectMessage = (
+      return (
         <div className="form-redirect-container">
           <p>Don't have an account?</p>
-          <Link onClick={ clearErrors } to="/signup">Sign up</Link>
+          <span onClick={ this.handleLinkClick }>Sign Up</span>
         </div>
       );
-      submitText = 'Login';
-      guestStudentLogin = (
+    } else if (formType === 'signup') {
+      return (
+        <div className="form-redirect-container">
+          <p>Already have an account?</p>
+          <span onClick={ this.handleLinkClick }>Log In</span>
+        </div>
+      );
+    }
+  }
+
+  _submitText() {
+    const { formType } = this.props;
+
+    if (formType === 'login') {
+      return 'Log In';
+    } else if (formType === 'signup') {
+      return 'Sign Up';
+    }
+  }
+
+  _guestStudentLogin() {
+    const { formType } = this.props;
+
+    if (formType === 'login') {
+      return (
         <input
           className="form-submit"
           onClick={ this.loginAsGuest('student') }
@@ -107,7 +193,16 @@ class SessionForm extends React.Component {
           value="Guest Student Login"
         />
       );
-      guestTeacherLogin = (
+    } else if (formType === 'signup') {
+      return "";
+    }
+  }
+
+  _guestTeacherLogin() {
+    const { formType } = this.props;
+
+    if (formType === 'login') {
+      return (
         <input
           className="form-submit"
           onClick={ this.loginAsGuest('teacher') }
@@ -116,67 +211,8 @@ class SessionForm extends React.Component {
         />
       );
     } else if (formType === 'signup') {
-      redirectMessage = (
-        <div className="form-redirect-container">
-          <p>Already have an account?</p>
-          <Link onClick={ clearErrors } to="/login">Login</Link>
-        </div>
-      );
-      submitText = 'Signup';
-      guestStudentLogin = "";
-      guestTeacherLogin = "";
+      return "";
     }
-
-    const style = {
-      overlay : {
-        position          : 'fixed',
-        top               : 0,
-        left              : 0,
-        right             : 0,
-        bottom            : 0,
-        zIndex            : 10,
-        backgroundColor   : 'rgba(150, 150, 150, 0.80)'
-      }
-    };
-
-    return (
-      <Modal
-        className="form-container group"
-        isOpen={ modalOn }
-        onRequestClose={ this.handleClickOut }
-        style={ style }
-      >
-        <Icon />
-        <h1 className="logo">Knowtation</h1>
-        <form onSubmit={ this.handleSubmit } className="session-form">
-          <ul className="errors">
-            { sessionErrorsItems }
-            { usernameErrorsItems }
-          </ul>
-          <input
-            className="username form-input-field"
-            onChange={ this.handleOnChange("username") }
-            type="text"
-            value={ this.state.username }
-            placeholder="username"
-          />
-        <ul className="errors">
-            { passwordErrorsItems }
-          </ul>
-          <input
-            className="password form-input-field"
-            onChange={ this.handleOnChange("password") }
-            type="password"
-            value={ this.state.password }
-            placeholder="password"
-          />
-        <input className="form-submit" type="submit" value={ submitText } />
-        { guestStudentLogin }
-        { guestTeacherLogin }
-        </form>
-        { redirectMessage }
-      </Modal>
-    );
   }
 
 }

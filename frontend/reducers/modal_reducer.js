@@ -2,8 +2,10 @@ import { TOGGLE_MODAL } from '../actions/modal_actions';
 import * as _ from 'lodash';
 
 const _nullModals = Object.freeze({
-  sessionModalOn: false,
-  teachModalOn: false
+  loginModalOn: false,
+  signupModalOn: false,
+  teachModalOn: false,
+  uploadModalOn: false
 });
 
 const ModalReducer = (state = _nullModals, action) => {
