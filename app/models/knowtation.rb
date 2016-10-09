@@ -2,13 +2,17 @@
 #
 # Table name: knowtations
 #
-#  id                  :integer          not null, primary key
-#  title               :string           not null
-#  user_id             :integer          not null
-#  scroll_instructions :text
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  video_url           :text
+#  id                          :integer          not null, primary key
+#  title                       :string           not null
+#  user_id                     :integer          not null
+#  scroll_instructions         :text
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  video_url                   :text
+#  notation_image_file_name    :string
+#  notation_image_content_type :string
+#  notation_image_file_size    :integer
+#  notation_image_updated_at   :datetime
 #
 
 class Knowtation < ActiveRecord::Base
@@ -16,5 +20,8 @@ class Knowtation < ActiveRecord::Base
 
   belongs_to :user
   has_many :user_loops
+
+  has_attached_file :notation_image, default_url: "cat.jpg"
+  validates_attachment_content_type :notation_image, content_type: /\Aimage\/.*\z/
 
 end

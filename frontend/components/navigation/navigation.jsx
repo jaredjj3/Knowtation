@@ -30,8 +30,8 @@ class Navigation extends React.Component {
       // Links the users see when they are logged in
       let linkPath, buttonText;
       if (currentUser.userType === 'student') {
-        linkPath = '/teach';
         buttonText = 'Teach';
+        linkPath = '/teach'
       } else if (currentUser.userType === 'teacher') {
         linkPath = 'knowtation/new';
         buttonText = 'Upload';

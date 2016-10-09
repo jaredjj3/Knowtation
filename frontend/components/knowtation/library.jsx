@@ -16,9 +16,6 @@ class Library extends React.Component {
           <li>I AM THUMBNAIL</li>
           <li>I AM THUMBNAIL</li>
           <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
-          <li>I AM THUMBNAIL</li>
         </ul>
       </div>
     );

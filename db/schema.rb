@@ -11,18 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008215743) do
+ActiveRecord::Schema.define(version: 20161009121943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "knowtations", force: :cascade do |t|
-    t.string   "title",               null: false
-    t.integer  "user_id",             null: false
+    t.string   "title",                       null: false
+    t.integer  "user_id",                     null: false
     t.text     "scroll_instructions"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.text     "video_url"
+    t.string   "notation_image_file_name"
+    t.string   "notation_image_content_type"
+    t.integer  "notation_image_file_size"
+    t.datetime "notation_image_updated_at"
   end
 
   add_index "knowtations", ["scroll_instructions"], name: "index_knowtations_on_scroll_instructions", unique: true, using: :btree
@@ -50,13 +54,17 @@ ActiveRecord::Schema.define(version: 20161008215743) do
   add_index "user_loops", ["user_id"], name: "index_user_loops_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                            null: false
-    t.string   "user_type",       default: "student", null: false
-    t.string   "password_digest",                     null: false
-    t.string   "session_token",                       null: false
+    t.string   "username",                                         null: false
+    t.string   "user_type",                    default: "student", null: false
+    t.string   "password_digest",                                  null: false
+    t.string   "session_token",                                    null: false
     t.text     "bio"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "profile_picture_file_name"
+    t.string   "profile_picture_content_type"
+    t.integer  "profile_picture_file_size"
+    t.datetime "profile_picture_updated_at"
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree

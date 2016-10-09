@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
+gem "paperclip", "~> 5.0.0.beta1"
+gem 'figaro'
+gem 'aws-sdk', '>= 2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets

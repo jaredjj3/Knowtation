@@ -4,10 +4,10 @@ import * as _ from 'lodash';
 const _nullUser = Object.freeze({
   username: null,
   userType: null,
-  country: null,
   bio: null,
   id: null,
-  givenLoops: null
+  givenLoops: null,
+  profilePictureUrl: null
 });
 
 const UserReducer = (state = _nullUser, action) => {
