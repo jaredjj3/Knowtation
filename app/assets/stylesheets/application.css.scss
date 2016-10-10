@@ -109,6 +109,10 @@
    display: none;
  }
 
+ .form-submit:hover {
+   cursor: pointer;
+ }
+
 // For mobile
 input, textarea {
   -webkit-appearance: none;

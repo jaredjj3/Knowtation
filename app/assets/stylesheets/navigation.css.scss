@@ -10,6 +10,7 @@ $border-gray: #aaa;
   position: fixed;
   width: 100%;
   z-index: 2;
+  padding-top: 20px;
 }
 
 .navigation-items {
@@ -69,6 +70,7 @@ header img {
 
 .navigation-links > li:hover {
   color: $main-blue-hover;
+  cursor: pointer;
 }
 
 .nth-nav-link {

@@ -3,7 +3,7 @@ import { Link, hashHistory } from 'react-router';
 import Modal from 'react-modal';
 import Icon from '../icon';
 import style from '../../util/modal_style';
-import ErrorItems from './error_items';
+import ErrorItems from '../errors/error_items';
 
 
 class SessionForm extends React.Component {
@@ -158,14 +158,24 @@ class SessionForm extends React.Component {
       return (
         <div className="form-redirect-container">
           <p>Don't have an account?</p>
-          <span onClick={ this.handleLinkClick }>Sign Up</span>
+          <span
+            className='session-form-link'
+            onClick={ this.handleLinkClick }
+          >
+            Sign Up
+          </span>
         </div>
       );
     } else if (formType === 'signup') {
       return (
         <div className="form-redirect-container">
           <p>Already have an account?</p>
-          <span onClick={ this.handleLinkClick }>Log In</span>
+          <span
+            className='session-form-link'
+            onClick={ this.handleLinkClick }
+          >
+            Log In
+          </span>
         </div>
       );
     }

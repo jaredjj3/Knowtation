@@ -98,3 +98,13 @@ $border-gray: #aaa;
   font-size: 12px;
   color: red;
 }
+
+.session-form-link {
+  font-weight: bold;
+  color: $main-blue;
+}
+
+.session-form-link:hover {
+  cursor: pointer;
+  color: $main-blue-hover;
+}

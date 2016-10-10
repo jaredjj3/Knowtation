@@ -5,6 +5,7 @@ import Footer from './footer/footer';
 import Icon from './icon';
 import SessionFormContainer from './session_form/session_form_container';
 import TeachFormContainer from './teach_form/teach_form_container';
+import UploadFormContainer from './upload_form/upload_form_container';
 
 const App = ({ children }) => (
 
@@ -22,6 +23,7 @@ const App = ({ children }) => (
 
     <SessionFormContainer />
     <TeachFormContainer />
+    <UploadFormContainer />
 
     { children }
 
