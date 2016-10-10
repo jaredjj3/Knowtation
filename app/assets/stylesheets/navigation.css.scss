@@ -52,10 +52,18 @@ header img {
   margin: 17px 0 0 20px;
 }
 
-.navigation-links {
-  float: right;
-  margin: 19px 15px 19px 0;
+@media (min-width: 900px) {
+  .navigation-links {
+    float: right;
+    margin: 19px 15px 19px 0;
+  }
+}
 
+@media (max-width: 900px) {
+  .navigation-links {
+    float: left;
+    margin: 19px 15px 19px 35px;
+  }
 }
 
 .navigation-links > li {
