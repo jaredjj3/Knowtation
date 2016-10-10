@@ -31,7 +31,7 @@ NUM_USERS.times do
     password: password,
     user_type: user_type,
     bio: bio,
-    profile_picture: File.open(IMAGES.sample)
+    profile_picture: File.open(asset_path(IMAGES.sample))
   )
 
   time_ago = rng.rand(604_800) # number of seconds in a week
@@ -54,6 +54,6 @@ NUM_KNOWTATIONS.times do
     user_id: (rng.rand(User.first.id..User.last.id)),
     title: Faker::Book.title,
     video_url: "https://youtu.be/#{SecureRandom.urlsafe_base64(11)}",
-    thumbnail: File.open(IMAGES.sample)
+    thumbnail: File.open(asset_path(IMAGES.sample))
   )
 end
