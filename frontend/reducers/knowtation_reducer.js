@@ -1,11 +1,18 @@
-import { RECEIVE_ALL_KNOWTATIONS } from '../actions/knowtation_actions';
+import { RECEIVE_KNOWTATION } from '../actions/knowtation_actions';
+import * as _ from 'lodash';
 
-const KnowtationReducer = (state = [], action) => {
+const _nullKnowtation = Object.freeze({
+
+});
+
+const KnowtationReducer = (state = _nullKnowtation, action) => {
   Object.freeze(state);
+  const newState = _.merge({}, state);
 
   switch(action.type) {
-    case RECEIVE_ALL_KNOWTATIONS:
-      return action.knowtations;
+    case RECEIVE_KNOWTATION:
+      _.merge(newState, action.knowtation);
+      return newState;
 
     default:
       return state;

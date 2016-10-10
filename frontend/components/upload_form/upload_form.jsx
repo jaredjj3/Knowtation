@@ -5,7 +5,6 @@ import { Link, hashHistory } from 'react-router';
 import ErrorItems from '../errors/error_items';
 import style from '../../util/modal_style';
 import { randomYoutubeUrl, randomTitle } from '../../util/upload_random_seeds';
-import { createKnowtation } from '../../util/knowtation_api_util';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -23,6 +22,7 @@ class UploadForm extends React.Component {
 
     this.updateFile = this.updateFile.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
+    this.handleUploadClick = this.handleUploadClick.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handlePopulateClick = this.handlePopulateClick.bind(this);
     this._uploadVideoDisplay = this._uploadVideoDisplay.bind(this);
@@ -33,7 +33,6 @@ class UploadForm extends React.Component {
 
   componentDidUpdate() {
     if (this.state.submitDisabled && this._fieldsAreFilled()) {
-      console.log("ouch");
       this.setState({ submitDisabled: false });
     }
   }
@@ -112,21 +111,20 @@ class UploadForm extends React.Component {
   // event handlers
 
   handleUploadClick(e) {
-    const formData = new FormData();
-    formData.append('user[profile_picture]', this.state.profilePictureFile);
-    const id = this.props.pageUser.id;
-    const callback = () => {
-      this.setState({
-        profilePictureBorders: 'gray-borders'
-      });
-      this.handleClickOut(e); // toggles form off
+    const {
+      title,
+      checkedVideoUrl,
+      thumbnailFile,
+      notationFile
+    } = this.state;
 
-    };
-    createKnowtation(
-      formData,
-      id,
-      callback
-    );
+    const formData = new FormData();
+    formData.append('knowtation[notation_image]', notationFile);
+    formData.append('knowtation[thumbnail_image]', thumbnailFile);
+    formData.append('knowtation[title]', title);
+    formData.append('knowtation[video_url]', checkedVideoUrl);
+
+    this.props.createKnowtation(formData);
   }
 
   handleClick(property) {
@@ -137,7 +135,7 @@ class UploadForm extends React.Component {
   }
 
   handleClickOut(e) {
-    _clearStateAndToggleModal()
+    this._clearStateAndToggleModal();
   }
 
   handleTitleChange(e) {
