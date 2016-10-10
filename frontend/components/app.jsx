@@ -4,9 +4,12 @@ import NavigationContainer from './navigation/navigation_container';
 import Footer from './footer/footer';
 import Icon from './icon';
 import SessionFormContainer from './session_form/session_form_container';
+import TeachFormContainer from './teach_form/teach_form_container';
 
 const App = ({ children }) => (
+
   <div className='application-container'>
+
     <header className='navigation-bar group'>
       <nav className='navigation-items group'>
         <div className='logo-container'>
@@ -18,7 +21,7 @@ const App = ({ children }) => (
     </header>
 
     <SessionFormContainer />
-
+    <TeachFormContainer />
 
     { children }
 
