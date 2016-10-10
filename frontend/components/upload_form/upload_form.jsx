@@ -120,7 +120,7 @@ class UploadForm extends React.Component {
 
     const formData = new FormData();
     formData.append('knowtation[notation_image]', notationFile);
-    formData.append('knowtation[thumbnail_image]', thumbnailFile);
+    formData.append('knowtation[thumbnail]', thumbnailFile);
     formData.append('knowtation[title]', title);
     formData.append('knowtation[video_url]', checkedVideoUrl);
 

@@ -38,7 +38,7 @@ class Api::KnowtationsController < ApplicationController
       :scroll_instructions,
       :video_url,
       :notation_image,
-      :thumbnail_image
+      :thumbnail
     )
   end
 end

@@ -41,10 +41,9 @@ const KnowtationMiddleware = ({ getState, dispatch}) => next => action => {
         if (getState().modal.uploadModalOn) {
           dispatch(toggleModal('upload'));
         }
-        console.log(knowtation);
         dispatch(receiveKnowtation(knowtation));
       };
-      createKnowtation(onSuccess, onError);
+      createKnowtation(action.formData, onSuccess, onError);
       return next(action);
 
     default:

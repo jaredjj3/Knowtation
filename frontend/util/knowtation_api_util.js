@@ -22,7 +22,7 @@ export const createKnowtation = (formData, callback, error) => {
   $.ajax({
     method: 'POST',
     url: 'api/knowtations',
-    data: { formData },
+    data: formData,
     contentType: false,
     processData: false,
     success: (response => callback(response)),
