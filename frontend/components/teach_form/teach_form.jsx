@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { Link, hashHistory } from 'react-router';
-import TeacherErrorItem from '../error/teacher_error_item';
 import Icon from '../icon';
 import style from '../../util/modal_style';
 
@@ -37,9 +36,9 @@ class TeachForm extends React.Component {
   render() {
     const { teachModalOn, teacherErrors } = this.props;
 
-    const teacherErrorItems = teacherErrors.map((teacherError, idx) => (
-      <TeacherErrorItem key={ idx } teacherError={ teacherError }/>
-    ));
+    // const teacherErrorItems = teacherErrors.map((teacherError, idx) => (
+    //   <TeacherErrorItem key={ idx } teacherError={ teacherError }/>
+    // ));
 
     return(
       <Modal
@@ -52,7 +51,6 @@ class TeachForm extends React.Component {
         <h1 className="logo">Knowtation</h1>
           <form onSubmit={ this.handleSubmit }>
             <ul className="errors">
-              { teacherErrorItems }
             </ul>
             <textarea
               className="bio form-input-field"
