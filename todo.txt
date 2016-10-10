@@ -4,3 +4,5 @@
 - fix routes so they don't blank out the content behind
 - CLEAR USER AND REQUEST USER TO DO ROUTER
 - user gets requested twice
+- for youtube videos autoplay=1&showinfo=0&controls=0
+- kaminari for pagination in fullstack repo

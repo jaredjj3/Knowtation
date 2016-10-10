@@ -1,7 +1,7 @@
 class Api::KnowtationsController < ApplicationController
 
   def index
-    @knowtations = Knowtation.all
+    @knowtations = Knowtation.includes(:user_loops, :user).all
     render :index
   end
 

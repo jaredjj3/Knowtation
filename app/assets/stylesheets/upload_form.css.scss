@@ -4,15 +4,10 @@ $main-blue-press: #0058e8;
 $border-gray: #aaa;
 
 .upload-form-container {
-  width: 900px;
-}
-
-.form-container * {
-  opacity: 0.7;
+  width: 600px;
 }
 
 .logo-container {
-  background: salmon;
   text-align: center;
 }
 
@@ -21,28 +16,67 @@ $border-gray: #aaa;
 }
 
 .form-input-container {
-  background: orchid;
-  width: 430px;
+  width: inherit;
   float: left;
 }
 
 .form-input-container input {
-  width: 400px;
+  width: 580px;
   margin: 10px 0;
 }
 
+.form-input-container button {
+
+}
+
 .thumbnail-container {
-  border: 1px solid red;
-  width: 400px;
+  width: inherit
+}
+
+.thumbnail-container .upload-knowtation-video {
+  float: left;
+}
+
+.thumbnail-container img {
   float: right;
+  width: 300px;
+}
+
+.thumbnail-container img,
+.thumbnail-container .upload-knowtation-video {
+  width: 290px;
+  height: 150px;
+  border: 1px solid $border-gray;
+}
+
+.thumbnail-container button {
+  float: right;
+  width: 150px;
 }
 
 .notation-container {
-  border: 1px solid blue;
+  width: inherit;
+  margin-top: 10px;
   float: left;
 }
 
 .notation-container img {
   float: left;
-  width: 860px;
+  width: inherit;
+  border: 1px solid $border-gray;
+}
+
+.notation-container img:hover,
+.thumbnail-container img:hover {
+  cursor: pointer;
+  -webkit-filter: brightness(50%);
+}
+
+.notation-container button {
+  width: 150px;
+}
+
+.upload-button-container {
+  width: inherit;
+  text-align: center;
 }
