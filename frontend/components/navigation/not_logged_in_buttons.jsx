@@ -12,18 +12,17 @@ export default ({ props }) => {
 
   return (
     <ul className="navigation-links">
-      <li>
+      <li className="nth-nav-link">
         <button
           className="main-button"
           onClick={ handleClick('signup') }
         >
         Sign up
       </button>
-      </li>
+    </li>
       <li
-        className="nth-nav-link"
-        to="/login"
         onClick={ handleClick('login') }
+        className='navigation-text'
       >
         Log In
       </li>

@@ -60,7 +60,7 @@ header img {
 .navigation-links > li {
   float: left;
   margin: 0 auto;
-  padding: 3px 20px 3px 20px;
+  padding: 0 20px ;
 }
 
 .navigation-links > li:hover {
@@ -68,5 +68,10 @@ header img {
 }
 
 .nth-nav-link {
-  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.navigation-text {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
 }

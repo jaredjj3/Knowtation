@@ -35,7 +35,7 @@ export default ({ props }) => {
 
   return (
     <ul className="navigation-links">
-      <li>
+      <li className="nth-nav-link">
         { teachOrUpload() }
       </li>
       <li>
@@ -45,7 +45,7 @@ export default ({ props }) => {
           { currentUser.username }
         </Link>
       </li>
-      <li className="nth-nav-link">
+      <li>
         <Link to="/library" onClick={ logout }>Log Out</Link>
       </li>
     </ul>
