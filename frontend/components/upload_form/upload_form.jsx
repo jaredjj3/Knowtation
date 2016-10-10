@@ -19,11 +19,13 @@ class UploadForm extends React.Component {
       notationUrl: null
     };
 
-    this._uploadIcon = this._uploadIcon.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handlePopulateClick = this.handlePopulateClick.bind(this);
+    this._uploadVideoDisplay = this._uploadVideoDisplay.bind(this);
     this.handleVideoUrlChange = this.handleVideoUrlChange.bind(this);
+    this._uploadThumbnailDisplay = this._uploadThumbnailDisplay.bind(this);
+    this._uploadNotationDisplay = this._uploadNotationDisplay.bind(this);
   }
   render() {
     const { toggleModal, uploadModalOn } = this.props;
@@ -54,27 +56,22 @@ class UploadForm extends React.Component {
             onChange={ this.handleTitleChange }
             />
           <input
+            id="video-url-input"
             className='form-input-field'
             type='text'
-            value={this.state.videoUrl}
+            value={ this.state.videoUrl }
             placeholder='youtube video url'
             onChange={ this.handleVideoUrlChange }
           />
         </div>
         <div className='thumbnail-container group'>
-          <iframe
-            className='upload-knowtation-video'
-            src={ this.state.checkedVideoUrl }
-            frameBorder="1"
-          />
-        <div className='upload-knowtation-thumbnail'>
-            { this._uploadIcon() }
-            <img className='upload-no-image'/>
-        </div>
+          { this._uploadVideoDisplay() }
+          { this._uploadThumbnailDisplay() }
+          <input id='thumbnail-input' type='file' className='hide-button'/>
         </div>
         <div className='notation-container'>
-          { this._uploadIcon() }
-          <img className='upload-no-image' />
+          { this._uploadNotationDisplay() }
+          <input id='notation-input' type='file' className='hide-button'/>
         </div>
         <div className='upload-button-container'>
           <button className='form-submit'>
@@ -86,6 +83,13 @@ class UploadForm extends React.Component {
   }
 
   // event handlers
+
+  handleClick(property) {
+
+    return e => {
+      console.log(property);
+    };
+  }
 
   handleClickOut(e) {
     this.props.toggleModal('upload');
@@ -124,6 +128,9 @@ class UploadForm extends React.Component {
     });
   }
 
+  focusVideoUrl(e) {
+    document.getElementById('video-url-input').focus();
+  }
   // private
 
   _videoId(url) {
@@ -136,13 +143,82 @@ class UploadForm extends React.Component {
     return result;
   }
 
-  _uploadIcon() {
+  _uploadThumbnailDisplay() {
     const { thumbnailFile } = this.state;
     if (thumbnailFile === null) {
-      return <i className="material-icons">add_a_photo</i>;
+      return(
+        <div
+          className='upload-thumbnail'
+          onClick={ this.handleClick('thumbnail') }
+        >
+          <i className="material-icons">photo_camera</i>
+        </div>
+      );
     } else {
-      return '';
+      return(
+        <div
+          onClick={ this.handleClick('thumbnail') }
+          className='upload-thumbnail'
+        >
+          <img
+            src={ this.state.thumbnailUrl }
+            className='upload-thumbnail'
+          />;
+        </div>
+      );
     }
+  }
+
+  _uploadNotationDisplay() {
+    const { notationFile } = this.state;
+    if (notationFile === null) {
+      return(
+        <div
+          className='upload-notation'
+          onClick={ this.handleClick('thumbnail') }
+        >
+          <i className="material-icons">photo_camera</i>
+        </div>
+      );
+    } else {
+      return(
+        <div
+          className='upload-notation'
+          onClick={ this.handleClick('thumbnail') }
+        >
+          <img
+            src={ this.state.notationUrl }
+            className='upload-notation'
+          />
+        </div>
+      );
+    }
+  }
+
+  _uploadVideoDisplay() {
+    const { checkedVideoUrl } = this.state;
+    if (checkedVideoUrl === '') {
+      return(
+        <div className='upload-video'>
+          <i
+            className="material-icons upload-video"
+            onClick={ this.focusVideoUrl }
+          >
+            videocam
+          </i>
+        </div>
+      );
+    } else {
+      return (
+        <div className='uploaded-video'>
+          <iframe
+            className='uploaded-video'
+            src={ this.state.checkedVideoUrl }
+            />
+        </div>
+      );
+    }
+
   }
 }
 
