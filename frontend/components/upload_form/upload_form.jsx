@@ -23,7 +23,7 @@ class UploadForm extends React.Component {
 
     return (
       <Modal
-        className="form-container group"
+        className="upload-form-container group"
         isOpen={ uploadModalOn }
         onRequestClose={ this.handleClickOut }
         style={ style }
