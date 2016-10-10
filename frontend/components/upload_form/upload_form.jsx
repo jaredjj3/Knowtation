@@ -1,10 +1,11 @@
 import React from 'react';
 import Icon from '../icon';
 import Modal from 'react-modal';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 import ErrorItems from '../errors/error_items';
 import style from '../../util/modal_style';
 import { randomYoutubeUrl, randomTitle } from '../../util/upload_random_seeds';
+import { createKnowtation } from '../../util/knowtation_api_util';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class UploadForm extends React.Component {
       thumbnailFile: null,
       thumbnailUrl: null,
       notationFile: null,
-      notationUrl: null
+      notationUrl: null,
+      submitDisabled: true
     };
 
     this.updateFile = this.updateFile.bind(this);
@@ -29,8 +31,17 @@ class UploadForm extends React.Component {
     this._uploadNotationDisplay = this._uploadNotationDisplay.bind(this);
   }
 
+  componentDidUpdate() {
+    if (this.state.submitDisabled && this._fieldsAreFilled()) {
+      console.log("ouch");
+      this.setState({ submitDisabled: false });
+    }
+  }
+
   render() {
     const { toggleModal, uploadModalOn } = this.props;
+    const { submitDisabled } = this.state;
+    const submitClass = submitDisabled ? ' disabled-button' : '';
 
     return (
       <Modal
@@ -69,14 +80,28 @@ class UploadForm extends React.Component {
         <div className='thumbnail-container group'>
           { this._uploadVideoDisplay() }
           { this._uploadThumbnailDisplay() }
-          <input id='thumbnail-input' type='file' className='hide-button'/>
+          <input
+            id='thumbnail-input'
+            type='file'
+            className='hide-button'
+            onChange={ this.updateFile('thumbnail') }
+          />
         </div>
         <div className='notation-container'>
           { this._uploadNotationDisplay() }
-          <input id='notation-input' type='file' className='hide-button'/>
+          <input
+            id='notation-input'
+            type='file'
+            className='hide-button'
+            onChange={ this.updateFile('notation') }
+          />
         </div>
         <div className='upload-button-container'>
-          <button className='form-submit'>
+          <button
+            type="button"
+            className={ 'form-submit' + submitClass }
+            disabled={ this.state.submitDisabled }
+            onClick={ this.handleUploadClick }>
             Upload
           </button>
         </div>
@@ -86,6 +111,24 @@ class UploadForm extends React.Component {
 
   // event handlers
 
+  handleUploadClick(e) {
+    const formData = new FormData();
+    formData.append('user[profile_picture]', this.state.profilePictureFile);
+    const id = this.props.pageUser.id;
+    const callback = () => {
+      this.setState({
+        profilePictureBorders: 'gray-borders'
+      });
+      this.handleClickOut(e); // toggles form off
+
+    };
+    createKnowtation(
+      formData,
+      id,
+      callback
+    );
+  }
+
   handleClick(property) {
 
     return e => {
@@ -94,7 +137,7 @@ class UploadForm extends React.Component {
   }
 
   handleClickOut(e) {
-    this.props.toggleModal('upload');
+    _clearStateAndToggleModal()
   }
 
   handleTitleChange(e) {
@@ -114,7 +157,7 @@ class UploadForm extends React.Component {
 
     this.setState({
       videoUrl,
-      checkedVideoUrl
+      checkedVideoUrl,
     });
   }
 
@@ -134,11 +177,42 @@ class UploadForm extends React.Component {
     document.getElementById('video-url-input').focus();
   }
 
-  updateFile(e) {
-    
+  updateFile(property) {
+
+    return e => {
+      const file = e.currentTarget.files[0];
+      const fileReader = new FileReader();
+      const keyUrl = `${property}Url`;
+      const keyFile = `${property}File`;
+
+      fileReader.onloadend = () => {
+        this.setState({
+          [keyFile]: file,
+          [keyUrl]: fileReader.result
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    };
   }
 
   // private
+
+  _clearStateAndToggleModal() {
+    this.setState({
+      title: '',
+      videoUrl: '',
+      checkedVideoUrl: '',
+      thumbnailFile: null,
+      thumbnailUrl: null,
+      notationFile: null,
+      notationUrl: null,
+      submitDisabled: true
+    });
+    this.props.toggleModal('upload');
+  }
 
   _videoId(url) {
     const youtubeRegex = /((https|http)?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/(.+)/;
@@ -171,7 +245,7 @@ class UploadForm extends React.Component {
           <img
             src={ this.state.thumbnailUrl }
             className='upload-thumbnail'
-          />;
+          />
         </div>
       );
     }
@@ -208,10 +282,12 @@ class UploadForm extends React.Component {
     const { checkedVideoUrl } = this.state;
     if (checkedVideoUrl === '') {
       return(
-        <div className='upload-video'>
+        <div
+          className='upload-video'
+          onClick={ this.focusVideoUrl }
+        >
           <i
             className="material-icons"
-            onClick={ this.focusVideoUrl }
           >
             videocam
           </i>
@@ -228,8 +304,26 @@ class UploadForm extends React.Component {
         </div>
       );
     }
-
   }
+
+  _fieldsAreFilled() {
+    const {
+      title,
+      videoUrl,
+      checkedVideoUrl,
+      thumbnailFile,
+      thumbnailUrl,
+      notationFile,
+      notationUrl
+    } = this.state;
+
+    return (
+      Boolean(title && checkedVideoUrl &&
+      thumbnailFile && thumbnailUrl &&
+      notationFile && notationUrl)
+    );
+  }
+
 }
 
 export default UploadForm;

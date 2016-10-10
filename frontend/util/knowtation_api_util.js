@@ -17,3 +17,13 @@ export const updateKnowtation = (knowtation, success, error) => {
     error
   });
 };
+
+export const createKnowtation = (formData, success, error) => {
+  $.ajax({
+    method: 'POST',
+    url: 'api/knowtations',
+    data: { formData },
+    success,
+    error
+  });
+};

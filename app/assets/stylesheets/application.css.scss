@@ -127,3 +127,12 @@ input, textarea {
   border: 1px solid #ffee00;
   box-shadow: 0 0 5px 4px #ffee00;
 }
+
+.disabled-button {
+  opacity: 0.4;
+}
+
+.disabled-button:hover {
+  cursor: default;
+  background: $main-blue;
+}
