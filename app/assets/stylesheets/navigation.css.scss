@@ -55,12 +55,16 @@ header img {
 .navigation-links {
   float: right;
   margin: 19px 15px 19px 0;
+
 }
 
 .navigation-links > li {
   float: left;
   margin: 0 auto;
-  padding: 0 20px ;
+}
+
+.navigation-links .navigation-text {
+  padding: 4px 20px;
 }
 
 .navigation-links > li:hover {
@@ -71,7 +75,10 @@ header img {
   border-right: 1px solid black;
 }
 
-.navigation-text {
-  padding-top: 4px !important;
-  padding-bottom: 4px !important;
+.navigation-login {
+  border-left: 1px solid black;
+}
+
+.navigation-signup {
+  margin-right: 20px;
 }

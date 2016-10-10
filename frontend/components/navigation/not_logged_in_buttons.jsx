@@ -12,9 +12,9 @@ export default ({ props }) => {
 
   return (
     <ul className="navigation-links">
-      <li className="nth-nav-link">
+      <li>
         <button
-          className="main-button"
+          className="navigation-signup main-button"
           onClick={ handleClick('signup') }
         >
         Sign up
@@ -22,7 +22,7 @@ export default ({ props }) => {
     </li>
       <li
         onClick={ handleClick('login') }
-        className='navigation-text'
+        className='navigation-login navigation-text'
       >
         Log In
       </li>
