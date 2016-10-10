@@ -1,0 +1,48 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
+.form-container {
+  width: 900px;
+}
+
+.form-container * {
+  opacity: 0.7;
+}
+
+.logo-container {
+  background: salmon;
+  text-align: center;
+}
+
+.form-container .logo-container .material-icons {
+  margin: 0;
+}
+
+.form-input-container {
+  background: orchid;
+  width: 430px;
+  float: left;
+}
+
+.form-input-container input {
+  width: 400px;
+  margin: 10px 0;
+}
+
+.thumbnail-container {
+  border: 1px solid red;
+  width: 400px;
+  float: right;
+}
+
+.notation-container {
+  border: 1px solid blue;
+  float: left;
+}
+
+.notation-container img {
+  float: left;
+  width: 860px;
+}

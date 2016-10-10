@@ -108,3 +108,7 @@ $border-gray: #aaa;
   cursor: pointer;
   color: $main-blue-hover;
 }
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}

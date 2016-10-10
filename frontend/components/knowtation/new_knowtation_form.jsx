@@ -67,7 +67,7 @@ class NewKnowtationForm extends React.Component {
           src="http://i.imgur.com/4eOIYhp.jpg"
         />
         <button
-          className='main-button upload-thumbnail-button'
+          className='main-button'
         >
           upload thumbnail
         </button>
