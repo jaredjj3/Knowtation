@@ -2,14 +2,19 @@ import React from 'react';
 
 class Knowtation extends React.Component {
 
+  componentDidMount() {
+    this.props.requestKnowtation();
+  }
+
   render() {
+    const { knowtation } = this.props;
+    const { videoUrl } = knowtation;
 
     return(
       <div className='knowtation-container group'>
         <iframe
           className='knowtation-video'
-          src="https://www.youtube.com/embed/MhkGQAoc7bc"
-          frameBorder="1"
+          src={ videoUrl.replace }
         />
       <div className='knowtation-settings'>I AM SETTINGS</div>
         <canvas className='knowtation-canvas' />

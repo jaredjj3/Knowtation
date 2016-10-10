@@ -2,7 +2,10 @@ import { RECEIVE_KNOWTATION } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
 const _nullKnowtation = Object.freeze({
-
+  id: -1,
+  videoUrl: '',
+  notationImageUrl: '',
+  scrollInstructions: []
 });
 
 const KnowtationReducer = (state = _nullKnowtation, action) => {

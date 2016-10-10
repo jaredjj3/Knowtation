@@ -2,6 +2,7 @@ import {
   REQUEST_ALL_KNOWTATIONS,
   UPDATE_KNOWTATION,
   CREATE_KNOWTATION,
+  REQUEST_KNOWTATION,
   receiveKnowtation,
   receiveAllKnowtations
 } from '../actions/knowtation_actions';
@@ -9,7 +10,10 @@ import {
   requestAllKnowtations,
   updateKnowtation
 } from '../util/knowtation_api_util';
-import { createKnowtation } from '../util/knowtation_api_util';
+import {
+  createKnowtation,
+  requestKnowtation
+} from '../util/knowtation_api_util';
 import { toggleModal } from '../actions/modal_actions';
 import { receiveErrors } from '../actions/errors_actions';
 
@@ -27,6 +31,13 @@ const KnowtationMiddleware = ({ getState, dispatch}) => next => action => {
         dispatch(receiveAllKnowtations(knowtations));
       };
       requestAllKnowtations(onSuccess, onError);
+      return next(action);
+
+    case REQUEST_KNOWTATION:
+      onSuccess = knowtation => {
+        dispatch(receiveKnowtation(knowtation));
+      };
+      requestKnowtation(action.id, onSuccess, onError);
       return next(action);
 
     case UPDATE_KNOWTATION:
