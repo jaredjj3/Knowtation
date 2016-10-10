@@ -122,7 +122,7 @@ class SessionForm extends React.Component {
         this.props.toggleModal('signup');
       }
 
-      hashHistory.push(`/profile/${currentUser.id}`);
+      // hashHistory.push(`/profile/${currentUser.id}`);
     }
   }
 

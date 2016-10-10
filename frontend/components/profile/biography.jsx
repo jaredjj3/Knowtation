@@ -103,6 +103,7 @@ class Biography extends React.Component {
               onClick={ toggleFormCallback }
             />
             <UpdatePicture
+              callback={ toggleFormCallback }
               currentUser={ currentUser }
               pageUser={ pageUser }
             />

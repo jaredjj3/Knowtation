@@ -37,12 +37,12 @@ $border-gray: #aaa;
   float: left;
 }
 
-.thumbnail-container img {
+.thumbnail-container .upload-knowtation-thumbnail {
   float: right;
   width: 300px;
 }
 
-.thumbnail-container img,
+.thumbnail-container .upload-knowtation-thumbnail,
 .thumbnail-container .upload-knowtation-video {
   width: 290px;
   height: 150px;
@@ -58,7 +58,12 @@ $border-gray: #aaa;
   width: inherit;
   margin-top: 10px;
   float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.notation-container .material-icons
 
 .notation-container img {
   float: left;
@@ -66,8 +71,8 @@ $border-gray: #aaa;
   border: 1px solid $border-gray;
 }
 
-.notation-container img:hover,
-.thumbnail-container img:hover {
+.notation-container:hover,
+.upload-knowtation-thumbnail:hover {
   cursor: pointer;
   -webkit-filter: brightness(50%);
 }
@@ -79,4 +84,35 @@ $border-gray: #aaa;
 .upload-button-container {
   width: inherit;
   text-align: center;
+}
+
+.upload-button-container button {
+  width: inherit;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 2px;
+}
+
+.form-input-container button {
+  width: inherit;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 2px;
+}
+
+.upload-no-image {
+  display: none;
+}
+
+.upload-knowtation-thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-form-container .material-icons {
+  font-size: 64px;
+  color: $border-gray;
 }

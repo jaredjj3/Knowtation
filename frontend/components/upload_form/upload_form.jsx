@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import { Link } from 'react-router';
 import ErrorItems from '../errors/error_items';
 import style from '../../util/modal_style';
+import { randomYoutubeUrl, randomTitle } from '../../util/upload_random_seeds';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -18,8 +19,10 @@ class UploadForm extends React.Component {
       notationUrl: null
     };
 
+    this._uploadIcon = this._uploadIcon.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handlePopulateClick = this.handlePopulateClick.bind(this);
     this.handleVideoUrlChange = this.handleVideoUrlChange.bind(this);
   }
   render() {
@@ -37,8 +40,14 @@ class UploadForm extends React.Component {
           <h1 className="logo">Knowtation</h1>
         </div>
         <div className='form-input-container'>
+          <button
+            className='form-submit'
+            onClick={ this.handlePopulateClick }
+          >
+            Randomly Populate Form
+          </button>
           <input
-            className='form-input-field'
+            className='upload-title form-input-field'
             type='text'
             value={this.state.title}
             placeholder='title'
@@ -58,16 +67,14 @@ class UploadForm extends React.Component {
             src={ this.state.checkedVideoUrl }
             frameBorder="1"
           />
-          <img
-            className='new-knotation-thumbnail'
-            src="http://xpenology.org/wp-content/themes/qaengine/img/default-thumbnail.jpg"
-          />
+        <div className='upload-knowtation-thumbnail'>
+            { this._uploadIcon() }
+            <img className='upload-no-image'/>
+        </div>
         </div>
         <div className='notation-container'>
-          <img
-            className='new-knotation-thumbnail'
-            src="http://xpenology.org/wp-content/themes/qaengine/img/default-thumbnail.jpg"
-            />
+          { this._uploadIcon() }
+          <img className='upload-no-image' />
         </div>
         <div className='upload-button-container'>
           <button className='form-submit'>
@@ -93,9 +100,10 @@ class UploadForm extends React.Component {
   handleVideoUrlChange(e) {
     const videoUrl = e.currentTarget.value;
 
+    const videoId = this._videoId(videoUrl);
     let checkedVideoUrl = '';
-    if (this._isYoutubeUrl(videoUrl)) {
-      checkedVideoUrl = videoUrl.replace("watch?v=", "v/");
+    if (videoId) {
+      checkedVideoUrl = `https://youtube.com/v/${videoId}`.replace("watch?v=", "");
     }
 
     this.setState({
@@ -104,15 +112,38 @@ class UploadForm extends React.Component {
     });
   }
 
-  // private
+  handlePopulateClick(e) {
+    const videoUrl = randomYoutubeUrl();
+    const videoId = this._videoId(videoUrl);
+    const title = randomTitle();
 
-  _isYoutubeUrl(url) {
-    // for testing
-    // https://youtu.be/LeM40ZGCvok
-    const youtubeRegex = /((https|http)?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+/;
-    return !(url.match(youtubeRegex) === null);
+    this.setState({
+      title,
+      videoUrl,
+      checkedVideoUrl: `https://youtube.com/v/${videoId}`.replace("watch?v=", "")
+    });
   }
 
+  // private
+
+  _videoId(url) {
+    const youtubeRegex = /((https|http)?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/(.+)/;
+    const matches = url.match(youtubeRegex);
+    let result = '';
+    if (matches !== null) {
+      result = matches[4];
+    }
+    return result;
+  }
+
+  _uploadIcon() {
+    const { thumbnailFile } = this.state;
+    if (thumbnailFile === null) {
+      return <i className="material-icons">add_a_photo</i>;
+    } else {
+      return '';
+    }
+  }
 }
 
 export default UploadForm;
