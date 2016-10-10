@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { Link, hashHistory } from 'react-router';
 import TeacherErrorItem from '../error/teacher_error_item';
 import Icon from '../icon';
+import style from '../../util/modal_style';
 
 class TeachForm extends React.Component {
   constructor(props) {
@@ -16,10 +17,9 @@ class TeachForm extends React.Component {
   }
 
   handleClickOut() {
-    if (this.props.modalOn) {
-      this.props.toggleModal('session');
+    if (this.props.teachModalOn) {
+      this.props.toggleModal('teach');
     }
-    hashHistory.goBack();
   }
 
   handleOnChange(property) {
@@ -35,19 +35,7 @@ class TeachForm extends React.Component {
   }
 
   render() {
-    const { modalOn, teacherErrors } = this.props;
-
-    const style = {
-      overlay : {
-        position          : 'fixed',
-        top               : 0,
-        left              : 0,
-        right             : 0,
-        bottom            : 0,
-        zIndex            : 10,
-        backgroundColor   : 'rgba(150, 150, 150, 0.80)'
-      }
-    };
+    const { teachModalOn, teacherErrors } = this.props;
 
     const teacherErrorItems = teacherErrors.map((teacherError, idx) => (
       <TeacherErrorItem key={ idx } teacherError={ teacherError }/>
@@ -56,7 +44,7 @@ class TeachForm extends React.Component {
     return(
       <Modal
         className="form-container"
-        isOpen={ modalOn }
+        isOpen={ teachModalOn }
         onRequestClose={ this.handleClickOut }
         style={ style }
       >

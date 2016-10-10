@@ -5,7 +5,7 @@ import { toggleModal } from '../../actions/modal_actions';
 import { sendApplication } from '../../actions/student_actions';
 
 const mapStateToProps = state => ({
-  modalOn: state.modal.teachModalOn,
+  teachModalOn: state.modal.teachModalOn,
   teacherErrors: state.errors.teacherErrors
 });
 
