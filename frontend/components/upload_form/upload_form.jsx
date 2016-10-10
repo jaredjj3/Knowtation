@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '../icon';
 import Modal from 'react-modal';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 import ErrorItems from '../errors/error_items';
 import style from '../../util/modal_style';
 import { randomYoutubeUrl, randomTitle } from '../../util/upload_random_seeds';
@@ -16,17 +16,31 @@ class UploadForm extends React.Component {
       thumbnailFile: null,
       thumbnailUrl: null,
       notationFile: null,
-      notationUrl: null
+      notationUrl: null,
+      submitDisabled: true
     };
 
-    this._uploadIcon = this._uploadIcon.bind(this);
+    this.updateFile = this.updateFile.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
+    this.handleUploadClick = this.handleUploadClick.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handlePopulateClick = this.handlePopulateClick.bind(this);
+    this._uploadVideoDisplay = this._uploadVideoDisplay.bind(this);
     this.handleVideoUrlChange = this.handleVideoUrlChange.bind(this);
+    this._uploadThumbnailDisplay = this._uploadThumbnailDisplay.bind(this);
+    this._uploadNotationDisplay = this._uploadNotationDisplay.bind(this);
   }
+
+  componentDidUpdate() {
+    if (this.state.submitDisabled && this._fieldsAreFilled()) {
+      this.setState({ submitDisabled: false });
+    }
+  }
+
   render() {
     const { toggleModal, uploadModalOn } = this.props;
+    const { submitDisabled } = this.state;
+    const submitClass = submitDisabled ? ' disabled-button' : '';
 
     return (
       <Modal
@@ -54,30 +68,39 @@ class UploadForm extends React.Component {
             onChange={ this.handleTitleChange }
             />
           <input
+            id="video-url-input"
             className='form-input-field'
             type='text'
-            value={this.state.videoUrl}
+            value={ this.state.videoUrl }
             placeholder='youtube video url'
             onChange={ this.handleVideoUrlChange }
           />
         </div>
         <div className='thumbnail-container group'>
-          <iframe
-            className='upload-knowtation-video'
-            src={ this.state.checkedVideoUrl }
-            frameBorder="1"
+          { this._uploadVideoDisplay() }
+          { this._uploadThumbnailDisplay() }
+          <input
+            id='thumbnail-input'
+            type='file'
+            className='hide-button'
+            onChange={ this.updateFile('thumbnail') }
           />
-        <div className='upload-knowtation-thumbnail'>
-            { this._uploadIcon() }
-            <img className='upload-no-image'/>
-        </div>
         </div>
         <div className='notation-container'>
-          { this._uploadIcon() }
-          <img className='upload-no-image' />
+          { this._uploadNotationDisplay() }
+          <input
+            id='notation-input'
+            type='file'
+            className='hide-button'
+            onChange={ this.updateFile('notation') }
+          />
         </div>
         <div className='upload-button-container'>
-          <button className='form-submit'>
+          <button
+            type="button"
+            className={ 'form-submit' + submitClass }
+            disabled={ this.state.submitDisabled }
+            onClick={ this.handleUploadClick }>
             Upload
           </button>
         </div>
@@ -87,8 +110,32 @@ class UploadForm extends React.Component {
 
   // event handlers
 
+  handleUploadClick(e) {
+    const {
+      title,
+      checkedVideoUrl,
+      thumbnailFile,
+      notationFile
+    } = this.state;
+
+    const formData = new FormData();
+    formData.append('knowtation[notation_image]', notationFile);
+    formData.append('knowtation[thumbnail]', thumbnailFile);
+    formData.append('knowtation[title]', title);
+    formData.append('knowtation[video_url]', checkedVideoUrl);
+
+    this.props.createKnowtation(formData);
+  }
+
+  handleClick(property) {
+
+    return e => {
+      document.getElementById(`${property}-input`).click();
+    };
+  }
+
   handleClickOut(e) {
-    this.props.toggleModal('upload');
+    this._clearStateAndToggleModal();
   }
 
   handleTitleChange(e) {
@@ -108,7 +155,7 @@ class UploadForm extends React.Component {
 
     this.setState({
       videoUrl,
-      checkedVideoUrl
+      checkedVideoUrl,
     });
   }
 
@@ -124,7 +171,46 @@ class UploadForm extends React.Component {
     });
   }
 
+  focusVideoUrl(e) {
+    document.getElementById('video-url-input').focus();
+  }
+
+  updateFile(property) {
+
+    return e => {
+      const file = e.currentTarget.files[0];
+      const fileReader = new FileReader();
+      const keyUrl = `${property}Url`;
+      const keyFile = `${property}File`;
+
+      fileReader.onloadend = () => {
+        this.setState({
+          [keyFile]: file,
+          [keyUrl]: fileReader.result
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    };
+  }
+
   // private
+
+  _clearStateAndToggleModal() {
+    this.setState({
+      title: '',
+      videoUrl: '',
+      checkedVideoUrl: '',
+      thumbnailFile: null,
+      thumbnailUrl: null,
+      notationFile: null,
+      notationUrl: null,
+      submitDisabled: true
+    });
+    this.props.toggleModal('upload');
+  }
 
   _videoId(url) {
     const youtubeRegex = /((https|http)?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/(.+)/;
@@ -136,14 +222,106 @@ class UploadForm extends React.Component {
     return result;
   }
 
-  _uploadIcon() {
+  _uploadThumbnailDisplay() {
     const { thumbnailFile } = this.state;
     if (thumbnailFile === null) {
-      return <i className="material-icons">add_a_photo</i>;
+      return(
+        <div
+          className='upload-thumbnail'
+          onClick={ this.handleClick('thumbnail') }
+        >
+          <i className="material-icons">photo_camera</i>
+          <span>thumbnail</span>
+        </div>
+      );
     } else {
-      return '';
+      return(
+        <div
+          onClick={ this.handleClick('thumbnail') }
+          className='upload-thumbnail'
+        >
+          <img
+            src={ this.state.thumbnailUrl }
+            className='upload-thumbnail'
+          />
+        </div>
+      );
     }
   }
+
+  _uploadNotationDisplay() {
+    const { notationFile } = this.state;
+    if (notationFile === null) {
+      return(
+        <div
+          className='upload-notation'
+          onClick={ this.handleClick('notation') }
+        >
+          <i className="material-icons">photo_camera</i>
+          <span>notation</span>
+        </div>
+      );
+    } else {
+      return(
+        <div
+          className='upload-notation'
+          onClick={ this.handleClick('notation') }
+        >
+          <img
+            src={ this.state.notationUrl }
+            className='upload-notation'
+          />
+        </div>
+      );
+    }
+  }
+
+  _uploadVideoDisplay() {
+    const { checkedVideoUrl } = this.state;
+    if (checkedVideoUrl === '') {
+      return(
+        <div
+          className='upload-video'
+          onClick={ this.focusVideoUrl }
+        >
+          <i
+            className="material-icons"
+          >
+            videocam
+          </i>
+          <span>video</span>
+        </div>
+      );
+    } else {
+      return (
+        <div className='uploaded-video'>
+          <iframe
+            className='uploaded-video'
+            src={ this.state.checkedVideoUrl }
+            />
+        </div>
+      );
+    }
+  }
+
+  _fieldsAreFilled() {
+    const {
+      title,
+      videoUrl,
+      checkedVideoUrl,
+      thumbnailFile,
+      thumbnailUrl,
+      notationFile,
+      notationUrl
+    } = this.state;
+
+    return (
+      Boolean(title && checkedVideoUrl &&
+      thumbnailFile && thumbnailUrl &&
+      notationFile && notationUrl)
+    );
+  }
+
 }
 
 export default UploadForm;

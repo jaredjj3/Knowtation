@@ -33,6 +33,12 @@ class Api::KnowtationsController < ApplicationController
   private
 
   def knowtation_params
-    params.require(:knowtation).permit(:title, :scroll_instructions, :video_url)
+    params.require(:knowtation).permit(
+      :title,
+      :scroll_instructions,
+      :video_url,
+      :notation_image,
+      :thumbnail
+    )
   end
 end

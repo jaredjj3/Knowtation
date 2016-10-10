@@ -1,6 +1,8 @@
 import {
   REQUEST_ALL_KNOWTATIONS,
   UPDATE_KNOWTATION,
+  CREATE_KNOWTATION,
+  REQUEST_KNOWTATION,
   receiveKnowtation,
   receiveAllKnowtations
 } from '../actions/knowtation_actions';
@@ -8,6 +10,11 @@ import {
   requestAllKnowtations,
   updateKnowtation
 } from '../util/knowtation_api_util';
+import {
+  createKnowtation,
+  requestKnowtation
+} from '../util/knowtation_api_util';
+import { toggleModal } from '../actions/modal_actions';
 import { receiveErrors } from '../actions/errors_actions';
 
 const KnowtationMiddleware = ({ getState, dispatch}) => next => action => {
@@ -26,11 +33,28 @@ const KnowtationMiddleware = ({ getState, dispatch}) => next => action => {
       requestAllKnowtations(onSuccess, onError);
       return next(action);
 
+    case REQUEST_KNOWTATION:
+      onSuccess = knowtation => {
+        dispatch(receiveKnowtation(knowtation));
+      };
+      requestKnowtation(action.id, onSuccess, onError);
+      return next(action);
+
     case UPDATE_KNOWTATION:
       onSuccess = knowtation => {
         dispatch(receiveKnowtation(knowtation));
       };
       updateKnowtation(onSuccess, onError);
+      return next(action);
+
+    case CREATE_KNOWTATION:
+      onSuccess = knowtation => {
+        if (getState().modal.uploadModalOn) {
+          dispatch(toggleModal('upload'));
+        }
+        dispatch(receiveKnowtation(knowtation));
+      };
+      createKnowtation(action.formData, onSuccess, onError);
       return next(action);
 
     default:

@@ -20,7 +20,7 @@
 #
 
 class Knowtation < ActiveRecord::Base
-  validates :title, :user_id, :video_url, presence: true
+  validates :title, :user, :video_url, :notation_image, :thumbnail, presence: true
 
   belongs_to :user
   has_many :user_loops

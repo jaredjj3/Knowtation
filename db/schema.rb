@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009181552) do
+ActiveRecord::Schema.define(version: 20161010214809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,9 +33,7 @@ ActiveRecord::Schema.define(version: 20161009181552) do
     t.datetime "thumbnail_updated_at"
   end
 
-  add_index "knowtations", ["scroll_instructions"], name: "index_knowtations_on_scroll_instructions", unique: true, using: :btree
   add_index "knowtations", ["user_id"], name: "index_knowtations_on_user_id", using: :btree
-  add_index "knowtations", ["video_url"], name: "index_knowtations_on_video_url", unique: true, using: :btree
 
   create_table "loops", force: :cascade do |t|
     t.integer  "loop_id"

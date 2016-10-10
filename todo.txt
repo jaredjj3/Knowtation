@@ -6,3 +6,5 @@
 - user gets requested twice
 - for youtube videos autoplay=1&showinfo=0&controls=0
 - kaminari for pagination in fullstack repo
+- make loading modal and trigger it appropriately
+- airbnb rheostat for slider
