@@ -7,10 +7,20 @@ import {
 } from '../../actions/user_actions';
 import { toggleModal } from '../../actions/modal_actions';
 
-const mapStateToProps = state => ({
-  currentUser: state.session.currentUser,
-  pageUser: state.user
-});
+const mapStateToProps = state => {
+  const { currentUser } = state.session;
+  const pageUser = state.user;
+  let pageIsCurrentUser = false;
+  if (currentUser && pageUser && currentUser.id === pageUser.id) {
+    pageIsCurrentUser = true;
+  }
+
+  return ({
+    currentUser,
+    pageUser,
+    pageIsCurrentUser
+  });
+};
 
 const mapDispatchToProps = dispatch => ({
   requestUser: id => dispatch(requestUser(id)),

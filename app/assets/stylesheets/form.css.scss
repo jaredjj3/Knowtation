@@ -21,6 +21,15 @@ $border-gray: #aaa;
   z-index: 11;
 }
 
+
+.form-input-field {
+  padding: 12px 10px;
+  width: 250px;
+  margin: 0 40px;
+  box-shadow: 0 0 3px $border-gray;
+}
+
+
 .form-container .logo {
   font-size: 36px;
   cursor: default;

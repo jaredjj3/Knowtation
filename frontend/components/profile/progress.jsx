@@ -16,7 +16,8 @@ class Progress extends React.Component {
     const prevPageUserId = prevProps.pageUser.id;
     const currPageUserId = this.props.pageUser.id;
 
-    if (prevPageUserId !== currPageUserId) {
+    if (prevPageUserId && currPageUserId &&
+        prevPageUserId !== currPageUserId) {
       this._drawChart();
     }
   }
@@ -49,11 +50,6 @@ class Progress extends React.Component {
     const google = window.google;
     const { pageUser } = this.props;
     const { mappedLoops } = pageUser.givenLoops;
-
-    // if not fully loaded
-    if (typeof google.visualization.arrayToDataTable === 'undefined') {
-      return;
-    }
 
     // gives an array of only the number of loops where the
     const numLoopsArray = mappedLoops.map( array => array[1]);

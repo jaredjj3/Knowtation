@@ -14,6 +14,7 @@ class ProfileForm extends React.Component {
     };
 
     this.handleClickOut = this.handleClickOut.bind(this);
+    this.handleSubmitClick = this.handleSubmitClick.bind(this);
     this.handleBioChange = this.handleBioChange.bind(this);
   }
 
@@ -22,22 +23,30 @@ class ProfileForm extends React.Component {
 
     return(
       <Modal
-        className='form-container group'
+        className='profile-form-container form-container group'
         isOpen={ profileModalOn }
         onRequestClose={ this.handleClickOut }
         style={ style }
       >
         <Icon />
         <h1 className="logo">Knowtation</h1>
-        <input
-          type='text'
-          onChange={ this.handleBioChange }
-          value={ this.state.bio }
-          placeholder='tell us about yourself'
-        />
-        <div className='profile-picture-container'>
+        <div className="profile-bio-container">
+          <textarea
+            className="profile-upload-input"
+            onChange={ this.handleBioChange }
+            value={ this.state.bio }
+            placeholder='tell us about yourself'
+          />
+        </div>
+        <div className='profile-form-picture-container'>
           { this._uploadPictureDisplay() }
         </div>
+        <button
+          className='form-submit'
+          onClick={ this.handleSubmitClick }
+          >
+          Update
+        </button>
       </Modal>
     );
   }
@@ -57,6 +66,10 @@ class ProfileForm extends React.Component {
     });
   }
 
+  handleSubmitClick(e) {
+    console.log(this.state);
+  }
+
   // private
 
   _uploadPictureDisplay() {
@@ -72,9 +85,7 @@ class ProfileForm extends React.Component {
       );
     } else {
       return(
-        <div
-          className='upload-thumbnail'
-        >
+        <div className='upload-thumbnail'>
           <img
             src={ this.state.thumbnailUrl }
             className='upload-thumbnail'

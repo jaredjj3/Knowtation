@@ -5,7 +5,7 @@ const _nullUser = Object.freeze({
   username: null,
   userType: null,
   bio: null,
-  id: -1,
+  id: null,
   givenLoops: null,
   profilePictureUrl: null
 });
