@@ -30,9 +30,17 @@ class ProfileForm extends React.Component {
           value={ this.state.bio }
           placeholder='tell us about yourself'
         />
-        
+      <div className='profile-picture-container'>
+
+      </div>
       </Modal>
     );
+  }
+
+  // private
+
+  _uploadPictureDisplay() {
+    
   }
 
 }

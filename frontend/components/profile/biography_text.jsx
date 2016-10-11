@@ -82,7 +82,12 @@ class BiographyText extends React.Component {
 
   _pageIsCurrentUser() {
     const { currentUser, pageUser } = this.props;
-    return currentUser.id === pageUser.id;
+
+    if (currentUser === null) {
+      return false;
+    } else {
+      return currentUser.id === pageUser.id;  
+    }
   }
 
   _usernameDisplay(username) {

@@ -2,7 +2,7 @@ import React from 'react';
 
 const UpdatePicture = ({ currentUser, pageUser, callback }) => {
 
-  if ( currentUser.id === pageUser.id ) {
+  if ( currentUser && currentUser.id === pageUser.id ) {
     return (
       <div
         className="profile-icon-container"

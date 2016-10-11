@@ -87,7 +87,7 @@ class Biography extends React.Component {
     const { currentUser, pageUser, updateUser } = this.props;
 
     let toggleFormCallback;
-    if (currentUser.username && currentUser.id === pageUser.id ) {
+    if (currentUser && currentUser.id === pageUser.id ) {
       toggleFormCallback = this.toggleForm;
     } else {
       toggleFormCallback = () => {};
