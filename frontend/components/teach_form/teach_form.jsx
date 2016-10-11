@@ -7,31 +7,31 @@ import style from '../../util/modal_style';
 class TeachForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      answer: 'yes'
-    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
   }
 
   handleClickOut() {
-    if (this.props.teachModalOn) {
-      this.props.toggleModal('teach');
+    const { teachModalOn, toggleModal } = this.props;
+
+    if (teachModalOn) {
+      toggleModal('teach');
     }
   }
 
-  handleOnChange(property) {
-    return e => this.setState({
-      [property]: e.currentTarget.value
-    });
-  }
+  handleSubmit(answer) {
+    const { sendApplication, toggleModal, teachModalOn } = this.props;
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const application = this.state;
-    if (application.answer === 'yes') {
-      this.props.sendApplication(application);
-    }
+    return e => {
+      e.preventDefault();
+      if (answer === 'yes') {
+        sendApplication({ answer });
+      }
+      if (teachModalOn) {
+        toggleModal('teach');
+      }
+    };
   }
 
   render() {
@@ -44,24 +44,27 @@ class TeachForm extends React.Component {
         onRequestClose={ this.handleClickOut }
         style={ style }
       >
-        <Icon />
-        <h1 className="logo">Knowtation</h1>
-          <form onSubmit={ this.handleSubmit }>
-            <span className='teach-question'>
-              Do you enjoy teaching guitar?
-            </span>
-            <div className='radio-container'>
-              <label for='yes'>yes</label>
-              <input type="radio" name='answer' value='yes' checked="checked"/>
-              <label for='no'>no</label>
-              <input type="radio" name='answer' value='no' checked="checked"/>
-            </div>
-          <input
-            className="form-submit"
-            type="submit"
-            value="Submit"
-          />
-          </form>
+        <div className='logo-container'>
+          <Icon />
+          <h1 className="logo">Knowtation</h1>
+        </div>
+          <h2 className='teach-question'>
+            Do you enjoy teaching guitar?
+          </h2>
+          <div className='teach-form-button-container'>
+            <button
+              onClick={ this.handleSubmit('yes') }
+              className='form-submit'
+            >
+              yes
+            </button>
+            <button
+              onClick={ this.handleSubmit('no') }
+              className='form-submit'
+            >
+              no
+            </button>
+          </div>
       </Modal>
     );
   }

@@ -9,3 +9,7 @@
 - make loading modal and trigger it appropriately
 - airbnb rheostat for slider
 - refactor user/user_loops models to store a hash of days into the db as string
+
+
+
+YOUTUBE LINK: https://youtu.be/w8uNZWDEYzQ

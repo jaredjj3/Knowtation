@@ -3,15 +3,16 @@
   text-align: center;
 }
 
-.radio-container {
-  padding: 10px 0;
-}
-
-.radio-container input {
-  background-color: blue;
-  width: 20px;
-}
-
 .teach-question {
+  padding: 20px 0;
+  font-size: 24px;
+}
 
+.teach-form-button-container button {
+  width: 140px;
+  margin: 0 auto;
+}
+
+.teach-form-button-container button:first-child {
+  margin-right: 10px;
 }

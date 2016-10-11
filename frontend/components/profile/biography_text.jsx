@@ -35,7 +35,7 @@ class BiographyText extends React.Component {
           { this._editDisplay() }
         </div>
         <h3 className="profile-user-type">{ userType }</h3>
-        { this._bioDisplay(bio) }
+        <p className="profile-bio">{ bio }</p>
       </div>
     );
   }
@@ -59,24 +59,6 @@ class BiographyText extends React.Component {
       );
     } else {
       return <div></div>;
-    }
-  }
-
-  _bioDisplay(bio) {
-    const { props } = this.props;
-    const { pageIsCurrentUser } = props;
-
-    if (bio === null && pageIsCurrentUser) {
-      return(
-        <span
-          className="null-profile-bio profile-bio"
-          onClick={ this.handleEditClick }
-        >
-          tell us about yourself
-        </span>
-      );
-    } else {
-      return <p className="profile-bio">{ bio }</p>;
     }
   }
 

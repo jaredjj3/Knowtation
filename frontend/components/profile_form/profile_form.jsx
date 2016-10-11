@@ -23,7 +23,7 @@ class ProfileForm extends React.Component {
 
   render() {
     const { profileModalOn } = this.props;
-
+    console.log(this.state);
     return(
       <Modal
         className='profile-form-container form-container group'
@@ -92,11 +92,23 @@ class ProfileForm extends React.Component {
   }
 
   handleSubmitClick(e) {
-    const { currentUser, updateUser, toggleModal } = this.props;
-    const user = this.state;
-    console.log(user);
-    updateUser(user, currentUser.id);
-    toggleModal('profile');
+    const {
+      profileModalOn,
+      toggleModal,
+      updateUserWithImage,
+      currentUser
+    } = this.props;
+    const { bio, profilePictureFile } = this.state;
+
+    const formData = new FormData();
+    formData.append('user[profile_picture]', profilePictureFile);
+    formData.append('user[bio]', bio);
+
+    updateUserWithImage(formData, currentUser.id);
+
+    if (profileModalOn) {
+      toggleModal('profile');
+    }
   }
 
   handleBrowseClick(e) {

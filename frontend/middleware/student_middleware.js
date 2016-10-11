@@ -10,8 +10,6 @@ const StudentMiddleware = ({ getState, dispatch }) => next => action => {
   switch(action.type) {
     case SEND_APPLICATION:
       const onSuccess = updatedUser => {
-        dispatch(clearErrors());
-        dispatch(toggleModal('teach'));
         dispatch(receiveCurrentUser(updatedUser));
       };
       const onError = messages => {

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ProfileForm from './profile_form';
 import { toggleModal } from '../../actions/modal_actions';
-import { updateUser } from '../../actions/user_actions';
+import { updateUserWithImage } from '../../actions/user_actions';
 
 const mapStateToProps = state => ({
   profileModalOn: state.modal.profileModalOn,
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   toggleModal: modal => dispatch(toggleModal(modal)),
-  updateUser: user => dispatch(updateUser(user))
+  updateUserWithImage: (formData, id) => dispatch(updateUserWithImage(formData, id))
 });
 
 export default connect(
