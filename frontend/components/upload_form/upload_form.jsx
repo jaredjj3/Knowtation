@@ -12,6 +12,7 @@ class UploadForm extends React.Component {
     this.state = {
       title: '',
       videoUrl: '',
+      youtubeId: '',
       checkedVideoUrl: '',
       thumbnailFile: null,
       thumbnailUrl: null,
@@ -113,7 +114,7 @@ class UploadForm extends React.Component {
   handleUploadClick(e) {
     const {
       title,
-      checkedVideoUrl,
+      youtubeId,
       thumbnailFile,
       notationFile
     } = this.state;
@@ -122,7 +123,7 @@ class UploadForm extends React.Component {
     formData.append('knowtation[notation_image]', notationFile);
     formData.append('knowtation[thumbnail]', thumbnailFile);
     formData.append('knowtation[title]', title);
-    formData.append('knowtation[video_url]', checkedVideoUrl);
+    formData.append('knowtation[video_url]', youtubeId);
 
     this.props.createKnowtation(formData);
   }
@@ -149,13 +150,17 @@ class UploadForm extends React.Component {
 
     const videoId = this._videoId(videoUrl);
     let checkedVideoUrl = '';
+    let youtubeId = '';
+
     if (videoId) {
-      checkedVideoUrl = `https://youtube.com/embed/${videoId}`.replace("watch?v=", "");
+      youtubeId = videoId.replace("watch?v=", "");
+      checkedVideoUrl = `https://youtube.com/embed/${youtubeId}`;
     }
 
     this.setState({
       videoUrl,
       checkedVideoUrl,
+      youtubeId
     });
   }
 
@@ -163,11 +168,14 @@ class UploadForm extends React.Component {
     const videoUrl = randomYoutubeUrl();
     const videoId = this._videoId(videoUrl);
     const title = randomTitle();
+    const youtubeId = videoId.replace("watch?v=", "");
+
 
     this.setState({
       title,
       videoUrl,
-      checkedVideoUrl: `https://youtube.com/embed/${videoId}`.replace("watch?v=", "")
+      youtubeId,
+      checkedVideoUrl: `https://youtube.com/embed/${youtubeId}`
     });
   }
 

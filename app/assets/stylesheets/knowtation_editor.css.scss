@@ -25,16 +25,17 @@ $border-gray: #aaa;
   height: 200px;
 }
 
-.knowtation-editor-video-container {
+.knowtation-editor-video-container,
+.knowtation-editor-video-player {
   background: orchid;
-  opacity: 0.5;
-  flex-grow: 2;
+  width: 642px;
+  height: inherit;
+  border: none;
 }
 
 .knowtation-editor-tools-container {
   background: orange;
-  opacity: 0.5;
-  flex-grow: 1;
+  width: 258px;
 }
 
 .knowtation-editor-video-container,
@@ -45,5 +46,4 @@ $border-gray: #aaa;
 .knowtation-editor-notation-container {
   background: lightgreen;
   height: inherit;
-  opacity: 0.5;
 }

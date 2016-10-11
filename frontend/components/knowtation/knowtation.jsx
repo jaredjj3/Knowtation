@@ -9,7 +9,13 @@ class Knowtation extends React.Component {
   render() {
     const { knowtation } = this.props;
     const { videoUrl } = knowtation;
-    const modifiedVideoUrl = `${videoUrl.replace("watch?v=", "v/")}?autoplay=0&showinfo=0&controls=0`;
+
+    let modifiedVideoUrl = '';
+    if (videoUrl) {
+      modifiedVideoUrl = `http://youtube.com/embed/${videoUrl.replace("watch?v=", "")}`;
+    }
+
+    console.log(modifiedVideoUrl);
 
     return(
       <div className='knowtation-container group'>

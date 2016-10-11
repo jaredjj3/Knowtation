@@ -54,6 +54,7 @@ const KnowtationMiddleware = ({ getState, dispatch}) => next => action => {
           dispatch(toggleModal('upload'));
         }
         dispatch(receiveKnowtation(knowtation));
+
         hashHistory.push(`/knowtation/${ knowtation.id }/edit`);
       };
       createKnowtation(action.formData, onSuccess, onError);

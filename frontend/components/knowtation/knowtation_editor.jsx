@@ -1,10 +1,20 @@
 import React from 'react';
+import VideoPlayer from './video_player';
+import KnowtationTools from './knowtation_tools';
+import NotationView from './notation_view';
 
 class KnowtationEditor extends React.Component {
   constructor(props) {
     super(props);
+  }
 
-    this._videoPlayer = this._videoPlayer.bind(this);
+  componentDidMount() {
+    const id = this.props.params.id;
+    this.props.requestKnowtation(id);
+
+    const knowtation = this.props.knowtation;
+    const canvas = document.getElementById('canvas');
+    
   }
 
   render() {
@@ -19,13 +29,13 @@ class KnowtationEditor extends React.Component {
               <VideoPlayer knowtation={ knowtation }/>
             </div>
             <div className='knowtation-editor-tools-container'>
-              I AM TOOLS
+              <KnowtationTools knowtation={ knowtation }/>
             </div>
           </div>
 
           <div className="knowtation-editor-second-row">
             <div className='knowtation-editor-notation-container'>
-              I AM NOTATION
+              <NotationView knowtation={ knowtation }/>
             </div>
           </div>
 

@@ -4,6 +4,7 @@ export const UPDATE_KNOWTATION = "UPDATE_KNOWTATION";
 export const RECEIVE_KNOWTATION = "RECEIVE_KNOWTATION";
 export const CREATE_KNOWTATION = "CREATE_KNOWTATION";
 export const REQUEST_KNOWTATION = "REQUEST_KNOWTATION";
+export const SET_ELEMENT = "SET_HTML_ELEMENT";
 
 export const requestAllKnowtations = () => ({
   type: REQUEST_ALL_KNOWTATIONS
@@ -33,3 +34,9 @@ export const receiveKnowtation = knowtation => ({
    type: REQUEST_KNOWTATION,
    id
  });
+
+export const setElement = (element, elementName) => ({
+  type: SET_ELEMENT,
+  element,
+  elementName
+});
