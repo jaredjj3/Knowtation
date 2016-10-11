@@ -54,7 +54,7 @@ IMAGES =[
 ]
 
 YOUTUBE_LINKS = [
-  "https://youtu.be/w8uNZWDEYzQ"
+  "w8uNZWDEYzQ"
 ];
 
 

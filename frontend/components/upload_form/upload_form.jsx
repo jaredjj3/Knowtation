@@ -150,7 +150,7 @@ class UploadForm extends React.Component {
     const videoId = this._videoId(videoUrl);
     let checkedVideoUrl = '';
     if (videoId) {
-      checkedVideoUrl = `https://youtube.com/v/${videoId}`.replace("watch?v=", "");
+      checkedVideoUrl = `https://youtube.com/embed/${videoId}`.replace("watch?v=", "");
     }
 
     this.setState({
@@ -167,7 +167,7 @@ class UploadForm extends React.Component {
     this.setState({
       title,
       videoUrl,
-      checkedVideoUrl: `https://youtube.com/v/${videoId}`.replace("watch?v=", "")
+      checkedVideoUrl: `https://youtube.com/embed/${videoId}`.replace("watch?v=", "")
     });
   }
 

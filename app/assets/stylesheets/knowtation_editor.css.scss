@@ -4,30 +4,46 @@ $main-blue-press: #0058e8;
 $border-gray: #aaa;
 
 .knowtation-editor-container {
-  padding-top: 40px;
+  padding-top: 125px;
   width: 900px;
   margin: 0 auto;
   padding-bottom: 40px;
-  text-align: center;
 }
 
-.editor-video-container {
-  float: left;
-  width: 420px;
-  height: 236px;
-  border: 1px solid $border-gray;
+.knowtation-editor {
+  box-shadow: 0 0 3px $border-gray;
 }
 
-.knowtation-editor-tools {
-  float: right;
-  width: 420px;
-  height: 236px;
-  border: 1px solid red;
+.knowtation-editor-first-row {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
 }
 
-.knowtation-editor-canvas {
-  margin-top: 45px;
-  width: 898px;
-  height: 238px;
-  border: 1px solid red;
+.knowtation-editor-second-row {
+  width: inherit;
+  height: 200px;
+}
+
+.knowtation-editor-video-container {
+  background: orchid;
+  opacity: 0.5;
+  flex-grow: 2;
+}
+
+.knowtation-editor-tools-container {
+  background: orange;
+  opacity: 0.5;
+  flex-grow: 1;
+}
+
+.knowtation-editor-video-container,
+.knowtation-editor-tools-container {
+  height: 350px;
+}
+
+.knowtation-editor-notation-container {
+  background: lightgreen;
+  height: inherit;
+  opacity: 0.5;
 }

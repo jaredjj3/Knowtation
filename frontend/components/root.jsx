@@ -5,12 +5,12 @@ import Faq from './footer/faq';
 import Privacy from './footer/privacy';
 import App from './app';
 import SessionFormContainer from './session_form/session_form_container';
-import Footer from './footer/footer';
 import TeachFormContainer from './teach_form/teach_form_container';
 import ProfileContainer from './profile/profile_container';
-import NewKnowtationContainer from './knowtation/new_knowtation_container';
 import LibraryContainer from './knowtation/library_container';
 import KnowtationContainer from './knowtation/knowtation_container';
+import KnowtationEditorContainer from './knowtation/knowtation_editor_container';
+
 
 const Root = ({ store }) => {
 
@@ -63,6 +63,11 @@ const Root = ({ store }) => {
           <Route
             path="knowtation/:id"
             component={ KnowtationContainer }
+          />
+
+          <Route
+            path="knowtation/:id/edit"
+            component={ KnowtationEditorContainer }
           />
 
         </Route>

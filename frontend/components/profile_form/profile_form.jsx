@@ -23,7 +23,7 @@ class ProfileForm extends React.Component {
 
   render() {
     const { profileModalOn } = this.props;
-    console.log(this.state);
+
     return(
       <Modal
         className='profile-form-container form-container group'

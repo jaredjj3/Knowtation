@@ -16,6 +16,7 @@ import {
 } from '../util/knowtation_api_util';
 import { toggleModal } from '../actions/modal_actions';
 import { receiveErrors } from '../actions/errors_actions';
+import { hashHistory } from 'react-router';
 
 const KnowtationMiddleware = ({ getState, dispatch}) => next => action => {
   const onError = messages => {
@@ -53,6 +54,7 @@ const KnowtationMiddleware = ({ getState, dispatch}) => next => action => {
           dispatch(toggleModal('upload'));
         }
         dispatch(receiveKnowtation(knowtation));
+        hashHistory.push(`/knowtation/${ knowtation.id }/edit`);
       };
       createKnowtation(action.formData, onSuccess, onError);
       return next(action);
