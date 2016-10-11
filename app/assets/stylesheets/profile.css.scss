@@ -3,10 +3,6 @@ $main-blue-hover: #3d87ff;
 $main-blue-press: #0058e8;
 $border-gray: #aaa;
 
-.profile-form-container.form-container {
-  overflow: hidden;
-}
-
 .profile-container {
   padding-top: 100px;
   width: 900px;
@@ -55,8 +51,9 @@ $border-gray: #aaa;
 }
 
 .profile-picture {
-  width: 298px;
-  height: 298px;
+  width: 278px;
+  height: 278px;
+  padding: 10px;
   box-shadow: 0 0 3px $border-gray;
 }
 

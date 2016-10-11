@@ -56,6 +56,7 @@ class User < ActiveRecord::Base
       created_at = user_loop.created_at
       date_created = Time.at(created_at).to_date
       days_ago = (todays_date - date_created).to_i
+      next if days_ago > 6 # only want data from the past week
       date_loop_hash[days_ago] ||= 0
       date_loop_hash[days_ago] += 1
     end
@@ -81,7 +82,9 @@ class User < ActiveRecord::Base
   end
 
   def completed_application?(application)
-    !application[:bio].empty? && !application[:link].empty?
+    application[:answer] == 'yes'
+    # TODO
+    # !application[:bio].empty? && !application[:link].empty?
   end
 
   private

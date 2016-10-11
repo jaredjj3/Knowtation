@@ -17,13 +17,14 @@ export const updateUser = (user, success, error) => {
   });
 };
 
-export const updateUserProfilePicture = (formData, id, callback) => {
+export const updateUserWithImage = (formData, id, success, error) => {
   $.ajax({
     method: 'PATCH',
     url: `api/users/${id}`,
     contentType: false,
     processData: false,
     data: formData,
-    success: ( response => callback(response))
+    success,
+    error
   });
 };

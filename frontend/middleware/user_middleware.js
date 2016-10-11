@@ -1,5 +1,14 @@
-import { REQUEST_USER, UPDATE_USER, receiveUser } from '../actions/user_actions';
-import { requestUser, updateUser } from '../util/user_api_util';
+import {
+  REQUEST_USER,
+  UPDATE_USER,
+  UPDATE_USER_WITH_IMAGE,
+  receiveUser
+} from '../actions/user_actions';
+import {
+  requestUser,
+  updateUser,
+  updateUserWithImage
+ } from '../util/user_api_util';
 import { receiveErrors } from '../actions/errors_actions';
 
 const UserMiddleware = ({ getState, dispatch}) => next => action => {
@@ -17,6 +26,10 @@ const UserMiddleware = ({ getState, dispatch}) => next => action => {
 
     case UPDATE_USER:
       updateUser(action.user, onSuccess, onError);
+      return next(action);
+
+    case UPDATE_USER_WITH_IMAGE:
+      updateUserWithImage(action.formData, action.id, onSuccess, onError);
       return next(action);
 
     default:

@@ -1,7 +1,17 @@
-.bio {
-  width: 250px;
-  height: 150px;
-  resize: vertical;
-  overflow: auto;
-  margin-bottom: 15px;
+.teach-form {
+  overflow: hidden;
+  text-align: center;
+}
+
+.radio-container {
+  padding: 10px 0;
+}
+
+.radio-container input {
+  background-color: blue;
+  width: 20px;
+}
+
+.teach-question {
+
 }

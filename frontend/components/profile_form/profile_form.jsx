@@ -6,16 +6,19 @@ import Icon from '../icon';
 class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
-    const bio = this.props.pageUser.bio;
+    const { pageUser } = this.props;
+    const bio = pageUser.bio;
     this.state = {
       profilePictureUrl: null,
       profilePictureFile: null,
       bio: bio === null ? '' : bio
     };
 
+    this.updateFile = this.updateFile.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
     this.handleBioChange = this.handleBioChange.bind(this);
+    this.handleBrowseClick = this.handleBrowseClick.bind(this);
   }
 
   render() {
@@ -30,6 +33,15 @@ class ProfileForm extends React.Component {
       >
         <Icon />
         <h1 className="logo">Knowtation</h1>
+        <div className='profile-form-picture-container'>
+          { this._uploadPictureDisplay() }
+          <input
+            onChange={ this.updateFile }
+            id='profile-form-browse'
+            type='file'
+            className='hide-button'
+            />
+        </div>
         <div className="profile-bio-container">
           <textarea
             className="profile-upload-input"
@@ -37,9 +49,6 @@ class ProfileForm extends React.Component {
             value={ this.state.bio }
             placeholder='tell us about yourself'
           />
-        </div>
-        <div className='profile-form-picture-container'>
-          { this._uploadPictureDisplay() }
         </div>
         <button
           className='form-submit'
@@ -52,6 +61,22 @@ class ProfileForm extends React.Component {
   }
 
   // event hanlders
+
+  updateFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+      this.setState({
+        profilePictureFile: file,
+        profilePictureUrl: fileReader.result
+      });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
 
   handleClickOut(e) {
     const { profileModalOn } = this.props;
@@ -67,28 +92,44 @@ class ProfileForm extends React.Component {
   }
 
   handleSubmitClick(e) {
-    console.log(this.state);
+    const { currentUser, updateUser, toggleModal } = this.props;
+    const user = this.state;
+    console.log(user);
+    updateUser(user, currentUser.id);
+    toggleModal('profile');
+  }
+
+  handleBrowseClick(e) {
+    document.getElementById('profile-form-browse').click();
   }
 
   // private
 
   _uploadPictureDisplay() {
-    const { profilePictureFile } = this.state;
+    const {
+      profilePictureFile,
+      profilePictureUrl
+    } = this.state;
+
     if (profilePictureFile === null) {
       return(
         <div
-          className='upload-thumbnail'
+          className='profile-form-thumbnail'
+          onClick={ this.handleBrowseClick }
         >
           <i className="material-icons">photo_camera</i>
-          <span>thumbnail</span>
+          <span>profile picture</span>
         </div>
       );
     } else {
       return(
-        <div className='upload-thumbnail'>
+        <div
+          className='profile-form-thumbnail'
+          onClick={ this.handleBrowseClick }
+        >
           <img
-            src={ this.state.thumbnailUrl }
-            className='upload-thumbnail'
+            src={ profilePictureUrl }
+            className='profile-form-thumbnail'
           />
         </div>
       );

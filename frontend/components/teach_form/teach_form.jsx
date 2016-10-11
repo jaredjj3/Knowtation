@@ -8,8 +8,7 @@ class TeachForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bio: "",
-      link: "",
+      answer: 'yes'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
@@ -30,19 +29,17 @@ class TeachForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const application = this.state;
-    this.props.sendApplication(application);
+    if (application.answer === 'yes') {
+      this.props.sendApplication(application);
+    }
   }
 
   render() {
     const { teachModalOn, teacherErrors } = this.props;
 
-    // const teacherErrorItems = teacherErrors.map((teacherError, idx) => (
-    //   <TeacherErrorItem key={ idx } teacherError={ teacherError }/>
-    // ));
-
     return(
       <Modal
-        className="form-container"
+        className="teach-form form-container"
         isOpen={ teachModalOn }
         onRequestClose={ this.handleClickOut }
         style={ style }
@@ -50,23 +47,15 @@ class TeachForm extends React.Component {
         <Icon />
         <h1 className="logo">Knowtation</h1>
           <form onSubmit={ this.handleSubmit }>
-            <ul className="errors">
-            </ul>
-            <textarea
-              className="bio form-input-field"
-              onChange={ this.handleOnChange("bio") }
-              value={ this.state.bio }
-              placeholder="tell us about yourself"
-            >
-          </textarea>
-          <input
-            className="portfolio-link form-input-field"
-            onChange={ this.handleOnChange('link') }
-            type="text"
-            value={ this.state.link }
-            placeholder="link us your work"
-          >
-          </input>
+            <span className='teach-question'>
+              Do you enjoy teaching guitar?
+            </span>
+            <div className='radio-container'>
+              <label for='yes'>yes</label>
+              <input type="radio" name='answer' value='yes' checked="checked"/>
+              <label for='no'>no</label>
+              <input type="radio" name='answer' value='no' checked="checked"/>
+            </div>
           <input
             className="form-submit"
             type="submit"

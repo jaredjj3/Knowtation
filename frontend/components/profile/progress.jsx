@@ -80,8 +80,8 @@ class Progress extends React.Component {
       hAxis: {
         direction: -1, // reverse axis
         format: '#',
-        baselineColor: '#eee',
-        gridlines: { color: '#eee' },
+        baselineColor: 'transparent',
+        gridlines: { color: 'transparent' },
         ticks: daysArray
       },
       colors: ['#0061ff']

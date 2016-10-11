@@ -3,7 +3,74 @@ $main-blue-hover: #3d87ff;
 $main-blue-press: #0058e8;
 $border-gray: #aaa;
 
+.profile-form-container {
+  height: 490px;
+  overflow-y: scroll;
+}
+
+.profile-form-picture-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.profile-form-container .form-submit {
+  width: 254px;
+  margin: 10px
+}
+
 .profile-bio-container {
-  background: blue;
-  opacity: 0.5;
+  margin-top: 10px;
+}
+
+.profile-bio {
+  margin-top: 20px;
+}
+
+.profile-upload-input {
+  width: 234px;
+  height: 100px;
+  resize: none;
+  text-align: left;
+  padding: 20px;
+  overflow: auto;
+  box-shadow: 0 0 3px $border-gray;
+}
+
+.profile-upload-input:focus {
+  box-shadow: 0 0 15px #5ec6ff;
+}
+
+.profile-form-thumbnail {
+  width: 274px;
+  height: 274px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $border-gray;
+  box-shadow: 0 0 3px $border-gray;
+}
+
+.profile-form-thumbnail:hover {
+  -webkit-filter: brightness(50%);
+  cursor: pointer;
+}
+
+.profile-form-thumbnail .material-icons {
+  font-size: 64px;
+}
+
+.profile-form-picture-container .main-button {
+  padding: 13px 10px;
+  margin-top: 20px;
+  width: 250px;
+}
+
+.profile-form-picture-container .main-button:hover {
+  background-color: #fff;
+  border: 2px solid $main-blue-hover;
+  color: $main-blue-hover;
 }

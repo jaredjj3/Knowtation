@@ -4,7 +4,6 @@ class Api::TeachersController < ApplicationController
 
     if @student.completed_application?(application_params)
       @student.user_type = 'teacher'
-      @student.bio = application_params[:bio]
       @student.save
       render :show
     else
@@ -14,6 +13,6 @@ class Api::TeachersController < ApplicationController
 
   private
   def application_params
-    params.require(:application).permit(:bio, :link)
+    params.require(:application).permit(:answer)
   end
 end

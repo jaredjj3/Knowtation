@@ -8,9 +8,10 @@ $border-gray: #aaa;
   border: 1px solid $border-gray;
   background: #fff;
   width: 350px;
-  overflow-y: scroll;
+  overflow: hidden;
   position: absolute;
   left: 0;
+  text-align: center;
   top: 50px;
   right: 0;
   margin: auto;
@@ -37,7 +38,6 @@ $border-gray: #aaa;
 
 .form-container .logo-icon {
   font-size: 72px;
-  margin-left: 134px;
   cursor: default;
 }
 
@@ -56,6 +56,7 @@ $border-gray: #aaa;
 .errors {
   margin: 15px 40px 5px 40px;
   font-size: 14px;
+  text-align: left;
 }
 
 .username-errors > li {

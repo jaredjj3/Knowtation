@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
 
     return (
       <Modal
-        className="profile-form-container form-container group"
+        className="form-container group"
         isOpen={ loginModalOn || signupModalOn }
         onRequestClose={ this.handleClickOut }
         style={ style }
