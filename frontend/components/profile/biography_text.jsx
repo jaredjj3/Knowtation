@@ -6,28 +6,28 @@ class BiographyText extends React.Component {
     const { currentUser, pageUser } = this.props;
     const { bio } = pageUser;
     this.state = {
-      editing: false,
       bio
     };
 
     this.handleEditClick = this.handleEditClick.bind(this);
-    this.handleSaveClick = this.handleSaveClick.bind(this);
-    this.handleDiscardClick = this.handleDiscardClick.bind(this);
     this._pageIsCurrentUser = this._pageIsCurrentUser.bind(this);
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
   }
 
-  handleEditClick(e) {
-    let { bio } = this.state;
+  componentWillReceiveProps(newProps) {
+    const oldUser = this.props.pageUser;
+    const newUser = newProps.pageUser;
 
-    if (bio === null) {
-      bio = "";
+    if (oldUser.id !== newUser.id) {
+      const { bio } = newUser;
+      this.setState({
+        bio
+      });
     }
+  }
 
-    this.setState({
-      editing: true,
-      bio
-    });
+  handleEditClick(e) {
+    this.props.toggleModal('profile');
   }
 
   handleSaveClick(e) {
@@ -41,7 +41,6 @@ class BiographyText extends React.Component {
 
     this.props.updateUser(user);
     this.setState({
-      editing: false,
       bio
     });
   }
@@ -49,7 +48,6 @@ class BiographyText extends React.Component {
   handleDiscardClick(e) {
     const { currentUser } = this.props;
     this.setState({
-      editing: false,
       bio: currentUser.bio
     });
   }
@@ -72,7 +70,7 @@ class BiographyText extends React.Component {
       <div className="biography-text group">
         <div className="username-container">
           { this._usernameDisplay(username) }
-          { this._iconDisplay() }
+          { this._editDisplay() }
         </div>
         { this._userTypeDisplay(userType) }
         { this._bioDisplay(bio) }
@@ -86,7 +84,7 @@ class BiographyText extends React.Component {
     if (currentUser === null) {
       return false;
     } else {
-      return currentUser.id === pageUser.id;  
+      return currentUser.id === pageUser.id;
     }
   }
 
@@ -94,44 +92,20 @@ class BiographyText extends React.Component {
     return <h1 className="profile-username">{ username }</h1>;
   }
 
-  _iconDisplay() {
-    const { editing } = this.state;
+  _editDisplay() {
     if (this._pageIsCurrentUser()) {
-      if (editing) {
-        return (
-          <ul className='profile-edit-buttons-container'>
-            <li>
-              <button
-                onClick={ this.handleSaveClick }
-                className='main-button'
-              >
-                  Save
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={ this.handleDiscardClick }
-                className='main-button'
-              >
-                  Discard
-              </button>
-            </li>
-          </ul>
-        );
-      } else {
-        return (
-          <ul className='profile-edit-buttons-container'>
-            <li>
-              <button
-                onClick={ this.handleEditClick }
-                className='main-button'
-              >
-                  Edit
-              </button>
-            </li>
-          </ul>
-        );
-      }
+      return (
+        <ul className='profile-edit-buttons-container'>
+          <li>
+            <button
+              onClick={ this.handleEditClick }
+              className='main-button'
+            >
+                Edit
+            </button>
+          </li>
+        </ul>
+      );
     } else {
       return <div></div>;
     }
@@ -142,35 +116,20 @@ class BiographyText extends React.Component {
   }
 
   _bioDisplay(bio) {
-    if (this.state.editing) {
-      // If editing
-      const placeholder = "tell us about yourself";
-      return (
-        <form>
-          <textarea
-            value={ this.state.bio }
-            className="editing-profile-bio profile-bio"
-            placeholder={ placeholder }
-            onChange={ this.inputChangeHandler('bio') }
-            />
-        </form>
+    if (bio === null && this._pageIsCurrentUser()) {
+      return(
+        <span
+          className="null-profile-bio profile-bio"
+          onClick={ this.handleEditClick }
+        >
+          tell us about yourself
+        </span>
       );
     } else {
-      // If not editing
-      if (bio === null && this._pageIsCurrentUser()) {
-        return(
-          <p
-            className="null-profile-bio profile-bio"
-            onClick={ this.handleEditClick }
-          >
-            tell us about yourself
-          </p>
-        );
-      } else {
-        return <p className="profile-bio">{ bio }</p>;
-      }
+      return <p className="profile-bio">{ bio }</p>;
     }
   }
+
 }
 
 export default BiographyText;

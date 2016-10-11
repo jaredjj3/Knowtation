@@ -18,9 +18,9 @@ class Biography extends React.Component {
     };
     this.updateFile = this.updateFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleForm = this.toggleForm.bind(this);
     this.statePictureFileName = this.statePictureFileName.bind(this);
     this.handleBrowseClick = this.handleBrowseClick.bind(this);
+    this.handlePictureClick = this.handlePictureClick.bind(this);
   }
 
   statePictureFileName() {
@@ -66,16 +66,12 @@ class Biography extends React.Component {
     document.getElementById('file-browse-input').click();
   }
 
-  toggleForm(e) {
-    const { pictureFormClass } = this.state;
-    const klass = pictureFormClass === 'disabled-picture-form' ?
-      'enabled-picture-form' : 'disabled-picture-form';
-
-    this.setState({
-      pictureFormClass: klass
-    });
+  handlePictureClick(e) {
+    const { currentUser, pageUser } = this.props;
+    if (currentUser && currentUser.id === pageUser.id) {
+      this.props.toggleModal('profile');
+    }
   }
-
 
   componentWillReceiveProps(newProps) {
     this.setState({
@@ -84,14 +80,7 @@ class Biography extends React.Component {
   }
 
   render() {
-    const { currentUser, pageUser, updateUser } = this.props;
-
-    let toggleFormCallback;
-    if (currentUser && currentUser.id === pageUser.id ) {
-      toggleFormCallback = this.toggleForm;
-    } else {
-      toggleFormCallback = () => {};
-    }
+    const { currentUser, pageUser, updateUser, toggleModal } = this.props;
 
     return(
       <div className="biography-container group">
@@ -104,12 +93,12 @@ class Biography extends React.Component {
                   this.state.profilePictureBorders + " profile-picture"
                 }
                 src={ this.state.profilePictureUrl }
-                onClick={ toggleFormCallback }
+                onClick={ this.handlePictureClick }
               />
               <UpdatePicture
-                callback={ toggleFormCallback }
                 currentUser={ currentUser }
                 pageUser={ pageUser }
+                toggleModal={ toggleModal }
               />
             </div>
             <Progress pageUser={ pageUser }/>
@@ -120,6 +109,7 @@ class Biography extends React.Component {
               currentUser={ currentUser }
               pageUser={ pageUser }
               updateUser={ updateUser }
+              toggleModal={ toggleModal }
             />
             <Saved />
           </div>

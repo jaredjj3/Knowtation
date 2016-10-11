@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import ProfileForm from './proflile_form';
+import ProfileForm from './profile_form';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => ({
   profileModalOn: state.modal.profileModalOn,
@@ -7,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  toggleModal: modal => dispatch(toggleModal(modal))
 });
 
 export default connect(

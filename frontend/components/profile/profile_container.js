@@ -5,6 +5,7 @@ import {
   receiveUser,
   updateUser
 } from '../../actions/user_actions';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
@@ -13,7 +14,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   requestUser: id => dispatch(requestUser(id)),
-  updateUser: user => dispatch(updateUser(user))
+  updateUser: user => dispatch(updateUser(user)),
+  toggleModal: modal => dispatch(toggleModal(modal))
 });
 
 export default connect(

@@ -58,7 +58,7 @@ class UploadForm extends React.Component {
             className='form-submit'
             onClick={ this.handlePopulateClick }
           >
-            Randomly Populate Form
+            Fill Form
           </button>
           <input
             className='upload-title form-input-field'

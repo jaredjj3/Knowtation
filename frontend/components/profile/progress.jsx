@@ -60,8 +60,6 @@ class Progress extends React.Component {
     const minLoops = Math.min(...numLoopsArray);
     const maxLoops = Math.max(...numLoopsArray);
 
-    console.log(daysArray);
-
     const arrayData = [['days ago', 'loops']].concat(mappedLoops);
     const data = google.visualization.arrayToDataTable(arrayData);
 

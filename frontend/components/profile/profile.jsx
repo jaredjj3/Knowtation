@@ -10,13 +10,11 @@ class Profile extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.params.id !== newProps.params.id) {
-      this.props.requestUser(newProps.params.id);
-    }
+    this.props.requestUser(newProps.params.id);
   }
 
   render() {
-    const { currentUser, pageUser, updateUser } = this.props;
+    const { currentUser, pageUser, updateUser, toggleModal } = this.props;
 
     return (
       <div className="profile-container">
@@ -25,6 +23,7 @@ class Profile extends React.Component {
             currentUser={ currentUser }
             pageUser={ pageUser }
             updateUser={ updateUser }
+            toggleModal={ toggleModal }
             />
         </div>
       </div>
