@@ -9,12 +9,20 @@ class KnowtationEditor extends React.Component {
   }
 
   componentDidMount() {
+    const { requestKnowtation, setElement} = this.props;
+
     const id = this.props.params.id;
-    this.props.requestKnowtation(id);
+    requestKnowtation(id);
 
     const knowtation = this.props.knowtation;
     const canvas = document.getElementById('canvas');
-    
+    const video = document.getElementById('video-player');
+    setElement(canvas, 'canvas');
+    setElement(video, 'video');
+  }
+
+  componentDidUpdate() {
+    const { knowtation } = this.props;
   }
 
   render() {

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import KnowtationEditor from './knowtation_editor';
 import {
   requestKnowtation,
-  setHtmlElement
+  setElement
 } from '../../actions/knowtation_actions';
 
 const mapStateToPropss = state => ({
@@ -11,7 +11,7 @@ const mapStateToPropss = state => ({
 
 const mapDispatchToProps = dispatch => ({
   requestKnowtation: id => dispatch(requestKnowtation(id)),
-  setHtmlElement: element => dispatch(setHtmlElement(element))
+  setElement: (element, elementName) => dispatch(setElement(element, elementName))
 });
 
 export default connect(
