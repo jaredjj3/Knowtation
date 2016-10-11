@@ -1,4 +1,5 @@
 import React from 'react';
+import daysArray from '../../util/days_array';
 
 class Progress extends React.Component {
   constructor(props) {
@@ -21,9 +22,16 @@ class Progress extends React.Component {
   }
 
   render() {
+    const { pageUser } = this.props;
+
+    let numLoops = 0;
+    if (pageUser.username !== null) {
+      numLoops = pageUser.givenLoops.totalLoops;
+    }
+
     return(
       <div className="progress-container">
-        <h1 className="progress-title">Progress</h1>
+        <h2 className="progress-title">{ numLoops } loops</h2>
         <div id="chart-container" />
       </div>
     );
@@ -48,6 +56,13 @@ class Progress extends React.Component {
       return;
     }
 
+    // gives an array of only the number of loops where the
+    const numLoopsArray = mappedLoops.map( array => array[1]);
+    const minLoops = Math.min(...numLoopsArray);
+    const maxLoops = Math.max(...numLoopsArray);
+
+    console.log(daysArray);
+
     const arrayData = [['days ago', 'loops']].concat(mappedLoops);
     const data = google.visualization.arrayToDataTable(arrayData);
 
@@ -55,22 +70,25 @@ class Progress extends React.Component {
     const options = {
       curveType: 'function',
       fontName: 'Open Sans',
-      fontSize: 16,
-      width: 900,
-      height: 400,
+      fontSize: 12,
+      width: 300,
+      height: 100,
+      legend: 'left',
+      tooltip: {
+        trigger: 'none'
+      },
       vAxis: {
+        ticks: [ minLoops, maxLoops ],
         baselineColor: 'black',
         format: '#',
-        minValue: 0,
+        gridlines: { color: 'transparent' }
       },
       hAxis: {
-        title: 'days ago',
         direction: -1, // reverse axis
         format: '#',
         baselineColor: 'transparent',
-        gridlines: { color: 'transparent' },
-        minValue: 0,
-        maxValue: 7
+        gridlines: { color: '#eee' },
+        ticks: daysArray
       },
       colors: ['#0061ff']
     };

@@ -98,8 +98,7 @@ NUM_USERS.times do
   user.created_at -= time_ago
   user.save!
 
-  num_loops = rng.rand(100)
-  num_loops.times do
+  100.times do
     user_loop = UserLoop.create!(
       knowtation_id: (rng.rand(1..NUM_KNOWTATIONS)),
       user_id: user.id

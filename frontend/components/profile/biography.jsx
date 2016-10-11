@@ -3,6 +3,7 @@ import UpdatePicture from './update_picture';
 import BiographyText from './biography_text';
 import Modal from 'react-modal';
 import { updateUserProfilePicture } from '../../util/user_api_util';
+import Progress from './progress';
 
 class Biography extends React.Component {
   constructor(props) {
@@ -93,6 +94,9 @@ class Biography extends React.Component {
     return(
       <div className="biography-container group">
         <div className="biography">
+          <div className="biography-left-column">
+
+          </div>
           <div className="profile-picture-container">
             <img
               id="profile-picture"
@@ -108,6 +112,7 @@ class Biography extends React.Component {
               pageUser={ pageUser }
             />
           </div>
+          <Progress pageUser={ pageUser }/>
           <BiographyText
             currentUser={ currentUser }
             pageUser={ pageUser }

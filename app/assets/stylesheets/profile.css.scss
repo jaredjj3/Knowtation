@@ -9,14 +9,10 @@ $border-gray: #aaa;
   margin: 0 auto;
 }
 
-.progress-container {
-  margin: 40px 10px;
-  border-top: 1px solid $border-gray;
-  border-bottom: 1px solid $border-gray;
-}
-
 .saved-container {
   margin: 40px 10px;
+  padding-top: 20px;
+  border-top: 1px solid $border-gray;
 }
 
 .profile-picture-container {
