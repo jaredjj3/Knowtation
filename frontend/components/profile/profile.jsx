@@ -20,12 +20,13 @@ class Profile extends React.Component {
 
     return (
       <div className="profile-container">
-        <Biography
-          currentUser={ currentUser }
-          pageUser={ pageUser }
-          updateUser={ updateUser }
-        />
-        <Saved />
+        <div className="secondary-profile-container">
+          <Biography
+            currentUser={ currentUser }
+            pageUser={ pageUser }
+            updateUser={ updateUser }
+            />
+        </div>
       </div>
     );
   }

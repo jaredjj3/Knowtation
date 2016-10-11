@@ -4,6 +4,8 @@ import BiographyText from './biography_text';
 import Modal from 'react-modal';
 import { updateUserProfilePicture } from '../../util/user_api_util';
 import Progress from './progress';
+import Saved from './saved';
+
 
 class Biography extends React.Component {
   constructor(props) {
@@ -85,7 +87,7 @@ class Biography extends React.Component {
     const { currentUser, pageUser, updateUser } = this.props;
 
     let toggleFormCallback;
-    if (currentUser.id === pageUser.id ) {
+    if (currentUser.username && currentUser.id === pageUser.id ) {
       toggleFormCallback = this.toggleForm;
     } else {
       toggleFormCallback = () => {};
@@ -93,73 +95,35 @@ class Biography extends React.Component {
 
     return(
       <div className="biography-container group">
-        <div className="biography">
-          <div className="biography-left-column">
 
+          <div className="biography-left-column">
+            <div className="profile-picture-container">
+              <img
+                id="profile-picture"
+                className={
+                  this.state.profilePictureBorders + " profile-picture"
+                }
+                src={ this.state.profilePictureUrl }
+                onClick={ toggleFormCallback }
+              />
+              <UpdatePicture
+                callback={ toggleFormCallback }
+                currentUser={ currentUser }
+                pageUser={ pageUser }
+              />
+            </div>
+            <Progress pageUser={ pageUser }/>
           </div>
-          <div className="profile-picture-container">
-            <img
-              id="profile-picture"
-              className={
-                this.state.profilePictureBorders + " profile-picture"
-              }
-              src={ this.state.profilePictureUrl }
-              onClick={ toggleFormCallback }
-            />
-            <UpdatePicture
-              callback={ toggleFormCallback }
+
+          <div className="biography-right-column">
+            <BiographyText
               currentUser={ currentUser }
               pageUser={ pageUser }
+              updateUser={ updateUser }
             />
-          </div>
-          <Progress pageUser={ pageUser }/>
-          <BiographyText
-            currentUser={ currentUser }
-            pageUser={ pageUser }
-            updateUser={ updateUser }
-          />
-        </div>
-        <form
-          id='profile-picture-form'
-          className={ this.state.pictureFormClass }
-        >
-          <input
-            id='file-browse-input'
-            className='hide-button'
-            type="file"
-            onChange={ this.updateFile }
-          />
-
-          <div className='profile-picture-browse-container'>
-            <button
-              className='profile-picture-browse main-button'
-              onClick={ this.handleBrowseClick }
-              >
-              Browse
-            </button>
-            <span className='profile-picture-selected-file'>
-              Selected file: { this.statePictureFileName() }
-            </span>
+            <Saved />
           </div>
 
-          <div className='profile-picture-cancel-container'>
-            <button
-              className='profile-picture-cancel main-button'
-              onClick={ toggleFormCallback }
-            >
-              Cancel
-            </button>
-          </div>
-
-          <div className='profile-picture-submit-container'>
-            <button
-              className='profile-picture-submit main-button'
-              onClick={ this.handleSubmit }
-            >
-              Submit
-            </button>
-          </div>
-        </form>
       </div>
     );
   }

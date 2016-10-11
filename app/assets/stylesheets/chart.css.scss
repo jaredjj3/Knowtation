@@ -1,6 +1,15 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
 #chart-container {
   width: 300px;
   height: 100px;
+  padding-bottom: 10px;
+  text-align: center;
+  box-shadow: 0 0 3px $border-gray;
+  margin-top: 20px;
 }
 
 .progress-title {

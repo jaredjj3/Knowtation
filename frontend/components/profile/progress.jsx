@@ -31,7 +31,6 @@ class Progress extends React.Component {
 
     return(
       <div className="progress-container">
-        <h2 className="progress-title">{ numLoops } loops</h2>
         <div id="chart-container" />
       </div>
     );
@@ -73,11 +72,12 @@ class Progress extends React.Component {
       fontSize: 12,
       width: 300,
       height: 100,
-      legend: 'left',
+      legend: 'none',
       tooltip: {
         trigger: 'none'
       },
       vAxis: {
+        title: 'loops',
         ticks: [ minLoops, maxLoops ],
         baselineColor: 'black',
         format: '#',
@@ -86,7 +86,7 @@ class Progress extends React.Component {
       hAxis: {
         direction: -1, // reverse axis
         format: '#',
-        baselineColor: 'transparent',
+        baselineColor: '#eee',
         gridlines: { color: '#eee' },
         ticks: daysArray
       },

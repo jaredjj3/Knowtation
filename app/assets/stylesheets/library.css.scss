@@ -7,6 +7,7 @@ $border-gray: #aaa;
   display: flex;
   flex-flow: row wrap;
   align-content: center;
+  box-shadow: 0 0 3px $border-gray;
 }
 
 .library-list-item h2:hover,

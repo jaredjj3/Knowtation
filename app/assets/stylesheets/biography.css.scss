@@ -4,46 +4,23 @@ $main-blue-press: #0058e8;
 $border-gray: #aaa;
 
 .biography-container {
+  padding: 20px;
 }
 
-.biography-text {
+.biography-left-column {
+  display: flex;
+  flex-direction: column;
   float: left;
-  display: block;
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-bottom: 0;
-  width: 600px;
 }
 
-.bio {
-  height: 101px;
+.biography-right-column {
+  float: right;
+  width: 525px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.null-profile-bio {
-  font-size: 16px;
-  margin-top: 10px;
-  color: $border-gray;
-}
-
-.null-profile-bio:hover {
-  color: $main-blue-hover;
-}
-
-.profile-bio {
-  height: 85px;
-  display: block;
-  width: 400px;
-  margin-top: 10px;
-}
-
-.editing-profile-bio {
-  height: 85px;
-  display: block;
-  width: 580px;
-  margin-top: 10px;
-  resize: none;
-}
-
-.editing-profile-bio:focus {
-  color: $main-blue;
+.progress-container {
+  float: left;
 }

@@ -1,0 +1,41 @@
+<form
+  id='profile-picture-form'
+  className={ this.state.pictureFormClass }
+>
+  <input
+    id='file-browse-input'
+    className='hide-button'
+    type="file"
+    onChange={ this.updateFile }
+  />
+
+  <div className='profile-picture-browse-container'>
+    <button
+      className='profile-picture-browse main-button'
+      onClick={ this.handleBrowseClick }
+      >
+      Browse
+    </button>
+    <span className='profile-picture-selected-file'>
+      Selected file: { this.statePictureFileName() }
+    </span>
+  </div>
+
+  <div className='profile-picture-cancel-container'>
+    <button
+      className='profile-picture-cancel main-button'
+      onClick={ toggleFormCallback }
+    >
+      Cancel
+    </button>
+  </div>
+
+  <div className='profile-picture-submit-container'>
+    <button
+      className='profile-picture-submit main-button'
+      onClick={ this.handleSubmit }
+    >
+      Submit
+    </button>
+  </div>
+</form>
