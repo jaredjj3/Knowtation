@@ -52,7 +52,7 @@ class NotationView extends React.Component {
 
   handleCanvasClick(e) {
     const { knowtation, createSyncPoint, deleteSyncPoint } = this.props;
-    const { canvas } = knowtation;
+    const { canvas, videoElement } = knowtation;
     const pos = this.getMousePos(canvas, e);
 
     // check to see if there is a syncPoint within 10 px
@@ -67,6 +67,7 @@ class NotationView extends React.Component {
         id: knowtation.syncPointId,
         time: 0 // placeholder
       });
+      videoElement.pauseVideo();
     }
   }
 

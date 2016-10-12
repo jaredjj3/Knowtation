@@ -64,6 +64,10 @@
    -moz-appearance: none;
  }
 
+ input[type=checkbox] {
+   -webkit-appearance:checkbox;
+ }
+
  button,
  input[type="submit"] {
    cursor: pointer;

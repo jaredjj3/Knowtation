@@ -7,9 +7,12 @@ class TimeForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: ''
+      time: '',
+      autoplay: true
     };
     this.handleClickOut = this.handleClickOut.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
@@ -24,12 +27,27 @@ class TimeForm extends React.Component {
         style={ style }
       >
 
-        <form>
+        <form onSubmit={ this.handleSubmit }>
           <input
             type='text'
+            value={ this.state.time }
+            onChange={ this.handleChange }
             placeholder='time in seconds'
             className='form-input-field'
-            />
+          />
+          <input
+            type='submit'
+            value='Submit'
+            className='main-button'
+          />
+          <label>
+            <input
+              id="autoplay"
+              type="checkbox"
+              onChange={ this.handleAutoplayChange }
+              checked={ this.state.autoplay }
+            />autoplay
+          </label>
         </form>
         or { toTimeString(currentTime) }
 
@@ -39,13 +57,53 @@ class TimeForm extends React.Component {
 
   // event handlers
 
+  handleChange(e) {
+    const time = e.target.value.replace(/\s/g, '');
+
+    const isNumeric = value => Number(parseFloat(value)) == value;
+
+    if (isNumeric(time)) {
+      this.setState({ time });
+    } else {
+      this.setState({ time: time.slice(0, time.length - 1)});
+    }
+  }
+
+  handleAutoplayChange(e) {
+    this.setState({
+      autoplay: !this.state.autoplay
+    });
+  }
+
   handleClickOut(e) {
-    const { timeModalOn, toggleModal } = this.props;
+    const {
+      timeModalOn,
+      toggleModal,
+      deleteSyncPoint,
+      syncPointId
+    } = this.props;
+
+    deleteSyncPoint(syncPointId);
 
     if (timeModalOn) {
       toggleModal('time');
     }
   }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const {
+      knowtation,
+      toggleModal,
+      timeModalOn
+    } = this.props;
+
+    const value = e.target.value;
+
+  }
+
+  // helpers
+
 }
 
 export default TimeForm;

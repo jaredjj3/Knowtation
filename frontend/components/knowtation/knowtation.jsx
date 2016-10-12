@@ -15,8 +15,6 @@ class Knowtation extends React.Component {
       modifiedVideoUrl = `http://youtube.com/embed/${videoUrl.replace("watch?v=", "")}`;
     }
 
-    console.log(modifiedVideoUrl);
-
     return(
       <div className='knowtation-container group'>
         <iframe
