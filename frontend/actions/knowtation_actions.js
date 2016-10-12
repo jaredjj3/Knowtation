@@ -6,6 +6,8 @@ export const CREATE_KNOWTATION = "CREATE_KNOWTATION";
 export const REQUEST_KNOWTATION = "REQUEST_KNOWTATION";
 export const SET_ELEMENT = "SET_HTML_ELEMENT";
 export const TOGGLE_PLAYING = "TOGGLE_PLAYING";
+export const UPDATE_TIME = "UPDATE_TIME";
+export const SET_DURATION = "SET_DURATION";
 
 export const requestAllKnowtations = () => ({
   type: REQUEST_ALL_KNOWTATIONS
@@ -44,4 +46,14 @@ export const setElement = (element, elementName) => ({
 
 export const togglePlaying = () => ({
   type: TOGGLE_PLAYING
+});
+
+export const updateTime = currentTime => ({
+  type: UPDATE_TIME,
+  currentTime
+});
+
+export const setDuration = duration => ({
+  type: SET_DURATION,
+  duration
 });

@@ -1,22 +1,33 @@
 import React from 'react';
 import ReactYouTube from 'react-youtube';
 
-const VideoPlayer = ({ knowtation, setElement }) => {
-  const videoPlayQueryString = '?autoplay=0&showinfo=0&controls=2&loop=1&playsinline=1&fs=0&autohide=1&enablejsapi=1';
-  //
-  // let modifiedVideoUrl = '';
-  // if (knowtation.id !== null) {
-  //   modifiedVideoUrl = `http://youtube.com/embed/${ knowtation.videoUrl }${ videoPlayQueryString }`;
-  // }
+const VideoPlayer = ({ knowtation, setElement, updateTime, setDuration }) => {
+  const { videoElement } = knowtation;
 
-  const options = {
-    playerVars: {
-      autoplay: 1
+  const onReadyHandler = e => {
+    setElement(e.target, 'video');
+  };
+
+  const onPlayHandler = e => {
+    window.videoTimer = setInterval(_updateTimer, 33); // 30 fps
+    setDuration(e.target.getDuration());
+  };
+
+  const onPauseHandler = e => {
+    if (window.videoTimer) {
+      clearInterval(window.videoTimer);
     }
   };
 
-  const onReadyHandler = (e) => {
-    setElement(e.target, 'video');
+  const onEndHandler = e => {
+    if (window.videoTimer) {
+      clearInterval(window.videoTimer);
+    }
+  };
+
+  const _updateTimer = () => {
+    const currentTime = videoElement.getCurrentTime();
+    updateTime(currentTime);
   };
 
   return (
@@ -25,6 +36,9 @@ const VideoPlayer = ({ knowtation, setElement }) => {
       className='knowtation-editor-video-player'
       videoId={ knowtation.videoUrl }
       onReady={ onReadyHandler }
+      onPlay={ onPlayHandler }
+      onPause={ onPauseHandler }
+      onEnd={ onEndHandler }
     />
   );
 };

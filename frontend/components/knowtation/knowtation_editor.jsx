@@ -15,20 +15,17 @@ class KnowtationEditor extends React.Component {
 
     const id = this.props.params.id;
     requestKnowtation(id);
-
-    const knowtation = this.props.knowtation;
-    const canvas = document.getElementById('canvas');
-    const video = document.getElementById('video-player');
-    setElement(canvas, 'canvas');
-    setElement(video, 'video');
   }
 
   componentDidUpdate() {
+    const { knowtation } = this.props;
+    const { videoElement } = knowtation;
+
 
   }
 
   render() {
-    const { knowtation, togglePlaying, setElement } = this.props;
+    const { knowtation, togglePlaying, setElement, updateTime, setDuration } = this.props;
 
     return (
       <div className="knowtation-editor-container">
@@ -39,6 +36,8 @@ class KnowtationEditor extends React.Component {
               <VideoPlayer
                 knowtation={ knowtation }
                 setElement={ setElement }
+                updateTime={ updateTime }
+                setDuration={ setDuration }
               />
             </div>
             <div className='knowtation-editor-tools-container'>
@@ -61,10 +60,7 @@ class KnowtationEditor extends React.Component {
   // event handlers
 
   updateTime(e) {
-    this.props.knowtation.videoElement.loadVideoById({
-      videoId: 'Q8AId2ltAfY',
-      startSeconds: 50
-    });
+
   }
 
 }
