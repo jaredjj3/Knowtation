@@ -1,4 +1,10 @@
-.notation-view {
+.notation-view-container {
   width: 900px;
   height: 200px;
+  background: lightgreen;
+  overflow-x: scroll;
+}
+
+.notation-view {
+  width: 900px;
 }
