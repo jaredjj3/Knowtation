@@ -6,6 +6,8 @@ import NotationView from './notation_view';
 class KnowtationEditor extends React.Component {
   constructor(props) {
     super(props);
+
+    this.updateTime = this.updateTime.bind(this);
   }
 
   componentDidMount() {
@@ -22,11 +24,11 @@ class KnowtationEditor extends React.Component {
   }
 
   componentDidUpdate() {
-    const { knowtation } = this.props;
+
   }
 
   render() {
-    const { knowtation } = this.props;
+    const { knowtation, togglePlaying, setElement } = this.props;
 
     return (
       <div className="knowtation-editor-container">
@@ -34,7 +36,10 @@ class KnowtationEditor extends React.Component {
 
           <div className="knowtation-editor-first-row">
             <div className='knowtation-editor-video-container'>
-              <VideoPlayer knowtation={ knowtation }/>
+              <VideoPlayer
+                knowtation={ knowtation }
+                setElement={ setElement }
+              />
             </div>
             <div className='knowtation-editor-tools-container'>
               <KnowtationTools knowtation={ knowtation }/>
@@ -45,14 +50,22 @@ class KnowtationEditor extends React.Component {
             <div className='knowtation-editor-notation-container'>
               <NotationView knowtation={ knowtation }/>
             </div>
+            <div className='knowtation-editor-controls'>
+            </div>
           </div>
-
         </div>
       </div>
     );
   }
 
   // event handlers
+
+  updateTime(e) {
+    this.props.knowtation.videoElement.loadVideoById({
+      videoId: 'Q8AId2ltAfY',
+      startSeconds: 50
+    });
+  }
 
 }
 

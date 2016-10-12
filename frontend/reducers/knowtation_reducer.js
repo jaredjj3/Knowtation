@@ -1,6 +1,7 @@
 import {
   RECEIVE_KNOWTATION,
-  SET_ELEMENT
+  SET_ELEMENT,
+  TOGGLE_PLAYING
 } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
@@ -8,6 +9,7 @@ const _nullKnowtation = Object.freeze({
   id: null,
   userId: null,
   videoUrl: null,
+  isPlaying: false,
   videoElement: null,
   canvasElement: null,
   notationImageUrl: null,
@@ -25,6 +27,11 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
 
     case SET_ELEMENT:
       newState[`${action.elementName}Element`] = action.element;
+      return newState;
+
+    case TOGGLE_PLAYING:
+      console.log('toggled');
+      newState.isPlaying = !newState.isPlaying;
       return newState;
 
     default:

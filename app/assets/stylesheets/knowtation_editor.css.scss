@@ -27,20 +27,20 @@ $border-gray: #aaa;
 
 .knowtation-editor-video-container,
 .knowtation-editor-video-player {
-  background: orchid;
-  width: 642px;
-  height: inherit;
+  width: 640px;
+  height: 360px;;
   border: none;
 }
 
 .knowtation-editor-tools-container {
   background: orange;
-  width: 258px;
+  width: 260px;
+  height: 360px;
 }
 
 .knowtation-editor-video-container,
 .knowtation-editor-tools-container {
-  height: 350px;
+  height: 360px;
 }
 
 .knowtation-editor-notation-container {

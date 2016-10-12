@@ -5,6 +5,7 @@ export const RECEIVE_KNOWTATION = "RECEIVE_KNOWTATION";
 export const CREATE_KNOWTATION = "CREATE_KNOWTATION";
 export const REQUEST_KNOWTATION = "REQUEST_KNOWTATION";
 export const SET_ELEMENT = "SET_HTML_ELEMENT";
+export const TOGGLE_PLAYING = "TOGGLE_PLAYING";
 
 export const requestAllKnowtations = () => ({
   type: REQUEST_ALL_KNOWTATIONS
@@ -39,4 +40,8 @@ export const setElement = (element, elementName) => ({
   type: SET_ELEMENT,
   element,
   elementName
+});
+
+export const togglePlaying = () => ({
+  type: TOGGLE_PLAYING
 });
