@@ -6,7 +6,8 @@ const _nullModals = Object.freeze({
   signupModalOn: false,
   teachModalOn: false,
   uploadModalOn: false,
-  profileModalOn: false
+  profileModalOn: false,
+  timeModalOn: false
 });
 
 const ModalReducer = (state = _nullModals, action) => {

@@ -21,8 +21,8 @@ const _nullKnowtation = Object.freeze({
   videoUrl: null,
   isPlaying: false,
   destination: null,
-  syncPointId: 0,
-  currentTime: null,
+  syncPointId: 1,
+  currentTime: 0,
   videoElement: null,
   canvasElement: null,
   notationImageUrl: null,
@@ -67,7 +67,6 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
       newState.scrollInstructions = newState.scrollInstructions.filter( syncPoint => (
         parseInt(syncPoint.id) !== parseInt(action.id)
       ));
-      console.log('deleted ' + action.id);
       return newState;
 
     default:

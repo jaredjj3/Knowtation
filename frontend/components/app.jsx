@@ -7,6 +7,7 @@ import SessionFormContainer from './session_form/session_form_container';
 import TeachFormContainer from './teach_form/teach_form_container';
 import UploadFormContainer from './upload_form/upload_form_container';
 import ProfileFormContainer from './profile_form/profile_form_container';
+import TimeFormContainer from './time_form/time_form_container';
 
 const App = ({ children }) => (
 
@@ -26,6 +27,7 @@ const App = ({ children }) => (
     <TeachFormContainer />
     <UploadFormContainer />
     <ProfileFormContainer />
+    <TimeFormContainer />
 
     { children }
 

@@ -51,16 +51,23 @@ class NotationView extends React.Component {
   // event handlers
 
   handleCanvasClick(e) {
-    const { knowtation, createSyncPoint } = this.props;
+    const { knowtation, createSyncPoint, deleteSyncPoint } = this.props;
     const { canvas } = knowtation;
     const pos = this.getMousePos(canvas, e);
 
-    // check to see if there is a syncPoint within 1 px
-    createSyncPoint({
-      pos: pos,
-      time: 0,
-      id: knowtation.syncPointId
-    });
+    // check to see if there is a syncPoint within 10 px
+    const existingSyncPoint = this.checkSyncPoints(pos);
+
+    if (existingSyncPoint) {
+      deleteSyncPoint(existingSyncPoint.id);
+    } else {
+      this.askForTime();
+      createSyncPoint({
+        pos: pos,
+        id: knowtation.syncPointId,
+        time: 0 // placeholder
+      });
+    }
   }
 
   updateCanvas(e) {
@@ -72,6 +79,29 @@ class NotationView extends React.Component {
   }
 
   // helpers
+
+  askForTime() {
+    const { timeModalOn, toggleModal } = this.props;
+
+    if (!timeModalOn) {
+      toggleModal('time');
+    }
+  }
+
+  checkSyncPoints(pos) {
+    const { knowtation } = this.props;
+    const { scrollInstructions } = knowtation;
+
+    for (let i = 0; i < scrollInstructions.length; i++) {
+      const syncPoint = scrollInstructions[i];
+      const xDist = Math.abs(parseInt(syncPoint.pos.x) - parseInt(pos.x));
+      if (xDist < 10) {
+        return syncPoint;
+      }
+    }
+    // if no matching sync point is found
+    return null;
+  }
 
   getMousePos(canvas, e) {
     const rect = canvas.getBoundingClientRect();

@@ -6,17 +6,20 @@ const SyncPointList = ({ knowtation, deleteSyncPoint }) => {
     return <ul className='sync-point-list'></ul>;
   }
 
-  const handleLiClick = e => {
+  const handleDeleteClick = e => {
     deleteSyncPoint(e.target.id);
   };
 
-  const syncPoints = knowtation.scrollInstructions.map((syncPoint) => (
-    <li
-      key={ syncPoint.id }
-      id={ syncPoint.id }
-      onClick={ handleLiClick }
-    >
-      x: { syncPoint.pos.x }, y: { syncPoint.pos.y }, time: { syncPoint.time }, id: { syncPoint.id }
+  const syncPoints = knowtation.scrollInstructions.map((syncPoint, idx) => (
+    <li id={ idx + 1 } key={ syncPoint.id } >
+      { idx + 1 } at { syncPoint.time }
+      <i
+        id={ syncPoint.id }
+        className="material-icons"
+        onClick={ handleDeleteClick }
+      >
+        delete
+      </i>
     </li>
   ));
 

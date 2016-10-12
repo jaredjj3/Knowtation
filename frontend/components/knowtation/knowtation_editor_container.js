@@ -10,9 +10,11 @@ import {
   createSyncPoint,
   deleteSyncPoint
 } from '../../actions/knowtation_actions';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToPropss = state => ({
-  knowtation: state.knowtation
+  knowtation: state.knowtation,
+  timeModalOn: state.modal.timeModalOn
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,7 +25,8 @@ const mapDispatchToProps = dispatch => ({
   setDuration: duration => dispatch(setDuration(duration)),
   setAttribute: (attribute, value) => dispatch(setAttribute(attribute, value)),
   createSyncPoint: syncPoint => dispatch(createSyncPoint(syncPoint)),
-  deleteSyncPoint: id => dispatch(deleteSyncPoint(id))
+  deleteSyncPoint: id => dispatch(deleteSyncPoint(id)),
+  toggleModal: modal => dispatch(toggleModal(modal))
 });
 
 export default connect(

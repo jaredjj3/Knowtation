@@ -30,7 +30,9 @@ class KnowtationEditor extends React.Component {
       setDuration,
       setAttribute,
       createSyncPoint,
-      deleteSyncPoint
+      deleteSyncPoint,
+      toggleModal,
+      timeModalOn
    } = this.props;
 
     return (
@@ -61,6 +63,8 @@ class KnowtationEditor extends React.Component {
                 setAttribute={ setAttribute }
                 createSyncPoint={ createSyncPoint }
                 deleteSyncPoint={ deleteSyncPoint }
+                toggleModal={ toggleModal }
+                timeModalOn={ timeModalOn }
               />
             </div>
             <div className='knowtation-editor-controls'>

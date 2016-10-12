@@ -9,7 +9,7 @@ const VideoPlayer = ({ knowtation, setElement, updateTime, setDuration }) => {
   };
 
   const onPlayHandler = e => {
-    window.videoTimer = setInterval(_updateTimer, 33); // 30 fps
+    window.videoTimer = setInterval(_updateTimer, 50);
     setDuration(e.target.getDuration());
   };
 
