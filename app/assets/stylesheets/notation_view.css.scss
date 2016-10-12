@@ -1,10 +1,14 @@
 .notation-view-container {
   width: 900px;
-  height: 200px;
-  background: lightgreen;
+  height: 300px;
   overflow-x: scroll;
 }
 
 .notation-view {
   width: 900px;
+  height: 285px;
+}
+
+.notation-view:hover {
+  cursor: crosshair;
 }

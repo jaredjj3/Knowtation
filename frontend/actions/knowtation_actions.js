@@ -8,6 +8,9 @@ export const SET_ELEMENT = "SET_HTML_ELEMENT";
 export const TOGGLE_PLAYING = "TOGGLE_PLAYING";
 export const UPDATE_TIME = "UPDATE_TIME";
 export const SET_DURATION = "SET_DURATION";
+export const SET_ATTRIBUTE = "SET_ATTRIBUTE";
+export const CREATE_SYNC_POINT = "CREATE_SYNC_POINT";
+export const DELETE_SYNC_POINT = "DELETE_SYNC_POINT";
 
 export const requestAllKnowtations = () => ({
   type: REQUEST_ALL_KNOWTATIONS
@@ -56,4 +59,20 @@ export const updateTime = currentTime => ({
 export const setDuration = duration => ({
   type: SET_DURATION,
   duration
+});
+
+export const setAttribute = (attribute, value) => ({
+  type: SET_ATTRIBUTE,
+  attribute,
+  value
+});
+
+export const createSyncPoint = pos => ({
+  type: CREATE_SYNC_POINT,
+  pos
+});
+
+export const deleteSyncPoint = id => ({
+  type: DELETE_SYNC_POINT,
+  id
 });

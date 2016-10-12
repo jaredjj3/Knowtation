@@ -3,7 +3,9 @@ import {
   SET_ELEMENT,
   TOGGLE_PLAYING,
   UPDATE_TIME,
-  SET_DURATION
+  SET_DURATION,
+  SET_ATTRIBUTE,
+  CREATE_SYNC_POINT
 } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
@@ -12,6 +14,9 @@ const _nullKnowtation = Object.freeze({
   userId: null,
   videoUrl: null,
   isPlaying: false,
+  img: null,
+  ctx: null,
+  canvas: null,
   currentTime: null,
   duration: null,
   videoElement: null,
@@ -43,6 +48,14 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
 
     case SET_DURATION:
       newState.duration = action.duration;
+      return newState;
+
+    case SET_ATTRIBUTE:
+      newState[`${action.attribute}`] = action.value;
+      return newState;
+
+    case CREATE_SYNC_POINT:
+      newState.scrollInstructions.push(action.syncPoint);
       return newState;
 
     default:

@@ -18,14 +18,20 @@ class KnowtationEditor extends React.Component {
   }
 
   componentDidUpdate() {
-    const { knowtation } = this.props;
-    const { videoElement } = knowtation;
-
 
   }
 
   render() {
-    const { knowtation, togglePlaying, setElement, updateTime, setDuration } = this.props;
+    const {
+      knowtation,
+      togglePlaying,
+      setElement,
+      updateTime,
+      setDuration,
+      setAttribute,
+      createSyncPoint,
+      deleteSyncPoint
+   } = this.props;
 
     return (
       <div className="knowtation-editor-container">
@@ -47,7 +53,12 @@ class KnowtationEditor extends React.Component {
 
           <div className="knowtation-editor-second-row">
             <div className='knowtation-editor-notation-container'>
-              <NotationView knowtation={ knowtation }/>
+              <NotationView
+                knowtation={ knowtation }
+                setAttribute={ setAttribute }
+                createSyncPoint={ createSyncPoint }
+                deleteSyncPoint={ deleteSyncPoint }
+              />
             </div>
             <div className='knowtation-editor-controls'>
             </div>
