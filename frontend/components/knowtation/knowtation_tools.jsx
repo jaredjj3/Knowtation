@@ -1,7 +1,7 @@
 import React from 'react';
 import SyncPointList from './sync_point_list';
 
-const KnowtationTools = ({ knowtation }) => {
+const KnowtationTools = ({ knowtation, deleteSyncPoint }) => {
   const { videoElement } = knowtation;
 
   const currentTime = () => {
@@ -36,7 +36,10 @@ const KnowtationTools = ({ knowtation }) => {
   return(
     <div className='knowtation-tools-container'>
       { currentTime() }
-      <SyncPointList knowtation={ knowtation } />
+      <SyncPointList
+        knowtation={ knowtation }
+        deleteSyncPoint={ deleteSyncPoint }
+      />
     </div>
   );
 };

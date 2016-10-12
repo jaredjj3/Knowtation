@@ -5,20 +5,24 @@ import {
   UPDATE_TIME,
   SET_DURATION,
   SET_ATTRIBUTE,
-  CREATE_SYNC_POINT
+  CREATE_SYNC_POINT,
+  DELETE_SYNC_POINT
 } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
 const _nullKnowtation = Object.freeze({
   id: null,
-  userId: null,
-  videoUrl: null,
-  isPlaying: false,
   img: null,
   ctx: null,
+  source: null,
   canvas: null,
-  currentTime: null,
+  userId: null,
   duration: null,
+  videoUrl: null,
+  isPlaying: false,
+  destination: null,
+  syncPointId: 0,
+  currentTime: null,
   videoElement: null,
   canvasElement: null,
   notationImageUrl: null,
@@ -56,6 +60,14 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
 
     case CREATE_SYNC_POINT:
       newState.scrollInstructions.push(action.syncPoint);
+      newState.syncPointId++;
+      return newState;
+
+    case DELETE_SYNC_POINT:
+      newState.scrollInstructions = newState.scrollInstructions.filter( syncPoint => (
+        parseInt(syncPoint.id) !== parseInt(action.id)
+      ));
+      console.log('deleted ' + action.id);
       return newState;
 
     default:

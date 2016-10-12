@@ -38,7 +38,6 @@ const VideoPlayer = ({ knowtation, setElement, updateTime, setDuration }) => {
       onReady={ onReadyHandler }
       onPlay={ onPlayHandler }
       onPause={ onPauseHandler }
-      onEnd={ onEndHandler }
     />
   );
 };

@@ -67,9 +67,9 @@ export const setAttribute = (attribute, value) => ({
   value
 });
 
-export const createSyncPoint = pos => ({
+export const createSyncPoint = syncPoint => ({
   type: CREATE_SYNC_POINT,
-  pos
+  syncPoint
 });
 
 export const deleteSyncPoint = id => ({

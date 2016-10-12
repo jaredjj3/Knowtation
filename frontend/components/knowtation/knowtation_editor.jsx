@@ -47,7 +47,10 @@ class KnowtationEditor extends React.Component {
               />
             </div>
             <div className='knowtation-editor-tools-container'>
-              <KnowtationTools knowtation={ knowtation }/>
+              <KnowtationTools
+                knowtation={ knowtation }
+                deleteSyncPoint={ deleteSyncPoint }
+              />
             </div>
           </div>
 
