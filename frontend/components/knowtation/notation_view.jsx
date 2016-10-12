@@ -61,6 +61,7 @@ class NotationView extends React.Component {
     if (existingSyncPoint) {
       deleteSyncPoint(existingSyncPoint.id);
     } else {
+      this.focusTimeInput();
       this.askForTime();
       createSyncPoint({
         pos: pos,
@@ -80,6 +81,15 @@ class NotationView extends React.Component {
   }
 
   // helpers
+
+  focusTimeInput() {
+    setTimeout(() => {
+      const timeInputElement = document.getElementById('time-input');
+      if (timeInputElement) {
+        timeInputElement.focus();
+      }
+    }, 80);
+  }
 
   askForTime() {
     const { timeModalOn, toggleModal } = this.props;

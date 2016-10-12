@@ -1,4 +1,5 @@
 import React from 'react';
+import { toTimeString } from '../../util/time_string';
 
 const SyncPointList = ({ knowtation, deleteSyncPoint }) => {
 
@@ -12,7 +13,7 @@ const SyncPointList = ({ knowtation, deleteSyncPoint }) => {
 
   const syncPoints = knowtation.scrollInstructions.map((syncPoint, idx) => (
     <li id={ idx + 1 } key={ syncPoint.id } >
-      { idx + 1 } at { syncPoint.time }
+      { idx + 1 } at { toTimeString(syncPoint.time) }
       <i
         id={ syncPoint.id }
         className="material-icons"

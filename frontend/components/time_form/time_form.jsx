@@ -10,9 +10,11 @@ class TimeForm extends React.Component {
       time: '',
       autoplay: true
     };
-    this.handleClickOut = this.handleClickOut.bind(this);
+    this._reset = this._reset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClickOut = this.handleClickOut.bind(this);
+    this.handleAutoplayChange = this.handleAutoplayChange.bind(this);
   }
 
   render() {
@@ -29,6 +31,7 @@ class TimeForm extends React.Component {
 
         <form onSubmit={ this.handleSubmit }>
           <input
+            id='time-input'
             type='text'
             value={ this.state.time }
             onChange={ this.handleChange }
@@ -85,9 +88,7 @@ class TimeForm extends React.Component {
 
     deleteSyncPoint(syncPointId);
 
-    if (timeModalOn) {
-      toggleModal('time');
-    }
+    this._reset();
   }
 
   handleSubmit(e) {
@@ -95,14 +96,39 @@ class TimeForm extends React.Component {
     const {
       knowtation,
       toggleModal,
-      timeModalOn
+      timeModalOn,
+      deleteSyncPoint,
+      syncPointId
     } = this.props;
+    const { scrollInstructions } = knowtation;
+    const last = scrollInstructions.length - 1;
+    const { time, autoplay } = this.state;
 
-    const value = e.target.value;
+    if (time) {
+      scrollInstructions[last].time = parseFloat(time);
+    } else {
+      deleteSyncPoint(syncPointId);
+    }
 
+    this._reset();
   }
 
   // helpers
+
+  _reset() {
+    const { timeModalOn, toggleModal, knowtation } = this.props;
+    const { autoplay } = this.state;
+
+    this.setState({ time: '' });
+
+    if (timeModalOn) {
+      toggleModal('time');
+    }
+
+    if (autoplay) {
+      knowtation.videoElement.playVideo();
+    }
+  }
 
 }
 
