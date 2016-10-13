@@ -5,7 +5,7 @@ export const RECEIVE_KNOWTATION = "RECEIVE_KNOWTATION";
 export const CREATE_KNOWTATION = "CREATE_KNOWTATION";
 export const REQUEST_KNOWTATION = "REQUEST_KNOWTATION";
 export const SET_ELEMENT = "SET_HTML_ELEMENT";
-export const TOGGLE_PLAYING = "TOGGLE_PLAYING";
+export const TOGGLE_ATTRIBUTE = "TOGGLE_ATTRIBUTE";
 export const UPDATE_TIME = "UPDATE_TIME";
 export const SET_DURATION = "SET_DURATION";
 export const SET_ATTRIBUTE = "SET_ATTRIBUTE";
@@ -47,8 +47,9 @@ export const setElement = (element, elementName) => ({
   elementName
 });
 
-export const togglePlaying = () => ({
-  type: TOGGLE_PLAYING
+export const toggleAttribute = attribute => ({
+  type: TOGGLE_ATTRIBUTE,
+  attribute
 });
 
 export const updateTime = currentTime => ({

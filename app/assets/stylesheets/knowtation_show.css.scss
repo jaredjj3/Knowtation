@@ -19,10 +19,14 @@ $border-gray: #aaa;
 }
 
 .knowtation-show-controls {
-
 }
 
-.knowtation-show-controls-list {
-  width: 900px;
-  height: 50px;
+.knowtation-show-seeker {
+  background: lightblue;
+  opacity: 0.5;
+  height: 20px;
+}
+
+.finalize.main-button {
+  margin-top: 30px;
 }

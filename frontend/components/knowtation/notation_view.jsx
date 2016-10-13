@@ -1,5 +1,4 @@
 import React from 'react';
-import Canvas from 'react-canvas-component';
 import { toTimeString } from '../../util/time_string';
 
 class NotationView extends React.Component {

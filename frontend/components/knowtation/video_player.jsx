@@ -7,7 +7,7 @@ const VideoPlayer = ({
   updateTime,
   setDuration,
   isPlaying,
-  togglePlaying
+  toggleAttribute
 }) => {
   const { videoElement } = knowtation;
 
@@ -20,7 +20,7 @@ const VideoPlayer = ({
     setDuration(e.target.getDuration());
 
     if (!knowtation.isPlaying) {
-      togglePlaying();
+      toggleAttribute();
     }
   };
 
@@ -30,7 +30,7 @@ const VideoPlayer = ({
     }
 
     if (knowtation.isPlaying) {
-      togglePlaying();
+      toggleAttribute();
     }
   };
 
@@ -40,7 +40,7 @@ const VideoPlayer = ({
     }
 
     if (knowtation.isPlaying) {
-      togglePlaying();
+      toggleAttribute();
     }
   };
 

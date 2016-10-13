@@ -3,7 +3,7 @@ import KnowtationEditor from './knowtation_editor';
 import {
   requestKnowtation,
   setElement,
-  togglePlaying,
+  toggleAttribute,
   updateTime,
   setDuration,
   setAttribute,
@@ -20,7 +20,7 @@ const mapStateToPropss = state => ({
 const mapDispatchToProps = dispatch => ({
   requestKnowtation: id => dispatch(requestKnowtation(id)),
   setElement: (element, elementName) => dispatch(setElement(element, elementName)),
-  togglePlaying: () => dispatch(togglePlaying()),
+  toggleAttribute: attribute => dispatch(toggleAttribute(attribute)),
   updateTime: currentTime => dispatch(updateTime(currentTime)),
   setDuration: duration => dispatch(setDuration(duration)),
   setAttribute: (attribute, value) => dispatch(setAttribute(attribute, value)),

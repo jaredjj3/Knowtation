@@ -3,11 +3,16 @@ import KnowtationShowVideoPlayer from './knowtation_show_video_player';
 import KnowtationShowNotationView from './knowtation_show_notation_view';
 import KnowtationShowControls from './knowtation_show_controls';
 
-class KnowtationPreview extends React.Component {
+class KnowtationShow extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleFinalizeClick = this.handleFinalizeClick.bind(this);
+  }
+
+  componentWillMount() {
+    const id = this.props.params.id;
+    this.props.requestKnowtation(id);
   }
 
   render() {
@@ -54,4 +59,4 @@ class KnowtationPreview extends React.Component {
   }
 }
 
-export default KnowtationPreview;
+export default KnowtationShow;

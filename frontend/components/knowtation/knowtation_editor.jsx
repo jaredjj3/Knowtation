@@ -25,7 +25,7 @@ class KnowtationEditor extends React.Component {
   render() {
     const {
       knowtation,
-      togglePlaying,
+      toggleAttribute,
       setElement,
       updateTime,
       setDuration,
@@ -47,7 +47,7 @@ class KnowtationEditor extends React.Component {
                   setElement={ setElement }
                   updateTime={ updateTime }
                   setDuration={ setDuration }
-                  togglePlaying={ togglePlaying }
+                  toggleAttribute={ toggleAttribute }
                 />
               </div>
               <div className='knowtation-editor-tools-container'>

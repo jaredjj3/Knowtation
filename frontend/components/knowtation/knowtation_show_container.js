@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
-import KnowtationPreview from './knowtation_preview';
+import KnowtationShow from './knowtation_show';
 import {
   setElement,
-  requestKnowtation
+  requestKnowtation,
+  toggleAttribute
 } from '../../actions/knowtation_actions';
 
 const mapStateToProps = state => ({
@@ -11,10 +12,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setElement: (element, elementName) => dispatch(setElement(element, elementName)),
-  requestKnowtation: id => dispatch(requestKnowtation(id))
+  requestKnowtation: id => dispatch(requestKnowtation(id)),
+  toggleAttribute: attribute => dispatch(toggleAttribute(attribute))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(KnowtationPreview);
+)(KnowtationShow);

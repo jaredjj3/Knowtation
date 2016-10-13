@@ -18,7 +18,7 @@ class KnowtationShowViewPlayer extends React.Component {
       <ReactYouTube
         id='show-video-player'
         className='knowtation-show-video'
-        videoId={ knowtation.videoUrl }
+        videoId={ knowtation.videoUrl}
         onReady={ this.onReadyHandler }
         onPlay={ this.onPlayHandler }
       />
@@ -29,7 +29,9 @@ class KnowtationShowViewPlayer extends React.Component {
 
   onReadyHandler(e) {
     const { setElement } = this.props.props;
-    setElement(e.target, 'video');
+    const video = e.target;
+    video.controls = 0;
+    setElement(video, 'video');
   }
 
   onPlayHandler(e) {
