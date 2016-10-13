@@ -12,7 +12,7 @@ class KnowtationEditor extends React.Component {
   }
 
   componentDidMount() {
-    const { requestKnowtation, setElement} = this.props;
+    const { requestKnowtation, setSyncPoint } = this.props;
 
     const id = this.props.params.id;
     requestKnowtation(id);
@@ -49,6 +49,7 @@ class KnowtationEditor extends React.Component {
                   updateTime={ updateTime }
                   setDuration={ setDuration }
                   toggleAttribute={ toggleAttribute }
+                  createSyncPoint={ createSyncPoint }
                 />
               </div>
               <div className='knowtation-editor-tools-container'>

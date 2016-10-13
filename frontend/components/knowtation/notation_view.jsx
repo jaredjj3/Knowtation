@@ -29,10 +29,18 @@ class NotationView extends React.Component {
   }
 
   render() {
-    const { knowtation } = this.props;
+    const { knowtation, createSyncPoint } = this.props;
     let destinationWidth = 900;
     if (knowtation.destination) {
       destinationWidth = knowtation.destination.width;
+      const pos = { x: destinationWidth, y: 0 };
+      const exisitingSyncPoint = this.checkSyncPoints(pos);
+
+      if (exisitingSyncPoint) {
+        const time = knowtation.duration;
+        const id = knowtation.syncPointId;
+        createSyncPoint({ id, pos, time });
+      }
     }
 
     return (
@@ -44,7 +52,7 @@ class NotationView extends React.Component {
           id='canvas'
           className='notation-view'
           height='285px'
-          width='900px'
+          width={ destinationWidth }
           onClick={ this.handleCanvasClick }
         />
       </div>

@@ -5,6 +5,7 @@ class KnowtationShowNotationView extends React.Component {
     super(props);
 
     this.updateCanvas = this.updateCanvas.bind(this);
+    this.calculatePosition = this.calculatePosition.bind(this);
     this.initializeNotation = this.initializeNotation.bind(this);
   }
 
@@ -75,8 +76,9 @@ class KnowtationShowNotationView extends React.Component {
   updateCanvas() {
     const { knowtation, updatePosition } = this.props;
     const { ctx, img } = knowtation;
-    ctx.clearRect(0, 0, img.width, img.height);
+    const destinationPosition = this.calculatePosition();
     updatePosition();
+    ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawBlueRect(knowtation);
   }
@@ -115,6 +117,25 @@ class KnowtationShowNotationView extends React.Component {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, dW, dH);
   }
+
+  calculatePosition() {
+    const { scrollInstructions, currentTime } = this.props;
+
+    const bounds = {};
+    // for loop that only goes to the seconds to last element
+    for (let i = 0; i < scrollInstructions.length - 1; i++) {
+      const syncPoint = scrollInstructions[i];
+      if () {
+
+      }
+
+    }
+
+  }
+
+  isBetween()
+
+
 
 }
 

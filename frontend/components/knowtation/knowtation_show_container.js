@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   requestKnowtation: id => dispatch(requestKnowtation(id)),
   toggleAttribute: attribute => dispatch(toggleAttribute(attribute)),
   setAttribute: (attribute, value) => dispatch(setAttribute(attribute, value)),
-  updatePosition: () => dispatch(updatePosition())
+  updatePosition: position => dispatch(updatePosition(position))
 });
 
 export default connect(

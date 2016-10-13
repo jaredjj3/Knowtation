@@ -4,7 +4,8 @@ import {
   CREATE_KNOWTATION,
   REQUEST_KNOWTATION,
   receiveKnowtation,
-  receiveAllKnowtations
+  receiveAllKnowtations,
+  setSyncPoint
 } from '../actions/knowtation_actions';
 import {
   requestAllKnowtations,
@@ -37,6 +38,7 @@ const KnowtationMiddleware = ({ getState, dispatch}) => next => action => {
     case REQUEST_KNOWTATION:
       onSuccess = knowtation => {
         dispatch(receiveKnowtation(knowtation));
+        dispatch(setSyncPoint());
       };
       requestKnowtation(action.id, onSuccess, onError);
       return next(action);

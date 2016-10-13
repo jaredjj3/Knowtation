@@ -8,9 +8,10 @@ class KnowtationShow extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleFinalizeClick = this.handleFinalizeClick.bind(this);
     this.editButton = this.editButton.bind(this);
     this.finalizeButton = this.finalizeButton.bind(this);
+    this.handleEditClick = this.handleEditClick.bind(this);
+    this.handleFinalizeClick = this.handleFinalizeClick.bind(this);
   }
 
   componentWillMount() {
@@ -57,8 +58,9 @@ class KnowtationShow extends React.Component {
 
   }
 
-  handleBackClick(e) {
-
+  handleEditClick(e) {
+    const { id } = this.props.params;
+    hashHistory.push(`/knowtation/${id}/edit`);
   }
 
   // helpers
@@ -78,7 +80,7 @@ class KnowtationShow extends React.Component {
     return(
       <button
         className='edit main-button'
-        onClick={ this.handleBackClick }
+        onClick={ this.handleEditClick }
       >
         edit
       </button>

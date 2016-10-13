@@ -7,7 +7,8 @@ import {
   SET_ATTRIBUTE,
   CREATE_SYNC_POINT,
   DELETE_SYNC_POINT,
-  UPDATE_POSITION
+  UPDATE_POSITION,
+  SET_SYNC_POINT
 } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
@@ -30,6 +31,22 @@ const _nullKnowtation = Object.freeze({
   notationImageUrl: null,
   scrollInstructions: '[]'
 });
+
+const maxId = scrollInstructions => {
+  if (scrollInstructions.length === 0) {
+    return 0;
+  }
+
+  let currentMax = 0;
+  for (let i = 0; i < scrollInstructions.length; i++) {
+    const { id } = scrollInstructions[i];
+    if (parseInt(id) > currentMax) {
+      currentMax = id;
+    }
+  }
+
+  return currentMax + 1;
+};
 
 const KnowtationReducer = (state = _nullKnowtation, action) => {
   Object.freeze(state);
@@ -76,9 +93,11 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
       return newState;
 
     case UPDATE_POSITION:
-      const oldPos = newState.destination.pos;
-      const newPos = {};
-      newPos.x = oldPos.x--;
+      
+      return newState;
+
+    case SET_SYNC_POINT:
+      newState.syncPointId = maxId(newState.scrollInstructions);
       return newState;
 
     default:

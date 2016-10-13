@@ -7,12 +7,37 @@ const VideoPlayer = ({
   updateTime,
   setDuration,
   isPlaying,
-  toggleAttribute
+  toggleAttribute,
+  createSyncPoint
 }) => {
   const { videoElement } = knowtation;
 
+  const checkSyncPoints = pos => {
+    const { scrollInstructions } = knowtation;
+
+    for (let i = 0; i < scrollInstructions.length; i++) {
+      const syncPoint = scrollInstructions[i];
+      const xDist = Math.abs(parseInt(syncPoint.pos.x) - parseInt(pos.x));
+      if (xDist < 10) {
+        return syncPoint;
+      }
+    }
+    // if no matching sync point is found
+    return null;
+  };
+
   const onReadyHandler = e => {
-    setElement(e.target, 'video');
+    const video = e.target;
+    setElement(video, 'video');
+
+    const pos = { x: 0, y: 0 };
+    const existingSyncPoint = checkSyncPoints(pos);
+
+    if (!existingSyncPoint) {
+      const time = 0.0;
+      const id = knowtation.syncPointId;
+      createSyncPoint({ pos, time, id });
+    }
   };
 
   const onPlayHandler = e => {
