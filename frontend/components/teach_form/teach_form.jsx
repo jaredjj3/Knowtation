@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import { Link, hashHistory } from 'react-router';
 import Icon from '../icon';
-import style from '../../util/modal_style';
+import { style } from '../../util/modal_style';
 
 class TeachForm extends React.Component {
   constructor(props) {

@@ -3,7 +3,7 @@ import Icon from '../icon';
 import Modal from 'react-modal';
 import { Link, hashHistory } from 'react-router';
 import ErrorItems from '../errors/error_items';
-import style from '../../util/modal_style';
+import { style } from '../../util/modal_style';
 import { randomYoutubeUrl, randomTitle } from '../../util/upload_random_seeds';
 
 class UploadForm extends React.Component {

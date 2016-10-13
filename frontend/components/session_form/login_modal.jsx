@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
 import Icon from '../icon';
-import style from '../../util/modal_style';
+import { style } from '../../util/modal_style';
 import ErrorItems from './error_items';
 
 const LoginModal = ({ props }) => {

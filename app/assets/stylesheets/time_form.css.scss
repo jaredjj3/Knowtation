@@ -1,0 +1,63 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
+
+.time-form-container.form-container {
+  top: 200px;
+  width: 230px;
+  height: 140px;
+  margin: 0 auto;
+  right: 50px;
+  text-align: center;
+  box-shadow: 0 0 20px 10px $main-blue;
+}
+
+.time-form-container .main-button {
+  width: 10px;
+  padding: 2px 8px;
+  margin-right: 10px;
+}
+
+.time-form-container .form-input-field {
+  width: 150px;
+  margin: 0 auto;
+  padding: 4px 17px;
+}
+
+.time-form-first-row {
+  margin: 10px 0 20px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.time-form-first-row h1 {
+  margin-right: 20px;
+}
+
+.time-form-second-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+  margin: 10px 0;
+}
+
+.time-form-third-row {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  margin: 10px 0;
+}
+
+.time-form-third-row span {
+  width: 150px;
+  box-shadow: 0 0 1px $border-gray;
+  padding: 4px 17px;
+  text-align: left;
+}
+
+.time-form-third-row span:hover {
+  cursor: default;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import style from '../../util/modal_style';
+import { altStyle } from '../../util/modal_style';
 import { toTimeString, fromTimeString } from '../../util/time_string';
 
 class TimeForm extends React.Component {
@@ -26,33 +26,43 @@ class TimeForm extends React.Component {
         className='time-form-container form-container'
         isOpen={ timeModalOn }
         onRequestClose={ this.handleClickOut }
-        style={ style }
+        style={ altStyle }
       >
 
-        <form onSubmit={ this.handleSubmit }>
-          <input
-            id='time-input'
-            type='text'
-            value={ this.state.time }
-            onChange={ this.handleChange }
-            placeholder='time in seconds'
-            className='form-input-field'
-          />
-          <input
-            type='submit'
-            value='Submit'
-            className='main-button'
-          />
+        <div className='time-form-first-row'>
+          <h1>add sync point</h1>
           <label>
-            <input
-              id="autoplay"
-              type="checkbox"
-              onChange={ this.handleAutoplayChange }
-              checked={ this.state.autoplay }
-            />autoplay
+          <input
+            id="autoplay"
+            type="checkbox"
+            onChange={ this.handleAutoplayChange }
+            checked={ this.state.autoplay }
+            /> autoplay
           </label>
-        </form>
-        or { toTimeString(currentTime) }
+        </div>
+
+        <div className='time-form-second-row'>
+          <form onSubmit={ this.handleSubmit }>
+            <input
+              type='submit'
+              value='+'
+              className='main-button'
+            />
+            <input
+              id='time-input'
+              type='text'
+              value={ this.state.time }
+              onChange={ this.handleChange }
+              placeholder='time in seconds'
+              className='form-input-field'
+              />
+          </form>
+        </div>
+
+        <div className='time-form-third-row'>
+          <button className='main-button'>+</button>
+          <span>current time { toTimeString(currentTime) }</span>
+        </div>
 
       </Modal>
     );

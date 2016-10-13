@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import style from '../../util/modal_style';
+import { style } from '../../util/modal_style';
 import Icon from '../icon';
 
 class ProfileForm extends React.Component {
