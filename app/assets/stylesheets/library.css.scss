@@ -25,6 +25,31 @@ $border-gray: #aaa;
   color: $main-blue-hover;
 }
 
+.library-list-item {
+  position: relative;
+}
+
+.show-metadata {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff !important;
+  font-size: 28px;
+  top: 50px;
+  left: 100px;
+  z-index: 0;
+}
+
+.show-metadata .material-icons {
+  font-size: 36px;
+}
+
+.hide-metadata {
+  display: none;
+  color: #fff !important;
+}
+
 @media (min-width: 900px) {
   .library-container {
     padding-top: 125px;

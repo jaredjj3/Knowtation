@@ -35,6 +35,7 @@
     "player": "^0.6.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-hover": "^0.6.2",
     "react-modal": "^1.4.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
