@@ -42,7 +42,7 @@ class NotationView extends React.Component {
           id='canvas'
           className='notation-view'
           height='285px'
-          width={ destinationWidth }
+          width='900px'
           onClick={ this.handleCanvasClick }
         />
       </div>

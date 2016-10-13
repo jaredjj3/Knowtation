@@ -11,32 +11,38 @@ class KnowtationPreview extends React.Component {
   }
 
   render() {
+    const { knowtation } = this.props;
+
     return(
       <div className='knowtation-preview-container'>
         <div className='knowtation-preview'>
 
           <div className='knowtation-preview-first-row'>
-            <KnowtationShowVideoPlayer props={ this.props }/>
+            <KnowtationShowVideoPlayer
+              props={ this.props }
+            />
           </div>
 
           <div className='knowtation-preview-second-row'>
-            <KnowtationShowNotationView />
+            <KnowtationShowNotationView
+              knowtation={ knowtation }
+            />
           </div>
 
           <div className='knowtation-preview-third-row'>
-            <KnowtationShowControls />
-          </div>
-
-          <div className='knowtation-preview-fourth-row'>
-            <button
-              className='main-button'
-              onClick={ this.handleFinalizeClick }
-            >
-              finalize
-            </button>
+            <KnowtationShowControls
+              knowtation={ knowtation }
+            />
           </div>
 
         </div>
+
+        <button
+          className='finalize main-button'
+          onClick={ this.handleFinalizeClick }
+        >
+          finalize
+        </button>
       </div>
     );
   }

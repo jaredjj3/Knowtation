@@ -28,7 +28,7 @@ class KnowtationShowViewPlayer extends React.Component {
   // event handlers
 
   onReadyHandler(e) {
-    const { setElement } = this.props;
+    const { setElement } = this.props.props;
     setElement(e.target, 'video');
   }
 
