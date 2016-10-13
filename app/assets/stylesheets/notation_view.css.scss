@@ -1,7 +1,8 @@
 .notation-view-container {
   width: 900px;
   height: 300px;
-  overflow-x: scroll;
+  overflow-x: visible;
+  overflow-y: hidden;
 }
 
 .notation-view {

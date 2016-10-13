@@ -15,6 +15,7 @@ class TimeForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClickOut = this.handleClickOut.bind(this);
     this.handleAutoplayChange = this.handleAutoplayChange.bind(this);
+    this.handleCurrentTimeClick = this.handleCurrentTimeClick.bind(this);
   }
 
   render() {
@@ -60,7 +61,12 @@ class TimeForm extends React.Component {
         </div>
 
         <div className='time-form-third-row'>
-          <button className='main-button'>+</button>
+          <button
+            className='main-button'
+            onClick={ this.handleCurrentTimeClick }
+          >
+            +
+          </button>
           <span>current time { toTimeString(currentTime) }</span>
         </div>
 
@@ -112,13 +118,29 @@ class TimeForm extends React.Component {
     } = this.props;
     const { scrollInstructions } = knowtation;
     const last = scrollInstructions.length - 1;
-    const { time, autoplay } = this.state;
+    const { time } = this.state;
 
     if (time) {
       scrollInstructions[last].time = parseFloat(time);
     } else {
       deleteSyncPoint(syncPointId);
     }
+
+    this._reset();
+  }
+
+  handleCurrentTimeClick(e) {
+    const {
+      knowtation,
+      toggleModal,
+      timeModalOn,
+      deleteSyncPoint,
+      syncPointId
+    } = this.props;
+    const { scrollInstructions, currentTime } = knowtation;
+    const last = scrollInstructions.length - 1;
+
+    scrollInstructions[last].time = parseFloat(currentTime);
 
     this._reset();
   }

@@ -42,8 +42,10 @@ $border-gray: #aaa;
   cursor: default;
 }
 
+
+// #5ec6ff
 .form-input-field:focus {
-  box-shadow: 0 0 15px #5ec6ff;
+  box-shadow: 0 0 15px $main-blue-hover;
 }
 
 .username {

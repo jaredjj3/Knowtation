@@ -1,5 +1,6 @@
 import React from 'react';
 import Canvas from 'react-canvas-component';
+import { toTimeString } from '../../util/time_string';
 
 class NotationView extends React.Component {
   constructor(props) {
@@ -178,19 +179,32 @@ class NotationView extends React.Component {
   }
 
   drawSyncPoints(knowtation) {
-    const { ctx, img, scrollInstructions } = knowtation;
+    const { ctx, destination, scrollInstructions } = knowtation;
+    const X_OFFSET = 5;
+    const X_TEXT_OFFSET = 15;
 
-    for (var i = 0; i < scrollInstructions.length; i++) {
-      const x = scrollInstructions[i].pos.x;
-      const y = scrollInstructions[i].pos.y;
+    for (let i = 0; i < scrollInstructions.length; i++) {
+      // for lightblue rect
+      const syncPoint = scrollInstructions[i];
+      const x = syncPoint.pos.x - X_OFFSET;
+      const y = 0;
+      const dW = 10;
+      const dH = destination.height;
+      const color = 'rgba(100, 255, 255, 0.3)';
 
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, 285);
-      ctx.strokeStyle = '#ff0000';
-      ctx.stroke();
+      // for text
+      const yText = 10;
+      const xTextTime = x - X_TEXT_OFFSET;
+      const textTime = `${toTimeString(syncPoint.time)}`;
+
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, dW, dH);
+      ctx.fillStyle = 'black';
+      ctx.font = '9px sans-serif';
+      ctx.fillText(textTime, xTextTime, yText);
     }
   }
+
 }
 
 
