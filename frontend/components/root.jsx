@@ -10,6 +10,7 @@ import ProfileContainer from './profile/profile_container';
 import LibraryContainer from './knowtation/library_container';
 import KnowtationContainer from './knowtation/knowtation_container';
 import KnowtationEditorContainer from './knowtation/knowtation_editor_container';
+import KnowtationPreviewContainer from './knowtation/knowtation_preview_container';
 
 
 const Root = ({ store }) => {
@@ -63,6 +64,11 @@ const Root = ({ store }) => {
           <Route
             path="knowtation/:id/edit"
             component={ KnowtationEditorContainer }
+          />
+
+          <Route
+            path="knowtation/:id/preview"
+            component={ KnowtationPreviewContainer }
           />
 
           <Route
