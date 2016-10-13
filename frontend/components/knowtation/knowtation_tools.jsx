@@ -2,7 +2,11 @@ import React from 'react';
 import SyncPointList from './sync_point_list';
 import { toTimeString } from '../../util/time_string';
 
-const KnowtationTools = ({ knowtation, deleteSyncPoint }) => {
+const KnowtationTools = ({
+  knowtation,
+  deleteSyncPoint,
+  updateKnowtation
+}) => {
   const { videoElement } = knowtation;
 
   const currentTime = () => {
@@ -13,6 +17,13 @@ const KnowtationTools = ({ knowtation, deleteSyncPoint }) => {
     }
   };
 
+  const handleSaveClick = e => {
+    const knowtationData = {
+      scroll_instructions: JSON.stringify(knowtation.scrollInstructions),
+      id: knowtation.id
+    };
+    updateKnowtation(knowtationData);
+  };
 
   return(
     <div className='knowtation-tools-container'>
@@ -20,7 +31,7 @@ const KnowtationTools = ({ knowtation, deleteSyncPoint }) => {
 
         <div className='knowtation-tools-first-row'>
           <ul className='knowtation-tools-icon-list'>
-            <li><i className="material-icons">save</i></li>
+            <li><i onClick={ handleSaveClick } className="material-icons">save</i></li>
             <li><i className="material-icons">watch</i> { currentTime() }</li>
           </ul>
         </div>

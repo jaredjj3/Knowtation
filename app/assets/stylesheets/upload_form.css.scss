@@ -136,8 +136,9 @@ $border-gray: #aaa;
 }
 
 .upload-notation {
-  margin-top: 6px;
+  padding: 15px;
   width: 600px;
+  max-height: 150px;
   height: auto;
   display: flex;
   flex-direction: column;

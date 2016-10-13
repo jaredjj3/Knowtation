@@ -45,7 +45,7 @@ const KnowtationMiddleware = ({ getState, dispatch}) => next => action => {
       onSuccess = knowtation => {
         dispatch(receiveKnowtation(knowtation));
       };
-      updateKnowtation(onSuccess, onError);
+      updateKnowtation(action.knowtation, onSuccess, onError);
       return next(action);
 
     case CREATE_KNOWTATION:

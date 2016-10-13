@@ -14,7 +14,7 @@ class KnowtationShowControls extends React.Component {
 
     return(
       <div className='knowtation-show-seek'>
-        <input className='seek-slider' type='range' min='0' max='100' step='1'/>
+        
       </div>
     );
   }

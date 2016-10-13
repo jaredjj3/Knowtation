@@ -29,7 +29,7 @@ const _nullKnowtation = Object.freeze({
   videoElement: null,
   canvasElement: null,
   notationImageUrl: null,
-  scrollInstructions: []
+  scrollInstructions: '[]'
 });
 
 const KnowtationReducer = (state = _nullKnowtation, action) => {
@@ -39,6 +39,10 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
   switch(action.type) {
     case RECEIVE_KNOWTATION:
       _.merge(newState, action.knowtation);
+      const scrollInstructions = JSON.parse(
+        action.knowtation.scrollInstructions
+      );
+      _.merge(newState, { scrollInstructions });
       return newState;
 
     case SET_ELEMENT:

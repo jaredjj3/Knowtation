@@ -20,6 +20,21 @@ class Api::KnowtationsController < ApplicationController
     end
   end
 
+  def update
+    @knowtation = Knowtation.find(params[:id])
+
+    if current_user == @knowtation.user
+      if @knowtation.update(knowtation_params)
+        render :show
+      else
+        render :errors, status: 422
+      end
+    else
+      render :errors, status: 403
+    end
+
+  end
+
   def delete
     @knowtation = Knowtation.find(params[:id])
 

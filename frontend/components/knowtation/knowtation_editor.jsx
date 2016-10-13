@@ -33,7 +33,8 @@ class KnowtationEditor extends React.Component {
       createSyncPoint,
       deleteSyncPoint,
       toggleModal,
-      timeModalOn
+      timeModalOn,
+      updateKnowtation
    } = this.props;
 
     return (
@@ -54,6 +55,7 @@ class KnowtationEditor extends React.Component {
                 <KnowtationTools
                   knowtation={ knowtation }
                   deleteSyncPoint={ deleteSyncPoint }
+                  updateKnowtation={ updateKnowtation }
                 />
               </div>
             </div>
@@ -85,8 +87,15 @@ class KnowtationEditor extends React.Component {
   // event handlers
 
   onClickHandler(e) {
-    const { id } = this.props.params;
-    hashHistory.push(`/knowtation/${id}/preview`);
+    const { updateKnowtation, knowtation } = this.props;
+
+    const knowtationData = {
+      scroll_instructions: JSON.stringify(knowtation.scrollInstructions),
+      id: knowtation.id
+    };
+    updateKnowtation(knowtationData);
+
+    hashHistory.push(`/knowtation/${knowtation.id}/preview`);
   }
 
 }

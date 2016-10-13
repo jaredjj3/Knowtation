@@ -3,7 +3,8 @@ import KnowtationShow from './knowtation_show';
 import {
   setElement,
   requestKnowtation,
-  toggleAttribute
+  toggleAttribute,
+  updateKnowtation
 } from '../../actions/knowtation_actions';
 
 const mapStateToProps = state => ({
@@ -12,6 +13,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setElement: (element, elementName) => dispatch(setElement(element, elementName)),
+  updateKnowtation: knowtation => dispatch(updateKnowtation(knowtation)),
   requestKnowtation: id => dispatch(requestKnowtation(id)),
   toggleAttribute: attribute => dispatch(toggleAttribute(attribute))
 });
