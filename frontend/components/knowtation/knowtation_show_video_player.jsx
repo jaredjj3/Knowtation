@@ -21,7 +21,7 @@ const KnowtationShowVideoPlayer = ({
   };
 
   const onPlayHandler = e => {
-    window.videoTimer = setInterval(_updateTimer, 50);
+    window.videoTimer = requestAnimationFrame(_updateTimer);
     setDuration(e.target.getDuration());
 
     if (!knowtation.isPlaying) {
@@ -52,6 +52,7 @@ const KnowtationShowVideoPlayer = ({
   const _updateTimer = () => {
     const currentTime = videoElement.getCurrentTime();
     updateTime(currentTime);
+    requestAnimationFrame(_updateTimer);
   };
 
   return(

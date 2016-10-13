@@ -53,6 +53,16 @@ IMAGES =[
   "app/assets/images/thumbnails/0053_zakkjones_gibson-groove_splash.jpg"
 ]
 
+NOTATION = {
+  "app/assets/images/notation/notation1.jpg",
+  "app/assets/images/notation/notation2.jpg",
+  "app/assets/images/notation/notation3.jpg",
+  "app/assets/images/notation/notation4.jpg",
+  "app/assets/images/notation/notation5.jpg",
+  "app/assets/images/notation/notation6.jpg",
+  "app/assets/images/notation/notation7.jpg"
+}
+
 YOUTUBE_LINKS = [
   "w8uNZWDEYzQ"
 ];
@@ -102,6 +112,6 @@ NUM_KNOWTATIONS.times do
     title: Faker::Book.title,
     video_url: YOUTUBE_LINKS.sample,
     thumbnail: File.open(IMAGES.sample),
-    notation_image: File.open(IMAGES.sample)
+    notation_image: File.open(NOTATION.sample)
   )
 end

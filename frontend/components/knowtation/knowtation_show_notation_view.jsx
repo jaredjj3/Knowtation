@@ -66,7 +66,6 @@ class KnowtationShowNotationView extends React.Component {
         y: (source.height / destination.height)
       };
       setAttribute('scale', scale);
-      // 33 refresh rate ~ 30 frames per second
       window.canvasUpdater = requestAnimationFrame(this.updateCanvas);
     };
 
