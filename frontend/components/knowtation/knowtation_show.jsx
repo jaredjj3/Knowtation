@@ -20,14 +20,28 @@ class KnowtationShow extends React.Component {
   }
 
   render() {
-    const { knowtation, setAttribute, updatePosition } = this.props;
+    const {
+      knowtation,
+      setAttribute,
+      updatePosition,
+      setElement,
+      updateTime,
+      setDuration,
+      isPlaying,
+      toggleAttribute
+    } = this.props;
 
     return(
       <div className='knowtation-show-container'>
         <div className='knowtation-show'>
           <div className='knowtation-show-first-row'>
             <KnowtationShowVideoPlayer
-              props={ this.props }
+              knowtation={ knowtation }
+              setElement={ setElement }
+              updateTime={ updateTime }
+              setDuration={ setDuration }
+              isPlaying={ isPlaying }
+              toggleAttribute={ toggleAttribute }
             />
           </div>
 

@@ -45,7 +45,7 @@ const VideoPlayer = ({
     setDuration(e.target.getDuration());
 
     if (!knowtation.isPlaying) {
-      toggleAttribute();
+      toggleAttribute('isPlaying');
     }
   };
 

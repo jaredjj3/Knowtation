@@ -4,39 +4,65 @@ import ReactYouTube from 'react-youtube';
 // this differs from the video player since the native controls
 // will be disabled
 
-class KnowtationShowViewPlayer extends React.Component {
-  constructor(props) {
-    super(props);
+const KnowtationShowVideoPlayer = ({
+  knowtation,
+  setElement,
+  updateTime,
+  setDuration,
+  isPlaying,
+  toggleAttribute,
+  createSyncPoint
+}) => {
+  const { videoElement } = knowtation;
 
-    this.onReadyHandler = this.onReadyHandler.bind(this);
-  }
-
-  render() {
-    const { knowtation } = this.props.props;
-
-    return(
-      <ReactYouTube
-        id='show-video-player'
-        className='knowtation-show-video'
-        videoId={ knowtation.videoUrl}
-        onReady={ this.onReadyHandler }
-        onPlay={ this.onPlayHandler }
-      />
-    );
-  }
-
-  // event handlers
-
-  onReadyHandler(e) {
-    const { setElement } = this.props.props;
+  const onReadyHandler = e => {
     const video = e.target;
-    video.controls = 0;
     setElement(video, 'video');
-  }
+  };
 
-  onPlayHandler(e) {
+  const onPlayHandler = e => {
+    window.videoTimer = setInterval(_updateTimer, 50);
+    setDuration(e.target.getDuration());
 
-  }
-}
+    if (!knowtation.isPlaying) {
+      toggleAttribute('isPlaying');
+    }
+  };
 
-export default KnowtationShowViewPlayer;
+  const onPauseHandler = e => {
+    if (window.videoTimer) {
+      clearInterval(window.videoTimer);
+    }
+
+    if (knowtation.isPlaying) {
+      toggleAttribute();
+    }
+  };
+
+  const onEndHandler = e => {
+    if (window.videoTimer) {
+      clearInterval(window.videoTimer);
+    }
+
+    if (knowtation.isPlaying) {
+      toggleAttribute();
+    }
+  };
+
+  const _updateTimer = () => {
+    const currentTime = videoElement.getCurrentTime();
+    updateTime(currentTime);
+  };
+
+  return(
+    <ReactYouTube
+      id='show-video-player'
+      className='knowtation-show-video'
+      videoId={ knowtation.videoUrl}
+      onReady={ onReadyHandler }
+      onPlay={ onPlayHandler }
+    />
+  );
+};
+
+export default KnowtationShowVideoPlayer;

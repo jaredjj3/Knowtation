@@ -67,7 +67,7 @@ class KnowtationShowNotationView extends React.Component {
       };
       setAttribute('scale', scale);
       // 33 refresh rate ~ 30 frames per second
-      window.canvasUpdater = setInterval(this.updateCanvas, 33);
+      window.canvasUpdater = requestAnimationFrame(this.updateCanvas);
     };
 
     image.src = knowtation.notationImageUrl;
@@ -76,11 +76,12 @@ class KnowtationShowNotationView extends React.Component {
   updateCanvas() {
     const { knowtation, updatePosition } = this.props;
     const { ctx, img } = knowtation;
-    const destinationPosition = this.calculatePosition();
-    updatePosition();
+    const destinationPosition = this.calculatePosition(knowtation);
+    updatePosition(destinationPosition);
     ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawBlueRect(knowtation);
+    requestAnimationFrame(this.updateCanvas);
   }
 
   drawNotation(knowtation) {
@@ -118,22 +119,34 @@ class KnowtationShowNotationView extends React.Component {
     ctx.fillRect(x, y, dW, dH);
   }
 
-  calculatePosition() {
-    const { scrollInstructions, currentTime } = this.props;
+  calculatePosition(knowtation) {
+    const { scrollInstructions, currentTime } = knowtation;
 
     const bounds = {};
     // for loop that only goes to the seconds to last element
     for (let i = 0; i < scrollInstructions.length - 1; i++) {
-      const syncPoint = scrollInstructions[i];
-      if () {
-
+      const syncPoint1 = scrollInstructions[i];
+      const syncPoint2 = scrollInstructions[i + 1];
+      const currentTimeIsBetween = this.isBetween(currentTime, syncPoint1.time, syncPoint2.time);
+      if (currentTimeIsBetween) {
+        const offset = knowtation.destination.width / 2;
+        const x2 = syncPoint2.pos.x;
+        const x1 = syncPoint1.pos.x;
+        const t2 = syncPoint2.time;
+        const t1 = syncPoint1.time;
+        const t = currentTime;
+        const vel = (x2 - x1) / (t2 - t1);
+        const result = x1 + ((t - t1) * (x2 - x1) / (t2 - t1));
+        return -result;
       }
-
     }
 
+    return knowtation.destination.width;
   }
 
-  isBetween()
+  isBetween(probe, val1, val2) {
+    return probe >= val1 && probe <= val2;
+  }
 
 
 

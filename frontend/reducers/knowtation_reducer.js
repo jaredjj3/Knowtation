@@ -93,7 +93,7 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
       return newState;
 
     case UPDATE_POSITION:
-      
+      newState.destination.pos.x = action.position;
       return newState;
 
     case SET_SYNC_POINT:

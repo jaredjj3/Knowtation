@@ -6,7 +6,9 @@ import {
   toggleAttribute,
   updateKnowtation,
   setAttribute,
-  updatePosition
+  updatePosition,
+  updateTime,
+  setDuration
 } from '../../actions/knowtation_actions';
 
 const mapStateToProps = state => ({
@@ -15,6 +17,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setElement: (element, elementName) => dispatch(setElement(element, elementName)),
+  updateTime: currentTime => dispatch(updateTime(currentTime)),
+  setDuration: duration => dispatch(setDuration(duration)),
   updateKnowtation: knowtation => dispatch(updateKnowtation(knowtation)),
   requestKnowtation: id => dispatch(requestKnowtation(id)),
   toggleAttribute: attribute => dispatch(toggleAttribute(attribute)),
