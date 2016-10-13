@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router';
 
 class Library extends React.Component {
-
   componentDidMount() {
     if (this.props.knowtations.length < 24) {
       this.props.requestAllKnowtations();
     }
   }
+
+  className
 
   render() {
     const { knowtations } = this.props;
@@ -19,6 +20,12 @@ class Library extends React.Component {
           <div className='library-list-knowtation-link'>
             <Link to={ `/knowtation/${knowtation.id}` }>
               <img src={ knowtation.thumbnailUrl }/>
+              <div
+                className='hide-metadata-knowtation'
+                onHover={ this.handleHover }
+              >
+
+              </div>
               <h2>{ knowtation.title }</h2>
             </Link>
           </div>

@@ -12,7 +12,9 @@ import {
 } from '../../actions/knowtation_actions';
 
 const mapStateToProps = state => ({
-  knowtation: state.knowtation
+  knowtation: state.knowtation,
+  pageUserId: state.knowtation.userId,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

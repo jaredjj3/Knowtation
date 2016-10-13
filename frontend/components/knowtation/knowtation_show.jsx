@@ -80,25 +80,37 @@ class KnowtationShow extends React.Component {
   // helpers
 
   finalizeButton() {
-    return(
-      <button
-        className='finalize main-button'
-        onClick={ this.handleFinalizeClick }
-      >
-        finalize
-      </button>
-    );
+    const { pathname } = this.props.location;
+
+    if ( pathname.match(/knowtation\/\d+\/preview/) ) {
+      return(
+        <button
+          className='finalize main-button'
+          onClick={ this.handleFinalizeClick }
+        >
+          finalize
+        </button>
+      );
+    } else {
+      return '';
+    }
   }
 
   editButton() {
-    return(
-      <button
-        className='edit main-button'
-        onClick={ this.handleEditClick }
-      >
-        edit
-      </button>
-    );
+    const { currentUser, pageUserId } = this.props;
+
+    if (currentUser.id && pageUserId && currentUser.id === pageUserId) {
+      return(
+        <button
+          className='edit main-button'
+          onClick={ this.handleEditClick }
+        >
+          edit
+        </button>
+      );
+    } else {
+      return '';
+    }
   }
 }
 
