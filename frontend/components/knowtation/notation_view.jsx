@@ -81,6 +81,7 @@ class NotationView extends React.Component {
       });
       videoElement.pauseVideo();
     }
+    requestAnimationFrame(this.updateCanvas);
   }
 
   updateCanvas() {
@@ -89,6 +90,7 @@ class NotationView extends React.Component {
     ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawSyncPoints(knowtation);
+    requestAnimationFrame(this.updateCanvas);
   }
 
   // helpers
@@ -159,8 +161,7 @@ class NotationView extends React.Component {
         y: (source.height / destination.height)
       };
       setAttribute('scale', scale);
-      // 33 refresh rate ~ 30 frames per second
-      window.canvasUpdater = setInterval(this.updateCanvas, 33);
+      requestAnimationFrame(this.updateCanvas);
     };
 
     image.src = knowtation.notationImageUrl;

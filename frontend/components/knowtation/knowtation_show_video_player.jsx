@@ -35,7 +35,7 @@ const KnowtationShowVideoPlayer = ({
     }
 
     if (knowtation.isPlaying) {
-      toggleAttribute();
+      toggleAttribute('isPlaying');
     }
   };
 
@@ -45,7 +45,7 @@ const KnowtationShowVideoPlayer = ({
     }
 
     if (knowtation.isPlaying) {
-      toggleAttribute();
+      toggleAttribute('isPlaying');
     }
   };
 
@@ -62,6 +62,7 @@ const KnowtationShowVideoPlayer = ({
       videoId={ knowtation.videoUrl}
       onReady={ onReadyHandler }
       onPlay={ onPlayHandler }
+      onEnd={ onEndHandler }
     />
   );
 };

@@ -135,7 +135,7 @@ class KnowtationShowNotationView extends React.Component {
         const t1 = syncPoint1.time;
         const t = currentTime;
         const vel = (x2 - x1) / (t2 - t1);
-        const result = x1 + ((t - t1) * (x2 - x1) / (t2 - t1));
+        const result = -450 + x1 + ((t - t1) * (x2 - x1) / (t2 - t1));
         return -result;
       }
     }
