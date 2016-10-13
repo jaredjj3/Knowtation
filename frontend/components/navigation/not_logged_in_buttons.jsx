@@ -17,14 +17,14 @@ export default ({ props }) => {
           className="navigation-signup main-button"
           onClick={ handleClick('signup') }
         >
-        Sign up
+        sign up
       </button>
     </li>
       <li
         onClick={ handleClick('login') }
         className='navigation-login navigation-text'
       >
-        Log In
+        log in
       </li>
     </ul>
   );

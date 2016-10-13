@@ -1,0 +1,16 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
+
+.knowtation-preview-container{
+    margin: 0 auto;
+    width: 900px;
+    padding-top: 125px;
+}
+
+.knowtation-preview {
+  box-shadow: 0 0 7px 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
+}

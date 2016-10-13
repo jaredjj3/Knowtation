@@ -59,7 +59,7 @@ class UploadForm extends React.Component {
             className='form-submit'
             onClick={ this.handlePopulateClick }
           >
-            Fill Form
+            fill form
           </button>
           <input
             className='upload-title form-input-field'
@@ -102,7 +102,7 @@ class UploadForm extends React.Component {
             className={ 'form-submit' + submitClass }
             disabled={ this.state.submitDisabled }
             onClick={ this.handleUploadClick }>
-            Upload
+            upload
           </button>
         </div>
       </Modal>

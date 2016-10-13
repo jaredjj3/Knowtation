@@ -18,7 +18,7 @@ export default ({ props }) => {
           className="main-button"
           onClick={ handleClick('upload') }
           >
-          Upload
+          upload
         </button>
       );
     } else {
@@ -27,7 +27,7 @@ export default ({ props }) => {
           className="main-button"
           onClick={ handleClick('teach') }
           >
-          Teach
+          teach
         </button>
       );
     }
@@ -50,7 +50,7 @@ export default ({ props }) => {
           to="/library"
           onClick={ logout }
         >
-          Log Out
+          log out
         </Link>
       </li>
     </ul>

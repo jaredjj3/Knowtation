@@ -76,7 +76,6 @@ const Root = ({ store }) => {
             component={ KnowtationContainer }
           />
 
-
         </Route>
       </Router>
     </Provider>

@@ -2,6 +2,7 @@ import React from 'react';
 import VideoPlayer from './video_player';
 import KnowtationTools from './knowtation_tools';
 import NotationView from './notation_view';
+import { hashHistory } from 'react-router';
 
 class KnowtationEditor extends React.Component {
   constructor(props) {
@@ -83,10 +84,10 @@ class KnowtationEditor extends React.Component {
 
   // event handlers
 
-  onClickHandler() {
-    
+  onClickHandler(e) {
+    const { id } = this.props.params;
+    hashHistory.push(`/knowtation/${id}/preview`);
   }
-
 
 }
 
