@@ -7,6 +7,7 @@ $border-gray: #aaa;
 .navigation-bar {
   background: #fff;
   box-shadow: 0 2px 3px #aaa;
+  border-bottom: 1px solid $border-gray;
   position: fixed;
   width: 100%;
   z-index: 2;

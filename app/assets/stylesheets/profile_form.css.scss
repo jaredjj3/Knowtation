@@ -37,10 +37,12 @@ $border-gray: #aaa;
   padding: 20px;
   overflow: auto;
   box-shadow: 0 0 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
 }
 
 .profile-upload-input:focus {
   box-shadow: 0 0 15px #5ec6ff;
+  border-bottom: 1px solid #5ec6ff;
 }
 
 .profile-form-thumbnail {
@@ -52,6 +54,7 @@ $border-gray: #aaa;
   align-items: center;
   color: $border-gray;
   box-shadow: 0 0 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
 }
 
 .profile-form-thumbnail:hover {

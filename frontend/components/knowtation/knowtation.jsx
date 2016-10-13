@@ -1,4 +1,7 @@
 import React from 'react';
+import KnowtationShowVideoPlayer from './knowtation_show_video_player';
+import KnowtationShowNotationView from './knowtation_show_notation_view';
+import KnowtationShowControls from './knowtation_show_controls';
 
 class Knowtation extends React.Component {
 
@@ -16,13 +19,23 @@ class Knowtation extends React.Component {
     }
 
     return(
-      <div className='knowtation-container group'>
-        <iframe
-          className='knowtation-video'
-          src={ modifiedVideoUrl }
-        />
-      <div className='knowtation-settings'>I AM SETTINGS</div>
-        <canvas className='knowtation-canvas' />
+      <div className='knowtation-show-container'>
+        <div className='knowtation-show'>
+
+          <div className='knowtation-show-first-row'>
+            <KnowtationShowVideoPlayer />
+          </div>
+
+          <div className='knowtation-show-seecond-row'>
+            <KnowtationShowNotationView />
+          </div>
+
+
+          <div className='knowtation-show-third-row'>
+            <KnowtationShowControls />
+          </div>
+
+        </div>
       </div>
     );
   }

@@ -6,6 +6,7 @@ $border-gray: #aaa;
 
 .form-container {
   border: 1px solid $border-gray;
+  border-bottom: 1px solid $border-gray;
   background: #fff;
   width: 350px;
   overflow: hidden;
@@ -28,6 +29,7 @@ $border-gray: #aaa;
   width: 250px;
   margin: 0 40px;
   box-shadow: 0 0 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
   text-align: left;
 }
 

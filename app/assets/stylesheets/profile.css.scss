@@ -55,6 +55,7 @@ $border-gray: #aaa;
   height: 278px;
   padding: 10px;
   box-shadow: 0 0 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
 }
 
 .profile-username {
@@ -126,4 +127,5 @@ $border-gray: #aaa;
 
 .secondary-profile-container {
   box-shadow: 0 0 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
 }

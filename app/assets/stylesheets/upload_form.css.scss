@@ -116,6 +116,7 @@ $border-gray: #aaa;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 2px $border-gray;
+  border-bottom: 1px solid $border-gray;
 }
 
 .upload-video:hover,
@@ -143,4 +144,5 @@ $border-gray: #aaa;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
 }

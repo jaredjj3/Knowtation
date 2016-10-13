@@ -17,15 +17,25 @@ const KnowtationTools = ({ knowtation, deleteSyncPoint }) => {
   return(
     <div className='knowtation-tools-container'>
       <div className='knowtation-tools-secondary'>
-        <ul className='knowtation-tools-icon-list'>
-          <li><i className="material-icons">list</i></li>
-          <li><i className="material-icons">save</i></li>
-        </ul>
-        <i className="material-icons">watch</i> { currentTime() }
-        <SyncPointList
-          knowtation={ knowtation }
-          deleteSyncPoint={ deleteSyncPoint }
-        />
+
+        <div className='knowtation-tools-first-row'>
+          <ul className='knowtation-tools-icon-list'>
+            <li><i className="material-icons">save</i></li>
+            <li><i className="material-icons">watch</i> { currentTime() }</li>
+          </ul>
+        </div>
+
+        <div className='knowtation-tools-second-row'>
+          <h1>sync points</h1>
+          <SyncPointList
+            knowtation={ knowtation }
+            deleteSyncPoint={ deleteSyncPoint }
+          />
+        </div>
+
+        <div className='knowtation-tools-third-row'>
+
+        </div>
       </div>
     </div>
   );

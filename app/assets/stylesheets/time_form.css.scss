@@ -54,6 +54,7 @@ $border-gray: #aaa;
 .time-form-third-row span {
   width: 150px;
   box-shadow: 0 0 1px $border-gray;
+  border-bottom: 1px solid $border-gray;
   padding: 4px 17px;
   text-align: left;
 }

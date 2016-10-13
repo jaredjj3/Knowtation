@@ -4,6 +4,66 @@ $main-blue-press: #0058e8;
 $border-gray: #aaa;
 
 .knowtation-tools-secondary {
-  background: $main-blue;
-  opacity: 0.5;
+  margin: 15px;
+}
+
+.knowtation-tools-first-row {
+  box-shadow: 0 0 3px $border-gray;
+  border-bottom: 1px solid $border-gray
+}
+
+.knowtation-tools-icon-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.knowtation-tools-icon-list li {
+  font-size: 36px;
+  padding: 10px 20px;
+}
+
+.knowtation-tools-icon-list li:hover {
+  color: $main-blue-hover;
+  cursor: pointer;
+}
+
+
+.knowtation-tools-second-row h1 {
+  font-size: 16px;
+  margin: 20px 0 10px 0;
+}
+
+.knowtation-tools-second-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+  height: 240px;
+  color: black;
+  box-shadow: 0 0 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
+  overflow-y: auto;
+}
+
+.knowtation-tools-second-row .material-icons {
+  font-size: 24px;
+}
+
+.knowtation-tools-second-row .material-icons:hover {
+  cursor: pointer;
+  color: #db3236;
+}
+
+.sync-point-list li {
+  display: flex;
+  flex-direction: row;
+  width: 110px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sync-point-list {
+  padding-bottom: 15px;
 }

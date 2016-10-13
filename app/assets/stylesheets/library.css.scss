@@ -8,6 +8,7 @@ $border-gray: #aaa;
   flex-flow: row wrap;
   align-content: center;
   box-shadow: 0 0 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
 }
 
 .library-list-item h2:hover,

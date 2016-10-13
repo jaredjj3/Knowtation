@@ -7,7 +7,7 @@ class KnowtationEditor extends React.Component {
   constructor(props) {
     super(props);
 
-    this.updateTime = this.updateTime.bind(this);
+    this.onClickHandler = this.onClickHandler.bind(this);
   }
 
   componentDidMount() {
@@ -39,48 +39,54 @@ class KnowtationEditor extends React.Component {
       <div className="knowtation-editor-container">
         <div className="knowtation-editor">
 
-          <div className="knowtation-editor-first-row">
-            <div className='knowtation-editor-video-container'>
-              <VideoPlayer
-                knowtation={ knowtation }
-                setElement={ setElement }
-                updateTime={ updateTime }
-                setDuration={ setDuration }
-                togglePlaying={ togglePlaying }
-              />
+            <div className="knowtation-editor-first-row">
+              <div className='knowtation-editor-video-container'>
+                <VideoPlayer
+                  knowtation={ knowtation }
+                  setElement={ setElement }
+                  updateTime={ updateTime }
+                  setDuration={ setDuration }
+                  togglePlaying={ togglePlaying }
+                />
+              </div>
+              <div className='knowtation-editor-tools-container'>
+                <KnowtationTools
+                  knowtation={ knowtation }
+                  deleteSyncPoint={ deleteSyncPoint }
+                />
+              </div>
             </div>
-            <div className='knowtation-editor-tools-container'>
-              <KnowtationTools
-                knowtation={ knowtation }
-                deleteSyncPoint={ deleteSyncPoint }
-              />
-            </div>
-          </div>
 
-          <div className="knowtation-editor-second-row">
-            <div className='knowtation-editor-notation-container'>
-              <NotationView
-                knowtation={ knowtation }
-                setAttribute={ setAttribute }
-                createSyncPoint={ createSyncPoint }
-                deleteSyncPoint={ deleteSyncPoint }
-                toggleModal={ toggleModal }
-                timeModalOn={ timeModalOn }
-              />
+            <div className="knowtation-editor-second-row">
+              <div className='knowtation-editor-notation-container'>
+                <NotationView
+                  knowtation={ knowtation }
+                  setAttribute={ setAttribute }
+                  createSyncPoint={ createSyncPoint }
+                  deleteSyncPoint={ deleteSyncPoint }
+                  toggleModal={ toggleModal }
+                  timeModalOn={ timeModalOn }
+                />
+              </div>
             </div>
-            <div className='knowtation-editor-controls'>
-            </div>
-          </div>
+
         </div>
+        <button
+          className='preview-and-finalize main-button'
+          onClick={ this.onClickHandler }
+        >
+          preview and finalize
+        </button>
       </div>
     );
   }
 
   // event handlers
 
-  updateTime(e) {
-
+  onClickHandler() {
+    
   }
+
 
 }
 

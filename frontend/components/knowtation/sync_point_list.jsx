@@ -12,8 +12,8 @@ const SyncPointList = ({ knowtation, deleteSyncPoint }) => {
   };
 
   const syncPoints = knowtation.scrollInstructions.map((syncPoint, idx) => (
-    <li id={ idx + 1 } key={ syncPoint.id } >
-      #{ idx + 1 } at { toTimeString(syncPoint.time) }
+    <li className='sync-point-li' id={ idx + 1 } key={ syncPoint.id }>
+      { toTimeString(syncPoint.time) }
       <i
         id={ syncPoint.id }
         className="material-icons"

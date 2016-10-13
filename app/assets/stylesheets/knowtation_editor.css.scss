@@ -11,6 +11,8 @@ $border-gray: #aaa;
 
 .knowtation-editor {
   box-shadow: 0 0 7px 3px $border-gray;
+  border-bottom: 1px solid $border-gray;
+  position: relative;
 }
 
 .knowtation-editor-first-row {
@@ -43,4 +45,10 @@ $border-gray: #aaa;
 
 .knowtation-editor-notation-container {
   height: inherit;
+}
+
+.preview-and-finalize {
+  position: absolute;
+  bottom: 100px;
+  width: 200px !important;
 }
