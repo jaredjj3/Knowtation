@@ -69,6 +69,7 @@ class KnowtationEditor extends React.Component {
                   deleteSyncPoint={ deleteSyncPoint }
                   toggleModal={ toggleModal }
                   timeModalOn={ timeModalOn }
+                  location={ this.props.location }
                 />
               </div>
             </div>

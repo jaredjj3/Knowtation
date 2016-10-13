@@ -6,7 +6,8 @@ import {
   SET_DURATION,
   SET_ATTRIBUTE,
   CREATE_SYNC_POINT,
-  DELETE_SYNC_POINT
+  DELETE_SYNC_POINT,
+  UPDATE_POSITION
 } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
@@ -21,13 +22,11 @@ const _nullKnowtation = Object.freeze({
   videoUrl: null,
   isPlaying: false,
   isLooping: false,
-  playbackSpeed: null,
   isMuted: false,
-  destination: null,
   syncPointId: 1,
   currentTime: 0,
-  videoElement: null,
-  canvasElement: null,
+  destination: null,
+  playbackSpeed: null,
   notationImageUrl: null,
   scrollInstructions: '[]'
 });
@@ -74,6 +73,12 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
       newState.scrollInstructions = newState.scrollInstructions.filter( syncPoint => (
         parseInt(syncPoint.id) !== parseInt(action.id)
       ));
+      return newState;
+
+    case UPDATE_POSITION:
+      const oldPos = newState.destination.pos;
+      const newPos = {};
+      newPos.x = oldPos.x--;
       return newState;
 
     default:

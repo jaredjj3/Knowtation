@@ -11,6 +11,7 @@ export const SET_DURATION = "SET_DURATION";
 export const SET_ATTRIBUTE = "SET_ATTRIBUTE";
 export const CREATE_SYNC_POINT = "CREATE_SYNC_POINT";
 export const DELETE_SYNC_POINT = "DELETE_SYNC_POINT";
+export const UPDATE_POSITION = "UPDATE_POSITION";
 
 export const requestAllKnowtations = () => ({
   type: REQUEST_ALL_KNOWTATIONS
@@ -76,4 +77,8 @@ export const createSyncPoint = syncPoint => ({
 export const deleteSyncPoint = id => ({
   type: DELETE_SYNC_POINT,
   id
+});
+
+export const updatePosition = () => ({
+  type: UPDATE_POSITION
 });

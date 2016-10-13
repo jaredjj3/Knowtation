@@ -12,7 +12,6 @@ class NotationView extends React.Component {
 
   componentWillReceiveProps(newProps) {
     const { knowtation } = newProps;
-
     // only check context since it loads right away
     if (knowtation.id !== null && knowtation.ctx === null) {
       this.initializeNotation(knowtation);
@@ -23,6 +22,10 @@ class NotationView extends React.Component {
     if (window.canvasUpdater) {
       clearInterval(window.canvasUpdater);
     }
+
+    const { setAttribute } = this.props;
+    setAttribute('ctx', null);
+    setAttribute('videoElement', null);
   }
 
   render() {
@@ -52,7 +55,7 @@ class NotationView extends React.Component {
 
   handleCanvasClick(e) {
     const { knowtation, createSyncPoint, deleteSyncPoint } = this.props;
-    const { canvas, videoElement } = knowtation;
+    const { canvas, videoElement, currentTime } = knowtation;
     const pos = this.getMousePos(canvas, e);
 
     // check to see if there is a syncPoint within 10 px
@@ -66,13 +69,13 @@ class NotationView extends React.Component {
       createSyncPoint({
         pos: pos,
         id: knowtation.syncPointId,
-        time: 0 // placeholder
+        time: currentTime // placeholder
       });
       videoElement.pauseVideo();
     }
   }
 
-  updateCanvas(e) {
+  updateCanvas() {
     const { knowtation } = this.props;
     const { ctx, img } = knowtation;
     ctx.clearRect(0, 0, img.width, img.height);
