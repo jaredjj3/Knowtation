@@ -1,7 +1,7 @@
 import React from 'react';
-import VideoPlayer from './video_player';
 import KnowtationTools from './knowtation_tools';
-import NotationView from './notation_view';
+import KnowtationEditorVideoPlayer from './knowtation_editor_video_player';
+import KnowtationEditorNotationView from './knowtation_editor_notation_view';
 import { hashHistory } from 'react-router';
 
 class KnowtationEditor extends React.Component {
@@ -12,45 +12,20 @@ class KnowtationEditor extends React.Component {
   }
 
   componentDidMount() {
-    const { requestKnowtation, setSyncPoint } = this.props;
-
+    const { requestKnowtation, setSyncPoint, setAttribute } = this.props;
     const id = this.props.params.id;
     requestKnowtation(id);
+    setAttribute('isEditing', true);
   }
 
   componentWillUnmount() {
-    console.log('unmount editor');
-    if (window.canvasUpdater) {
-      cancelAnimationFrame(window.canvasUpdater);
-    }
-
-    if (window.videoTimer) {
-      cancelAnimationFrame(window.videoTimer);
-    }
-
     const { setAttribute } = this.props;
+
     setAttribute('ctx', null);
-    setAttribute('canvas', null);
-    setAttribute('img', null);
-    setAttribute('source', null);
-    setAttribute('destination', null);
-    setAttribute('scale', null);
   }
 
   render() {
-    const {
-      knowtation,
-      toggleAttribute,
-      setElement,
-      updateTime,
-      setDuration,
-      setAttribute,
-      createSyncPoint,
-      deleteSyncPoint,
-      toggleModal,
-      timeModalOn,
-      updateKnowtation
-   } = this.props;
+    const { props } = this;
 
     return (
       <div className="knowtation-editor-container">
@@ -58,36 +33,17 @@ class KnowtationEditor extends React.Component {
 
             <div className="knowtation-editor-first-row">
               <div className='knowtation-editor-video-container'>
-                <VideoPlayer
-                  knowtation={ knowtation }
-                  setElement={ setElement }
-                  updateTime={ updateTime }
-                  setDuration={ setDuration }
-                  toggleAttribute={ toggleAttribute }
-                  createSyncPoint={ createSyncPoint }
-                />
+                <KnowtationEditorVideoPlayer {...props} />
               </div>
+
               <div className='knowtation-editor-tools-container'>
-                <KnowtationTools
-                  knowtation={ knowtation }
-                  deleteSyncPoint={ deleteSyncPoint }
-                  updateKnowtation={ updateKnowtation }
-                />
+                <KnowtationTools {...props} />
               </div>
             </div>
 
             <div className="knowtation-editor-second-row">
               <div className='knowtation-editor-notation-container'>
-                <NotationView
-                  knowtation={ knowtation }
-                  setAttribute={ setAttribute }
-                  toggleAttribute={ toggleAttribute }
-                  createSyncPoint={ createSyncPoint }
-                  deleteSyncPoint={ deleteSyncPoint }
-                  toggleModal={ toggleModal }
-                  timeModalOn={ timeModalOn }
-                  location={ this.props.location }
-                />
+                <KnowtationEditorNotationView {...props} />
               </div>
             </div>
 
@@ -106,13 +62,11 @@ class KnowtationEditor extends React.Component {
 
   onClickHandler(e) {
     const { updateKnowtation, knowtation } = this.props;
-
     const knowtationData = {
       scroll_instructions: JSON.stringify(knowtation.scrollInstructions),
       id: knowtation.id
     };
     updateKnowtation(knowtationData);
-
     hashHistory.push(`/knowtation/${knowtation.id}/preview`);
   }
 

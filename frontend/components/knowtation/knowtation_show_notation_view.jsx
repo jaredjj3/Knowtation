@@ -10,16 +10,14 @@ class KnowtationShowNotationView extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const { knowtation } = newProps;
+    const { knowtation, isShowing } = newProps;
     // only check context since it loads right away
-    if (knowtation.id !== null && knowtation.ctx === null) {
-      this.initializeNotation(knowtation);
+    if (knowtation.id && !knowtation.ctx) {
+      setTimeout(() => this.initializeNotation(knowtation), 1000);
     }
   }
 
   render() {
-    const { knowtation } = this.props;
-
     return(
       <div
         id='knowtation-show-canvas-container'
@@ -38,8 +36,7 @@ class KnowtationShowNotationView extends React.Component {
   // helpers
 
   initializeNotation(knowtation) {
-    console.log('init show');
-    const { setAttribute, toggleAttribute } = this.props;
+    const { setAttribute } = this.props;
     const canvas = document.getElementById('show-canvas');
     setAttribute('canvas', canvas);
     const context = canvas.getContext('2d');
@@ -67,21 +64,20 @@ class KnowtationShowNotationView extends React.Component {
         y: (source.height / destination.height)
       };
       setAttribute('scale', scale);
-      window.canvasUpdater = requestAnimationFrame(this.updateCanvas);
+      requestAnimationFrame(this.updateCanvas);
     };
 
     image.src = knowtation.notationImageUrl;
   }
 
   updateCanvas() {
-    const { knowtation, updatePosition } = this.props;
-    const { ctx, img } = knowtation;
+    const { knowtation, updatePosition, isShowing, updateTime } = this.props;
+    const { ctx, img, videoElement } = knowtation;
     const destinationPosition = this.calculatePosition(knowtation);
     updatePosition(destinationPosition);
     ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawBlueRect(knowtation);
-    console.log('animate show');
     requestAnimationFrame(this.updateCanvas);
   }
 
@@ -121,9 +117,8 @@ class KnowtationShowNotationView extends React.Component {
   }
 
   calculatePosition(knowtation) {
-    const { scrollInstructions, currentTime } = knowtation;
-
-    const bounds = {};
+    const { scrollInstructions } = knowtation;
+    const currentTime = knowtation.videoElement.getCurrentTime();
     // for loop that only goes to the seconds to last element
     for (let i = 0; i < scrollInstructions.length - 1; i++) {
       const syncPoint1 = scrollInstructions[i];
@@ -146,8 +141,6 @@ class KnowtationShowNotationView extends React.Component {
   isBetween(probe, val1, val2) {
     return probe >= val1 && probe <= val2;
   }
-
-
 
 }
 

@@ -1,3 +1,4 @@
+
 export const REQUEST_ALL_KNOWTATIONS = "REQUEST_ALL_KNOWTATIONS";
 export const RECEIVE_ALL_KNOWTATIONS = "RECEIVE_ALL_KNOWTATIONS";
 export const UPDATE_KNOWTATION = "UPDATE_KNOWTATION";
@@ -5,7 +6,6 @@ export const RECEIVE_KNOWTATION = "RECEIVE_KNOWTATION";
 export const CREATE_KNOWTATION = "CREATE_KNOWTATION";
 export const REQUEST_KNOWTATION = "REQUEST_KNOWTATION";
 export const SET_ELEMENT = "SET_HTML_ELEMENT";
-export const TOGGLE_ATTRIBUTE = "TOGGLE_ATTRIBUTE";
 export const UPDATE_TIME = "UPDATE_TIME";
 export const SET_DURATION = "SET_DURATION";
 export const SET_ATTRIBUTE = "SET_ATTRIBUTE";
@@ -47,11 +47,6 @@ export const setElement = (element, elementName) => ({
   type: SET_ELEMENT,
   element,
   elementName
-});
-
-export const toggleAttribute = attribute => ({
-  type: TOGGLE_ATTRIBUTE,
-  attribute
 });
 
 export const updateTime = currentTime => ({

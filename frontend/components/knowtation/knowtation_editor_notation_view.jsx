@@ -1,7 +1,7 @@
 import React from 'react';
 import { toTimeString } from '../../util/time_string';
 
-class NotationView extends React.Component {
+class KnowtationEditorNotationView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -12,8 +12,8 @@ class NotationView extends React.Component {
 
   componentWillReceiveProps(newProps) {
     const { knowtation } = newProps;
-    // only check context since it loads right away
-    if (knowtation.id !== null && knowtation.ctx === null) {
+
+    if (knowtation.id && !knowtation.ctx) {
       this.initializeNotation(knowtation);
     }
   }
@@ -23,14 +23,6 @@ class NotationView extends React.Component {
     let destinationWidth = 900;
     if (knowtation.destination) {
       destinationWidth = knowtation.destination.width;
-      const pos = { x: destinationWidth, y: 0 };
-      const exisitingSyncPoint = this.checkSyncPoints(pos);
-
-      if (exisitingSyncPoint) {
-        const time = knowtation.duration;
-        const id = knowtation.syncPointId;
-        createSyncPoint({ id, pos, time });
-      }
     }
 
     return (
@@ -125,15 +117,12 @@ class NotationView extends React.Component {
   }
 
   initializeNotation(knowtation) {
-    console.log('init view');
-    const { setAttribute, toggleAttribute } = this.props;
-    toggleAttribute('isEditing');
+    const { setAttribute } = this.props;
     const canvas = document.getElementById('canvas');
     setAttribute('canvas', canvas);
     const context = canvas.getContext('2d');
     setAttribute('ctx', context);
     const image = new Image();
-    // asynchronous
     image.onload = () => {
       setAttribute('img', image);
       const source = {
@@ -187,7 +176,7 @@ class NotationView extends React.Component {
     const { ctx, destination, scrollInstructions } = knowtation;
     const X_OFFSET = 5;
     const X_TEXT_OFFSET = 15;
-    console.log('animate editor');
+    ('animate editor');
     for (let i = 0; i < scrollInstructions.length; i++) {
       // for lightblue rect
       const syncPoint = scrollInstructions[i];
@@ -214,4 +203,4 @@ class NotationView extends React.Component {
 
 
 
-export default NotationView;
+export default KnowtationEditorNotationView;

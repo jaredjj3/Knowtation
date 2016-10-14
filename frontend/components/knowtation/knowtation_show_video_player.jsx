@@ -10,7 +10,8 @@ const KnowtationShowVideoPlayer = ({
   updateTime,
   setDuration,
   isPlaying,
-  toggleAttribute,
+  isShowing,
+  setAttribute,
   createSyncPoint
 }) => {
   const { videoElement } = knowtation;
@@ -18,42 +19,12 @@ const KnowtationShowVideoPlayer = ({
   const onReadyHandler = e => {
     const video = e.target;
     setElement(video, 'video');
-    setTimeout(() => video.playVideo(), 3000);
+    setAttribute('isShowing', true);
+    setTimeout(() => video.playVideo(), 1000);
   };
 
   const onPlayHandler = e => {
-    window.videoTimer = requestAnimationFrame(_updateTimer);
     setDuration(e.target.getDuration());
-
-    if (!knowtation.isPlaying) {
-      toggleAttribute('isPlaying');
-    }
-  };
-
-  const onPauseHandler = e => {
-    if (window.videoTimer) {
-      cancelAnimationFrame(window.videoTimer);
-    }
-
-    if (knowtation.isPlaying) {
-      toggleAttribute('isPlaying');
-    }
-  };
-
-  const onEndHandler = e => {
-    if (window.videoTimer) {
-      cancelAnimationFrame(window.videoTimer);
-    }
-
-    if (knowtation.isPlaying) {
-      toggleAttribute('isPlaying');
-    }
-  };
-
-  const _updateTimer = () => {
-    const currentTime = videoElement.getCurrentTime();
-    updateTime(currentTime);
-    requestAnimationFrame(_updateTimer);
   };
 
   return(
@@ -63,7 +34,6 @@ const KnowtationShowVideoPlayer = ({
       videoId={ knowtation.videoUrl}
       onReady={ onReadyHandler }
       onPlay={ onPlayHandler }
-      onEnd={ onEndHandler }
     />
   );
 };
