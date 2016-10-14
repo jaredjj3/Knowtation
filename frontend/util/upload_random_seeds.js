@@ -3,7 +3,9 @@ const rng = max => Math.floor(Math.random() * max) ;
 const sample = array => array[rng(array.length)];
 
 const youtubeUrlArray = [
-  'https://youtu.be/w8uNZWDEYzQ'
+  "https://youtu.be/w8uNZWDEYzQ",
+  "https://youtu.be/ZASKyx-anks",
+  "https://youtu.be/r9HIfBmGGaU"
 ];
 
 const titleArray = [

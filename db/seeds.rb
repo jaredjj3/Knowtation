@@ -11,7 +11,7 @@ NUM_KNOWTATIONS = 25;
 NUM_USER_LOOPS = 50;
 NUM_KNOWTATION_TAGS = 4;
 # IMAGES = Dir['/Users/Jared/Desktop/Knowtation/app/assets/images/thumbnails/*'];
-IMAGES =[
+IMAGES = [
   "app/assets/images/thumbnails/0001_samblakelock_happy-birthday_thumb.jpg",
   "app/assets/images/thumbnails/0002_samblakelock_colorful_neo-soul_thumb.jpg",
   "app/assets/images/thumbnails/0003_samblakelock_soulful-c_thumb.jpg",
@@ -54,18 +54,18 @@ IMAGES =[
 
 MISC = [
   "app/assets/images/misc/misc1.png",
-  "app/assets/images/misc/misc10.png",
-  "app/assets/images/misc/misc11.png",
-  "app/assets/images/misc/misc12.png",
-  "app/assets/images/misc/misc13.png",
-  "app/assets/images/misc/misc14.png",
   "app/assets/images/misc/misc2.png",
   "app/assets/images/misc/misc3.png",
   "app/assets/images/misc/misc4.png",
   "app/assets/images/misc/misc5.png",
   "app/assets/images/misc/misc6.png",
   "app/assets/images/misc/misc8.png",
-  "app/assets/images/misc/misc9.png"
+  "app/assets/images/misc/misc9.png",
+  "app/assets/images/misc/misc10.png",
+  "app/assets/images/misc/misc11.png",
+  "app/assets/images/misc/misc12.png",
+  "app/assets/images/misc/misc13.png",
+  "app/assets/images/misc/misc14.png"
 ]
 
 NOTATION = [
@@ -73,12 +73,15 @@ NOTATION = [
   "app/assets/images/notation/notation2.jpg",
   "app/assets/images/notation/notation3.jpg",
   "app/assets/images/notation/notation4.jpg",
-  "app/assets/images/notation/notation5.jpg"
+  "app/assets/images/notation/notation5.jpg",
+  "app/assets/images/notation/notation6.jpg"
 ]
 
 YOUTUBE_LINKS = [
-  "w8uNZWDEYzQ"
-];
+  "w8uNZWDEYzQ",
+  "ZASKyx-anks",
+  "r9HIfBmGGaU"
+]
 
 TIME_AGO_SECS = 604_800 * 1.5
 
