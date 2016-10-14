@@ -8,18 +8,26 @@ import TeachFormContainer from './teach_form/teach_form_container';
 import UploadFormContainer from './upload_form/upload_form_container';
 import ProfileFormContainer from './profile_form/profile_form_container';
 import TimeFormContainer from './time_form/time_form_container';
+import LoadingContainer from './loading/loading_container';
 
 const App = ({ children }) => (
 
   <div className='application-container'>
 
     <header className='navigation-bar group'>
-      <nav className='navigation-items group'>
-        <div className='logo-container'>
-          <Link to="/library"><h1 className='logo'>Knowtation</h1></Link>
-          <Link to="/library"><Icon /></Link>
+      <nav className='navigation-items'>
+
+        <div className='navigation-left'>
+          <div className='logo-container'>
+            <Link to="/library"><h1 className='navigation logo'>Knowtation</h1></Link>
+            <Link to="/library"><Icon /></Link>
+          </div>
         </div>
-        <NavigationContainer className="navigation-container" />
+
+        <div className='navigation-right'>
+          <NavigationContainer className="navigation-container" />
+        </div>
+
       </nav>
     </header>
 
@@ -28,6 +36,7 @@ const App = ({ children }) => (
     <UploadFormContainer />
     <ProfileFormContainer />
     <TimeFormContainer />
+    <LoadingContainer />
 
     { children }
 

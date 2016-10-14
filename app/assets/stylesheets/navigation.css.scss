@@ -17,6 +17,10 @@ $border-gray: #aaa;
   margin: 0 auto;
 }
 
+.navigation-left {
+
+}
+
 header .logo-container {
   margin-left: 20px;
 }
@@ -43,6 +47,10 @@ header .logo-container:hover {
 }
 
 header .logo-container:hover .logo-icon {
+  color: $main-blue-hover;
+}
+
+header .logo-container:hover .library {
   color: $main-blue-hover;
 }
 
@@ -91,4 +99,8 @@ header img {
 
 .navigation-signup {
   margin-right: 20px;
+}
+
+.navigation .logo {
+
 }

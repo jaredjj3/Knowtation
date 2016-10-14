@@ -14,9 +14,10 @@ class KnowtationShow extends React.Component {
   }
 
   componentDidMount() {
-    const { requestKnowtation, setSyncPoint, setAttribute } = this.props;
+    const { requestKnowtation, setSyncPoint, setAttribute, toggleModal } = this.props;
     const id = this.props.params.id;
     requestKnowtation(id);
+    toggleModal('loading');
   }
 
   componentWillUnmount() {

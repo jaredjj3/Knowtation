@@ -12,7 +12,8 @@ const KnowtationShowVideoPlayer = ({
   isPlaying,
   isShowing,
   setAttribute,
-  createSyncPoint
+  createSyncPoint,
+  toggleModal
 }) => {
   const { videoElement } = knowtation;
 
@@ -20,7 +21,10 @@ const KnowtationShowVideoPlayer = ({
     const video = e.target;
     setElement(video, 'video');
     setAttribute('isShowing', true);
-    setTimeout(() => video.playVideo(), 3000);
+    setTimeout(() => {
+      toggleModal('loading');
+      video.playVideo();
+    }, 3000);
   };
 
   const onPlayHandler = e => {

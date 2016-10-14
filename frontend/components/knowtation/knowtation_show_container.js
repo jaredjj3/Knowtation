@@ -10,6 +10,7 @@ import {
   updateTime,
   setDuration
 } from '../../actions/knowtation_actions';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => ({
   knowtation: state.knowtation,
@@ -25,7 +26,8 @@ const mapDispatchToProps = dispatch => ({
   requestKnowtation: id => dispatch(requestKnowtation(id)),
   toggleAttribute: attribute => dispatch(toggleAttribute(attribute)),
   setAttribute: (attribute, value) => dispatch(setAttribute(attribute, value)),
-  updatePosition: position => dispatch(updatePosition(position))
+  updatePosition: position => dispatch(updatePosition(position)),
+  toggleModal: modal => dispatch(toggleModal(modal))
 });
 
 export default connect(

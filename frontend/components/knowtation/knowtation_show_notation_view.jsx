@@ -41,7 +41,7 @@ class KnowtationShowNotationView extends React.Component {
   // helpers
 
   initializeNotation(knowtation) {
-    const { setAttribute } = this.props;
+    const { setAttribute, toggleModal } = this.props;
     const canvas = document.getElementById('show-canvas');
     setAttribute('canvas', canvas);
     const context = canvas.getContext('2d');

@@ -7,14 +7,15 @@ const KnowtationEditorVideoPlayer = ({
   updateTime,
   setDuration,
   isPlaying,
-  toggleAttribute,
-  createSyncPoint
+  createSyncPoint,
+  toggleModal
 }) => {
   const { videoElement } = knowtation;
 
   const onReadyHandler = e => {
     const video = e.target;
     setElement(video, 'video');
+    toggleModal('loading');
   };
 
   const onPlayHandler = e => {
