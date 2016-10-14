@@ -17,13 +17,11 @@ class KnowtationShow extends React.Component {
     const { requestKnowtation, setSyncPoint, setAttribute } = this.props;
     const id = this.props.params.id;
     requestKnowtation(id);
-    setAttribute('isShowing', true);
   }
 
   componentWillUnmount() {
     const { setAttribute } = this.props;
 
-    setAttribute('isShowing', false);
     setAttribute('ctx', false);
   }
 

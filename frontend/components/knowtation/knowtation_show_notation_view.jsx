@@ -4,6 +4,7 @@ class KnowtationShowNotationView extends React.Component {
   constructor(props) {
     super(props);
 
+    this.isShowing = true;
     this.updateCanvas = this.updateCanvas.bind(this);
     this.calculatePosition = this.calculatePosition.bind(this);
     this.initializeNotation = this.initializeNotation.bind(this);
@@ -15,6 +16,10 @@ class KnowtationShowNotationView extends React.Component {
     if (knowtation.id && !knowtation.ctx) {
       setTimeout(() => this.initializeNotation(knowtation), 1000);
     }
+  }
+
+  componentWillUnmount() {
+    this.isShowing = false;
   }
 
   render() {
@@ -71,14 +76,16 @@ class KnowtationShowNotationView extends React.Component {
   }
 
   updateCanvas() {
-    const { knowtation, updatePosition, isShowing, updateTime } = this.props;
+    const { knowtation, updatePosition, updateTime } = this.props;
     const { ctx, img, videoElement } = knowtation;
     const destinationPosition = this.calculatePosition(knowtation);
     updatePosition(destinationPosition);
     ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawBlueRect(knowtation);
-    requestAnimationFrame(this.updateCanvas);
+    if (this.isShowing) {
+      requestAnimationFrame(this.updateCanvas);
+    }
   }
 
   drawNotation(knowtation) {

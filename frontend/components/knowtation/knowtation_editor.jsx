@@ -22,6 +22,7 @@ class KnowtationEditor extends React.Component {
     const { setAttribute } = this.props;
 
     setAttribute('ctx', null);
+    setAttribute('isEditing', false);
   }
 
   render() {

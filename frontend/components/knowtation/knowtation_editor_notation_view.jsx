@@ -5,6 +5,7 @@ class KnowtationEditorNotationView extends React.Component {
   constructor(props) {
     super(props);
 
+    this.isEditing = true;
     this.updateCanvas = this.updateCanvas.bind(this);
     this.handleCanvasClick = this.handleCanvasClick.bind(this);
     this.initializeNotation = this.initializeNotation.bind(this);
@@ -16,6 +17,10 @@ class KnowtationEditorNotationView extends React.Component {
     if (knowtation.id && !knowtation.ctx) {
       this.initializeNotation(knowtation);
     }
+  }
+
+  componentWillUnmount() {
+    this.isEditing = false;
   }
 
   render() {
@@ -72,7 +77,7 @@ class KnowtationEditorNotationView extends React.Component {
     ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawSyncPoints(knowtation);
-    if (knowtation.isEditing) {
+    if (this.isEditing) {
       requestAnimationFrame(this.updateCanvas);
     }
   }
