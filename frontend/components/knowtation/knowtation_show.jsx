@@ -19,6 +19,18 @@ class KnowtationShow extends React.Component {
     this.props.requestKnowtation(id);
   }
 
+  componentWillUnmount() {
+    console.log('unmount show');
+    const { setAttribute, toggleAttribute } = this.props;
+    toggleAttribute('isShowing');
+    setAttribute('ctx', null);
+    setAttribute('canvas', null);
+    setAttribute('img', null);
+    setAttribute('source', null);
+    setAttribute('destination', null);
+    setAttribute('scale', null);
+  }
+
   render() {
     const {
       knowtation,
@@ -51,6 +63,7 @@ class KnowtationShow extends React.Component {
               setAttribute={ setAttribute }
               location={ this.props.location }
               updatePosition={ updatePosition }
+              toggleAttribute={ toggleAttribute }
             />
           </div>
 
@@ -69,7 +82,8 @@ class KnowtationShow extends React.Component {
   // event handlers
 
   handleFinalizeClick(e) {
-    hashHistory.push(`/knowtation/${id}`)
+    const { id } = this.props.params;
+    hashHistory.push(`/knowtation/${id}`);
   }
 
   handleEditClick(e) {

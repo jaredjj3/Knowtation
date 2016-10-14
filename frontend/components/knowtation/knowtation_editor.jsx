@@ -18,8 +18,23 @@ class KnowtationEditor extends React.Component {
     requestKnowtation(id);
   }
 
-  componentDidUpdate() {
+  componentWillUnmount() {
+    console.log('unmount editor');
+    if (window.canvasUpdater) {
+      cancelAnimationFrame(window.canvasUpdater);
+    }
 
+    if (window.videoTimer) {
+      cancelAnimationFrame(window.videoTimer);
+    }
+
+    const { setAttribute } = this.props;
+    setAttribute('ctx', null);
+    setAttribute('canvas', null);
+    setAttribute('img', null);
+    setAttribute('source', null);
+    setAttribute('destination', null);
+    setAttribute('scale', null);
   }
 
   render() {
@@ -66,6 +81,7 @@ class KnowtationEditor extends React.Component {
                 <NotationView
                   knowtation={ knowtation }
                   setAttribute={ setAttribute }
+                  toggleAttribute={ toggleAttribute }
                   createSyncPoint={ createSyncPoint }
                   deleteSyncPoint={ deleteSyncPoint }
                   toggleModal={ toggleModal }

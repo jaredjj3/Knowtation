@@ -38,7 +38,8 @@ class KnowtationShowNotationView extends React.Component {
   // helpers
 
   initializeNotation(knowtation) {
-    const { setAttribute } = this.props;
+    console.log('init show');
+    const { setAttribute, toggleAttribute } = this.props;
     const canvas = document.getElementById('show-canvas');
     setAttribute('canvas', canvas);
     const context = canvas.getContext('2d');
@@ -80,6 +81,7 @@ class KnowtationShowNotationView extends React.Component {
     ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawBlueRect(knowtation);
+    console.log('animate show');
     requestAnimationFrame(this.updateCanvas);
   }
 
@@ -139,8 +141,6 @@ class KnowtationShowNotationView extends React.Component {
         return -result;
       }
     }
-
-    return knowtation.destination.width;
   }
 
   isBetween(probe, val1, val2) {

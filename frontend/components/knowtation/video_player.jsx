@@ -32,7 +32,7 @@ const VideoPlayer = ({
   };
 
   const onPlayHandler = e => {
-    window.videoTimer = setInterval(_updateTimer, 50);
+    window.videoTimer = requestAnimationFrame(_updateTimer);
     setDuration(e.target.getDuration());
 
     if (!knowtation.isPlaying) {
@@ -42,7 +42,7 @@ const VideoPlayer = ({
 
   const onPauseHandler = e => {
     if (window.videoTimer) {
-      clearInterval(window.videoTimer);
+      cancelAnimationFrame(window.videoTimer);
     }
 
     if (knowtation.isPlaying) {
@@ -52,7 +52,7 @@ const VideoPlayer = ({
 
   const onEndHandler = e => {
     if (window.videoTimer) {
-      clearInterval(window.videoTimer);
+      cancelAnimationFrame(window.videoTimer);
     }
 
     if (knowtation.isPlaying) {
@@ -63,6 +63,7 @@ const VideoPlayer = ({
   const _updateTimer = () => {
     const currentTime = videoElement.getCurrentTime();
     updateTime(currentTime);
+    requestAnimationFrame(_updateTimer);
   };
 
   return (

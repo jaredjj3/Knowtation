@@ -18,7 +18,7 @@ const KnowtationShowVideoPlayer = ({
   const onReadyHandler = e => {
     const video = e.target;
     setElement(video, 'video');
-    video.playVideo();
+    setTimeout(() => video.playVideo(), 3000);
   };
 
   const onPlayHandler = e => {
@@ -32,7 +32,7 @@ const KnowtationShowVideoPlayer = ({
 
   const onPauseHandler = e => {
     if (window.videoTimer) {
-      clearInterval(window.videoTimer);
+      cancelAnimationFrame(window.videoTimer);
     }
 
     if (knowtation.isPlaying) {
@@ -42,7 +42,7 @@ const KnowtationShowVideoPlayer = ({
 
   const onEndHandler = e => {
     if (window.videoTimer) {
-      clearInterval(window.videoTimer);
+      cancelAnimationFrame(window.videoTimer);
     }
 
     if (knowtation.isPlaying) {

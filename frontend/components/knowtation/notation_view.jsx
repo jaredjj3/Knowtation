@@ -18,16 +18,6 @@ class NotationView extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    if (window.canvasUpdater) {
-      clearInterval(window.canvasUpdater);
-    }
-
-    const { setAttribute } = this.props;
-    setAttribute('ctx', null);
-    setAttribute('videoElement', null);
-  }
-
   render() {
     const { knowtation, createSyncPoint } = this.props;
     let destinationWidth = 900;
@@ -90,7 +80,9 @@ class NotationView extends React.Component {
     ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawSyncPoints(knowtation);
-    requestAnimationFrame(this.updateCanvas);
+    if (knowtation.isEditing) {
+      requestAnimationFrame(this.updateCanvas);
+    }
   }
 
   // helpers
@@ -133,7 +125,9 @@ class NotationView extends React.Component {
   }
 
   initializeNotation(knowtation) {
-    const { setAttribute } = this.props;
+    console.log('init view');
+    const { setAttribute, toggleAttribute } = this.props;
+    toggleAttribute('isEditing');
     const canvas = document.getElementById('canvas');
     setAttribute('canvas', canvas);
     const context = canvas.getContext('2d');
@@ -193,7 +187,7 @@ class NotationView extends React.Component {
     const { ctx, destination, scrollInstructions } = knowtation;
     const X_OFFSET = 5;
     const X_TEXT_OFFSET = 15;
-
+    console.log('animate editor');
     for (let i = 0; i < scrollInstructions.length; i++) {
       // for lightblue rect
       const syncPoint = scrollInstructions[i];

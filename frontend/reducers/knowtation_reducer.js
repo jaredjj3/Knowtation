@@ -21,6 +21,8 @@ const _nullKnowtation = Object.freeze({
   userId: null,
   duration: null,
   videoUrl: null,
+  isEditing: false,
+  isShowing: false,
   isPlaying: false,
   isLooping: false,
   isMuted: false,
@@ -102,7 +104,11 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
       return newState;
 
     case UPDATE_POSITION:
-      newState.destination.pos.x = action.position;
+      if (newState.destination) {
+        newState.destination.pos.x = action.position;
+      } else {
+        newState.destination = null;
+      }
       return newState;
 
     case SET_SYNC_POINT:

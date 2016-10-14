@@ -28,8 +28,9 @@ class UploadForm extends React.Component {
     this.handlePopulateClick = this.handlePopulateClick.bind(this);
     this._uploadVideoDisplay = this._uploadVideoDisplay.bind(this);
     this.handleVideoUrlChange = this.handleVideoUrlChange.bind(this);
-    this._uploadThumbnailDisplay = this._uploadThumbnailDisplay.bind(this);
     this._uploadNotationDisplay = this._uploadNotationDisplay.bind(this);
+    this._uploadThumbnailDisplay = this._uploadThumbnailDisplay.bind(this);
+    this._clearStateAndToggleModal = this._clearStateAndToggleModal.bind(this);
   }
 
   componentDidUpdate() {
@@ -124,8 +125,9 @@ class UploadForm extends React.Component {
     formData.append('knowtation[thumbnail]', thumbnailFile);
     formData.append('knowtation[title]', title);
     formData.append('knowtation[video_url]', youtubeId);
-
     this.props.createKnowtation(formData);
+
+    this._clearStateAndToggleModal();
   }
 
   handleClick(property) {
