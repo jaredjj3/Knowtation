@@ -23,3 +23,19 @@ $border-gray: #aaa;
   margin-top: 30px;
   margin-right: 10px;
 }
+
+.knowtation-show-title {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.knowtation-show-author {
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.knowtation-show-author:hover {
+  cursor: pointer;
+  color: $main-blue-hover;
+}

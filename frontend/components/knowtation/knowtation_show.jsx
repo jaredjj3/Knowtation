@@ -1,7 +1,7 @@
 import React from 'react';
 import KnowtationShowVideoPlayer from './knowtation_show_video_player';
 import KnowtationShowNotationView from './knowtation_show_notation_view';
-import { hashHistory } from 'react-router';
+import { hashHistory, Link } from 'react-router';
 
 class KnowtationShow extends React.Component {
   constructor(props) {
@@ -27,9 +27,14 @@ class KnowtationShow extends React.Component {
 
   render() {
     const { props } = this;
+    const { title, authorName, userId } = props.knowtation;
 
     return(
       <div className='knowtation-show-container'>
+        <h1 className='knowtation-show-title'>{ title }</h1>
+        <Link to={ `/profile/${userId}` }>
+          <h2 className='knowtation-show-author'>{ authorName }</h2>
+        </Link>
         <div className='knowtation-show'>
           <div className='knowtation-show-first-row'>
             <KnowtationShowVideoPlayer { ...props } />

@@ -20,7 +20,7 @@ const KnowtationShowVideoPlayer = ({
     const video = e.target;
     setElement(video, 'video');
     setAttribute('isShowing', true);
-    setTimeout(() => video.playVideo(), 1000);
+    setTimeout(() => video.playVideo(), 3000);
   };
 
   const onPlayHandler = e => {

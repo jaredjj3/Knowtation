@@ -1,6 +1,6 @@
 import React from 'react';
 import Progress from './progress';
-import Saved from './saved';
+import Lessons from './lessons';
 import UpdatePicture from './update_picture';
 import BiographyText from './biography_text';
 
@@ -56,7 +56,7 @@ class Profile extends React.Component {
               </div>
               <div className="biography-right-column">
                 <BiographyText props={ this.props }/>
-                <Saved />
+                <Lessons />
               </div>
           </div>
         </div>

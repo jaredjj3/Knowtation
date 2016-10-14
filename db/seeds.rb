@@ -8,7 +8,7 @@
 
 NUM_USERS = 10;
 NUM_KNOWTATIONS = 25;
-NUM_USER_LOOPS = 50;
+NUM_USER_LOOPS = 100;
 NUM_KNOWTATION_TAGS = 4;
 # IMAGES = Dir['/Users/Jared/Desktop/Knowtation/app/assets/images/thumbnails/*'];
 IMAGES = [
@@ -69,12 +69,12 @@ MISC = [
 ]
 
 NOTATION = [
-  "app/assets/images/notation/notation1.jpg",
-  "app/assets/images/notation/notation2.jpg",
-  "app/assets/images/notation/notation3.jpg",
-  "app/assets/images/notation/notation4.jpg",
-  "app/assets/images/notation/notation5.jpg",
-  "app/assets/images/notation/notation6.jpg"
+  ["app/assets/images/notation/notation1.jpg", "[{\"pos\":{\"x\":146.5,\"y\":76},\"id\":0,\"time\":0},{\"pos\":{\"x\":515.5,\"y\":66},\"id\":1,\"time\":4},{\"pos\":{\"x\":1372.5,\"y\":83},\"id\":2,\"time\":10},{\"pos\":{\"x\":2107.5,\"y\":73},\"id\":3,\"time\":16}]"],
+  ["app/assets/images/notation/notation2.jpg", "[{\"pos\":{\"x\":99.5,\"y\":128},\"id\":0,\"time\":0},{\"pos\":{\"x\":496.5,\"y\":100},\"id\":1,\"time\":5},{\"pos\":{\"x\":1309.5,\"y\":95},\"id\":2,\"time\":12},{\"pos\":{\"x\":1610.5,\"y\":99},\"id\":3,\"time\":16}]"],
+  ["app/assets/images/notation/notation3.jpg", "[{\"pos\":{\"x\":129.5,\"y\":100},\"id\":0,\"time\":0},{\"pos\":{\"x\":537.5,\"y\":78},\"id\":1,\"time\":5},{\"pos\":{\"x\":885.5,\"y\":75},\"id\":2,\"time\":7},{\"pos\":{\"x\":1779.5,\"y\":87},\"id\":3,\"time\":16}]"],
+  ["app/assets/images/notation/notation4.jpg", "[{\"pos\":{\"x\":105.5,\"y\":105},\"id\":0,\"time\":0},{\"pos\":{\"x\":510.5,\"y\":99},\"id\":1,\"time\":4.5},{\"pos\":{\"x\":1202.5,\"y\":97},\"id\":2,\"time\":9.7},{\"pos\":{\"x\":1887.5,\"y\":83},\"id\":3,\"time\":16}]"],
+  ["app/assets/images/notation/notation5.jpg", "[{\"pos\":{\"x\":72.5,\"y\":106},\"id\":1,\"time\":0},{\"pos\":{\"x\":375.5,\"y\":95},\"id\":2,\"time\":2.3},{\"pos\":{\"x\":783.5,\"y\":65},\"id\":3,\"time\":9.18188},{\"pos\":{\"x\":1469.5,\"y\":104},\"id\":4,\"time\":16}]"],
+  ["app/assets/images/notation/notation6.jpg", "[{\"pos\":{\"x\":100.5,\"y\":74},\"id\":0,\"time\":0},{\"pos\":{\"x\":359.5,\"y\":78},\"id\":1,\"time\":3.77},{\"pos\":{\"x\":1069.5,\"y\":103},\"id\":2,\"time\":5.6},{\"pos\":{\"x\":1569.5,\"y\":88},\"id\":3,\"time\":9},{\"pos\":{\"x\":1934.5,\"y\":105},\"id\":4,\"time\":16}]"],
 ]
 
 YOUTUBE_LINKS = [
@@ -177,12 +177,14 @@ def random_teacher
   User.where(user_type: 'teacher').sample
 end
 NUM_KNOWTATIONS.times do
+  notation = NOTATION.sample
   knowtation = Knowtation.create!(
     user_id: random_teacher.id,
     title: Faker::Book.title,
     video_url: YOUTUBE_LINKS.sample,
     thumbnail: File.open(IMAGES.sample),
-    notation_image: File.open(NOTATION.sample)
+    notation_image: File.open(notation[0]),
+    scroll_instructions: notation[1]
   )
 
   length = Tag.all.length

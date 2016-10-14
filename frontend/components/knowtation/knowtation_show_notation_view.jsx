@@ -14,7 +14,7 @@ class KnowtationShowNotationView extends React.Component {
     const { knowtation, isShowing } = newProps;
     // only check context since it loads right away
     if (knowtation.id && !knowtation.ctx) {
-      setTimeout(() => this.initializeNotation(knowtation), 1000);
+      setTimeout(() => this.initializeNotation(knowtation), 2000);
     }
   }
 
