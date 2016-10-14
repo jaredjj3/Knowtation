@@ -18,6 +18,7 @@ const KnowtationShowVideoPlayer = ({
   const onReadyHandler = e => {
     const video = e.target;
     setElement(video, 'video');
+    video.playVideo();
   };
 
   const onPlayHandler = e => {

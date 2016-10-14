@@ -29,20 +29,42 @@ $border-gray: #aaa;
   position: relative;
 }
 
-.show-metadata {
+.show-metadata .first-row {
   position: absolute;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   color: #fff !important;
   font-size: 28px;
   top: 50px;
   left: 100px;
-  z-index: 0;
+}
+
+.show-metadata .second-row {
+  position: absolute;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff !important;
+  font-size: 12px;
+  top: 20px;
+  width: 250px;
 }
 
 .show-metadata .material-icons {
   font-size: 36px;
+}
+
+.library-tag-list {
+  width: 80px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  top: 50px;
+  left: 20px;
 }
 
 .hide-metadata {

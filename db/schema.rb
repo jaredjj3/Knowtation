@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010214809) do
+ActiveRecord::Schema.define(version: 20161013233351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,25 @@ ActiveRecord::Schema.define(version: 20161010214809) do
 
   add_index "loops", ["loop_id"], name: "index_loops_on_loop_id", using: :btree
   add_index "loops", ["user_id"], name: "index_loops_on_user_id", using: :btree
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "knowtation_id", null: false
+    t.integer  "tag_id",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["knowtation_id", "tag_id"], name: "index_taggings_on_knowtation_id_and_tag_id", unique: true, using: :btree
+  add_index "taggings", ["knowtation_id"], name: "index_taggings_on_knowtation_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "user_loops", force: :cascade do |t|
     t.integer  "knowtation_id", null: false

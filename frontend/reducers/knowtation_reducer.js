@@ -84,6 +84,15 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
     case CREATE_SYNC_POINT:
       newState.scrollInstructions.push(action.syncPoint);
       newState.syncPointId++;
+      newState.scrollInstructions = newState.scrollInstructions.sort((a, b) => {
+        if (a.time > b.time) {
+          return 1;
+        }
+        if (a.time < b.time) {
+          return -1;
+        }
+        return 0;
+      });
       return newState;
 
     case DELETE_SYNC_POINT:

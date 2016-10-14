@@ -24,6 +24,8 @@ class Knowtation < ActiveRecord::Base
 
   belongs_to :user
   has_many :user_loops
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   has_attached_file :notation_image, default_url: "default.jpg"
   validates_attachment_content_type :notation_image, content_type: /\Aimage\/.*\z/

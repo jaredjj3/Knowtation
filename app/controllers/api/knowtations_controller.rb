@@ -1,7 +1,7 @@
 class Api::KnowtationsController < ApplicationController
 
   def index
-    @knowtations = Knowtation.includes(:user_loops, :user).all
+    @knowtations = Knowtation.includes(:user_loops, :user, :tags).all
     render :index
   end
 
@@ -53,7 +53,8 @@ class Api::KnowtationsController < ApplicationController
       :scroll_instructions,
       :video_url,
       :notation_image,
-      :thumbnail
+      :thumbnail,
+      :tags
     )
   end
 end

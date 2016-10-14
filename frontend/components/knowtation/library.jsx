@@ -20,6 +20,7 @@ class Library extends React.Component {
 
     const knowtationItems = knowtations.map( (knowtation, idx) => {
       const author = knowtation.user;
+
       return (
         <li className='library-list-item' key={ idx }>
           <div
@@ -34,8 +35,8 @@ class Library extends React.Component {
                 id={ `library-metadata-${ knowtation.id }` }
                 className='hide-metadata'
               >
-                { knowtation.receivedLoops }
-                <i className="material-icons">loop</i>
+                <span className='first-row'>{ knowtation.receivedLoops } <i className="material-icons">loop</i></span>
+                <span className='second-row'>{ knowtation.tags.map( tag => `${tag.name}`).join(' • ') }</span>
               </div>
               <h2>{ knowtation.title }</h2>
             </Link>
@@ -55,6 +56,10 @@ class Library extends React.Component {
       </div>
     );
   }
+
+  // helpers
+
+
 
   // event handlers
 

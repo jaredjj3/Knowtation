@@ -69,7 +69,7 @@ class KnowtationShow extends React.Component {
   // event handlers
 
   handleFinalizeClick(e) {
-
+    hashHistory.push(`/knowtation/${id}`)
   }
 
   handleEditClick(e) {
@@ -99,7 +99,7 @@ class KnowtationShow extends React.Component {
   editButton() {
     const { currentUser, pageUserId } = this.props;
 
-    if (currentUser.id && pageUserId && currentUser.id === pageUserId) {
+    if (currentUser && pageUserId && currentUser.id === pageUserId) {
       return(
         <button
           className='edit main-button'

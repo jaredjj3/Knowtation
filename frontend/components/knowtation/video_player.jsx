@@ -29,15 +29,6 @@ const VideoPlayer = ({
   const onReadyHandler = e => {
     const video = e.target;
     setElement(video, 'video');
-
-    const pos = { x: 0, y: 0 };
-    const existingSyncPoint = checkSyncPoints(pos);
-
-    if (!existingSyncPoint) {
-      const time = 0.0;
-      const id = knowtation.syncPointId;
-      createSyncPoint({ pos, time, id });
-    }
   };
 
   const onPlayHandler = e => {
