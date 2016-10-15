@@ -16,14 +16,11 @@ class KnowtationEditor extends React.Component {
     const id = this.props.params.id;
     requestKnowtation(id);
     toggleModal('loading');
-    setAttribute('isEditing', true);
   }
 
   componentWillUnmount() {
-    const { setAttribute } = this.props;
-
-    setAttribute('ctx', null);
-    setAttribute('isEditing', false);
+    const { clearKnowtation } = this.props;
+    clearKnowtation();
   }
 
   render() {

@@ -9,7 +9,8 @@ import {
   deleteSyncPoint,
   updateKnowtation,
   setAttribute,
-  setSyncPoint
+  setSyncPoint,
+  clearKnowtation
 } from '../../actions/knowtation_actions';
 import { toggleModal } from '../../actions/modal_actions';
 
@@ -28,7 +29,8 @@ const mapDispatchToProps = dispatch => ({
   toggleModal: modal => dispatch(toggleModal(modal)),
   setSyncPoint: () => dispatch(setSyncPoint()),
   updateKnowtation: knowtation => dispatch(updateKnowtation(knowtation)),
-  setAttribute: (attribute, value) => dispatch(setAttribute(attribute, value))
+  setAttribute: (attribute, value) => dispatch(setAttribute(attribute, value)),
+  clearKnowtation: () => dispatch(clearKnowtation())
 });
 
 export default connect(

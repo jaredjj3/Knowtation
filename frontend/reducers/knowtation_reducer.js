@@ -9,7 +9,8 @@ import {
   DELETE_SYNC_POINT,
   UPDATE_POSITION,
   SET_SYNC_POINT,
-  TOGGLE_ATTRIBUTE
+  TOGGLE_ATTRIBUTE,
+  RESET_KNOWTATION
 } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
@@ -22,8 +23,6 @@ const _nullKnowtation = Object.freeze({
   userId: null,
   duration: null,
   videoUrl: null,
-  isEditing: false,
-  isShowing: false,
   isPlaying: false,
   syncPointId: 1,
   currentTime: 0,
@@ -89,15 +88,6 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
     case CREATE_SYNC_POINT:
       newState.scrollInstructions.push(action.syncPoint);
       newState.syncPointId++;
-      // newState.scrollInstructions = newState.scrollInstructions.sort((a, b) => {
-      //   if (a.time > b.time) {
-      //     return 1;
-      //   }
-      //   if (a.time < b.time) {
-      //     return -1;
-      //   }
-      //   return 0;
-      // });
       return newState;
 
     case DELETE_SYNC_POINT:
@@ -117,6 +107,9 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
     case SET_SYNC_POINT:
       newState.syncPointId = maxId(newState.scrollInstructions);
       return newState;
+
+    case RESET_KNOWTATION:
+      return _nullKnowtation;
 
     default:
       return state;

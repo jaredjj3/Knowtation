@@ -21,9 +21,8 @@ class KnowtationShow extends React.Component {
   }
 
   componentWillUnmount() {
-    const { setAttribute } = this.props;
-
-    setAttribute('ctx', false);
+    const { clearKnowtation } = this.props;
+    clearKnowtation();
   }
 
   render() {

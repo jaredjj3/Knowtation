@@ -8,7 +8,8 @@ import {
   setAttribute,
   updatePosition,
   updateTime,
-  setDuration
+  setDuration,
+  clearKnowtation
 } from '../../actions/knowtation_actions';
 import { toggleModal } from '../../actions/modal_actions';
 
@@ -27,7 +28,8 @@ const mapDispatchToProps = dispatch => ({
   toggleAttribute: attribute => dispatch(toggleAttribute(attribute)),
   setAttribute: (attribute, value) => dispatch(setAttribute(attribute, value)),
   updatePosition: position => dispatch(updatePosition(position)),
-  toggleModal: modal => dispatch(toggleModal(modal))
+  toggleModal: modal => dispatch(toggleModal(modal)),
+  clearKnowtation: () => dispatch(clearKnowtation())
 });
 
 export default connect(
