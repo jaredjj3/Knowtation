@@ -66,29 +66,29 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
 
 ###Phase 4: `Knowtation CRUD` (2.5 days)
 **Objective**: `Knowtation` can be created, read, edited, and destroyed through the API
-  - [ ] `Knowtation` model
-  - [ ] Seed database with test data
-  - [ ] CRUD API for `Knowtation` `KnowtationController`
-  - [ ] JBuilder views for `Knowtation`
-  - [ ] Style `Knowtation` components
-  - [ ] Saving `Knowtation`
-  - [ ] Review phase 4
+  - [x] `Knowtation` model
+  - [x] Seed database with test data
+  - [x] CRUD API for `Knowtation` `KnowtationController`
+  - [x] JBuilder views for `Knowtation`
+  - [x] Style `Knowtation` components
+  - [x] Saving `Knowtation`
+  - [x] Review phase 4
 
 ###Phase 5: `Knowtation Player` (2 days)
 **Objective**: `Knowtation` can be viewed through a custom `Knowtation` player
-  - [ ] `Knowtation` show page
-  - [ ] Style `Knowtation` show page
-  - [ ] Ensure that at least one working `Knowtation` is seeded in db
-  - [ ] Appropriate routes from index page
-  - [ ] Custom video player using DOMElements and Event listeners
+  - [x] `Knowtation` show page
+  - [x] Style `Knowtation` show page
+  - [x] Ensure that at least one working `Knowtation` is seeded in db
+  - [x] Appropriate routes from index page
+  - [x] Custom video player using DOMElements and Event listeners
 
 ###Phase 6: Tags (1 day)
 **Objective:** `Knowtation` can be tagged with multiple tags and tags are searchable.
-  - [ ] `Tag` model and `Taggings` join table
+  - [x] `Tag` model and `Taggings` join table
   - [ ] Fetching tags for `Knowtation`
   - [ ] Adding tags for `Knowtation`
-  - [ ] Seed tags
-  - [ ] Style tags
+  - [x] Seed tags
+  - [x] Style tags
   - [ ] Review phase 6
 
 
