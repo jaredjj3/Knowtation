@@ -62,9 +62,6 @@ $border-gray: #aaa;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  position: absolute;
-  top: 50px;
-  left: 20px;
 }
 
 .hide-metadata {
@@ -91,6 +88,16 @@ $border-gray: #aaa;
     width: 256px;
     margin: 20px 20px;
   }
+
+  .show-metadata .first-row {
+    top: 50px;
+    left: 100px;
+  }
+
+  .show-metadata .second-row {
+    top: 20px;
+    width: 250px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -111,6 +118,17 @@ $border-gray: #aaa;
   .library-list-item {
     width: 375px;
     margin: 20px 20px;
+  }
+
+  .show-metadata .first-row {
+    top: 90px;
+    left: 150px;
+  }
+
+  .show-metadata .second-row {
+    top: 50px;
+    left: 50px;
+    width: 250px;
   }
 }
 

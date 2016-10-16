@@ -9,6 +9,13 @@
   <%= javascript_include_tag 'application' %>
   <%= favicon_link_tag 'favicon.png' %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+    window.assets = {
+      notation: "<%= image_url(random_notation) %>",
+      thumbnail: "<%= image_url(random_thumbnail) %>"
+    }
+  </script>
 </head>
 <body>
 

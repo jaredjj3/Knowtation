@@ -25,7 +25,7 @@ class UploadForm extends React.Component {
     this.handleClickOut = this.handleClickOut.bind(this);
     this.handleUploadClick = this.handleUploadClick.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handlePopulateClick = this.handlePopulateClick.bind(this);
+    this.handleFillFormClick = this.handleFillFormClick.bind(this);
     this._uploadVideoDisplay = this._uploadVideoDisplay.bind(this);
     this.handleVideoUrlChange = this.handleVideoUrlChange.bind(this);
     this._uploadNotationDisplay = this._uploadNotationDisplay.bind(this);
@@ -43,7 +43,6 @@ class UploadForm extends React.Component {
     const { toggleModal, uploadModalOn } = this.props;
     const { submitDisabled } = this.state;
     const submitClass = submitDisabled ? ' disabled-button' : '';
-
     return (
       <Modal
         className="upload-form-container form-container group"
@@ -58,7 +57,7 @@ class UploadForm extends React.Component {
         <div className='form-input-container'>
           <button
             className='form-submit'
-            onClick={ this.handlePopulateClick }
+            onClick={ this.handleFillFormClick }
           >
             fill form
           </button>
@@ -166,12 +165,11 @@ class UploadForm extends React.Component {
     });
   }
 
-  handlePopulateClick(e) {
+  handleFillFormClick(e) {
     const videoUrl = randomYoutubeUrl();
     const videoId = this._videoId(videoUrl);
     const title = randomTitle();
     const youtubeId = videoId.replace("watch?v=", "");
-
 
     this.setState({
       title,
@@ -186,7 +184,6 @@ class UploadForm extends React.Component {
   }
 
   updateFile(property) {
-
     return e => {
       const file = e.currentTarget.files[0];
       const fileReader = new FileReader();
@@ -331,7 +328,6 @@ class UploadForm extends React.Component {
       notationFile && notationUrl)
     );
   }
-
 }
 
 export default UploadForm;

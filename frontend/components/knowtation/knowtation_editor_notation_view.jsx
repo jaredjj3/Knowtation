@@ -21,7 +21,6 @@ class KnowtationEditorNotationView extends React.Component {
 
   componentWillUnmount() {
     this.isEditing = false;
-    console.log('editor unmounted');
   }
 
   render() {

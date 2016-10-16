@@ -35,7 +35,7 @@ class Library extends React.Component {
                 id={ `library-metadata-${ knowtation.id }` }
                 className='hide-metadata'
               >
-                <span className='first-row'>{ knowtation.receivedLoops } <i className="material-icons spin">loop</i></span>
+                <span className='first-row'>{ knowtation.receivedLoops }<i className="material-icons spin">loop</i></span>
                 <span className='second-row'>{ knowtation.tags.map( tag => `${tag.name}`).join(' • ') }</span>
               </div>
               <h2>{ knowtation.title }</h2>

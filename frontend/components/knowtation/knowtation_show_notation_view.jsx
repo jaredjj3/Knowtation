@@ -19,7 +19,6 @@ class KnowtationShowNotationView extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log('notation unmounted');
     this.isShowing = false;
     this.props.clearKnowtation();
   }
@@ -43,7 +42,6 @@ class KnowtationShowNotationView extends React.Component {
   // helpers
 
   initializeNotation(knowtation) {
-    console.log('notation initialize');
     const { setAttribute, toggleModal } = this.props;
     const canvas = document.getElementById('show-canvas');
     setAttribute('canvas', canvas);

@@ -41,7 +41,6 @@ class KnowtationShowVideoPlayer extends React.Component {
     const video = e.target;
     setElement(video, 'video');
     setAttribute('videoIsReady', true);
-    console.log('video is ready');
     setTimeout(() => {
       toggleModal('loading');
       video.playVideo();
