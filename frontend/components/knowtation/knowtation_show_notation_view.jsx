@@ -11,15 +11,17 @@ class KnowtationShowNotationView extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const { knowtation, isShowing } = newProps;
+    const { knowtation, videoIsReady } = newProps;
     // only check context since it loads right away
-    if (knowtation.id && !knowtation.ctx) {
-      setTimeout(() => this.initializeNotation(knowtation), 2000);
+    if (knowtation.id && !knowtation.ctx && videoIsReady) {
+      setTimeout(this.initializeNotation(knowtation), 2000);
     }
   }
 
   componentWillUnmount() {
+    console.log('notation unmounted');
     this.isShowing = false;
+    this.props.clearKnowtation();
   }
 
   render() {
@@ -41,6 +43,7 @@ class KnowtationShowNotationView extends React.Component {
   // helpers
 
   initializeNotation(knowtation) {
+    console.log('notation initialize');
     const { setAttribute, toggleModal } = this.props;
     const canvas = document.getElementById('show-canvas');
     setAttribute('canvas', canvas);
@@ -64,11 +67,7 @@ class KnowtationShowNotationView extends React.Component {
         pos: { x: 0, y: 0 }
       };
       setAttribute('destination', destination);
-      const scale = {
-        x: (source.width / destination.width),
-        y: (source.height / destination.height)
-      };
-      setAttribute('scale', scale);
+      setAttribute('notationIsReady', true);
       requestAnimationFrame(this.updateCanvas);
     };
 

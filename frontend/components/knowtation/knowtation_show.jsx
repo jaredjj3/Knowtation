@@ -21,8 +21,8 @@ class KnowtationShow extends React.Component {
   }
 
   componentWillUnmount() {
-    const { clearKnowtation } = this.props;
-    clearKnowtation();
+    console.log('show unmounted');
+    this.props.clearKnowtation();
   }
 
   render() {

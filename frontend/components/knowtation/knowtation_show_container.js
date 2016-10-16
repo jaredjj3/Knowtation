@@ -16,7 +16,8 @@ import { toggleModal } from '../../actions/modal_actions';
 const mapStateToProps = state => ({
   knowtation: state.knowtation,
   pageUserId: state.knowtation.userId,
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  videoIsReady: state.knowtation.videoIsReady
 });
 
 const mapDispatchToProps = dispatch => ({

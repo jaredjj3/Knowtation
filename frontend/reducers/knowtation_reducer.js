@@ -10,7 +10,7 @@ import {
   UPDATE_POSITION,
   SET_SYNC_POINT,
   TOGGLE_ATTRIBUTE,
-  RESET_KNOWTATION
+  CLEAR_KNOWTATION
 } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
@@ -23,6 +23,7 @@ const _nullKnowtation = Object.freeze({
   userId: null,
   duration: null,
   videoUrl: null,
+  videoIsReady: false,
   isPlaying: false,
   syncPointId: 1,
   currentTime: 0,
@@ -108,7 +109,7 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
       newState.syncPointId = maxId(newState.scrollInstructions);
       return newState;
 
-    case RESET_KNOWTATION:
+    case CLEAR_KNOWTATION:
       return _nullKnowtation;
 
     default:

@@ -15,12 +15,13 @@ class KnowtationEditorNotationView extends React.Component {
     const { knowtation } = newProps;
 
     if (knowtation.id && !knowtation.ctx) {
-      this.initializeNotation(knowtation);
+      setTimeout(this.initializeNotation(knowtation), 2000);
     }
   }
 
   componentWillUnmount() {
     this.isEditing = false;
+    console.log('editor unmounted');
   }
 
   render() {
@@ -72,14 +73,12 @@ class KnowtationEditorNotationView extends React.Component {
   }
 
   updateCanvas() {
+    console.log('updated editor');
     const { knowtation } = this.props;
     const { ctx, img } = knowtation;
     ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawSyncPoints(knowtation);
-    if (this.isEditing) {
-      requestAnimationFrame(this.updateCanvas);
-    }
   }
 
   // helpers

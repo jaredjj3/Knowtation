@@ -1,56 +1,65 @@
 import React from 'react';
 import ReactYouTube from 'react-youtube';
 
-const KnowtationEditorVideoPlayer = ({
-  knowtation,
-  setElement,
-  updateTime,
-  setDuration,
-  isPlaying,
-  createSyncPoint,
-  toggleModal
-}) => {
-  const { videoElement } = knowtation;
+class KnowtationEditorVideoPlayer extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const onReadyHandler = e => {
+    this.onReadyHandler = this.onReadyHandler.bind(this);
+    this.onPlayHandler = this.onPlayHandler.bind(this);
+    this._updateTimer = this._updateTimer.bind(this);
+  }
+
+  render() {
+    const { knowtation } = this.props;
+    return (
+      <ReactYouTube
+        id='video-player'
+        className='knowtation-editor-video-player'
+        videoId={ knowtation.videoUrl }
+        onReady={ this.onReadyHandler }
+        onPlay={ this.onPlayHandler }
+        onPause={ this.onPauseHandler }
+        />
+    );
+  }
+
+  // helpers
+
+  _updateTimer() {
+    const { updateTime, knowtation } = this.props;
+    const { videoElement } = knowtation;
+    const currentTime = videoElement.getCurrentTime();
+    updateTime(currentTime);
+    requestAnimationFrame(this._updateTimer);
+  }
+
+  // event handler
+
+  onReadyHandler(e) {
+    const { setElement, toggleModal } = this.props;
     const video = e.target;
     setElement(video, 'video');
     toggleModal('loading');
-  };
+  }
 
-  const onPlayHandler = e => {
-    window.videoTimer = requestAnimationFrame(_updateTimer);
+  onPlayHandler(e) {
+    const { setDuration } = this.props;
+    window.videoTimer = requestAnimationFrame(this._updateTimer);
     setDuration(e.target.getDuration());
-  };
+  }
 
-  const onPauseHandler = e => {
+  onPauseHandler(e) {
     if (window.videoTimer) {
       cancelAnimationFrame(window.videoTimer);
     }
-  };
+  }
 
-  const onEndHandler = e => {
+  onEndHandler(e) {
     if (window.videoTimer) {
       cancelAnimationFrame(window.videoTimer);
     }
-  };
-
-  const _updateTimer = () => {
-    const currentTime = videoElement.getCurrentTime();
-    updateTime(currentTime);
-    requestAnimationFrame(_updateTimer);
-  };
-
-  return (
-    <ReactYouTube
-      id='video-player'
-      className='knowtation-editor-video-player'
-      videoId={ knowtation.videoUrl }
-      onReady={ onReadyHandler }
-      onPlay={ onPlayHandler }
-      onPause={ onPauseHandler }
-    />
-  );
-};
+  }
+}
 
 export default KnowtationEditorVideoPlayer;
