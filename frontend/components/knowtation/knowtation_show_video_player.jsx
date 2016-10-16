@@ -14,15 +14,23 @@ class KnowtationShowVideoPlayer extends React.Component {
 
   render() {
     const { knowtation } = this.props;
+    const opts = {
+      playerVars: {
+        disablekb: 1,
+        modestbranding: 1,
+        playsinline: 1,
+      }
+    };
 
     return(
       <ReactYouTube
+        opts={ opts }
         id='show-video-player'
         className='knowtation-show-video'
-        videoId={ knowtation.videoUrl}
+        videoId={ knowtation.videoUrl }
         onReady={ this.onReadyHandler }
         onPlay={ this.onPlayHandler }
-        />
+      />
     );
   }
 
@@ -41,7 +49,11 @@ class KnowtationShowVideoPlayer extends React.Component {
   }
 
   onPlayHandler(e) {
-    this.props.setDuration(e.target.getDuration());
+    const { duration } = this.props.knowtation;
+    // can only get the duration after the player starts
+    if (!duration) {
+      this.props.setDuration(e.target.getDuration());
+    }
   }
 }
 

@@ -17,10 +17,8 @@ class Navigation extends React.Component {
         <nav className='navigation-items'>
 
           <div className='navigation-left'>
-            <div className='logo-container'>
-              <Link to="/library"><h1 className='navigation logo'>Knowtation</h1></Link>
-              <Link to="/library"><Icon /></Link>
-            </div>
+            <Link to="/library"><h1 className='navigation logo'>Knowtation</h1></Link>
+            <Link to="/library"><Icon /></Link>
           </div>
 
           <div className='navigation-right'>

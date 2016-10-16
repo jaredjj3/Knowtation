@@ -69,16 +69,17 @@ class KnowtationEditorNotationView extends React.Component {
       });
       videoElement.pauseVideo();
     }
-    requestAnimationFrame(this.updateCanvas);
   }
 
   updateCanvas() {
-    console.log('updated editor');
     const { knowtation } = this.props;
     const { ctx, img } = knowtation;
     ctx.clearRect(0, 0, img.width, img.height);
     this.drawNotation(knowtation);
     this.drawSyncPoints(knowtation);
+    if (this.isEditing) {
+      requestAnimationFrame(this.updateCanvas);
+    }
   }
 
   // helpers
@@ -143,11 +144,6 @@ class KnowtationEditorNotationView extends React.Component {
         pos: { x: 0, y: 0 }
       };
       setAttribute('destination', destination);
-      const scale = {
-        x: (source.width / destination.width),
-        y: (source.height / destination.height)
-      };
-      setAttribute('scale', scale);
       requestAnimationFrame(this.updateCanvas);
     };
 

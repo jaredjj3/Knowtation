@@ -12,9 +12,18 @@ class KnowtationEditorVideoPlayer extends React.Component {
 
   render() {
     const { knowtation } = this.props;
+    const opts = {
+      playerVars: {
+        disablekb: 1,
+        modestbranding: 1,
+        playsinline: 1,
+      }
+    };
+
     return (
       <ReactYouTube
         id='video-player'
+        opts={ opts }
         className='knowtation-editor-video-player'
         videoId={ knowtation.videoUrl }
         onReady={ this.onReadyHandler }
