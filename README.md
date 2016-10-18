@@ -17,3 +17,9 @@ student to learn. The Knowtation player works by parsing an array of sync points
 Each sync point has information about the position and time that the Knowtation
 player should sync. The Knowtation editor allows teachers to set up these sync
 points, as well as preview them before they go live.
+
+![alt-text](https://imgur.com/a/XCojJ)
+
+### User Profile
+
+Users can track their progress and make a profile if they
