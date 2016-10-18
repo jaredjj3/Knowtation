@@ -13,7 +13,7 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <header className='navigation-bar group'>
+      <header id='navigation-bar' className='navigation-bar'>
         <nav className='navigation-items'>
 
           <div className='navigation-left'>
