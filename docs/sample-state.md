@@ -2,13 +2,46 @@
 
 ```js
 {
-  user: {
-    username: "test_username",
-    password: "starwars123"
+  errors: {
+    passwordErrors: ['Password must be at least 6 characters'],
+    sessionErrors: [],
+    teacherErrors: [],
+    usernameErrors: []
   },
-  currentUser: {
+  knowtation: {
+    authorName: "eduardo",
+    canvas: HTMLElement,
+    ctx: CanvasRenderingContext2D,
+    currentTime: 12.334243,
+    destination: {
+      height: 285,
+      width: 900,
+      pos: {
+        x: 200,
+        y: 0
+      }
+    },
+    duration: 15.232332,
     id: 1,
-    username: "null"
+    img: Image,
+    notationImageUrl: "google.com/asdf",
+    notationIsReady: true,
+    scrollInstructions: [
+      { id: 0, time: 1.2, pos: { x: 0, y: 0}}
+      { id: 1, time: 1.4, pos: { x: 100, y: 0}}
+      { id: 2, time: 3.5, pos: { x: 220, y: 0}}
+      { id: 3, time: 6.8, pos: { x: 330, y: 0}}
+    ],
+    source: Image,
+    syncPointId: 4,
+    title: "The Last Enemy",
+    userId: 11,
+    videoElement: HTMLElement,
+    videoIsReady: true,
+    videoUrl: "sdfaSADsd3rr"
+  }
+  currentUser: {
+
   },
   session: {
     sessionToken: "adfknnJAs23jiasd"
@@ -18,24 +51,42 @@
     logIn: { errors: [] },
     createKnowtation: { errors: [] }
   },
-  knowtation: {
-    1: {
-      title: "Happy Birthday",
-      video: "base64 encoded string",
-      notationImage: "base64 encoded string",
-      notation: [
-        { position: 0, timeSlice: 212939 },
-        { position: 120, timeSlice: 213442 },
-        { position: 400, timeSlice: 219281 },
-        { position: 0, timeSlice: 220392 }
-      ],
-      timeStart: 2132134990
-      artistId: 1,
-      tags: [
-        { id: 1, name: "Beginner" },
-        { id: 2, name: "Acoustic" }
-      ]
+  knowtations: [
+    { id: 1, receivedLoops: 57, tags: ['acoustic', 'metal'], thumnailUrl: "google.com/asdf", title: 'The Last Enemy'}
+  ],
+  modal: {
+    loadingModalOn: true,
+    loginModalOn: false,
+    profileModalOn: false,
+    signupModalOn: false,
+    teachModalOn: false,
+    timeModalOn: false,
+    uploadModalOn: false
+  }
+  session: {
+    currentUser: {
+      bio: "adsfasdfsadf",
+      givenLoops: {
+        mappedLoops: [
+          [0, 2]
+          [1, 3]
+          [2, 2]
+        ],
+        totalLoops: 7
+      },
+      id: 3,
+      profilePictureUrl: "google.com/jkl",
+      userType: "teacher",
+      username: "guest_teacher"
     }
+  },
+  user: {
+    bio: null,
+    givenLoops: null,
+    id: null,
+    profilePictureUrl: null,
+    userType: null,
+    username: null
   }
 }
 ```

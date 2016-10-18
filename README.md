@@ -1,6 +1,6 @@
 # Knowtation
 
-[Live](http://knowtation.herokuapp.com)
+[Live](http://www.knowtation.net)
 <br/>
 [Source](http://github.com/jaredjj3/Knowtation)
 

@@ -85,11 +85,11 @@ Knowtation is a modern web application inspired by [InstantNotation](http://inst
 ###Phase 6: Tags (1 day)
 **Objective:** `Knowtation` can be tagged with multiple tags and tags are searchable.
   - [x] `Tag` model and `Taggings` join table
-  - [ ] Fetching tags for `Knowtation`
-  - [ ] Adding tags for `Knowtation`
+  - [x] Fetching tags for `Knowtation`
+  - [x] Adding tags for `Knowtation`
   - [x] Seed tags
   - [x] Style tags
-  - [ ] Review phase 6
+  - [x] Review phase 6
 
 
 ### Bonus
