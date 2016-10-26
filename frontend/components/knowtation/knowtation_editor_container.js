@@ -10,11 +10,12 @@ import {
   updateKnowtation,
   setAttribute,
   setSyncPoint,
-  clearKnowtation
+  clearKnowtation,
+  sortSyncPoints
 } from '../../actions/knowtation_actions';
 import { toggleModal } from '../../actions/modal_actions';
 
-const mapStateToPropss = state => ({
+const mapStateToProps = state => ({
   knowtation: state.knowtation,
   timeModalOn: state.modal.timeModalOn
 });
@@ -30,10 +31,11 @@ const mapDispatchToProps = dispatch => ({
   setSyncPoint: () => dispatch(setSyncPoint()),
   updateKnowtation: knowtation => dispatch(updateKnowtation(knowtation)),
   setAttribute: (attribute, value) => dispatch(setAttribute(attribute, value)),
-  clearKnowtation: () => dispatch(clearKnowtation())
+  clearKnowtation: () => dispatch(clearKnowtation()),
+  sortSyncPoints: () => dispatch(sortSyncPoints())
 });
 
 export default connect(
-  mapStateToPropss,
+  mapStateToProps,
   mapDispatchToProps
 )(KnowtationEditor);

@@ -9,6 +9,7 @@ class KnowtationEditor extends React.Component {
     super(props);
 
     this.onClickHandler = this.onClickHandler.bind(this);
+    this.verifySyncPoints = this.verifySyncPoints.bind(this);
   }
 
   componentDidMount() {
@@ -60,13 +61,46 @@ class KnowtationEditor extends React.Component {
   // event handlers
 
   onClickHandler(e) {
-    const { updateKnowtation, knowtation } = this.props;
+    const {
+      updateKnowtation,
+      finalizeSyncPoints,
+      sortSyncPoints
+    } = this.props;
+    const { verifySyncPoints } = this;
+    sortSyncPoints();
+    verifySyncPoints();
     const knowtationData = {
-      scroll_instructions: JSON.stringify(knowtation.scrollInstructions),
-      id: knowtation.id
+      scroll_instructions: JSON.stringify(
+        window.store.getState().knowtation.scrollInstructions
+      ),
+      id: this.props.knowtation.id
     };
     updateKnowtation(knowtationData);
-    hashHistory.push(`/knowtation/${knowtation.id}/preview`);
+    hashHistory.push(`/knowtation/${this.props.knowtation.id}/preview`);
+  }
+
+  verifySyncPoints() {
+    const { createSyncPoint, sortSyncPoints } = this.props;
+    const { scrollInstructions } = window.store.getState().knowtation;
+    if (scrollInstructions.length === 0 || scrollInstructions[0].time > 0) {
+      createSyncPoint({
+        pos: { x: 25, y: 0},
+        id: this.props.knowtation.syncPointId,
+        time: 0
+      });
+      sortSyncPoints();
+    }
+    const knowtation = window.store.getState().knowtation;
+    const last = knowtation.scrollInstructions.length - 1;
+    const lastTime = knowtation.scrollInstructions[last].time;
+    if (lastTime < knowtation.videoElement.getDuration()) {
+      createSyncPoint({
+        pos: { x: knowtation.destination.width - 20, y: 0},
+        id: knowtation.syncPointId,
+        time: knowtation.videoElement.getDuration()
+      });
+      sortSyncPoints();
+    }
   }
 
 }

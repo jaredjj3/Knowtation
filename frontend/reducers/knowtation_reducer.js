@@ -12,7 +12,8 @@ import {
   SET_SYNC_POINT,
   TOGGLE_ATTRIBUTE,
   CLEAR_KNOWTATION,
-  SORT_SYNC_POINTS
+  SORT_SYNC_POINTS,
+  FINALIZE_SYNC_POINTS
 } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
@@ -62,7 +63,6 @@ const sortByTime = (a, b) => {
 };
 
 const KnowtationReducer = (state = _nullKnowtation, action) => {
-  Object.freeze(state);
   const newState = _.merge({}, state);
 
   switch(action.type) {
@@ -108,9 +108,7 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
       for (let i = 0; i < newState.scrollInstructions.length; i++) {
         const syncPoint = newState.scrollInstructions[i];
         if (syncPoint.id === action.syncPoint.id) {
-          console.log('before', newState.scrollInstructions[i]);
           _.merge(newState.scrollInstructions[i], action.syncPoint);
-          console.log('after', newState.scrollInstructions[i]);
           break;
         }
       }

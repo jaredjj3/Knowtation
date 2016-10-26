@@ -59,14 +59,14 @@ class KnowtationEditorNotationView extends React.Component {
     if (existingSyncPoint) {
       deleteSyncPoint(existingSyncPoint.id);
     } else {
-      this.focusTimeInput();
-      this.askForTime();
+      // this.focusTimeInput();
+      // this.askForTime();
       createSyncPoint({
         pos: pos,
         id: knowtation.syncPointId,
         time: currentTime // placeholder
       });
-      videoElement.pauseVideo();
+      videoElement.playVideo();
     }
   }
 
@@ -121,7 +121,7 @@ class KnowtationEditorNotationView extends React.Component {
   }
 
   initializeNotation(knowtation) {
-    const { setAttribute } = this.props;
+    const { setAttribute, createSyncPoint } = this.props;
     const canvas = document.getElementById('canvas');
     setAttribute('canvas', canvas);
     const context = canvas.getContext('2d');
@@ -175,7 +175,6 @@ class KnowtationEditorNotationView extends React.Component {
     const { ctx, destination, scrollInstructions } = knowtation;
     const X_OFFSET = 5;
     const X_TEXT_OFFSET = 15;
-    ('animate editor');
     for (let i = 0; i < scrollInstructions.length; i++) {
       // for lightblue rect
       const syncPoint = scrollInstructions[i];
