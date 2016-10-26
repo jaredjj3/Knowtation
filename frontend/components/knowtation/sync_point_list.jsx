@@ -1,34 +1,70 @@
 import React from 'react';
-import { toTimeString } from '../../util/time_string';
+import SyncPointListItem from './sync_point_list_item';
 
-const SyncPointList = ({ knowtation, deleteSyncPoint }) => {
-
-  if (knowtation.id === null || knowtation.scrollInstructions.length === 0) {
-    return <ul className='sync-point-list'></ul>;
+class SyncPointList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.syncPoints = this.syncPoints.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
-  const handleDeleteClick = e => {
-    deleteSyncPoint(e.target.id);
-  };
+  render() {
+    const { syncPoints } = this;
+    return(
+      <ul className='sync-point-list'>
+        { syncPoints() }
+      </ul>
+    );
+  }
 
-  const syncPoints = knowtation.scrollInstructions.map((syncPoint, idx) => (
-    <li className='sync-point-li' id={ idx + 1 } key={ syncPoint.id }>
-      { toTimeString(syncPoint.time) }
-      <i
-        id={ syncPoint.id }
-        className="material-icons"
-        onClick={ handleDeleteClick }
-      >
-        delete
-      </i>
-    </li>
-  ));
+  // event handlers
 
-  return(
-    <ul className='sync-point-list'>
-      { syncPoints }
-    </ul>
-  );
-};
+  handleDeleteClick(e) {
+    this.props.deleteSyncPoint(e.target.id);
+  }
+
+  // helpers
+
+  syncPoints() {
+    const { knowtation } = this.props;
+    const { handleDeleteClick } = this;
+    if (knowtation.scrollInstructions === "[]") {
+      return "";
+    }
+    const sortByTime = (a, b) => {
+      if (a.time < b.time) {
+        return -1;
+      } else if (a.time === b.time) {
+        return 0;
+      } else if (a.time > b.time) {
+        return 1;
+      }
+    };
+    return (
+      knowtation
+        .scrollInstructions
+        .sort(sortByTime)
+        .map((syncPoint, idx) => (
+          <li
+            className='sync-point-li' id={ idx + 1 }
+            key={ syncPoint.id }
+          >
+            <SyncPointListItem
+              syncPoint={ syncPoint }
+              updateSyncPoint={ this.props.updateSyncPoint }
+            />
+            <i
+              id={ syncPoint.id }
+              className="material-icons"
+              onClick={ handleDeleteClick }
+            >
+              delete
+            </i>
+          </li>
+      ))
+    );
+  }
+
+}
 
 export default SyncPointList;

@@ -5,7 +5,8 @@ import { toTimeString } from '../../util/time_string';
 const KnowtationTools = ({
   knowtation,
   deleteSyncPoint,
-  updateKnowtation
+  updateKnowtation,
+  updateSyncPoint
 }) => {
   const { videoElement } = knowtation;
 
@@ -24,7 +25,7 @@ const KnowtationTools = ({
     };
     updateKnowtation(knowtationData);
   };
-
+  
   return(
     <div className='knowtation-tools-container'>
       <div className='knowtation-tools-secondary'>
@@ -41,6 +42,7 @@ const KnowtationTools = ({
           <SyncPointList
             knowtation={ knowtation }
             deleteSyncPoint={ deleteSyncPoint }
+            updateSyncPoint={ updateSyncPoint }
           />
         </div>
 

@@ -81,7 +81,9 @@ class KnowtationShowNotationView extends React.Component {
     this.drawNotation(knowtation);
     this.drawBlueRect(knowtation);
     if (this.isShowing) {
-      requestAnimationFrame(this.updateCanvas);
+      window.showAnimator = requestAnimationFrame(this.updateCanvas);
+    } else {
+      cancelAnimationFrame(window.showAnimator);
     }
   }
 

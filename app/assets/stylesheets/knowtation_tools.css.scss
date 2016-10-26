@@ -64,6 +64,24 @@ $border-gray: #aaa;
   align-items: center;
 }
 
+.sync-point-list input {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 3px;
+  margin-right: 10px;
+  margin-top: 6px;
+  width: 75px;
+}
+
+.sync-point-list input:hover {
+  color: $main-blue-hover;
+  border-bottom: 1px solid $main-blue-hover;
+}
+
+.sync-point-list input:focus {
+  color: $main-blue-press;
+  border-bottom: 1px solid $main-blue-press;
+}
+
 .sync-point-list {
   padding-bottom: 15px;
 }

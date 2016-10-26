@@ -21,6 +21,7 @@ class KnowtationEditorNotationView extends React.Component {
 
   componentWillUnmount() {
     this.isEditing = false;
+    this.props.clearKnowtation();
   }
 
   render() {
@@ -58,15 +59,14 @@ class KnowtationEditorNotationView extends React.Component {
 
     if (existingSyncPoint) {
       deleteSyncPoint(existingSyncPoint.id);
+      // videoElement.playVideo();
     } else {
-      // this.focusTimeInput();
-      // this.askForTime();
       createSyncPoint({
         pos: pos,
         id: knowtation.syncPointId,
-        time: currentTime // placeholder
+        time: currentTime
       });
-      videoElement.playVideo();
+      // videoElement.playVideo();
     }
   }
 
@@ -77,32 +77,17 @@ class KnowtationEditorNotationView extends React.Component {
     this.drawNotation(knowtation);
     this.drawSyncPoints(knowtation);
     if (this.isEditing) {
-      requestAnimationFrame(this.updateCanvas);
+      window.editAnimator = requestAnimationFrame(this.updateCanvas);
+    } else {
+      cancelAnimationFrame(window.editAnimator);
     }
   }
 
   // helpers
 
-  focusTimeInput() {
-    setTimeout(() => {
-      const timeInputElement = document.getElementById('time-input');
-      if (timeInputElement) {
-        timeInputElement.focus();
-      }
-    }, 80);
-  }
-
-  askForTime() {
-    const { timeModalOn, toggleModal } = this.props;
-
-    if (!timeModalOn) {
-      toggleModal('time');
-    }
-  }
-
   checkSyncPoints(pos) {
-    const { knowtation } = this.props;
-    const { scrollInstructions } = knowtation;
+    const { knowtation, createSyncPoint } = this.props;
+    const { scrollInstructions, currentTime } = knowtation;
 
     for (let i = 0; i < scrollInstructions.length; i++) {
       const syncPoint = scrollInstructions[i];
@@ -111,6 +96,20 @@ class KnowtationEditorNotationView extends React.Component {
         return syncPoint;
       }
     }
+
+    for (let i = 0; i < scrollInstructions.length; i++) {
+      const timeSyncPoint = scrollInstructions[i];
+      const tDist = Math.abs(parseInt(timeSyncPoint.time) - knowtation.currentTime);
+      if (tDist < 0.1) {
+        createSyncPoint({
+          pos: pos,
+          id: knowtation.syncPointId,
+          time: currentTime
+        });
+        return timeSyncPoint;
+      }
+    }
+
     // if no matching sync point is found
     return null;
   }
