@@ -14,6 +14,8 @@ export const DELETE_SYNC_POINT = "DELETE_SYNC_POINT";
 export const UPDATE_POSITION = "UPDATE_POSITION";
 export const SET_SYNC_POINT = "SET_SYNC_POINT";
 export const CLEAR_KNOWTATION = "CLEAR_KNOWTATION";
+export const UPDATE_SYNC_POINT = "UPDATE_SYNC_POINT";
+export const SORT_SYNC_POINTS = "SORT_SYNC_POINTS";
 
 export const requestAllKnowtations = () => ({
   type: REQUEST_ALL_KNOWTATIONS
@@ -87,4 +89,13 @@ export const setSyncPoint = () => ({
 
 export const clearKnowtation = () => ({
   type: CLEAR_KNOWTATION
+});
+
+export const updateSyncPoint = syncPoint => ({
+  type: UPDATE_SYNC_POINT,
+  syncPoint
+});
+
+export const sortSyncPoints = () => ({
+  type: SORT_SYNC_POINTS
 });

@@ -8,9 +8,11 @@ import {
   CREATE_SYNC_POINT,
   DELETE_SYNC_POINT,
   UPDATE_POSITION,
+  UPDATE_SYNC_POINT,
   SET_SYNC_POINT,
   TOGGLE_ATTRIBUTE,
-  CLEAR_KNOWTATION
+  CLEAR_KNOWTATION,
+  SORT_SYNC_POINTS
 } from '../actions/knowtation_actions';
 import * as _ from 'lodash';
 
@@ -47,6 +49,16 @@ const maxId = scrollInstructions => {
   }
 
   return currentMax + 1;
+};
+
+const sortByTime = (a, b) => {
+  if (a.time < b.time) {
+    return -1;
+  } else if (a.time === b.time) {
+    return 0;
+  } else if (a.time > b.time) {
+    return 1;
+  }
 };
 
 const KnowtationReducer = (state = _nullKnowtation, action) => {
@@ -91,10 +103,28 @@ const KnowtationReducer = (state = _nullKnowtation, action) => {
       newState.syncPointId++;
       return newState;
 
+    case UPDATE_SYNC_POINT:
+      let targetSyncPoint;
+      for (let i = 0; i < newState.scrollInstructions.length; i++) {
+        const syncPoint = newState.scrollInstructions[i];
+        if (syncPoint.id === action.syncPoint.id) {
+          console.log('before', newState.scrollInstructions[i]);
+          _.merge(newState.scrollInstructions[i], action.syncPoint);
+          console.log('after', newState.scrollInstructions[i]);
+          break;
+        }
+      }
+      newState.scrollInstructions = newState.scrollInstructions.sort(sortByTime);
+      return newState;
+
     case DELETE_SYNC_POINT:
       newState.scrollInstructions = newState.scrollInstructions.filter( syncPoint => (
         parseInt(syncPoint.id) !== parseInt(action.id)
       ));
+      return newState;
+
+    case SORT_SYNC_POINTS:
+      newState.scrollInstructions = newState.scrollInstructions.sort(sortByTime);
       return newState;
 
     case UPDATE_POSITION:

@@ -1,7 +1,11 @@
 import { connect } from 'react-redux';
 import TimeForm from './time_form';
 import { toggleModal } from '../../actions/modal_actions';
-import { deleteSyncPoint } from '../../actions/knowtation_actions';
+import {
+  deleteSyncPoint,
+  updateSyncPoint,
+  sortSyncPoints
+} from '../../actions/knowtation_actions';
 
 const mapStateToProps = state => ({
   timeModalOn: state.modal.timeModalOn,
@@ -11,7 +15,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   toggleModal: modal => dispatch(toggleModal(modal)),
-  deleteSyncPoint: id => dispatch(deleteSyncPoint(id))
+  deleteSyncPoint: id => dispatch(deleteSyncPoint(id)),
+  updateSyncPoint: id => dispatch(updateSyncPoint(id))
 });
 
 export default connect(

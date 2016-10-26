@@ -114,7 +114,9 @@ class TimeForm extends React.Component {
       toggleModal,
       timeModalOn,
       deleteSyncPoint,
-      syncPointId
+      updateSyncPoint,
+      syncPointId,
+      sortSyncPoints
     } = this.props;
     const { scrollInstructions } = knowtation;
     const last = scrollInstructions.length - 1;
@@ -122,6 +124,8 @@ class TimeForm extends React.Component {
 
     if (time) {
       scrollInstructions[last].time = parseFloat(time);
+      updateSyncPoint(scrollInstructions[last]);
+      sortSyncPoints();
     } else {
       deleteSyncPoint(syncPointId);
     }
@@ -135,12 +139,14 @@ class TimeForm extends React.Component {
       toggleModal,
       timeModalOn,
       deleteSyncPoint,
-      syncPointId
+      syncPointId,
+      sortSyncPoints
     } = this.props;
     const { scrollInstructions, currentTime } = knowtation;
     const last = scrollInstructions.length - 1;
 
     scrollInstructions[last].time = parseFloat(currentTime);
+
 
     this._reset();
   }
