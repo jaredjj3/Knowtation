@@ -6,7 +6,8 @@ class KnowtationPlayerControls extends React.Component {
     super(props);
 
     this.state = {
-      seekValue: 0
+      seekValue: 0,
+      playbackRate: 1
     };
 
     this.replay = this.replay.bind(this);
@@ -61,9 +62,9 @@ class KnowtationPlayerControls extends React.Component {
   handleReplayClick(e) {
     const { videoElement } = this.props.knowtation;
     const currentTime = videoElement.getCurrentTime();
+    const duration = videoElement.getDuration();
     let adjustedTime = currentTime - 2;
-    adjustedTime = adjustedTime < 0 ? 0 : adjustedTime;
-    videoElement.seekTo(adjustedTime);
+    adjustedTime = adjustedTime < 0 ? duration - adjustedTime : adjustedTime;
   }
 
   handleToggleSpeedClick(e) {
@@ -80,15 +81,14 @@ class KnowtationPlayerControls extends React.Component {
       (playbackRates.indexOf(playbackRate) + 1) % playbackRates.length
     ];
     videoElement.setPlaybackRate(newPlaybackRate);
+    this.setState({ playbackRate: newPlaybackRate });
   }
 
   handleSeekSliderChange(e) {
     const { videoElement } = this.props.knowtation;
+    videoElement.pauseVideo();
     const seekValue = e.target.value;
-    const duration = videoElement.getDuration();
     this.setState({ seekValue });
-    const seekToTime = (seekValue / 100) * duration;
-    videoElement.seekTo(seekToTime);
   }
 
   // helpers
@@ -133,12 +133,14 @@ class KnowtationPlayerControls extends React.Component {
 
   toggleSpeed() {
     return (
-      <i
-        className="material-icons controls-slow"
-        onClick={ this.handleToggleSpeedClick }
-      >
-        slow_motion_video
-      </i>
+      <span>
+        <i
+          className="material-icons controls-slow"
+          onClick={ this.handleToggleSpeedClick }
+        >
+          slow_motion_video
+        </i> x { this.state.playbackRate }
+      </span>
     );
   }
 
@@ -160,9 +162,10 @@ class KnowtationPlayerControls extends React.Component {
       return(
         <input
           type="range"
-          min="0" max="100"
+          min="0"
+          max="100"
           step="1"
-          value="0"
+          defaultValue="0"
           onChange={ this.handleSeekSliderChange }
         >
         </input>
@@ -172,13 +175,14 @@ class KnowtationPlayerControls extends React.Component {
     const currentTime = videoElement.getCurrentTime();
     const duration = videoElement.getDuration();
     const percentage = ((currentTime / duration) * 100).toFixed(1);
+    
     return (
       <input
         type="range"
         min="0"
         max="100"
         step="0.1"
-        value={ this.state.seekValue }
+        defaultValue={ percentage }
         onChange={ this.handleSeekSliderChange }
       >
       </input>
