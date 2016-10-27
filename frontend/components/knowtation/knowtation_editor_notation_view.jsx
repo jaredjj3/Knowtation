@@ -51,11 +51,20 @@ class KnowtationEditorNotationView extends React.Component {
 
   handleCanvasClick(e) {
     const { knowtation, createSyncPoint, deleteSyncPoint } = this.props;
-    const { canvas, videoElement, currentTime } = knowtation;
+    const { canvas, videoElement, currentTime, duration, destination } = knowtation;
     const pos = this.getMousePos(canvas, e);
 
     // check to see if there is a syncPoint within 10 px
-    const existingSyncPoint = this.checkSyncPoints(pos);
+    // or if a syncPoint is within 0.1 seconds
+    const playerState = videoElement.getPlayerState();
+    let timeToUse = 0;
+    if (playerState === 1) {
+      timeToUse = currentTime;
+    } else if (playerState === 2 || playerState === 0 || playerState === -1) {
+      const factor = pos.x / destination.width;
+      timeToUse = factor * duration;
+    }
+    const existingSyncPoint = this.checkSyncPoints(pos, timeToUse);
 
     if (existingSyncPoint) {
       deleteSyncPoint(existingSyncPoint.id);
@@ -64,7 +73,7 @@ class KnowtationEditorNotationView extends React.Component {
       createSyncPoint({
         pos: pos,
         id: knowtation.syncPointId,
-        time: currentTime
+        time: timeToUse
       });
       // videoElement.playVideo();
     }
@@ -85,7 +94,7 @@ class KnowtationEditorNotationView extends React.Component {
 
   // helpers
 
-  checkSyncPoints(pos) {
+  checkSyncPoints(pos, time) {
     const { knowtation, createSyncPoint } = this.props;
     const { scrollInstructions, currentTime } = knowtation;
 
@@ -99,12 +108,12 @@ class KnowtationEditorNotationView extends React.Component {
 
     for (let i = 0; i < scrollInstructions.length; i++) {
       const timeSyncPoint = scrollInstructions[i];
-      const tDist = Math.abs(parseInt(timeSyncPoint.time) - knowtation.currentTime);
+      const tDist = Math.abs(parseInt(timeSyncPoint.time) - time);
       if (tDist < 0.1) {
         createSyncPoint({
           pos: pos,
           id: knowtation.syncPointId,
-          time: currentTime
+          time
         });
         return timeSyncPoint;
       }
