@@ -63,7 +63,7 @@ class KnowtationShow extends React.Component {
   }
 
   handleEditClick(e) {
-    const { id } = this.props.params;
+    const { id } = this.props. params;
     hashHistory.push(`/knowtation/${id}/edit`);
   }
 
@@ -89,7 +89,7 @@ class KnowtationShow extends React.Component {
   editButton() {
     const { currentUser, pageUserId } = this.props;
 
-    if (currentUser && pageUserId && currentUser.id === pageUserId) {
+    if (currentUser && pageUserId && (currentUser.id === pageUserId || currentUser.username === "guest_teacher")) {
       return(
         <button
           className='edit main-button'

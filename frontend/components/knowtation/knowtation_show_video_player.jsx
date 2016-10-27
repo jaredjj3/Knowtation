@@ -10,6 +10,8 @@ class KnowtationShowVideoPlayer extends React.Component {
 
     this.onReadyHandler = this.onReadyHandler.bind(this);
     this.onPlayHandler = this.onPlayHandler.bind(this);
+    this.onPauseHandler = this.onPauseHandler.bind(this);
+    this.onEndHandler = this.onEndHandler.bind(this);
   }
 
   render() {
@@ -32,6 +34,7 @@ class KnowtationShowVideoPlayer extends React.Component {
         videoId={ knowtation.videoUrl }
         onReady={ this.onReadyHandler }
         onPlay={ this.onPlayHandler }
+        onEnd={ this.onEndHandler }
       />
     );
   }
@@ -55,6 +58,21 @@ class KnowtationShowVideoPlayer extends React.Component {
     if (!duration) {
       this.props.setDuration(e.target.getDuration());
     }
+  }
+
+  onPauseHandler(e) {
+    if (window.videoTimer) {
+      cancelAnimationFrame(window.videoTimer);
+    }
+  }
+
+  onEndHandler(e) {
+    const video = e.target;
+    if (window.videoTimer) {
+      cancelAnimationFrame(window.videoTimer);
+    }
+    video.seekTo(0);
+    video.playVideo();
   }
 }
 

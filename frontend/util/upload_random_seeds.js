@@ -5,7 +5,10 @@ const sample = array => array[rng(array.length)];
 const youtubeUrlArray = [
   "https://youtu.be/w8uNZWDEYzQ",
   "https://youtu.be/ZASKyx-anks",
-  "https://youtu.be/r9HIfBmGGaU"
+  "https://youtu.be/r9HIfBmGGaU",
+  "https://youtu.be/fX-Xj8UbqX4",
+  "https://youtu.be/t2vPzUuUOhk",
+  "https://youtu.be/s97x0-FJeQw",
 ];
 
 const titleArray = [

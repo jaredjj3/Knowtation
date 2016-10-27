@@ -80,7 +80,10 @@ NOTATION = [
 YOUTUBE_LINKS = [
   "w8uNZWDEYzQ",
   "ZASKyx-anks",
-  "r9HIfBmGGaU"
+  "r9HIfBmGGaU",
+  "fX-Xj8UbqX4",
+  "t2vPzUuUOhk",
+  "s97x0-FJeQw",
 ]
 
 TIME_AGO_SECS = 604_800 * 1.5
