@@ -1,0 +1,16 @@
+$main-blue: #0061ff;
+$main-blue-hover: #3d87ff;
+$main-blue-press: #0058e8;
+$border-gray: #aaa;
+
+.controls-container {
+  background: orange;
+}
+
+.controls-seek-bar {
+  background: salmon;
+}
+
+.controls-buttons > .material-icons:hover {
+  cursor: pointer;
+}

@@ -17,6 +17,8 @@ class KnowtationEditorVideoPlayer extends React.Component {
         disablekb: 1,
         modestbranding: 1,
         playsinline: 1,
+        controls: 0,
+        fs: 0
       }
     };
 
@@ -29,7 +31,8 @@ class KnowtationEditorVideoPlayer extends React.Component {
         onReady={ this.onReadyHandler }
         onPlay={ this.onPlayHandler }
         onPause={ this.onPauseHandler }
-        />
+        onEnd={ this.onEndHandler }
+      />
     );
   }
 
@@ -72,9 +75,9 @@ class KnowtationEditorVideoPlayer extends React.Component {
   }
 
   onEndHandler(e) {
-    if (window.videoTimer) {
-      cancelAnimationFrame(window.videoTimer);
-    }
+    const video = e.target;
+    video.seekTo(0);
+    video.playVideo();
   }
 }
 

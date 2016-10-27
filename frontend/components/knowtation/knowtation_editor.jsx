@@ -2,6 +2,7 @@ import React from 'react';
 import KnowtationTools from './knowtation_tools';
 import KnowtationEditorVideoPlayer from './knowtation_editor_video_player';
 import KnowtationEditorNotationView from './knowtation_editor_notation_view';
+import KnowtationPlayerControls from './knowtation_player_controls';
 import { hashHistory } from 'react-router';
 
 class KnowtationEditor extends React.Component {
@@ -39,6 +40,10 @@ class KnowtationEditor extends React.Component {
               <div className='knowtation-editor-tools-container'>
                 <KnowtationTools {...props} />
               </div>
+            </div>
+
+            <div className="knowtation-editor-player-controls">
+              <KnowtationPlayerControls {...props} />
             </div>
 
             <div className="knowtation-editor-second-row">
