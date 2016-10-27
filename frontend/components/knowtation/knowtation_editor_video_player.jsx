@@ -43,7 +43,9 @@ class KnowtationEditorVideoPlayer extends React.Component {
     const { videoElement } = knowtation;
     const currentTime = videoElement.getCurrentTime();
     updateTime(currentTime);
-    requestAnimationFrame(this._updateTimer);
+    if ( videoElement.getPlayerState() === 1 ) {
+      requestAnimationFrame(this._updateTimer);
+    }
   }
 
   // event handler

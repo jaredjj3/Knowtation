@@ -7,7 +7,8 @@ class KnowtationPlayerControls extends React.Component {
 
     this.state = {
       seekValue: 0,
-      playbackRate: 1
+      playbackRate: 1,
+      volume: 0
     };
 
     this.replay = this.replay.bind(this);
@@ -15,12 +16,15 @@ class KnowtationPlayerControls extends React.Component {
     this.seekSlider = this.seekSlider.bind(this);
     this.playOrPause = this.playOrPause.bind(this);
     this.toggleSpeed = this.toggleSpeed.bind(this);
+    this.volumeSlider = this.volumeSlider.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.handlePauseClick = this.handlePauseClick.bind(this);
     this.updateSeekSlider = this.updateSeekSlider.bind(this);
+    this.updateVolumeSlider = this.updateVolumeSlider.bind(this);
     this.handleReplayClick = this.handleReplayClick.bind(this);
     this.handleToggleSpeedClick = this.handleToggleSpeedClick.bind(this);
     this.handleSeekSliderChange = this.handleSeekSliderChange.bind(this);
+    this.handleVolumeSliderChange = this.handleVolumeSliderChange.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -32,6 +36,7 @@ class KnowtationPlayerControls extends React.Component {
       videoElement.getPlayerState() === 1
     ) {
       this.updateSeekSlider(videoElement);
+      this.updateVolumeSlider(videoElement);
     }
   }
 
@@ -41,20 +46,24 @@ class KnowtationPlayerControls extends React.Component {
       replay,
       toggleSpeed,
       videoTime,
-      seekSlider
+      seekSlider,
+      volumeSlider
     } = this;
     return (
       <div className="controls-container">
         <div className="controls-seek-bar-container">
-          <div className="controls-seek-bar">
-            { seekSlider() }
+          <div className="controls-seek-bar-spacer">
+            <div className="controls-seek-bar">
+              { seekSlider() }
+            </div>
           </div>
         </div>
         <ul className="controls-buttons">
-          <li>{ playOrPause() }</li>
-          <li>{ replay() }</li>
-          <li>{ toggleSpeed() }</li>
-          <li>{ videoTime() }</li>
+          { playOrPause() }
+          { volumeSlider() }
+          { videoTime() }
+          { replay() }
+          { toggleSpeed() }
         </ul>
       </div>
     );
@@ -109,6 +118,13 @@ class KnowtationPlayerControls extends React.Component {
     videoElement.seekTo(seekToTime);
   }
 
+  handleVolumeSliderChange(e) {
+    const { videoElement } = this.props.knowtation;
+    const volume = e.target.value;
+    this.setState({ volume });
+    videoElement.setVolume(volume);
+  }
+
   // helpers
 
   updateSeekSlider(videoElement) {
@@ -118,10 +134,15 @@ class KnowtationPlayerControls extends React.Component {
     this.setState({ seekValue });
   }
 
+  updateVolumeSlider(videoElement) {
+    const volume = videoElement.getVolume();
+    this.setState({ volume });
+  }
+
   playOrPause() {
     const { videoElement } = this.props.knowtation;
-    const play = <i className="material-icons controls-play-button" onClick={ this.handlePlayClick }>play_arrow</i>;
-    const pause = <i className="material-icons controls-pause-button" onClick={ this.handlePauseClick }>pause</i>;
+    const play = <li onClick={ this.handlePlayClick }><i className="material-icons controls-play-button" >play_arrow</i></li>;
+    const pause = <li onClick={ this.handlePauseClick }><i className="material-icons controls-pause-button">pause</i></li>;
 
     if (!videoElement) {
       return play;
@@ -147,37 +168,40 @@ class KnowtationPlayerControls extends React.Component {
 
   replay() {
     return (
-      <i
-        className="material-icons controls-replay"
-        onClick={ this.handleReplayClick }
-      >
-        replay
-      </i>
+      <li>
+        <i
+          className="material-icons controls-replay"
+          onClick={ this.handleReplayClick }
+        >
+          replay
+        </i>
+      </li>
     );
   }
 
   toggleSpeed() {
     return (
-      <span>
+      <li className="controls-slow">
         <i
-          className="material-icons controls-slow"
+          className="material-icons"
           onClick={ this.handleToggleSpeedClick }
         >
           slow_motion_video
-        </i> x { this.state.playbackRate }
-      </span>
+        </i>
+        <span>&nbsp;&nbsp;x&nbsp;{ this.state.playbackRate.toFixed(2) }</span>
+      </li>
     );
   }
 
   videoTime() {
     const { videoElement } = this.props.knowtation;
     if (!videoElement) {
-      return <span></span>;
+      return <li className='controls-video-time'>0.0 / 0.0</li>;
     }
     const currentTime = toTimeString(videoElement.getCurrentTime());
     const duration = toTimeString(videoElement.getDuration());
     return (
-      <span>{ currentTime } / { duration }</span>
+      <li className='controls-video-time'>{ currentTime } / { duration }</li>
     );
   }
 
@@ -185,33 +209,52 @@ class KnowtationPlayerControls extends React.Component {
     const { videoElement } = this.props.knowtation;
     if (!videoElement) {
       return(
+        <li>
+          <input
+            className="controls-seek-slider"
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value={ this.state.seekValue }
+            onChange={ this.handleSeekSliderChange }
+          >
+          </input>
+        </li>
+      );
+    }
+
+    return (
+      <li>
         <input
           className="controls-seek-slider"
           type="range"
           min="0"
           max="100"
-          step="1"
+          step="0.1"
           value={ this.state.seekValue }
           onChange={ this.handleSeekSliderChange }
         >
         </input>
-      );
-    }
+      </li>
+    );
+  }
 
-    // const currentTime = videoElement.getCurrentTime();
-    // const duration = videoElement.getDuration();
-
-    return (
-      <input
-        className="controls-seek-slider"
-        type="range"
-        min="0"
-        max="100"
-        step="0.1"
-        value={ this.state.seekValue }
-        onChange={ this.handleSeekSliderChange }
-      >
-      </input>
+  volumeSlider() {
+    return(
+      <li className="controls-volume-slider">
+        <i className="material-icons">volume_up</i>
+        <input
+          className="controls-volume-slider-range"
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value={ this.state.volume }
+          onChange={ this.handleVolumeSliderChange }
+        >
+        </input>
+      </li>
     );
   }
 

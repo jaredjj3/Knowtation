@@ -16,6 +16,9 @@ export const toTimeString = seconds => {
   // }
   //
   // return `${mins}:${secs}:${msecs}`;
+  if (typeof seconds === 'undefined') {
+    return seconds;
+  }
   return seconds.toFixed(1);
 };
 

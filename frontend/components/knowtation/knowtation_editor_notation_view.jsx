@@ -190,7 +190,7 @@ class KnowtationEditorNotationView extends React.Component {
       const y = 0;
       const dW = 10;
       const dH = destination.height;
-      const color = 'rgba(100, 255, 255, 0.3)';
+      const color = 'rgba(0, 97, 255, 0.3)';
 
       // for text
       const yText = 10;
