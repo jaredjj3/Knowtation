@@ -24,8 +24,9 @@ const KnowtationTools = ({
       id: knowtation.id
     };
     updateKnowtation(knowtationData);
+    alert('Knowtation saved.');
   };
-  
+
   return(
     <div className='knowtation-tools-container'>
       <div className='knowtation-tools-secondary'>

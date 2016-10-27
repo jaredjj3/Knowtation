@@ -1,7 +1,7 @@
  import React from 'react';
 import { toTimeString } from '../../util/time_string';
 
-class KnowtationPlayerControls extends React.Component {
+class KnowtationEditorPlayerControls extends React.Component {
   constructor(props) {
     super(props);
 
@@ -83,7 +83,6 @@ class KnowtationPlayerControls extends React.Component {
 
   handleReplayClick(e) {
     const { videoElement } = this.props.knowtation;
-    videoElement.pauseVideo();
     const currentTime = videoElement.getCurrentTime();
     const duration = videoElement.getDuration();
     let adjustedTime = currentTime - 2;
@@ -260,4 +259,4 @@ class KnowtationPlayerControls extends React.Component {
 
 }
 
-export default KnowtationPlayerControls;
+export default KnowtationEditorPlayerControls;

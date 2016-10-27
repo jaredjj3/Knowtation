@@ -20,9 +20,22 @@ $border-gray: #aaa;
   position: relative;
 }
 
+.show-controls-seek-bar-spacer {
+  height: 1px;
+  width: 900px;
+  position: relative;
+}
+
 .controls-seek-bar {
   position: absolute;
   bottom: -11px;
+  padding: 0;
+  width: inherit;
+}
+
+.show-controls-seek-bar {
+  position: absolute;
+  bottom: -8px;
   padding: 0;
   width: inherit;
 }
@@ -34,6 +47,10 @@ $border-gray: #aaa;
 }
 
 .controls-seek-slider {
+  width: 900px;
+}
+
+.show-controls-seek-slider {
   width: 900px;
 }
 

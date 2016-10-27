@@ -19,6 +19,8 @@ class KnowtationShowVideoPlayer extends React.Component {
         disablekb: 1,
         modestbranding: 1,
         playsinline: 1,
+        controls: 0,
+        fs: 0
       }
     };
 

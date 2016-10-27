@@ -1,6 +1,7 @@
 import React from 'react';
 import KnowtationShowVideoPlayer from './knowtation_show_video_player';
 import KnowtationShowNotationView from './knowtation_show_notation_view';
+import KnowtationShowPlayerControls from './knowtation_show_player_controls';
 import { hashHistory, Link } from 'react-router';
 
 class KnowtationShow extends React.Component {
@@ -37,6 +38,10 @@ class KnowtationShow extends React.Component {
         <div className='knowtation-show'>
           <div className='knowtation-show-first-row'>
             <KnowtationShowVideoPlayer { ...props } />
+          </div>
+
+          <div className="knowtation-show-player-controls">
+            <KnowtationShowPlayerControls {...props} />
           </div>
 
           <div className='knowtation-show-second-row'>
