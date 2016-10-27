@@ -54,7 +54,8 @@ class KnowtationEditorVideoPlayer extends React.Component {
     setElement(video, 'video');
     setTimeout(() => {
       video.playVideo();
-      setTimeout(() => { video.pauseVideo();
+      setTimeout(() => {
+        video.pauseVideo();
         video.seekTo(0);
         toggleModal('loading');
       }, 1000);

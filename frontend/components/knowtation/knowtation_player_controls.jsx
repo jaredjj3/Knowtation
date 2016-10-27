@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import { toTimeString } from '../../util/time_string';
 
 class KnowtationPlayerControls extends React.Component {
@@ -17,9 +17,17 @@ class KnowtationPlayerControls extends React.Component {
     this.toggleSpeed = this.toggleSpeed.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.handlePauseClick = this.handlePauseClick.bind(this);
+    this.updateSeekSlider = this.updateSeekSlider.bind(this);
     this.handleReplayClick = this.handleReplayClick.bind(this);
     this.handleToggleSpeedClick = this.handleToggleSpeedClick.bind(this);
     this.handleSeekSliderChange = this.handleSeekSliderChange.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { videoElement } = newProps.knowtation;
+    if (videoElement && videoElement.getPlayerState() === 1) {
+      this.updateSeekSlider(videoElement);
+    }
   }
 
   render() {
@@ -37,12 +45,12 @@ class KnowtationPlayerControls extends React.Component {
             { seekSlider() }
           </div>
         </div>
-        <div className="controls-buttons">
-          { playOrPause() }
-          { replay() }
-          { toggleSpeed() }
-          { videoTime() }
-        </div>
+        <ul className="controls-buttons">
+          <li>{ playOrPause() }</li>
+          <li>{ replay() }</li>
+          <li>{ toggleSpeed() }</li>
+          <li>{ videoTime() }</li>
+        </ul>
       </div>
     );
   }
@@ -89,9 +97,18 @@ class KnowtationPlayerControls extends React.Component {
     videoElement.pauseVideo();
     const seekValue = e.target.value;
     this.setState({ seekValue });
+    const seekToTime = ( seekValue / 100 ) * videoElement.getDuration();
+    videoElement.seekTo(seekToTime);
   }
 
   // helpers
+
+  updateSeekSlider(videoElement) {
+    const currentTime = videoElement.getCurrentTime();
+    const duration = videoElement.getDuration();
+    const seekValue = (currentTime / duration) * 100;
+    this.setState({ seekValue });
+  }
 
   playOrPause() {
     const { videoElement } = this.props.knowtation;
@@ -161,28 +178,29 @@ class KnowtationPlayerControls extends React.Component {
     if (!videoElement) {
       return(
         <input
+          className="controls-seek-slider"
           type="range"
           min="0"
           max="100"
           step="1"
-          defaultValue="0"
+          value={ this.state.seekValue }
           onChange={ this.handleSeekSliderChange }
         >
         </input>
       );
     }
 
-    const currentTime = videoElement.getCurrentTime();
-    const duration = videoElement.getDuration();
-    const percentage = ((currentTime / duration) * 100).toFixed(1);
-    
+    // const currentTime = videoElement.getCurrentTime();
+    // const duration = videoElement.getDuration();
+
     return (
       <input
+        className="controls-seek-slider"
         type="range"
         min="0"
         max="100"
         step="0.1"
-        defaultValue={ percentage }
+        value={ this.state.seekValue }
         onChange={ this.handleSeekSliderChange }
       >
       </input>

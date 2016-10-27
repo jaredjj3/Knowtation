@@ -5,12 +5,23 @@ $border-gray: #aaa;
 
 .controls-container {
   background: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.controls-buttons > li {
+  width: 100px;
 }
 
 .controls-seek-bar {
   background: salmon;
 }
 
-.controls-buttons > .material-icons:hover {
+.controls-seek-slider {
+  width: 900px;
+}
+
+.controls-buttons > li:hover {
   cursor: pointer;
 }
