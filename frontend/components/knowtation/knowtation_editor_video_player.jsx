@@ -49,7 +49,7 @@ class KnowtationEditorVideoPlayer extends React.Component {
   // event handler
 
   onReadyHandler(e) {
-    const { setElement, toggleModal } = this.props;
+    const { setElement, toggleModal, setAttribute } = this.props;
     const video = e.target;
     setElement(video, 'video');
     setTimeout(() => {
@@ -58,6 +58,7 @@ class KnowtationEditorVideoPlayer extends React.Component {
         video.pauseVideo();
         video.seekTo(0);
         toggleModal('loading');
+        setAttribute('videoIsReady', true);
       }, 1000);
     }, 2000);
 
@@ -77,6 +78,9 @@ class KnowtationEditorVideoPlayer extends React.Component {
 
   onEndHandler(e) {
     const video = e.target;
+    if (window.videoTimer) {
+      cancelAnimationFrame(window.videoTimer);
+    }
     video.seekTo(0);
     video.playVideo();
   }

@@ -24,8 +24,13 @@ class KnowtationPlayerControls extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const { videoElement } = newProps.knowtation;
-    if (videoElement && videoElement.getPlayerState() === 1) {
+    const { knowtation } = newProps;
+    const { videoElement } = knowtation;
+    if (
+      videoElement &&
+      knowtation.videoIsReady &&
+      videoElement.getPlayerState() === 1
+    ) {
       this.updateSeekSlider(videoElement);
     }
   }
@@ -69,10 +74,13 @@ class KnowtationPlayerControls extends React.Component {
 
   handleReplayClick(e) {
     const { videoElement } = this.props.knowtation;
+    videoElement.pauseVideo();
     const currentTime = videoElement.getCurrentTime();
     const duration = videoElement.getDuration();
     let adjustedTime = currentTime - 2;
-    adjustedTime = adjustedTime < 0 ? duration - adjustedTime : adjustedTime;
+    adjustedTime = adjustedTime < 0 ? duration + adjustedTime : adjustedTime;
+    videoElement.seekTo(adjustedTime);
+    this.updateSeekSlider(videoElement);
   }
 
   handleToggleSpeedClick(e) {
