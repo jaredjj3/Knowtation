@@ -74,6 +74,10 @@ class KnowtationShowNotationView extends React.Component {
 
   updateCanvas() {
     const { knowtation, updatePosition, updateTime } = this.props;
+    if (!knowtation.id) {
+      cancelAnimationFrame(window.showAnimator);
+      return;
+    }
     const { ctx, img, videoElement } = knowtation;
     const destinationPosition = this.calculatePosition(knowtation);
     updatePosition(destinationPosition);

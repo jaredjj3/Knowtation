@@ -19,7 +19,7 @@ class KnowtationShowSidebar extends React.Component {
   render() {
     const { knowtations } = this.props;
     const currentPageKnowtationId = this.props.knowtation.id;
-    const shuffledKnowtations = knowtations;
+    const shuffledKnowtations = knowtations; // shouldn't shuffle in render
     const knowtationListItems = shuffledKnowtations.filter( knowtation => (
       knowtation.id !== currentPageKnowtationId
     )).map( knowtation => (
@@ -57,12 +57,21 @@ class KnowtationShowSidebar extends React.Component {
 
   // helpers
 
+  shuffle(array) {
+    const max = array.length;
+    const newArray = array.slice();
+    for (let i = 0; i < max; i++) {
+      const j = Math.floor(Math.random() * max);
+      [ newArray[i], newArray[j] ] = [ newArray[j], newArray[i] ];
+    }
+    return newArray;
+  }
+
   // event handlers
 
   onMouseEnterHandler(e) {
     const id = e.currentTarget.id;
     const idName = `library-metadata-${ id }`;
-    console.log(idName);
     document.getElementById(idName).className = 'show-metadata';
   }
 

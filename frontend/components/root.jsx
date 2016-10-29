@@ -61,17 +61,17 @@ const Root = ({ store }) => {
           />
 
           <Route
+            path="knowtation/:id"
+            component={ KnowtationShowContainer }
+          />
+
+          <Route
             path="knowtation/:id/edit"
             component={ KnowtationEditorContainer }
           />
 
           <Route
             path="knowtation/:id/preview"
-            component={ KnowtationShowContainer }
-          />
-
-          <Route
-            path="knowtation/:id"
             component={ KnowtationShowContainer }
           />
 

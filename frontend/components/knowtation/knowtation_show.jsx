@@ -15,11 +15,19 @@ class KnowtationShow extends React.Component {
     this.handleFinalizeClick = this.handleFinalizeClick.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    const { requestKnowtation, toggleModal, clearKnowtation } = this.props;
+    const routeChanged = newProps.location !== this.props.location;
+    if (routeChanged) {
+      window.location.reload();
+    }
+  }
+
   componentDidMount() {
     const { requestKnowtation, setSyncPoint, setAttribute, toggleModal } = this.props;
     const id = this.props.params.id;
-    requestKnowtation(id);
     toggleModal('loading');
+    requestKnowtation(id);
   }
 
   componentWillUnmount() {
