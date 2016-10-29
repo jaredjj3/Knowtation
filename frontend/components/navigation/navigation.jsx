@@ -17,8 +17,13 @@ class Navigation extends React.Component {
         <nav className='navigation-items'>
 
           <div className='navigation-left'>
-            <Link to="/library"><h1 className='navigation logo'>Knowtation</h1></Link>
-            <Link to="/library"><Icon /></Link>
+            <Link to="/library"><h1 className='navigation logo'>Knowtation <Icon /></h1></Link>
+          </div>
+
+          <div className='navigation-center'>
+            <a href="http://jaredjohnson.me/"><i className="fa fa-user" aria-hidden="true"></i></a>
+            <a href="https://github.com/jaredjj3"><i className="fa fa-github" aria-hidden="true"></i></a>
+            <a href="http://linkedin.com/in/jjohnsoneit"><i className="fa fa-linkedin-square" aria-hidden="true"></i></a>
           </div>
 
           <div className='navigation-right'>

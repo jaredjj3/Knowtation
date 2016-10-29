@@ -39,34 +39,35 @@ class KnowtationShow extends React.Component {
     const { title, authorName, userId } = props.knowtation;
 
     return(
-      <div className="knowtation-show-and-sidebar">
-        <div className='knowtation-show-container'>
-          <h1 className='knowtation-show-title'>{ title }</h1>
-          <Link to={ `/profile/${userId}` }>
-            <h2 className='knowtation-show-author'>{ authorName }</h2>
-          </Link>
-          <div className='knowtation-show'>
-            <div className='knowtation-show-first-row'>
-              <KnowtationShowVideoPlayer { ...props } />
-            </div>
+      <div>
+        <div className="knowtation-show-and-sidebar">
+          <div className='knowtation-show-container'>
+            <h1 className='knowtation-show-title'>{ title }</h1>
+            <Link to={ `/profile/${userId}` }>
+              <h2 className='knowtation-show-author'>{ authorName }</h2>
+            </Link>
+            <div className='knowtation-show'>
+              <div className='knowtation-show-first-row'>
+                <KnowtationShowVideoPlayer { ...props } />
+              </div>
 
-            <div className="knowtation-show-player-controls">
-              <KnowtationShowPlayerControls {...props} />
-            </div>
+              <div className="knowtation-show-player-controls">
+                <KnowtationShowPlayerControls {...props} />
+              </div>
 
-            <div className='knowtation-show-second-row'>
-              <KnowtationShowNotationView { ...props } />
-            </div>
+              <div className='knowtation-show-second-row'>
+                <KnowtationShowNotationView { ...props } />
+              </div>
 
+            </div>
           </div>
-          { this.editButton() }
-          { this.finalizeButton() }
+          <div className="knowtation-show-sidebar">
+            <KnowtationShowSidebar {...props} />
+          </div>
         </div>
-        <div className="knowtation-show-sidebar">
-          <KnowtationShowSidebar {...props} />
-        </div>
-      </div>
-
+        { this.editButton() }
+        { this.finalizeButton() }
+    </div>
     );
   }
 

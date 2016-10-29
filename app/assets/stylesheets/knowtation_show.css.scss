@@ -15,12 +15,12 @@ $border-gray: #aaa;
 }
 
 .knowtation-show-and-sidebar {
+  max-height: 900px;
   display: flex;
   justify-content: center;
 }
 
 .knowtation-show-container {
-  padding: 20px;
   box-shadow: 0 0 1px $border-gray;
   border-bottom: 1px solid $border-gray;
 }
@@ -31,7 +31,6 @@ $border-gray: #aaa;
   margin: 0 20px;
   padding: 10px;
   overflow-y: scroll;
-  max-height: 1000px;
   box-shadow: 0 0 1px $border-gray;
   border-bottom: 1px solid $border-gray;
 }

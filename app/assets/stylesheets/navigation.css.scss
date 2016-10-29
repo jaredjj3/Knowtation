@@ -6,32 +6,46 @@ $border-gray: #aaa;
 
 .navigation-bar {
   background: #fff;
-  box-shadow: 0 1px 1px #aaa;
-  border-bottom: 1px solid $border-gray;
   margin-bottom: 50px;
-  display: flex;
-  flex-flow: column;
   width: 100%;
   z-index: 2;
+  box-shadow: 0 0 1px $border-gray;
+  border-bottom: 1px solid $border-gray;
 }
 
 .navigation-items {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .navigation-left {
-}
-
-.navigation-right {
-}
-
-header .logo-container {
   margin-left: 20px;
 }
 
+.navigation-center {
+  font-size: 28px;
+}
+
+.navigation-center > a {
+  padding: 0 10px;
+}
+
+.navigation-center > a:hover {
+  color: $main-blue-hover;
+}
+
+.navigation-right {
+  margin-right: 20px;
+}
+
+header .logo-container {
+}
+
 header .logo {
-  float: left;
-  font-size: 18px;
-  margin: 20px 0 0 15px;
+  font-size: 20px;
 }
 
 header .logo:hover {
@@ -40,9 +54,7 @@ header .logo:hover {
 
 header .logo-icon {
   color: $main-blue;
-  float: left;
-  font-size: 22px;
-  margin: 21px 0 0 5px;
+  font-size: 20px;
 }
 
 header .logo-container:hover {
@@ -57,24 +69,17 @@ header .logo-container:hover .library {
   color: $main-blue-hover;
 }
 
-header img {
-  float: left;
-  width: 30px;
-  height: auto;
-  margin: 17px 0 0 20px;
-}
-
 @media (min-width: 600px) {
   .navigation-links {
     float: right;
-    margin: 19px 15px 19px 0;
+    margin: 10px 15px 10px 0;
   }
 }
 
 @media (max-width: 600px) {
   .navigation-links {
     float: left;
-    margin: 19px 15px 19px 35px;
+    margin: 10px 15px 10px 35px;
   }
 }
 
@@ -102,8 +107,4 @@ header img {
 
 .navigation-signup {
   margin-right: 20px;
-}
-
-.navigation .logo {
-
 }
