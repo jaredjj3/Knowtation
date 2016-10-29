@@ -14,6 +14,35 @@ $border-gray: #aaa;
   height: 285px;
 }
 
+.knowtation-show-and-sidebar {
+  display: flex;
+  justify-content: center;
+}
+
+.knowtation-show-container {
+  padding: 20px;
+  box-shadow: 0 0 1px $border-gray;
+  border-bottom: 1px solid $border-gray;
+}
+
+.knowtation-show-sidebar {
+  width: 315px;
+  font-size: 14px;
+  margin: 0 20px;
+  padding: 10px;
+  overflow-y: scroll;
+  max-height: 1000px;
+  box-shadow: 0 0 1px $border-gray;
+  border-bottom: 1px solid $border-gray;
+}
+
+.show-sidebar-item-list {
+  margin: 10px;
+}
+
+.show-sidebar-list-item {
+  margin: 20px 0;
+}
 
 .finalize.main-button {
   margin-top: 30px;

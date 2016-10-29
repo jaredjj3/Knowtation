@@ -8,17 +8,20 @@ $border-gray: #aaa;
   background: #fff;
   box-shadow: 0 1px 1px #aaa;
   border-bottom: 1px solid $border-gray;
-  position: fixed;
+  margin-bottom: 50px;
+  display: flex;
+  flex-flow: column;
   width: 100%;
   z-index: 2;
 }
 
 .navigation-items {
-  margin: 0 auto;
 }
 
 .navigation-left {
+}
 
+.navigation-right {
 }
 
 header .logo-container {

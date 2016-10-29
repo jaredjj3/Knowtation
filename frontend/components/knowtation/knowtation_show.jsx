@@ -2,6 +2,7 @@ import React from 'react';
 import KnowtationShowVideoPlayer from './knowtation_show_video_player';
 import KnowtationShowNotationView from './knowtation_show_notation_view';
 import KnowtationShowPlayerControls from './knowtation_show_player_controls';
+import KnowtationShowSidebar from './knowtation_show_sidebar';
 import { hashHistory, Link } from 'react-router';
 
 class KnowtationShow extends React.Component {
@@ -30,28 +31,34 @@ class KnowtationShow extends React.Component {
     const { title, authorName, userId } = props.knowtation;
 
     return(
-      <div className='knowtation-show-container'>
-        <h1 className='knowtation-show-title'>{ title }</h1>
-        <Link to={ `/profile/${userId}` }>
-          <h2 className='knowtation-show-author'>{ authorName }</h2>
-        </Link>
-        <div className='knowtation-show'>
-          <div className='knowtation-show-first-row'>
-            <KnowtationShowVideoPlayer { ...props } />
-          </div>
+      <div className="knowtation-show-and-sidebar">
+        <div className='knowtation-show-container'>
+          <h1 className='knowtation-show-title'>{ title }</h1>
+          <Link to={ `/profile/${userId}` }>
+            <h2 className='knowtation-show-author'>{ authorName }</h2>
+          </Link>
+          <div className='knowtation-show'>
+            <div className='knowtation-show-first-row'>
+              <KnowtationShowVideoPlayer { ...props } />
+            </div>
 
-          <div className="knowtation-show-player-controls">
-            <KnowtationShowPlayerControls {...props} />
-          </div>
+            <div className="knowtation-show-player-controls">
+              <KnowtationShowPlayerControls {...props} />
+            </div>
 
-          <div className='knowtation-show-second-row'>
-            <KnowtationShowNotationView { ...props } />
-          </div>
+            <div className='knowtation-show-second-row'>
+              <KnowtationShowNotationView { ...props } />
+            </div>
 
+          </div>
+          { this.editButton() }
+          { this.finalizeButton() }
         </div>
-        { this.editButton() }
-        { this.finalizeButton() }
+        <div className="knowtation-show-sidebar">
+          <KnowtationShowSidebar {...props} />
+        </div>
       </div>
+
     );
   }
 
