@@ -1,7 +1,7 @@
 class Api::KnowtationsController < ApplicationController
 
   def index
-    @knowtations = Knowtation.includes(:user_loops, :user, :tags).all
+    @knowtations = Knowtation.includes(:user_loops, :user, :tags).all.shuffle
     render :index
   end
 
