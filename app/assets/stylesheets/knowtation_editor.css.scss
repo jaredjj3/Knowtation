@@ -3,6 +3,23 @@ $main-blue-hover: #3d87ff;
 $main-blue-press: #0058e8;
 $border-gray: #aaa;
 
+#saved-notification {
+  font-size: 18px;
+}
+
+.hide-notification {
+  display: none;
+}
+
+.show-notification {
+  display: block;
+}
+
+.knowtation-tools-icon-list {
+  display: flex;
+  justify-content: center;
+}
+
 .knowtation-editor-container {
   width: 900px;
   margin: 0 auto;

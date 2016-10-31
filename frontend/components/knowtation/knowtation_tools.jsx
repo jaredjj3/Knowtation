@@ -24,7 +24,13 @@ const KnowtationTools = ({
       id: knowtation.id
     };
     updateKnowtation(knowtationData);
-    alert('Knowtation saved.');
+    const notificationEl = document.getElementById('saved-notification');
+    notificationEl.className = 'show-notification';
+    notificationEl.innerHTML = 'saved';
+    setTimeout(() => {
+      notificationEl.innerHTML = '';
+      notificationEl.className = 'hide-notification';
+    }, 3000);
   };
 
   return(
@@ -33,8 +39,8 @@ const KnowtationTools = ({
 
         <div className='knowtation-tools-first-row'>
           <ul className='knowtation-tools-icon-list'>
-            <li><i onClick={ handleSaveClick } className="material-icons">save</i></li>
-            <li><i className="material-icons">watch</i> { currentTime() }</li>
+            <li className='save'><i onClick={ handleSaveClick } className="material-icons">save</i></li>
+            <li id='saved-notification' className='hide-notification'></li>
           </ul>
         </div>
 
