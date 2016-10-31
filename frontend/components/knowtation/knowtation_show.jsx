@@ -60,13 +60,14 @@ class KnowtationShow extends React.Component {
               </div>
 
             </div>
+
+            { this.editButton() }
+            { this.finalizeButton() }
           </div>
           <div className="knowtation-show-sidebar">
             <KnowtationShowSidebar {...props} />
           </div>
         </div>
-        { this.editButton() }
-        { this.finalizeButton() }
     </div>
     );
   }
