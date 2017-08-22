@@ -1,5 +1,13 @@
 # Knowtation
 
+🚨🚨🚨Knowtation was a project to help me learn React, I have reiterated and built on top of it in separate projects🚨🚨🚨
+
+For more recent projects, please check out:
+<br />
+[Note8](http://note8.co) (2nd iteration as a proof-of-concept)
+<br />
+[StringSync](https://stringsync.com) (final iteration, WIP as of 08/22/2017)
+
 [Live](http://www.knowtation.net)
 <br/>
 [Source](http://github.com/jaredjj3/Knowtation)
